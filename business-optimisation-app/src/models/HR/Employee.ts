@@ -20,5 +20,7 @@ export class Employee {
     educationInfoId: number;
     /** link to employment info */
     employmentInfoId: number;
+    /** link to previous experience records */
+    previousExperienceIds: number[];
 
 }
