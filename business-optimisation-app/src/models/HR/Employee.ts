@@ -4,8 +4,8 @@ export class Employee {
     secondName: string;
     patronymic: string;
     dob: Date;
-    passport: string;
-    taxNumber: string;
+    /** link to documents */
+    documentInfoId: number;
     /** location of the foto */
     photo: string;
     /** link to position description */
