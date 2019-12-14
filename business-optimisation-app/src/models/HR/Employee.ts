@@ -4,10 +4,10 @@ export class Employee {
     secondName: string;
     patronymic: string;
     dob: Date;
-    /** link to documents */
-    documentInfoId: number;
     /** location of the foto */
     photo: string;
+    /** link to documents */
+    documentInfoId: number;
     /** link to position description */
     positionId: number;
     /** link to adress  */
@@ -22,5 +22,8 @@ export class Employee {
     employmentInfoId: number;
     /** link to previous experience records */
     previousExperienceIds: number[];
-
+    /** link to medical card */
+    medicalCardId: number;
+    /** link to ensurance info */
+    ensuranceInfoId: number;
 }
