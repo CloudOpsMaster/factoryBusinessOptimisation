@@ -1,0 +1,30 @@
+<div id="buttonsBlock">
+  <h3 float='left'>List of employees</h3>
+  <button>Add</button>
+  <button [disabled]="editDisabled">Edit</button>
+  <button [disabled]="deleteDisabled">Delete</button>
+</div>
+<table class="table">
+  <tr>
+    <th>
+      Имя
+    </th>
+    <th>
+      Фамилия
+    </th>
+    <th>
+      Отчество
+    </th>
+  </tr>
+  <tr *ngFor="let employee of employees" (click)="onRowClick(employee)" [ngClass]="{'selected' : isSelected(employee) }">
+    <td>
+      {{employee.firstName}}
+    </td>
+    <td>
+      {{employee.secondName}}
+    </td>
+    <td>
+      {{employee.patronymic}}
+    </td>
+  </tr>
+</table>

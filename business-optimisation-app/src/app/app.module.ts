@@ -8,12 +8,16 @@ import { HomeComponent } from './home/home/home.component';
 import { CreateMaterialFormComponent } from './yulia/create-material-form/create-material-form.component';
 import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
 import { InstrumentServisesComponent } from './vdry/instrument-servises/instrument-servises.component';
+import { EmployeeListComponent } from './dsob/employee/employee-list/employee-list.component';
+import { EmployeeInfoEditorComponent } from './dsob/employee/employee-info-editor/employee-info-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EmployeeManagerComponent,
+    EmployeeListComponent,
+    EmployeeInfoEditorComponent,
     CreateMaterialFormComponent,
     DayOffFormComponent,
     InstrumentServisesComponent

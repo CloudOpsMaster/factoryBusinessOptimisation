@@ -1,0 +1,12 @@
+div{
+    border: 1px solid black;
+    height: 500px;
+}
+#table{
+    float: left;
+    width: 600px;
+}
+#editors{
+    height: 500px;
+    margin-left: 620px;
+}
