@@ -7,6 +7,7 @@ import { EmployeeManagerComponent } from './dsob/employee/employee-manager/emplo
 import { HomeComponent } from './home/home/home.component';
 import { CreateMaterialFormComponent } from './yulia/create-material-form/create-material-form.component';
 import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
+import { InstrumentServisesComponent } from './vdry/instrument-servises/instrument-servises.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component'
     HomeComponent,
     EmployeeManagerComponent,
     CreateMaterialFormComponent,
-    DayOffFormComponent
+    DayOffFormComponent,
+    InstrumentServisesComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { EmployeeManagerComponent } from './dsob/employee/employee-manager/emplo
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
 import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
+import { InstrumentServisesComponent } from './vdry/instrument-servises/instrument-servises.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'ihor',
     component: DayOffFormComponent
+  },
+  {
+    path: 'instrument-servises',
+    component: InstrumentServisesComponent
   },
 
   {

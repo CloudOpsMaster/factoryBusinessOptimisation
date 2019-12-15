@@ -1,0 +1,28 @@
+<h2>Заявка подачи\получения оборудования из сервиса</h2>
+
+<form>
+  <div class="form-group">
+    <label for="IdInstrument">Идентификатор инструмента</label>
+    <input type="number" class="form-control" id="IdInstrument">
+  </div>
+  <div class="form-group">
+    <label for="startDate">Дата сдачи в ремонт</label>
+    <input type="date" class="form-control" id="startDate">
+  </div>
+  <div class="form-group">
+    <label for="startDate">Дата получения из ремонта</label>
+    <input type="date" class="form-control" id="startDate">
+  </div>
+  <div class="form-group">
+    <label for="status">Статус</label>
+    <select id="status" class="form-control">
+      <option selected>Готов</option>
+      <option>Не готов</option>
+      <option>Не подлежит восстановления</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description">Описание</label>
+    <textarea class="form-control" id="description" rows="3"></textarea>
+  </div>
+</form>

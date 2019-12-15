@@ -1,14 +1,21 @@
-<div>
-    <nav>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-    </nav>
-    <nav>
-        <a routerLink="/employee" routerLinkActive="active">Employee manager</a>
-    </nav>
-
-    <nav>
-        <a routerLink="/ihor" routerLinkActive="active">Day Off</a>
-    </nav>
+<div class="navigate-block">
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a routerLink="/home" routerLinkActive="active" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/employee" routerLinkActive="active" class="nav-link">Employee manager</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/ihor" routerLinkActive="active" class="nav-link">Day Off</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/instrument-servises" routerLinkActive="active" class="nav-link">Instrument servis</a>
+            </li>
+        </ul>
+    </div>
 </div>
-
-<router-outlet></router-outlet>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
