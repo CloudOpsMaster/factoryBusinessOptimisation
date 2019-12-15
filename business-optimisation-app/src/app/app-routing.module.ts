@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EmployeeManagerComponent } from './dsob/employee/employee-manager/employee-manager.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
+import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
 
 
 const routes: Routes = [
@@ -10,10 +11,16 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
+  
   {
     path: 'employee',
     component: EmployeeManagerComponent
   },
+  {
+    path: 'ihor',
+    component: DayOffFormComponent
+  },
+
   {
     path: '',
     redirectTo: 'home',

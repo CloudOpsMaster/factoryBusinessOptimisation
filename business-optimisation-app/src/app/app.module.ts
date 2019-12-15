@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { EmployeeManagerComponent } from './dsob/employee/employee-manager/employee-manager.component';
 import { HomeComponent } from './home/home/home.component';
 import { CreateMaterialFormComponent } from './yulia/create-material-form/create-material-form.component';
+import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EmployeeManagerComponent,
-    CreateMaterialFormComponent
+    CreateMaterialFormComponent,
+    DayOffFormComponent
   ],
   imports: [
     BrowserModule,
