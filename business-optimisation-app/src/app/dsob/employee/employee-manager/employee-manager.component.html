@@ -1,6 +1,6 @@
 <div id="table">
-  <app-employee-list></app-employee-list>
+  <app-employee-list (currentEmpChanged)="onCurrentEmpChanged($event)"></app-employee-list>
 </div>
 <div id="editors">
-  <app-employee-info-editor></app-employee-info-editor>
+  <app-employee-info-editor [employeeId]="currentEmployeeId"></app-employee-info-editor>
 </div>

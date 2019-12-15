@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeManagerComponent implements OnInit {
 
+  currentEmployeeId = -1;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onCurrentEmpChanged(id: number) {
+    this.currentEmployeeId = id;
   }
 
 }

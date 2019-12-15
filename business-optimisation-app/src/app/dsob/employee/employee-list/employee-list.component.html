@@ -1,10 +1,10 @@
 <div id="buttonsBlock">
-  <h3 float='left'>List of employees</h3>
-  <button (click)="onAddClick($event)">Add</button>
+  <h3 float='left'>Список сотрудников</h3>
+  <button (click)="onAddClick($event)">Добавить</button>
   <button [disabled]="editDisabled"
-          (click)="onEditClick($event)">Edit</button>
+          (click)="onEditClick($event)">Редактировать</button>
   <button [disabled]="deleteDisabled"
-          (click)="onDeleteClick($event)">Delete</button>
+          (click)="onDeleteClick($event)">Удалить</button>
 </div>
 <table class="table">
   <tr>

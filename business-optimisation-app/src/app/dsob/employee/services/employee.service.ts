@@ -45,7 +45,7 @@ export class EmployeeService {
     emp.patronymic = 'p';
 
     const emp1 = new Employee();
-    emp.id = 1;
+    emp1.id = 1;
     emp1.firstName = 'f1';
     emp1.secondName = 's1';
     emp1.patronymic = 'p1';
