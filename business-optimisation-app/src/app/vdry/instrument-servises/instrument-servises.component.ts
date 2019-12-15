@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { StorageService } from 'src/app/storage/storage.service';
 
 @Component({
   selector: 'app-instrument-servises',
@@ -13,9 +14,7 @@ export class InstrumentServisesComponent implements OnInit {
 
   public instruments: InstrumentServis[] = [];
 
-  constructor() { }
-
-  
+  constructor(private storage: StorageService) { }
 
   ngOnInit() {
     this.servicesForm = new FormGroup({
@@ -25,31 +24,42 @@ export class InstrumentServisesComponent implements OnInit {
       'status': new FormControl(''),
       'description': new FormControl('')
     });
-
-    console.log(this.servicesForm.value);
   }
 
-  getInstrument(){
+  onAdd(){
     if (this.servicesForm.valid) {
-      this.instruments.push(
-        new InstrumentServis(
-          this.servicesForm.get('id').value, 
-          this.servicesForm.get('startDate').value, 
-          this.servicesForm.get('endDate').value,
-          this.servicesForm.get('status').value,
-          this.servicesForm.get('description').value
-          )
-        );   
+      const newItem = new InstrumentServis(
+        this.servicesForm.get('id').value, 
+        this.servicesForm.get('startDate').value, 
+        this.servicesForm.get('endDate').value,
+        this.servicesForm.get('status').value,
+        this.servicesForm.get('description').value
+        )
+
+        this.instruments.push(
+          newItem
+        );
+
+        if (this.storage.has('_services')) {
+          this.storage.delete('_services');
+        }
+        
+        this.storage.set('_services', this.instruments);
+    }
+  }
+
+
+  onDelete(index: number) {
+    this.instruments.splice(index,1);
+    
+    if (this.storage.has('_services')) {
+      this.storage.delete('_services');
     }
     
+    this.storage.set('_services', this.instruments);
   }
 
-
-  deleteInstrument(index: number) {
-    this.instruments.splice(index,1);
-  }
-
-  uppdateInstrument(element: InstrumentServis, index: number): void {
+  onUppdate(element: InstrumentServis, index: number): void {
     this.servicesForm.get('description').setValue(element.description);
     
     const newDescription = 'Some text';

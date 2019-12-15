@@ -27,7 +27,7 @@
     <label for="description">Описание</label>
     <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
   </div>
-  <button  (click)="getInstrument()"
+  <button  (click)="onAdd()"
           type="button" class="btn btn-primary">Отправить</button>
 </form>
 
@@ -42,11 +42,11 @@
       <td>{{instrument.status}}</td>
       <td>{{instrument.description}}</td>
       <td> 
-        <button (click)="uppdateInstrument(instrument, index)"
+        <button (click)="onUppdate(instrument, index)"
         type="button" class="btn btn-warning">Изменить</button> 
       </td>
       <td>
-        <button (click)="deleteInstrument(index)"
+        <button (click)="onDelete(index)"
         type="button" class="btn btn-danger">Удалить</button> 
       </td>
     </tr>

@@ -1,5 +1,15 @@
 import { Injectable } from '@angular/core';
 
+const test = {
+  factoryData: {
+    key: 'value',
+    key2: 'value',
+    key3: 'value',
+    key4: 'value',
+    key5: 'value',
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
