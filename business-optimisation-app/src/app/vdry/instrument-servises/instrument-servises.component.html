@@ -1,21 +1,23 @@
+<br>
 <h2>Заявка подачи\получения оборудования из сервиса</h2>
 
-<form>
+<form [formGroup]="servicesForm" novalidate>
   <div class="form-group">
     <label for="IdInstrument">Идентификатор инструмента</label>
-    <input type="number" class="form-control" id="IdInstrument">
+    <input type="number" class="form-control" id="IdInstrument"  formControlName="id" required>
+    <p *ngIf="servicesForm.get('id').errors">Error</p>
   </div>
   <div class="form-group">
     <label for="startDate">Дата сдачи в ремонт</label>
-    <input type="date" class="form-control" id="startDate">
+    <input type="date" class="form-control" id="startDate"  formControlName="startDate">
   </div>
   <div class="form-group">
-    <label for="startDate">Дата получения из ремонта</label>
-    <input type="date" class="form-control" id="startDate">
+    <label for="endtDate">Дата получения из ремонта</label>
+    <input type="date" class="form-control" id="endDate"  formControlName="endDate">
   </div>
   <div class="form-group">
     <label for="status">Статус</label>
-    <select id="status" class="form-control">
+    <select id="status" class="form-control" formControlName="status">
       <option selected>Готов</option>
       <option>Не готов</option>
       <option>Не подлежит восстановления</option>
@@ -23,6 +25,30 @@
   </div>
   <div class="form-group">
     <label for="description">Описание</label>
-    <textarea class="form-control" id="description" rows="3"></textarea>
+    <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
   </div>
+  <button  (click)="getInstrument()"
+          type="button" class="btn btn-primary">Отправить</button>
 </form>
+
+<div>
+  <br>
+  <h3>Добавленные элементы</h3>
+  <table class="table">
+    <tr *ngFor="let instrument of instruments">
+      <td>{{instrument.id}}</td>
+      <td>{{instrument.startDate}}</td>
+      <td>{{instrument.endDate}}</td>
+      <td>{{instrument.status}}</td>
+      <td>{{instrument.description}}</td>
+      <td> 
+        <button (click)="uppdateInstrument(instrument, index)"
+        type="button" class="btn btn-warning">Изменить</button> 
+      </td>
+      <td>
+        <button (click)="deleteInstrument(index)"
+        type="button" class="btn btn-danger">Удалить</button> 
+      </td>
+    </tr>
+  </table>
+</div>

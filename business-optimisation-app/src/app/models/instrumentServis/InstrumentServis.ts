@@ -1,7 +1,11 @@
 export class InstrumentServis {
-    id: number;
-    startDate: Date;
-    endDate: Date;
-    status: string
-    description: string;
+
+    constructor(
+        public id: number,
+        public startDate: Date,
+        public endDate: Date,
+        public status: string,
+        public description: string
+    ) {}
+    
 }
