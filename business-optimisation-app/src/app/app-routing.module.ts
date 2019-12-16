@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
 import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
 import { InstrumentServisesComponent } from './vdry/instrument-servises/instrument-servises.component';
+import { GettingToolsComponent } from "./mary/getting-tools/getting-tools.component";
 
 
 const routes: Routes = [
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'instrument-servises',
     component: InstrumentServisesComponent
+  },
+  {
+    path: 'gettings-tools',
+    component: GettingToolsComponent
   },
 
   {

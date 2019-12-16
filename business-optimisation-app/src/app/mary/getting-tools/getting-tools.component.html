@@ -1,0 +1,84 @@
+<h2 class=paragraph>Получение инструмента</h2>
+<h6 class=subparagraph>Информация по работнику</h6>
+<div>
+    <div class="informationgroups">
+        <div>
+            <div>
+                <label>Имя:</label>
+                <input type="text" placeholder=" Александр">
+            </div>
+            <div>
+                <label>Участок:</label>
+                <select>
+                    <option *ngFor="let plot of plots" [ngValue]="plot">
+                        {{ plot }}
+                      </option>
+                </select>
+            </div>
+
+        </div>
+        <div>
+            <div>
+                <label>Фамилия:</label>
+                <input type="text" placeholder=" Птушкин">
+            </div>
+            <div>
+                <label>Должность:</label>
+                <select>
+                    <option *ngFor="let post of posts" [ngValue]="post">
+                        {{ post }}
+                      </option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label>Номер телефона:</label>
+                <input type="tel" placeholder="+3 (068) 444-33-22">
+            </div>
+            <div>
+                <label>Табельный номер:</label>
+                <input type="number" placeholder="1111">
+            </div>
+        </div>
+    </div>
+
+    <h6 class=subparagraph>Информация по иструменту</h6>
+    <div class="informationgroups">
+        <div>
+            <label>Инвентарный номер:</label>
+            <input type="number" placeholder="784">
+        </div>
+        <div>
+            <label>Наименование:</label>
+            <input type="text" placeholder="Пила">
+        </div>
+        <div>
+            <label>Количество:</label>
+            <input type="number" placeholder="1">
+        </div>
+    </div>
+    <h6 class=subparagraph>Дата перемищения</h6>
+    <div class="informationgroups">
+        <div>
+            <label>Дата выдачи:</label>
+            <input type="date" placeholder="784">
+        </div>
+        <div>
+            <label>Дата возврата:</label>
+            <input type="date" placeholder="Пила">
+        </div>
+        <div>
+            <label>Примечание:</label>
+            <select>
+                <option *ngFor="let note of notes" [ngValue]="note">
+                    {{ note }}
+                  </option>
+            </select>
+        </div>
+    </div>
+    <div class="informationgroups">
+        <button class="btn btn-primary">Добавить</button>
+        <button class="btn btn-warning">Изменить</button>
+        <button class="btn btn-danger">Удалить</button>
+    </div>
