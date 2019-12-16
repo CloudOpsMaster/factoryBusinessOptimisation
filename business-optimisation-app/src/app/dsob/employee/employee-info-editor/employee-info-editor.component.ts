@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
-import { EmployeeService } from '../services/employee.service';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Employee } from 'src/app/models/HR/Employee';
 
@@ -10,7 +9,7 @@ import { Employee } from 'src/app/models/HR/Employee';
 })
 export class EmployeeInfoEditorComponent implements OnInit, OnChanges {
 
-  @Input() employeeId: number;
+  @Input() employee: Employee;
 
   inputForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -18,36 +17,24 @@ export class EmployeeInfoEditorComponent implements OnInit, OnChanges {
     patronymic: new FormControl('', Validators.required)
   });
 
-  private currentEmployee: Employee;
-
-  constructor(private employeeService: EmployeeService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.readEmployee();
+    this.updateForm();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.employeeId && changes.employeeId.previousValue !== changes.employeeId.currentValue) {
-      this.readEmployee();
-    }
-  }
-
-
-  private readEmployee() {
-    if (this.employeeId > -1) {
-      this.currentEmployee = this.employeeService.employees.find(e => e.id === this.employeeId);
-    }
     this.updateForm();
   }
 
   private updateForm() {
-    if (!this.currentEmployee) {
+    if (!this.employee) {
       return;
     }
     this.inputForm.setValue({
-      firstName: this.currentEmployee.firstName,
-      secondName: this.currentEmployee.secondName,
-      patronymic: this.currentEmployee.patronymic
+      firstName: this.employee.firstName,
+      secondName: this.employee.secondName,
+      patronymic: this.employee.patronymic
     });
   }
 

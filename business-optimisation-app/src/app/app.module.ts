@@ -13,6 +13,7 @@ import { EmployeeInfoEditorComponent } from './dsob/employee/employee-info-edito
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GettingToolsComponent } from './mary/getting-tools/getting-tools.component';
 import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
+import { EmployeeEditorComponent } from './dsob/employee/employee-editor/employee-editor.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/mater
     HomeComponent,
     EmployeeManagerComponent,
     EmployeeListComponent,
+    EmployeeEditorComponent,
     EmployeeInfoEditorComponent,
     CreateMaterialFormComponent,
     MaterialsDictionaryComponent,
