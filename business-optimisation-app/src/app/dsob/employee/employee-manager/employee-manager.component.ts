@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from 'src/app/models/HR/Employee';
 
@@ -8,6 +8,14 @@ import { Employee } from 'src/app/models/HR/Employee';
   styleUrls: ['./employee-manager.component.css']
 })
 export class EmployeeManagerComponent implements OnInit {
+
+  get editDisabled(): boolean {
+    return this.currentEmployeeId < 0;
+  }
+
+  get deleteDisabled(): boolean {
+    return this.currentEmployeeId < 0;
+  }
 
   currentEmployeeId = -1;
   employees = new Array<Employee>();
@@ -20,6 +28,18 @@ export class EmployeeManagerComponent implements OnInit {
 
   onCurrentEmpChanged(id: number) {
     this.currentEmployeeId = id;
+  }
+
+  onAddClick(event: MouseEvent) {
+    //this.addNewRequested.emit();
+  }
+
+  onEditClick(event: MouseEvent) {
+    //this.editRequested.emit(this.currentEmployeeId);
+  }
+
+  onDeleteClick(event: MouseEvent) {
+    //this.deleteRequested.emit(this.currentEmployeeId);
   }
 
 }

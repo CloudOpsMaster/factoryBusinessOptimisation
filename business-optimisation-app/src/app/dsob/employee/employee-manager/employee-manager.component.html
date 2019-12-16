@@ -1,6 +1,16 @@
-<div id="table">
-  <app-employee-list [employees]="employees"
+<div id="leftpart">
+  <div id="buttonsBlock">
+    <h3 float='left'>Список сотрудников</h3>
+    <button (click)="onAddClick($event)">Добавить</button>
+    <button [disabled]="editDisabled"
+            (click)="onEditClick($event)">Редактировать</button>
+    <button [disabled]="deleteDisabled"
+            (click)="onDeleteClick($event)">Удалить</button>
+  </div>
+  <div id="table">
+    <app-employee-list [employees]="employees"
                     (currentEmpChanged)="onCurrentEmpChanged($event)"></app-employee-list>
+  </div>
 </div>
 <div id="editors">
   <app-employee-editor [employeeId]="currentEmployeeId"></app-employee-editor>

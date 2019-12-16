@@ -1,10 +1,15 @@
 div{
     border: 1px solid black;
+    height: 75px;
+}
+#leftpart {
+    float: left;
+    width: 600px;
     height: 500px;
 }
 #table{
-    float: left;
     width: 600px;
+    height: 425px;
 }
 #editors{
     height: 500px;
