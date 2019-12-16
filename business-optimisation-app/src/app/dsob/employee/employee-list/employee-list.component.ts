@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { EmployeeService } from '../services/employee.service';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Employee } from 'src/app/models/HR/Employee';
 
 @Component({
@@ -8,13 +7,11 @@ import { Employee } from 'src/app/models/HR/Employee';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-
+  @Input() employees: Array<Employee>;
   @Output() currentEmpChanged = new EventEmitter<number>();
   @Output() addNewRequested = new EventEmitter();
   @Output() deleteRequested = new EventEmitter<number>();
   @Output() editRequested = new EventEmitter<number>();
-
-  employees = new Array<Employee>();
 
   get editDisabled(): boolean {
     return this.currentEmployee === undefined;
@@ -26,10 +23,9 @@ export class EmployeeListComponent implements OnInit {
 
   private currentEmployee: Employee;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.employees = this.employeeService.employees;
   }
 
   isSelected(employee: Employee): boolean {
