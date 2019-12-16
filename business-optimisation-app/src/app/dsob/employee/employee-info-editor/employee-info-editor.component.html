@@ -1,15 +1,13 @@
 <h4>Основная информация</h4>
-<form [formGroup]="inputForm">
-  <label>
-     Имя:
-     <input type="text" formControlName="firstName">
-  </label>
-  <label>
-     Фамилия:
-     <input type="text" formControlName="secondName">
-  </label>
-  <label>
-     Отчество:
-     <input type="text" formControlName="patronymic">
-  </label>
-</form>
+<label>
+   Имя:
+   <input type="text" [(ngModel)]="employee.firstName">
+</label>
+<label>
+   Фамилия:
+   <input type="text" [(ngModel)]="employee.secondName">
+</label>
+<label>
+   Отчество:
+   <input type="text" [(ngModel)]="employee.patronymic">
+</label>

@@ -32,7 +32,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   }
 
   onCancel() {
-
+    this.readEmployee();
   }
 
   private readEmployee() {
