@@ -1,24 +1,23 @@
 <div class="navigate-block">
-    <div class="container">
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="/employee" routerLinkActive="active" class="nav-link">Employee manager</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="/ihor" routerLinkActive="active" class="nav-link">Day Off</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="/instrument-servises" routerLinkActive="active" class="nav-link">Instrument servis</a>
-            </li>
-          <li class="nav-item">
-            <a routerLink="/materials-dictionary" routerLinkActive="active" class="nav-link">Словарь материалов</a>
-          </li>
-        </ul>
-    </div>
+    <ul class="navbar navbar-dark bg-primary">
+        <li class="nav navbar-nav">
+            <a routerLink="/home" routerLinkActive="active" class="nav-link active">Главная</a>
+        </li>
+        <li class="nav navbar-nav">
+            <a routerLink="/employee" routerLinkActive="active" class="nav-link">Учет работников</a>
+        </li>
+        <li class="nav navbar-nav">
+            <a routerLink="/ihor" routerLinkActive="active" class="nav-link">Рабочие окна</a>
+        </li>
+        <li class="nav navbar-nav">
+            <a routerLink="/instrument-servises" routerLinkActive="active" class="nav-link">Обслуживание оборудования</a>
+        </li>
+        <li class="nav navbar-nav">
+            <a routerLink="/gettings-tools" routerLinkActive="active" class="nav-link">Получение инструмента</a>
+        </li>
+    </ul>
 </div>
+
 <div class="container">
     <router-outlet></router-outlet>
 </div>
