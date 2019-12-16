@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
 import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
 import { InstrumentServisesComponent } from './vdry/instrument-servises/instrument-servises.component';
+import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-  
+
   {
     path: 'employee',
     component: EmployeeManagerComponent
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'instrument-servises',
     component: InstrumentServisesComponent
+  },
+  {
+    path: 'materials-dictionary',
+    component: MaterialsDictionaryComponent
   },
 
   {

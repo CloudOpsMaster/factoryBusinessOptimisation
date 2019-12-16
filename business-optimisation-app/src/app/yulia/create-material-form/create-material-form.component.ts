@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Material, MaterialBuilder } from '../../models/materials/material';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-create-material-form',
@@ -7,8 +8,9 @@ import { Material, MaterialBuilder } from '../../models/materials/material';
 })
 export class CreateMaterialFormComponent implements OnInit {
   material: Material;
+  data: any;
 
-  constructor() { }
+  constructor(private st: StorageService) { }
 
   ngOnInit() {
     this.material = new MaterialBuilder('Wood')
@@ -21,4 +23,15 @@ export class CreateMaterialFormComponent implements OnInit {
     console.log(this.material);
   }
 
+  set() {
+    this.st.setData('materials', this.material);
+  }
+
+  delete() {
+    this.st.deleteData('materials');
+  }
+
+  get() {
+    this.data = this.st.getData('materials');
+  }
 }

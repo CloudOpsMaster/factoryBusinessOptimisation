@@ -11,6 +11,8 @@ import { InstrumentServisesComponent } from './vdry/instrument-servises/instrume
 import { EmployeeListComponent } from './dsob/employee/employee-list/employee-list.component';
 import { EmployeeInfoEditorComponent } from './dsob/employee/employee-info-editor/employee-info-editor.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     EmployeeInfoEditorComponent,
     CreateMaterialFormComponent,
     DayOffFormComponent,
-    InstrumentServisesComponent
+    InstrumentServisesComponent,
+    MaterialsDictionaryComponent
   ],
   imports: [
     BrowserModule,
