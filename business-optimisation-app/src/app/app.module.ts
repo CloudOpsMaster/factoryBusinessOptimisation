@@ -12,6 +12,7 @@ import { EmployeeListComponent } from './dsob/employee/employee-list/employee-li
 import { EmployeeInfoEditorComponent } from './dsob/employee/employee-info-editor/employee-info-editor.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GettingToolsComponent } from './mary/getting-tools/getting-tools.component';
+import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { GettingToolsComponent } from './mary/getting-tools/getting-tools.compon
     EmployeeListComponent,
     EmployeeInfoEditorComponent,
     CreateMaterialFormComponent,
+    MaterialsDictionaryComponent,
     DayOffFormComponent,
     InstrumentServisesComponent,
     GettingToolsComponent
