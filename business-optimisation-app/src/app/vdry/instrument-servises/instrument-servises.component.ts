@@ -14,6 +14,8 @@ export class InstrumentServisesComponent implements OnInit {
 
   public instruments: InstrumentServis[] = [];
 
+  public updade = false;
+
   constructor(private storage: StorageService) { }
 
   ngOnInit() {
@@ -26,46 +28,67 @@ export class InstrumentServisesComponent implements OnInit {
     });
   }
 
-  onAdd(){
+  // ##############################
+
+  onAdd() {
     if (this.servicesForm.valid) {
       const newItem = new InstrumentServis(
-        this.servicesForm.get('id').value, 
-        this.servicesForm.get('startDate').value, 
+        this.servicesForm.get('id').value,
+        this.servicesForm.get('startDate').value,
         this.servicesForm.get('endDate').value,
         this.servicesForm.get('status').value,
         this.servicesForm.get('description').value
-        )
+        );
 
-        this.instruments.push(
+      this.instruments.push(
           newItem
         );
 
-        if (this.storage.has('_services')) {
+      if (this.storage.has('_services')) {
           this.storage.delete('_services');
         }
-        
-        this.storage.set('_services', this.instruments);
+
+      this.storage.set('_services', this.instruments);
     }
   }
 
+  // ##############################
 
   onDelete(index: number) {
-    this.instruments.splice(index,1);
-    
-    if (this.storage.has('_services')) {
+
+        this.instruments.splice(index, 1);
+
+        if (this.storage.has('_services')) {
       this.storage.delete('_services');
     }
-    
-    this.storage.set('_services', this.instruments);
+
+        this.storage.set('_services', this.instruments);
   }
+
+  // ##############################
 
   onUppdate(element: InstrumentServis, index: number): void {
+    this.updade = true;
     this.servicesForm.get('description').setValue(element.description);
-    
-    const newDescription = 'Some text';
-    const newInstrument: InstrumentServis = { ...element, description: newDescription };
+    this.servicesForm.get('startDate').setValue(element.startDate);
+    this.servicesForm.get('endDate').setValue(element.endDate);
+    this.servicesForm.get('status').setValue(element.status);
+    this.servicesForm.get('id').setValue(element.id);
 
-    this.instruments.splice(index, 1, newInstrument);
+    const newInstrument: InstrumentServis = { startDate: this.servicesForm.get('startDate').value,
+                                                          endDate: this.servicesForm.get('endDate').value,
+                                                          status: this.servicesForm.get('status').value,
+                                                          description: this.servicesForm.get('description').value,
+                                                          id: this.servicesForm.get('id').value, };
+
+    // this.instruments.splice(index, 1, newInstrument);
+
   }
+
+  onSave() {
+      this.storage.set('_services', this.instruments);
+      this.updade = false;
+  }
+
 
 }

@@ -14,6 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GettingToolsComponent } from './mary/getting-tools/getting-tools.component';
 import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
 import { EmployeeEditorComponent } from './dsob/employee/employee-editor/employee-editor.component';
+import { MeteringComponent } from './vadim/metering/metering.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EmployeeEditorComponent } from './dsob/employee/employee-editor/employe
     MaterialsDictionaryComponent,
     DayOffFormComponent,
     InstrumentServisesComponent,
-    GettingToolsComponent
+    GettingToolsComponent,
+    MeteringComponent
   ],
   imports: [
     BrowserModule,
