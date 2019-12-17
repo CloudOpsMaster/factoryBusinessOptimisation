@@ -67,28 +67,25 @@ export class InstrumentServisesComponent implements OnInit {
 
   // ##############################
 
-  onUppdate(element: InstrumentServis, index: number): void {
+  onUppdate(element: InstrumentServis): void {
     this.updade = true;
+
     this.servicesForm.get('description').setValue(element.description);
     this.servicesForm.get('startDate').setValue(element.startDate);
     this.servicesForm.get('endDate').setValue(element.endDate);
     this.servicesForm.get('status').setValue(element.status);
     this.servicesForm.get('id').setValue(element.id);
-
-    const newInstrument: InstrumentServis = { startDate: this.servicesForm.get('startDate').value,
-                                                          endDate: this.servicesForm.get('endDate').value,
-                                                          status: this.servicesForm.get('status').value,
-                                                          description: this.servicesForm.get('description').value,
-                                                          id: this.servicesForm.get('id').value, };
-
-    // this.instruments.splice(index, 1, newInstrument);
-
   }
 
-  onSave() {
-      this.storage.set('_services', this.instruments);
-      this.updade = false;
+  public onSave(index: number) {
+    const newInstrument: InstrumentServis = {
+      startDate: this.servicesForm.get('startDate').value,
+      endDate: this.servicesForm.get('endDate').value,
+      status: this.servicesForm.get('status').value,
+      description: this.servicesForm.get('description').value,
+      id: this.servicesForm.get('id').value
+    }
+
+    this.instruments.splice(index, 1, newInstrument);
   }
-
-
 }
