@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { Employee } from 'src/app/models/HR/Employee';
 
 @Component({
@@ -6,8 +6,9 @@ import { Employee } from 'src/app/models/HR/Employee';
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, OnChanges {
   @Input() employees: Array<Employee>;
+  @Input() locked = false;
   @Output() currentEmpChanged = new EventEmitter<number>();
 
   private currentEmployee: Employee;
@@ -15,6 +16,11 @@ export class EmployeeListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.focusFirstItem();
+  }
+
+  ngOnChanges() {
+
   }
 
   isSelected(employee: Employee): boolean {
@@ -22,8 +28,17 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onRowClick(employee: Employee) {
+    if (this.locked) {
+      return;
+    }
     this.currentEmployee = employee;
     this.currentEmpChanged.emit(this.currentEmployee.id);
+  }
+
+  private focusFirstItem() {
+    if (this.employees && this.employees.length > 0) {
+      this.onRowClick(this.employees[0]);
+    }
   }
 
 }

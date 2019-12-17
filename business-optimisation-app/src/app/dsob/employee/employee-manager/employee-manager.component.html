@@ -1,17 +1,20 @@
 <div id="leftpart">
   <div id="buttonsBlock">
     <h3 float='left'>Список сотрудников</h3>
-    <button (click)="onAddClick($event)">Добавить</button>
+    <button [disabled]="addDisabled"
+            (click)="onAddClick($event)">Добавить</button>
     <button [disabled]="editDisabled"
             (click)="onEditClick($event)">Редактировать</button>
     <button [disabled]="deleteDisabled"
             (click)="onDeleteClick($event)">Удалить</button>
   </div>
   <div id="table">
-    <app-employee-list [employees]="employees"
+    <app-employee-list [employees]="employees" [locked]="editingInProcess"
                     (currentEmpChanged)="onCurrentEmpChanged($event)"></app-employee-list>
   </div>
 </div>
 <div id="editors">
-  <app-employee-editor [employeeId]="currentEmployeeId"></app-employee-editor>
+  <app-employee-editor [employeeId]="currentEmployeeId"
+                        [viewMode]="viewMode"
+                        (canceled)="onCanceled()"></app-employee-editor>
 </div>

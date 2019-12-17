@@ -1,13 +1,13 @@
 <h4>Основная информация</h4>
 <label>
    Имя:
-   <input type="text" [(ngModel)]="employee.firstName">
+   <input type="text" [(ngModel)]="employee.firstName" [readonly]="!editMode">
 </label>
 <label>
    Фамилия:
-   <input type="text" [(ngModel)]="employee.secondName">
+   <input type="text" [(ngModel)]="employee.secondName" [readonly]="!editMode">
 </label>
 <label>
    Отчество:
-   <input type="text" [(ngModel)]="employee.patronymic">
+   <input type="text" [(ngModel)]="employee.patronymic" [readonly]="!editMode">
 </label>

@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from 'src/app/models/HR/Employee';
+import { EmployeeViewMode } from '../employee-view-mode.enum';
 
 @Component({
   selector: 'app-employee-editor',
@@ -10,8 +11,18 @@ import { Employee } from 'src/app/models/HR/Employee';
 export class EmployeeEditorComponent implements OnInit, OnChanges {
 
   @Input() employeeId: number;
+  @Input() viewMode: EmployeeViewMode = EmployeeViewMode.View;
+  @Output() canceled = new EventEmitter();
+  @Output() saved = new EventEmitter();
 
   public mainInfo: Employee; // TODO: use dedicated model
+
+  get buttonsBlockVisible(): boolean {
+    return this.viewMode !== EmployeeViewMode.View;
+  }
+  get caption(): string {
+    return this.getCaption();
+  }
 
   private currentEmployee: Employee;
 
@@ -22,9 +33,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.employeeId && changes.employeeId.previousValue !== changes.employeeId.currentValue) {
-      this.readEmployee();
-    }
+    this.readEmployee();
   }
 
   onSave() {
@@ -32,7 +41,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   }
 
   onCancel() {
-    this.readEmployee();
+    this.canceled.emit();
   }
 
   private readEmployee() {
@@ -49,6 +58,18 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
     this.mainInfo.firstName = this.currentEmployee.firstName || '';
     this.mainInfo.secondName = this.currentEmployee.secondName || '';
     this.mainInfo.patronymic = this.currentEmployee.patronymic || '';
+  }
+
+  private getCaption(): string {
+    let response = '';
+    if (this.viewMode === EmployeeViewMode.View) {
+      response = 'Работник - детали';
+    } else if (this.viewMode === EmployeeViewMode.Edit) {
+      response = 'Работник - редактирование';
+    } else if (this.viewMode === EmployeeViewMode.Delete) {
+      response = 'Работник - удаление';
+    }
+    return response;
   }
 
 }

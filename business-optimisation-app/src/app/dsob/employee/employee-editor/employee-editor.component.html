@@ -1,4 +1,7 @@
-<h4>Работник</h4>
-<button (click)="onSave()">Save</button>
-<button (click)="onCancel()">Cancel</button>
-<app-employee-info-editor [employee]="mainInfo"></app-employee-info-editor>
+<h4>{{caption}}</h4>
+<div *ngIf="buttonsBlockVisible">
+    <button (click)="onSave()">Сохранить</button>
+    <button (click)="onCancel()">Отмена</button>
+</div>
+<app-employee-info-editor [employee]="mainInfo"
+                        [viewMode]="viewMode"></app-employee-info-editor>

@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from 'src/app/models/HR/Employee';
+import { EmployeeViewMode } from '../employee-view-mode.enum';
 
 @Component({
   selector: 'app-employee-manager',
@@ -9,16 +10,22 @@ import { Employee } from 'src/app/models/HR/Employee';
 })
 export class EmployeeManagerComponent implements OnInit {
 
+  get addDisabled(): boolean {
+    return this.editingInProcess;
+  }
+
   get editDisabled(): boolean {
-    return this.currentEmployeeId < 0;
+    return this.currentEmployeeId < 0 || this.editingInProcess;
   }
 
   get deleteDisabled(): boolean {
-    return this.currentEmployeeId < 0;
+    return this.currentEmployeeId < 0 || this.editingInProcess;
   }
 
   currentEmployeeId = -1;
   employees = new Array<Employee>();
+  viewMode = EmployeeViewMode.View;
+  editingInProcess = false;
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -31,15 +38,21 @@ export class EmployeeManagerComponent implements OnInit {
   }
 
   onAddClick(event: MouseEvent) {
-    //this.addNewRequested.emit();
+    this.editingInProcess = true;
   }
 
   onEditClick(event: MouseEvent) {
-    //this.editRequested.emit(this.currentEmployeeId);
+    this.editingInProcess = true;
+    this.viewMode = EmployeeViewMode.Edit;
   }
 
   onDeleteClick(event: MouseEvent) {
-    //this.deleteRequested.emit(this.currentEmployeeId);
+    this.editingInProcess = true;
+  }
+
+  onCanceled() {
+    this.editingInProcess = false;
+    this.viewMode = EmployeeViewMode.View;
   }
 
 }
