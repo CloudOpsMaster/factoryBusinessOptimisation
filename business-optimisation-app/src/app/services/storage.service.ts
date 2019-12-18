@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 
-const test = {
-  factoryData: {
-    key: 'value',
-    key2: 'value',
-    key3: 'value',
-    key4: 'value',
-    key5: 'value',
-  }
+export enum StorageKeys {
+  Materials = 'materials',
+  Employees = 'employeesStorageKey'
 }
 
 @Injectable({
@@ -16,12 +11,12 @@ const test = {
 export class StorageService {
   storageKey = 'factoryData';
 
-  getData(key: string): any[] {
+  getData(key: StorageKeys): any[] {
     const data = this.getStorage();
     return data[key];
   }
 
-  setData(key: string, dataToSave: any) {
+  setData(key: StorageKeys, dataToSave: any) {
     const storage = this.getStorage();
     const data = storage[key] || [];
     data.push(dataToSave);
@@ -29,7 +24,7 @@ export class StorageService {
     this.saveStorage(storage);
   }
 
-  deleteData(key: string) {
+  deleteData(key: StorageKeys) {
     const storage = this.getStorage();
     delete storage[key];
     this.saveStorage(storage);

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from 'src/app/services/storage.service';
+import { StorageKeys, StorageService } from 'src/app/services/storage.service';
 import { Employee } from 'src/app/models/HR/Employee';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class EmployeeService {
   /** list of employees from storage */
   employees: Array<Employee>;
 
-  private employeesStorageKey = 'employeesStorageKey';
+  private employeesStorageKey = StorageKeys.Employees;
 
   updateEmployee(employee: Employee) {
     if (employee.id < 0) {
