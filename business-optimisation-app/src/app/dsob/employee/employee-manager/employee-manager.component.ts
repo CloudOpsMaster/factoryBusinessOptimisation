@@ -39,6 +39,7 @@ export class EmployeeManagerComponent implements OnInit {
 
   onAddClick(event: MouseEvent) {
     this.editingInProcess = true;
+    this.viewMode = EmployeeViewMode.Add;
   }
 
   onEditClick(event: MouseEvent) {
@@ -48,6 +49,7 @@ export class EmployeeManagerComponent implements OnInit {
 
   onDeleteClick(event: MouseEvent) {
     this.editingInProcess = true;
+    this.viewMode = EmployeeViewMode.Delete;
   }
 
   onCanceled() {
