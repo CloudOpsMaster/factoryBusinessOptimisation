@@ -6,6 +6,7 @@ import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component'
 import { InstrumentServisesComponent } from './vdry/instrument-servises/instrument-servises.component';
 import { GettingToolsComponent } from "./mary/getting-tools/getting-tools.component";
 import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
+import { MeteringComponent } from './vadim/metering/metering.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,11 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+
+  {
+    path: 'metering',
+    component: MeteringComponent
+  }
 ];
 
 @NgModule({
