@@ -1,9 +1,10 @@
 import { Provider } from './provider';
+import { Category } from './category';
 
 export class Material {
   id: number;
   name: string;
-  type: any; // todo type
+  type: Category;
   provider: Provider;
   description: string;
   weight: number;
