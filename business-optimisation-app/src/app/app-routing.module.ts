@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EmployeeManagerComponent } from './dsob/employee/employee-manager/employee-manager.component';
 import { HomeComponent } from './home/home/home.component';
 import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
-import { InstrumentServisesComponent } from './vdry/instrument-servises/instrument-servises.component';
+import { InstrumentServicesComponent } from './vdry/instrument-services/instrument-services.component';
 import { GettingToolsComponent } from "./mary/getting-tools/getting-tools.component";
 import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
 import { MeteringComponent } from './vadim/metering/metering.component';
@@ -24,8 +24,8 @@ const routes: Routes = [
     component: DayOffFormComponent
   },
   {
-    path: 'instrument-servises',
-    component: InstrumentServisesComponent
+    path: 'instrument-services',
+    component: InstrumentServicesComponent
   },
   {
     path: 'gettings-tools',
