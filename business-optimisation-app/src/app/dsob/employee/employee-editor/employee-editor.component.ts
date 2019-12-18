@@ -13,7 +13,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   @Input() employeeId: number;
   @Input() viewMode: EmployeeViewMode = EmployeeViewMode.View;
   @Output() canceled = new EventEmitter();
-  @Output() saved = new EventEmitter();
+  @Output() saved = new EventEmitter<number>();
 
   public mainInfo: Employee; // TODO: use dedicated model
 
@@ -37,7 +37,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   }
 
   onSave() {
-    console.log('save');
+    this.saved.emit(0);
   }
 
   onCancel() {

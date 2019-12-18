@@ -19,5 +19,6 @@
 <div id="editors">
   <app-employee-editor [employeeId]="currentEmployeeId"
                         [viewMode]="viewMode"
-                        (canceled)="onCanceled()"></app-employee-editor>
+                        (canceled)="onCanceled()"
+                        (saved)="onSaved($event)"></app-employee-editor>
 </div>

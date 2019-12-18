@@ -13,8 +13,6 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   @Input() focusEntityId = 0;
   @Output() currentEmpChanged = new EventEmitter<number>();
 
-  private currentEmployee: Employee;
-
   constructor() { }
 
   ngOnInit() {
@@ -26,15 +24,15 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   }
 
   isSelected(employee: Employee): boolean {
-    return !this.hideSelection && this.currentEmployee && this.currentEmployee.id === employee.id;
+    return !this.hideSelection && this.focusEntityId === employee.id;
   }
 
   onRowClick(employee: Employee) {
     if (this.locked || !employee) {
       return;
     }
-    this.currentEmployee = employee;
-    this.currentEmpChanged.emit(this.currentEmployee.id);
+    this.focusEntityId = employee.id;
+    this.currentEmpChanged.emit(this.focusEntityId);
   }
 
   private focusFirstItem() {

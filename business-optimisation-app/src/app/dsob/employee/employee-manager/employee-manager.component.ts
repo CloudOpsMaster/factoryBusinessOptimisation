@@ -58,6 +58,16 @@ export class EmployeeManagerComponent implements OnInit {
   }
 
   onCanceled() {
+    this.stopEditing();
+  }
+
+  onSaved(id: number) {
+    this.stopEditing();
+    this.employees = this.employeeService.employees;
+    this.onCurrentEmpChanged(id);
+  }
+
+  private stopEditing() {
     this.editingInProcess = false;
     this.hideSelection = false;
     this.viewMode = EmployeeViewMode.View;
