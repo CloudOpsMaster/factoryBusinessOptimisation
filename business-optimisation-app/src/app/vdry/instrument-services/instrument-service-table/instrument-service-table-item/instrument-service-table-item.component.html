@@ -1,0 +1,18 @@
+<tr>
+  <td>{{instrument.id}}</td>
+  <td>{{instrument.startDate}}</td>
+  <td>{{instrument.endDate}}</td>
+  <td>{{instrument.status}}</td>
+  <td>{{instrument.description}}</td>
+  <td> 
+    <button (click)="onUppdate(instrument)"
+    type="button" class="btn btn-warning" *ngIf="!updade">Изменить</button> 
+
+    <button (click)="onSave(i)"
+    type="button" class="btn btn-primary" *ngIf="updade">Сохранить</button>
+  </td>
+  <td>
+    <button (click)="onDelete()"
+    type="button" class="btn btn-danger">Удалить</button> 
+  </td>
+</tr>

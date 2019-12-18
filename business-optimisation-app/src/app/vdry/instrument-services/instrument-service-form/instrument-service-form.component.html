@@ -1,8 +1,3 @@
-<br>
-<div class="col-lg-6">
-
-<h2>Заявка подачи\получения оборудования из сервиса</h2>
-
 <form [formGroup]="servicesForm" novalidate>
   <div class="form-group">
     <label for="IdInstrument">Идентификатор инструмента</label>
@@ -32,29 +27,7 @@
   <button  (click)="onAdd()"
           type="button" class="btn btn-primary">Отправить</button>
 </form>
-</div>
 
-<div class="col-lg-6">
-  <br>
-  <h3>Добавленные элементы</h3>
-  <table class="table">
-    <tr *ngFor="let instrument of instruments; let i = index">
-      <td>{{instrument.id}}</td>
-      <td>{{instrument.startDate}}</td>
-      <td>{{instrument.endDate}}</td>
-      <td>{{instrument.status}}</td>
-      <td>{{instrument.description}}</td>
-      <td> 
-        <button (click)="onUppdate(instrument, i)"
-        type="button" class="btn btn-warning" *ngIf="!updade">Изменить</button> 
 
-        <button (click)="onSave(instrument, i)"
-        type="button" class="btn btn-primary" *ngIf="updade">Сохранить</button>
-      </td>
-      <td>
-        <button (click)="onDelete(i)"
-        type="button" class="btn btn-danger">Удалить</button> 
-      </td>
-    </tr>
-  </table>
-</div>
+
+<!-- <app-instrument-service-table [instruments]="instruments"></app-instrument-service-table> -->

@@ -1,25 +1,28 @@
-<app-create-material-form></app-create-material-form>
-
-
 <div class="row">
+  <div class="col-sm">
+    <app-create-material-form></app-create-material-form>
+  </div>
   <div class="col-sm-3">
     <div class="list-group">
-
-        <button type="button" class="list-group-item list-group-item-action active"
-                data-target="#collapseExample"
+      <ng-container *ngFor="let category of categories">
+        <button type="button"
+                class="list-group-item list-group-item-action list-group-item-primary"
+                [attr.data-target]="'#'+category.name"
                 data-toggle="collapse" aria-expanded="false"
-                aria-controls="collapseExample">
-          Cras justo odio
-        </button>
-        <div class="collapse" id="collapseExample">
-          <div class="card card-body">
-
+                aria-controls="collapseExample1">{{category.name}}</button>
+        <div class="collapse" [id]="category.name">
+          <div class="card card-body p-1">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"
+                  [class.disabled]="!material.isActive"
+                  *ngFor="let material of
+              category.materials">
+                {{material.name}}
+              </li>
+            </ul>
           </div>
-
         </div>
+      </ng-container>
     </div>
-  </div>
-  <div class="col-sm">
-    One of three columns
   </div>
 </div>
