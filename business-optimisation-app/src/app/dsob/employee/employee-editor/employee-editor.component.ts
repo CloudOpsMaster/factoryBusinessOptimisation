@@ -45,7 +45,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   }
 
   private readEmployee() {
-    if (this.employeeId > -1) {
+    if (this.employeeId > -1 && this.viewMode !== EmployeeViewMode.Add) {
       this.currentEmployee = this.employeeService.employees.find(e => e.id === this.employeeId);
     } else {
       this.currentEmployee = new Employee();

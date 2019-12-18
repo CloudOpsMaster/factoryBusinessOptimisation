@@ -26,6 +26,7 @@ export class EmployeeManagerComponent implements OnInit {
   employees = new Array<Employee>();
   viewMode = EmployeeViewMode.View;
   editingInProcess = false;
+  hideSelection = false;
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -39,6 +40,7 @@ export class EmployeeManagerComponent implements OnInit {
 
   onAddClick(event: MouseEvent) {
     this.editingInProcess = true;
+    this.hideSelection = true;
     this.viewMode = EmployeeViewMode.Add;
   }
 
@@ -54,6 +56,7 @@ export class EmployeeManagerComponent implements OnInit {
 
   onCanceled() {
     this.editingInProcess = false;
+    this.hideSelection = false;
     this.viewMode = EmployeeViewMode.View;
   }
 

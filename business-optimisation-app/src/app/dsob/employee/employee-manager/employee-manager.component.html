@@ -9,7 +9,9 @@
             (click)="onDeleteClick($event)">Удалить</button>
   </div>
   <div id="table">
-    <app-employee-list [employees]="employees" [locked]="editingInProcess"
+    <app-employee-list [employees]="employees" 
+                        [locked]="editingInProcess"
+                        [hideSelection]="hideSelection"
                     (currentEmpChanged)="onCurrentEmpChanged($event)"></app-employee-list>
   </div>
 </div>

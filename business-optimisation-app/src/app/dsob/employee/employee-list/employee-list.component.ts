@@ -9,6 +9,7 @@ import { Employee } from 'src/app/models/HR/Employee';
 export class EmployeeListComponent implements OnInit, OnChanges {
   @Input() employees: Array<Employee>;
   @Input() locked = false;
+  @Input() hideSelection = false;
   @Output() currentEmpChanged = new EventEmitter<number>();
 
   private currentEmployee: Employee;
@@ -24,7 +25,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   }
 
   isSelected(employee: Employee): boolean {
-    return this.currentEmployee && this.currentEmployee.id === employee.id;
+    return !this.hideSelection && this.currentEmployee && this.currentEmployee.id === employee.id;
   }
 
   onRowClick(employee: Employee) {
