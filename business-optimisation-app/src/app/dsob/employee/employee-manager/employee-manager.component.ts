@@ -32,6 +32,9 @@ export class EmployeeManagerComponent implements OnInit {
 
   ngOnInit() {
     this.employees = this.employeeService.employees;
+    if (this.employees && this.employees.length > 0) {
+      this.currentEmployeeId = this.employees[0].id;
+    }
   }
 
   onCurrentEmpChanged(id: number) {

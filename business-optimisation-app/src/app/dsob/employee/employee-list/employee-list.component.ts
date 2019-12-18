@@ -10,6 +10,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   @Input() employees: Array<Employee>;
   @Input() locked = false;
   @Input() hideSelection = false;
+  @Input() focusEntityId = 0;
   @Output() currentEmpChanged = new EventEmitter<number>();
 
   private currentEmployee: Employee;
@@ -29,7 +30,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   }
 
   onRowClick(employee: Employee) {
-    if (this.locked) {
+    if (this.locked || !employee) {
       return;
     }
     this.currentEmployee = employee;
@@ -38,7 +39,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   private focusFirstItem() {
     if (this.employees && this.employees.length > 0) {
-      this.onRowClick(this.employees[0]);
+      this.onRowClick(this.employees.find(e => e.id === this.focusEntityId));
     }
   }
 

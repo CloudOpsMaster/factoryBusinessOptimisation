@@ -10,6 +10,7 @@
   </div>
   <div id="table">
     <app-employee-list [employees]="employees" 
+                        [focusEntityId]="currentEmployeeId"
                         [locked]="editingInProcess"
                         [hideSelection]="hideSelection"
                     (currentEmpChanged)="onCurrentEmpChanged($event)"></app-employee-list>
