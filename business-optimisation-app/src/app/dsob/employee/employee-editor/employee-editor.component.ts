@@ -37,7 +37,14 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   }
 
   onSave() {
-    this.saved.emit(0);
+    if (this.viewMode === EmployeeViewMode.Delete) {
+      this.employeeService.deleteEmployee(this.mainInfo.id);
+      this.saved.emit(-1);
+    } else {
+      // TODO: provide validation
+      this.employeeService.updateEmployee(this.mainInfo);
+      this.saved.emit(this.mainInfo.id);
+    }
   }
 
   onCancel() {
@@ -55,6 +62,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
 
   private updateMainInfo() {
     this.mainInfo = new Employee();
+    this.mainInfo.id = this.currentEmployee.id;
     this.mainInfo.firstName = this.currentEmployee.firstName || '';
     this.mainInfo.secondName = this.currentEmployee.secondName || '';
     this.mainInfo.patronymic = this.currentEmployee.patronymic || '';

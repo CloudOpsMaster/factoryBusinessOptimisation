@@ -32,9 +32,7 @@ export class EmployeeManagerComponent implements OnInit {
 
   ngOnInit() {
     this.employees = this.employeeService.employees;
-    if (this.employees && this.employees.length > 0) {
-      this.currentEmployeeId = this.employees[0].id;
-    }
+    this.setDefaultCurrentEmployeeId();
   }
 
   onCurrentEmpChanged(id: number) {
@@ -64,13 +62,25 @@ export class EmployeeManagerComponent implements OnInit {
   onSaved(id: number) {
     this.stopEditing();
     this.employees = this.employeeService.employees;
-    this.onCurrentEmpChanged(id);
+    if (id > -1) {
+      this.onCurrentEmpChanged(id);
+    } else {
+      this.setDefaultCurrentEmployeeId();
+    }
   }
 
   private stopEditing() {
     this.editingInProcess = false;
     this.hideSelection = false;
     this.viewMode = EmployeeViewMode.View;
+  }
+
+  private setDefaultCurrentEmployeeId() {
+    if (this.employees && this.employees.length > 0) {
+      this.currentEmployeeId = this.employees[0].id;
+    } else {
+      this.currentEmployeeId = -1;
+    }
   }
 
 }

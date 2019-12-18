@@ -26,4 +26,8 @@ export class Employee {
     medicalCardId: number;
     /** link to ensurance info */
     ensuranceInfoId: number;
+
+    constructor() {
+        this.id = -1;
+    }
 }

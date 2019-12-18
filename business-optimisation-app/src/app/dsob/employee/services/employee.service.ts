@@ -16,11 +16,17 @@ export class EmployeeService {
       employee.id = this.getCorrectEmployeeId();
       this.employees.push(employee);
     } else {
-      this.employees.push(employee);
+      this.performUpdateEmployee(employee);
     }
-    this.storageService.setData(this.employeesStorageKey, this.employees);
-    this.employees = this.storageService.getData(this.employeesStorageKey);
-    // TODO: notify about data changed
+    // this.storageService.setData(this.employeesStorageKey, this.employees);
+    // this.employees = this.storageService.getData(this.employeesStorageKey);
+  }
+
+  deleteEmployee(employeeId: number) {
+    const indexToDelete = this.employees.findIndex(e => e.id === employeeId);
+    if (indexToDelete > -1) {
+      this.employees.splice(indexToDelete, 1);
+    }
   }
 
   constructor(private storageService: StorageService) {
@@ -34,6 +40,15 @@ export class EmployeeService {
       id = this.employees[this.employees.length - 1].id + 1;
     }
     return id;
+  }
+
+  private performUpdateEmployee(employee: Employee) {
+    const employeeToUpdate = this.employees.find(e => e.id === employee.id);
+    if (employeeToUpdate) {
+      employeeToUpdate.firstName = employee.firstName;
+      employeeToUpdate.secondName = employee.secondName;
+      employeeToUpdate.patronymic = employee.patronymic;
+    }
   }
 
   private getFakeEmployees(): Employee[] {
