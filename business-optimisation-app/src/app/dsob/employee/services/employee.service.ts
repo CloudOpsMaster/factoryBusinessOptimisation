@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { StorageKeys, StorageService } from 'src/app/services/storage.service';
 import { Employee } from 'src/app/models/HR/Employee';
+import { StorageService } from 'src/app/storage/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class EmployeeService {
   /** list of employees from storage */
   employees: Array<Employee>;
 
-  private employeesStorageKey = StorageKeys.Employees;
+  private employeesStorageKey = 'EmployeesStorageKey';
 
   updateEmployee(employee: Employee) {
     if (employee.id < 0) {
@@ -18,8 +18,8 @@ export class EmployeeService {
     } else {
       this.performUpdateEmployee(employee);
     }
-    // this.storageService.setData(this.employeesStorageKey, this.employees);
-    // this.employees = this.storageService.getData(this.employeesStorageKey);
+    this.storageService.set(this.employeesStorageKey, this.employees);
+    this.employees = this.storageService.get(this.employeesStorageKey);
   }
 
   deleteEmployee(employeeId: number) {
@@ -27,11 +27,17 @@ export class EmployeeService {
     if (indexToDelete > -1) {
       this.employees.splice(indexToDelete, 1);
     }
+    this.storageService.set(this.employeesStorageKey, this.employees);
+    this.employees = this.storageService.get(this.employeesStorageKey);
   }
 
   constructor(private storageService: StorageService) {
-    // this.employees = this.storageService.getData(this.employeesStorageKey);
-    this.employees = this.getFakeEmployees();
+    this.initializeStorage();
+    this.employees = this.storageService.get(this.employeesStorageKey);
+    if (!this.employees) {
+      this.employees = new Array<Employee>();
+    }
+    // this.employees = this.getFakeEmployees();
   }
 
   private getCorrectEmployeeId(): number {
@@ -48,6 +54,12 @@ export class EmployeeService {
       employeeToUpdate.firstName = employee.firstName;
       employeeToUpdate.secondName = employee.secondName;
       employeeToUpdate.patronymic = employee.patronymic;
+    }
+  }
+
+  private initializeStorage() {
+    if (!this.storageService.has(this.employeesStorageKey)) {
+      this.storageService.set(this.employeesStorageKey, new Array<Employee>());
     }
   }
 

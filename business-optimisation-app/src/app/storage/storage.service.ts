@@ -16,18 +16,18 @@ export class StorageService {
     return false;
   }
 
-  public get(key: string): object {
+  public get(key: string): any {
     if (this.has(key)) {
       return JSON.parse(this.storage.getItem(key));
-    } 
+    }
 
     throw new Error(`key - ${key} is not valid!`);
   }
 
   public set(key: string, value: any): void {
-    if (this.has(key)) {
-      throw new Error(`Key - ${key} is already exist!`);
-    }
+    // if (this.has(key)) {
+    //   throw new Error(`Key - ${key} is already exist!`);
+    // }
 
     this.storage.setItem(key, JSON.stringify(value));
   }
