@@ -9,7 +9,7 @@ import { CreateMaterialFormComponent } from './yulia/create-material-form/create
 import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
 import { InstrumentServicesComponent } from './vdry/instrument-services/instrument-services.component';
 import { EmployeeListComponent } from './dsob/employee/employee-list/employee-list.component';
-import { EmployeeInfoEditorComponent } from './dsob/employee/employee-info-editor/employee-info-editor.component';
+import { EmployeeInfoEditorComponent } from './dsob/employee/employee-editor/editors/employee-info-editor/employee-info-editor.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GettingToolsComponent } from './mary/getting-tools/getting-tools.component';
 import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';

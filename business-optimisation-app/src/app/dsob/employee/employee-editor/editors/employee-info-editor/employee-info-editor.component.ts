@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Employee } from 'src/app/models/HR/Employee';
-import { EmployeeViewMode } from '../employee-view-mode.enum';
+import { EmployeeViewMode } from '../../../employee-view-mode.enum';
 
 @Component({
   selector: 'app-employee-info-editor',
