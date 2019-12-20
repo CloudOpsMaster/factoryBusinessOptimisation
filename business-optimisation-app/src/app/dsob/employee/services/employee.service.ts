@@ -37,7 +37,6 @@ export class EmployeeService {
     if (!this.employees) {
       this.employees = new Array<Employee>();
     }
-    // this.employees = this.getFakeEmployees();
   }
 
   private getCorrectEmployeeId(): number {
@@ -61,26 +60,6 @@ export class EmployeeService {
     if (!this.storageService.has(this.employeesStorageKey)) {
       this.storageService.set(this.employeesStorageKey, new Array<Employee>());
     }
-  }
-
-  private getFakeEmployees(): Employee[] {
-    const employees = new Array<Employee>();
-    const emp = new Employee();
-    emp.id = 0;
-    emp.firstName = 'f';
-    emp.secondName = 's';
-    emp.patronymic = 'p';
-
-    const emp1 = new Employee();
-    emp1.id = 1;
-    emp1.firstName = 'f1';
-    emp1.secondName = 's1';
-    emp1.patronymic = 'p1';
-
-    employees.push(emp);
-    employees.push(emp1);
-
-    return employees;
   }
 
 }
