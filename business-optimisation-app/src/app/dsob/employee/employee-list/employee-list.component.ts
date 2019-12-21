@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { Employee } from 'src/app/models/HR/Employee';
+import { EmployeeInfo } from '../EmployeeInfo';
 
 @Component({
   selector: 'app-employee-list',
@@ -7,7 +8,7 @@ import { Employee } from 'src/app/models/HR/Employee';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit, OnChanges {
-  @Input() employees: Array<Employee>;
+  @Input() employees: Array<EmployeeInfo>;
   @Input() locked = false;
   @Input() hideSelection = false;
   @Input() focusEntityId = 0;
@@ -23,21 +24,21 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   }
 
-  isSelected(employee: Employee): boolean {
-    return !this.hideSelection && this.focusEntityId === employee.id;
+  isSelected(employee: EmployeeInfo): boolean {
+    return !this.hideSelection && this.focusEntityId === employee.mainInfo.id;
   }
 
-  onRowClick(employee: Employee) {
+  onRowClick(employee: EmployeeInfo) {
     if (this.locked || !employee) {
       return;
     }
-    this.focusEntityId = employee.id;
+    this.focusEntityId = employee.mainInfo.id;
     this.currentEmpChanged.emit(this.focusEntityId);
   }
 
   private focusFirstItem() {
     if (this.employees && this.employees.length > 0) {
-      this.onRowClick(this.employees.find(e => e.id === this.focusEntityId));
+      this.onRowClick(this.employees.find(e => e.mainInfo.id === this.focusEntityId));
     }
   }
 

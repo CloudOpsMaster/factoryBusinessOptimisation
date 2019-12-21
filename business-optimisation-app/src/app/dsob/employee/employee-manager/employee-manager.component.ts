@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from 'src/app/models/HR/Employee';
 import { EmployeeViewMode } from '../employee-view-mode.enum';
+import { EmployeeInfo } from '../EmployeeInfo';
 
 @Component({
   selector: 'app-employee-manager',
@@ -23,7 +24,7 @@ export class EmployeeManagerComponent implements OnInit {
   }
 
   currentEmployeeId = -1;
-  employees = new Array<Employee>();
+  employees = new Array<EmployeeInfo>();
   viewMode = EmployeeViewMode.View;
   editingInProcess = false;
   hideSelection = false;
@@ -77,7 +78,7 @@ export class EmployeeManagerComponent implements OnInit {
 
   private setDefaultCurrentEmployeeId() {
     if (this.employees && this.employees.length > 0) {
-      this.currentEmployeeId = this.employees[0].id;
+      this.currentEmployeeId = this.employees[0].mainInfo.id;
     } else {
       this.currentEmployeeId = -1;
     }

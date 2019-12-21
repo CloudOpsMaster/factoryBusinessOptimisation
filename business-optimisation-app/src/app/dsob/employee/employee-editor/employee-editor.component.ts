@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
-import { Employee } from 'src/app/models/HR/Employee';
 import { EmployeeViewMode } from '../employee-view-mode.enum';
+import { EmployeeInfo } from '../EmployeeInfo';
 
 @Component({
   selector: 'app-employee-editor',
@@ -15,7 +15,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   @Output() canceled = new EventEmitter();
   @Output() saved = new EventEmitter<number>();
 
-  public mainInfo: Employee; // TODO: use dedicated model
+  public employee: EmployeeInfo;
 
   get buttonsBlockVisible(): boolean {
     return this.viewMode !== EmployeeViewMode.View;
@@ -23,8 +23,6 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   get caption(): string {
     return this.getCaption();
   }
-
-  private currentEmployee: Employee;
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -38,12 +36,12 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
 
   onSave() {
     if (this.viewMode === EmployeeViewMode.Delete) {
-      this.employeeService.deleteEmployee(this.mainInfo.id);
+      this.employeeService.deleteEmployee(this.employee);
       this.saved.emit(-1);
     } else {
       // TODO: provide validation
-      this.employeeService.updateEmployee(this.mainInfo);
-      this.saved.emit(this.mainInfo.id);
+      this.employeeService.updateEmployee(this.employee);
+      this.saved.emit(this.employee.mainInfo.id);
     }
   }
 
@@ -53,19 +51,10 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
 
   private readEmployee() {
     if (this.employeeId > -1 && this.viewMode !== EmployeeViewMode.Add) {
-      this.currentEmployee = this.employeeService.employees.find(e => e.id === this.employeeId);
+      this.employee = this.employeeService.employees.find(e => e.mainInfo.id === this.employeeId).clone();
     } else {
-      this.currentEmployee = new Employee();
+      this.employee = new EmployeeInfo();
     }
-    this.updateMainInfo();
-  }
-
-  private updateMainInfo() {
-    this.mainInfo = new Employee();
-    this.mainInfo.id = this.currentEmployee.id;
-    this.mainInfo.firstName = this.currentEmployee.firstName || '';
-    this.mainInfo.secondName = this.currentEmployee.secondName || '';
-    this.mainInfo.patronymic = this.currentEmployee.patronymic || '';
   }
 
   private getCaption(): string {

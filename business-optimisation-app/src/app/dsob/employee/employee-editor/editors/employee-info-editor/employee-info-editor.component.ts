@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Employee } from 'src/app/models/HR/Employee';
+import { Component, OnInit, Input } from '@angular/core';
 import { EmployeeViewMode } from '../../../employee-view-mode.enum';
+import { EmployeeMainInfo } from '../../../EmployeeInfo';
 
 @Component({
   selector: 'app-employee-info-editor',
@@ -10,7 +9,7 @@ import { EmployeeViewMode } from '../../../employee-view-mode.enum';
 })
 export class EmployeeInfoEditorComponent implements OnInit {
 
-  @Input() employee: Employee;
+  @Input() mainInfo: EmployeeMainInfo;
   @Input() viewMode: EmployeeViewMode = EmployeeViewMode.View;
 
   get editMode(): boolean {

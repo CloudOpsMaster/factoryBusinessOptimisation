@@ -29,5 +29,14 @@ export class Employee {
 
     constructor() {
         this.id = -1;
+        this.documentInfoId = -1;
+        this.positionId = -1;
+        this.personalAdressId = -1;
+        this.personalContactInfoId = -1;
+        this.familyInfoId = -1;
+        this.educationInfoId = -1;
+        this.employmentInfoId = -1;
+        this.medicalCardId = -1;
+        this.ensuranceInfoId = -1;
     }
 }

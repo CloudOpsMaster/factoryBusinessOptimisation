@@ -12,13 +12,13 @@
   </tr>
   <tr *ngFor="let employee of employees" (click)="onRowClick(employee)" [ngClass]="{'selected' : isSelected(employee) }">
     <td>
-      {{employee.firstName}}
+      {{employee.mainInfo.firstName}}
     </td>
     <td>
-      {{employee.secondName}}
+      {{employee.mainInfo.secondName}}
     </td>
     <td>
-      {{employee.patronymic}}
+      {{employee.mainInfo.patronymic}}
     </td>
   </tr>
 </table>
