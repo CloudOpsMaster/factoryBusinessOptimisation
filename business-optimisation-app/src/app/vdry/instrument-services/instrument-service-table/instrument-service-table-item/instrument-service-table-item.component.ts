@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { InstrumentFormService } from '../../instrument-form.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { InstrumentService } from '../../instrument.service';
 import { StorageService } from 'src/app/storage/storage.service';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
 import { FormGroup } from '@angular/forms';
@@ -14,40 +14,27 @@ export class InstrumentServiceTableItemComponent implements OnInit {
   @Input() instrument: InstrumentServis;
   @Input() indexItem: number;
 
+  @Output() itemId: EventEmitter<number> = new EventEmitter();
+  @Output() deleteItem: EventEmitter<number> = new EventEmitter();
+  @Output() updateItem: EventEmitter<number> = new EventEmitter()
+
   public updade = false;
   public servicesForm: FormGroup;
 
-  constructor( private instrumentService: InstrumentFormService,
+  constructor( private instrumentService: InstrumentService,
                private storage: StorageService) { }
 
   ngOnInit() {
   }
 
-
-  onUppdate() {
-    this.updade = true;
-    // this.servicesForm.get('description').setValue(element);
-    // this.servicesForm.get('startDate').setValue(element);
-    // this.servicesForm.get('endDate').setValue(element);
-    // this.servicesForm.get('status').setValue(element);
-    // this.servicesForm.get('id').setValue(element);
-
-    // this.instrumentService.update(this.instrument);
-
-  }
-
-  onSave() {
-    this.updade = false;
-  }
-
   onDelete() {
-    this.instrumentService.delete(this.indexItem);
-
-    if (this.storage.has('_services')) {
-        this.storage.delete('_services');
-    }
-
-    this.storage.set('_services', this.instrument);
+    this.deleteItem.emit(this.instrument.id);
   }
+
+  onUpdate() {
+    this.updateItem.emit(this.instrument.id);
+  }
+
+  
 
 }

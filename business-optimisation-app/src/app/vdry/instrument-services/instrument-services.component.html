@@ -3,11 +3,11 @@
 
 <h2>Заявка подачи\получения оборудования из сервиса</h2>
 
-<app-instrument-service-form></app-instrument-service-form>
+<app-instrument-service-form (setItem)="onAdd($event)" (updateItem)="onSave($event)" [itemId]="itemId"></app-instrument-service-form>
 </div>
 
 <div class="col-lg-6">
   
   <h3>Добавленные элементы</h3>
-  <app-instrument-service-table></app-instrument-service-table>
+  <app-instrument-service-table [instrumentList]="instruments" (deleteItem)="onDelete($event)" (updateItem)="onUpdate($event)" (itemId)="redirectId($event)"></app-instrument-service-table>
 </div>

@@ -1,9 +1,9 @@
 <form [formGroup]="servicesForm" novalidate>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="IdInstrument">Идентификатор инструмента</label>
     <input type="number" class="form-control" id="IdInstrument"  formControlName="id" required>
     <p *ngIf="servicesForm.get('id').errors">Error</p>
-  </div>
+  </div> -->
   <div class="form-group">
     <label for="startDate">Дата сдачи в ремонт</label>
     <input type="date" class="form-control" id="startDate"  formControlName="startDate">
@@ -26,6 +26,9 @@
   </div>
   <button  (click)="onAdd()"
           type="button" class="btn btn-primary">Отправить</button>
+
+          <button (click)="onSave()"
+          type="button" class="btn btonUppdaten-primary">Сохранить</button>
 </form>
 
 

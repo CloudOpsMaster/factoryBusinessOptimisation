@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { InstrumentFormService } from '../instrument-form.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { InstrumentService } from '../instrument.service';
 import { StorageService } from 'src/app/storage/storage.service';
+import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
 
 @Component({
   selector: 'app-instrument-service-table',
@@ -9,17 +10,31 @@ import { StorageService } from 'src/app/storage/storage.service';
 })
 export class InstrumentServiceTableComponent implements OnInit {
 
-  // @Input() instruments: any[] = [];
+  @Output() itemId: EventEmitter<number> = new EventEmitter();
+
+  @Output() deleteItem: EventEmitter<number> = new EventEmitter();
+  @Output() updateItem: EventEmitter<number> = new EventEmitter();
+ 
+  @Input() public instrumentList: InstrumentServis[] = [];
 
   instruments;
 
-  constructor(private instrumentService: InstrumentFormService,
-              private storage: StorageService) { }
+  constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  redirectId(id: number) {
+    this.itemId.emit(id)
   }
 
-  getInstruments() {
-    return this.instrumentService.getOllInstruments();
+  public onDelete(id: number): void {
+    this.deleteItem.emit(id);
   }
+
+  public onUpdate(id: number): void {
+    this.updateItem.emit(id);
+  }
+
 }
+
+
