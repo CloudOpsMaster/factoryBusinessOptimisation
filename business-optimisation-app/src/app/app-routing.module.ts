@@ -7,6 +7,7 @@ import { InstrumentServicesComponent } from './vdry/instrument-services/instrume
 import { GettingToolsComponent } from "./mary/getting-tools/getting-tools.component";
 import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
 import { MeteringComponent } from './vadim/metering/metering.component';
+import { CheckListComponent } from './vlad/check-list/check-list.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,11 @@ const routes: Routes = [
   {
     path: 'metering',
     component: MeteringComponent
+  },
+
+  {
+    path: 'check-list',
+    component: CheckListComponent
   }
 ];
 

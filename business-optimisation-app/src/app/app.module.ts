@@ -18,6 +18,7 @@ import { InstrumentServiceFormComponent } from './vdry/instrument-services/instr
 import { InstrumentServiceTableComponent } from './vdry/instrument-services/instrument-service-table/instrument-service-table.component';
 // tslint:disable-next-line:max-line-length
 import { InstrumentServiceTableItemComponent } from './vdry/instrument-services/instrument-service-table/instrument-service-table-item/instrument-service-table-item.component';
+import { CheckListComponent } from './vlad/check-list/check-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { InstrumentServiceTableItemComponent } from './vdry/instrument-services/
     InstrumentServiceTableComponent,
     InstrumentServiceTableItemComponent,
     GettingToolsComponent,
-    MeteringComponent
+    MeteringComponent,
+    CheckListComponent
   ],
   imports: [
     BrowserModule,
