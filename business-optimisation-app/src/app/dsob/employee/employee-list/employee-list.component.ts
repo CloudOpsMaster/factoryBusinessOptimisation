@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { EmployeeInfo } from '../EmployeeInfo';
 import { EmployeeFilter } from './employee-filter/employee-filter';
 import { EmployeeFiltrator } from './employee-filter/employee-filtrator';
@@ -8,7 +8,7 @@ import { EmployeeFiltrator } from './employee-filter/employee-filtrator';
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, OnChanges {
   @Input() employees: Array<EmployeeInfo>;
   @Input() locked = false;
   @Input() hideSelection = false;
@@ -21,6 +21,11 @@ export class EmployeeListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.onApplyFilter();
+    this.focusFirstItem();
+  }
+
+  ngOnChanges() {
     this.onApplyFilter();
     this.focusFirstItem();
   }
@@ -39,11 +44,17 @@ export class EmployeeListComponent implements OnInit {
 
   onApplyFilter() {
     this.filteredEmployees = EmployeeFiltrator.GetFilteredEmployees(this.employees, this.filter);
+    this.focusFirstItem();
   }
 
   private focusFirstItem() {
-    if (this.employees && this.employees.length > 0) {
-      this.onRowClick(this.employees.find(e => e.mainInfo.id === this.focusEntityId));
+    if (this.filteredEmployees && this.filteredEmployees.length > 0) {
+      const employeeToFocus = this.filteredEmployees.find(e => e.mainInfo.id === this.focusEntityId);
+      if (employeeToFocus) {
+        this.onRowClick(employeeToFocus);
+      } else {
+        this.onRowClick(this.filteredEmployees[0]);
+      }
     }
   }
 
