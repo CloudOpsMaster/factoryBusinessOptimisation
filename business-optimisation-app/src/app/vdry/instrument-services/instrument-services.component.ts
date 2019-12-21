@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { StorageService } from 'src/app/storage/storage.service';
+import { InstrumentService } from './instrument.service';
 
 @Component({
   selector: 'app-instrument-services',
@@ -10,82 +9,39 @@ import { StorageService } from 'src/app/storage/storage.service';
 })
 export class InstrumentServicesComponent implements OnInit {
 
-  public servicesForm: FormGroup;
+  public itemId;
 
   public instruments: InstrumentServis[] = [];
 
-  public updade = false;
-
-  constructor(private storage: StorageService) { }
+  constructor(private instrumentService: InstrumentService) { }
 
   ngOnInit() {
-    // this.servicesForm = new FormGroup({
-    //   id: new FormControl(null, [Validators.required]),
-    //   startDate: new FormControl(''),
-    //   endDate: new FormControl(''),
-    //   status: new FormControl(''),
-    //   description: new FormControl('')
-    // });
+    this.instruments = this.instrumentService.get();
   }
 
-  // ##############################
+  redirectId(id: number) {
+    this.itemId = id;
+  }
 
-  // onAdd() {
-  //   if (this.servicesForm.valid) {
-  //     const newItem = new InstrumentServis(
-  //       this.servicesForm.get('id').value,
-  //       this.servicesForm.get('startDate').value,
-  //       this.servicesForm.get('endDate').value,
-  //       this.servicesForm.get('status').value,
-  //       this.servicesForm.get('description').value
-  //       );
+  public onAdd(item: InstrumentServis): void {
+    this.instrumentService.set(item);
 
-  //     this.instruments.push(
-  //         newItem
-  //       );
+    this.instruments = this.instrumentService.get();
+  }
 
-  //     if (this.storage.has('_services')) {
-  //         this.storage.delete('_services');
-  //       }
+  public onDelete(id: number): void {
+    this.instrumentService.delete(id);
 
-  //     this.storage.set('_services', this.instruments);
-  //   }
-  // }
+    this.instruments = this.instrumentService.get();
+  }
 
-  // ##############################
+  public onUpdate(id: number) {
+    this.itemId = id;
+  }
 
-  // onDelete(index: number) {
+  public onSave(item: InstrumentServis) {
+    this.instrumentService.update(item);
 
-  //       this.instruments.splice(index, 1);
-
-  //       if (this.storage.has('_services')) {
-  //     this.storage.delete('_services');
-  //   }
-
-  //       this.storage.set('_services', this.instruments);
-  // }
-
-  // ##############################
-
-  // onUppdate(element: InstrumentServis): void {
-  //   this.updade = true;
-
-  //   this.servicesForm.get('description').setValue(element.description);
-  //   this.servicesForm.get('startDate').setValue(element.startDate);
-  //   this.servicesForm.get('endDate').setValue(element.endDate);
-  //   this.servicesForm.get('status').setValue(element.status);
-  //   this.servicesForm.get('id').setValue(element.id);
-  // }
-
-  public onSave(index: number) {
-    const newInstrument: InstrumentServis = {
-      startDate: this.servicesForm.get('startDate').value,
-      endDate: this.servicesForm.get('endDate').value,
-      status: this.servicesForm.get('status').value,
-      description: this.servicesForm.get('description').value,
-      id: this.servicesForm.get('id').value
-    };
-
-    this.instruments.splice(index, 1, newInstrument);
+    this.instruments = this.instrumentService.get();
   }
 }
