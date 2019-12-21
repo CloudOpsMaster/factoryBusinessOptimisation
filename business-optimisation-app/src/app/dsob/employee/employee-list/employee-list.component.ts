@@ -1,56 +1,45 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { EmployeeService } from '../services/employee.service';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { Employee } from 'src/app/models/HR/Employee';
+import { EmployeeInfo } from '../EmployeeInfo';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit {
-
+export class EmployeeListComponent implements OnInit, OnChanges {
+  @Input() employees: Array<EmployeeInfo>;
+  @Input() locked = false;
+  @Input() hideSelection = false;
+  @Input() focusEntityId = 0;
   @Output() currentEmpChanged = new EventEmitter<number>();
-  @Output() addNewRequested = new EventEmitter();
-  @Output() deleteRequested = new EventEmitter<number>();
-  @Output() editRequested = new EventEmitter<number>();
 
-  employees = new Array<Employee>();
-
-  get editDisabled(): boolean {
-    return this.currentEmployee === undefined;
-  }
-
-  get deleteDisabled(): boolean {
-    return this.currentEmployee === undefined;
-  }
-
-  private currentEmployee: Employee;
-
-  constructor(private employeeService: EmployeeService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.employees = this.employeeService.employees;
+    this.focusFirstItem();
   }
 
-  isSelected(employee: Employee): boolean {
-    return this.currentEmployee && this.currentEmployee.id === employee.id;
+  ngOnChanges() {
+
   }
 
-  onRowClick(employee: Employee) {
-    this.currentEmployee = employee;
-    this.currentEmpChanged.emit(this.currentEmployee.id);
+  isSelected(employee: EmployeeInfo): boolean {
+    return !this.hideSelection && this.focusEntityId === employee.mainInfo.id;
   }
 
-  onAddClick(event: MouseEvent) {
-    this.addNewRequested.emit();
+  onRowClick(employee: EmployeeInfo) {
+    if (this.locked || !employee) {
+      return;
+    }
+    this.focusEntityId = employee.mainInfo.id;
+    this.currentEmpChanged.emit(this.focusEntityId);
   }
 
-  onEditClick(event: MouseEvent) {
-    this.editRequested.emit(this.currentEmployee.id);
-  }
-
-  onDeleteClick(event: MouseEvent) {
-    this.deleteRequested.emit(this.currentEmployee.id);
+  private focusFirstItem() {
+    if (this.employees && this.employees.length > 0) {
+      this.onRowClick(this.employees.find(e => e.mainInfo.id === this.focusEntityId));
+    }
   }
 
 }
