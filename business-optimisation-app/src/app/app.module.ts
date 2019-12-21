@@ -20,6 +20,7 @@ import { InstrumentServiceTableComponent } from './vdry/instrument-services/inst
 // tslint:disable-next-line:max-line-length
 import { InstrumentServiceTableItemComponent } from './vdry/instrument-services/instrument-service-table/instrument-service-table-item/instrument-service-table-item.component';
 import { CheckListComponent } from './vlad/check-list/check-list.component';
+import { EmployeeFilterComponent } from './dsob/employee/employee-list/employee-filter/employee-filter.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CheckListComponent } from './vlad/check-list/check-list.component';
     EmployeeListComponent,
     EmployeeEditorComponent,
     EmployeeInfoEditorComponent,
+    EmployeeFilterComponent,
     CreateMaterialFormComponent,
     MaterialsDictionaryComponent,
     DayOffFormComponent,

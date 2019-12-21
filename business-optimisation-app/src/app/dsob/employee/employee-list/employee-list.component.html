@@ -1,3 +1,5 @@
+<app-employee-filter [filter]="filter"
+                    (applyFilter)="onApplyFilter()"></app-employee-filter>
 <table class="table">
   <tr>
     <th>
@@ -10,7 +12,8 @@
       Отчество
     </th>
   </tr>
-  <tr *ngFor="let employee of employees" (click)="onRowClick(employee)" [ngClass]="{'selected' : isSelected(employee) }">
+  <tr *ngFor="let employee of filteredEmployees" (click)="onRowClick(employee)"
+            [ngClass]="{'selected' : isSelected(employee) }">
     <td>
       {{employee.mainInfo.firstName}}
     </td>

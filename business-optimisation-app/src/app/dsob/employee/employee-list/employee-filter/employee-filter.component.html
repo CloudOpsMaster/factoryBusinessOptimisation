@@ -1,0 +1,16 @@
+<p>
+  Фильтр
+</p>
+<label>
+  Имя:
+  <input type="text" [(ngModel)]="filter.firstName">
+</label>
+<label>
+  Фамилия:
+  <input type="text" [(ngModel)]="filter.secondName">
+</label>
+<label>
+  Отчество:
+  <input type="text" [(ngModel)]="filter.patronymic">
+</label>
+<button (click)="onApplyClick()">Применить</button>
