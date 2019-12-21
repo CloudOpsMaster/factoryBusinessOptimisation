@@ -2,6 +2,7 @@ import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitte
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeViewMode } from '../employee-view-mode.enum';
 import { EmployeeInfo } from '../EmployeeInfo';
+import { EmployeeValidationService } from '../services/employee-validation.service';
 
 @Component({
   selector: 'app-employee-editor',
@@ -24,7 +25,8 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
     return this.getCaption();
   }
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService,
+              private validationService: EmployeeValidationService) { }
 
   ngOnInit() {
     this.readEmployee();
@@ -39,9 +41,13 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
       this.employeeService.deleteEmployee(this.employee);
       this.saved.emit(-1);
     } else {
-      // TODO: provide validation
-      this.employeeService.updateEmployee(this.employee);
-      this.saved.emit(this.employee.mainInfo.id);
+      const error = this.validationService.validate(this.employee);
+      if (error && error.length > 0) {
+        alert(error);
+      } else {
+        this.employeeService.updateEmployee(this.employee);
+        this.saved.emit(this.employee.mainInfo.id);
+      }
     }
   }
 
