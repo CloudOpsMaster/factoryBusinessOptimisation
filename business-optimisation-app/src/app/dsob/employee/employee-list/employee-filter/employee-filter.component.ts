@@ -12,6 +12,8 @@ export class EmployeeFilterComponent implements OnInit {
   @Input() filter: EmployeeFilter;
   @Output() applyFilter = new EventEmitter();
 
+  visible = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -19,6 +21,10 @@ export class EmployeeFilterComponent implements OnInit {
 
   onApplyClick() {
     this.applyFilter.emit();
+  }
+
+  onFilterClick() {
+    this.visible = !this.visible;
   }
 
 }
