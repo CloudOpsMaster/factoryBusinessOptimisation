@@ -11,6 +11,9 @@
     <th>
       Отчество
     </th>
+    <th>
+      Дата рождения
+    </th>
   </tr>
   <tr *ngFor="let employee of filteredEmployees" (click)="onRowClick(employee)"
             [ngClass]="{'selected' : isSelected(employee) }">
@@ -22,6 +25,9 @@
     </td>
     <td>
       {{employee.mainInfo.patronymic}}
+    </td>
+    <td>
+      {{employee.mainInfo.dob}}
     </td>
   </tr>
 </table>
