@@ -55,6 +55,8 @@ export class EmployeeListComponent implements OnInit, OnChanges {
       } else {
         this.onRowClick(this.filteredEmployees[0]);
       }
+    } else {
+      this.currentEmpChanged.emit(-1);
     }
   }
 

@@ -3,5 +3,6 @@
     <button (click)="onSave()">Сохранить</button>
     <button (click)="onCancel()">Отмена</button>
 </div>
-<app-employee-info-editor [mainInfo]="employee.mainInfo"
+<span *ngIf="!employee">Не указан сотрудник для отображения деталей!</span>
+<app-employee-info-editor *ngIf="employee" [mainInfo]="employee.mainInfo"
                         [viewMode]="viewMode"></app-employee-info-editor>
