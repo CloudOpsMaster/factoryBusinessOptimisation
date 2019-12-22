@@ -15,18 +15,19 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   @Input() focusEntityId = 0;
   @Output() currentEmpChanged = new EventEmitter<number>();
 
-  filter = new EmployeeFilter();
   filteredEmployees: Array<EmployeeInfo>;
+
+  private filter = new EmployeeFilter();
 
   constructor() { }
 
   ngOnInit() {
-    this.onApplyFilter();
+    this.performFiltering();
     this.focusFirstItem();
   }
 
   ngOnChanges() {
-    this.onApplyFilter();
+    this.performFiltering();
     this.focusFirstItem();
   }
 
@@ -42,7 +43,12 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     this.currentEmpChanged.emit(this.focusEntityId);
   }
 
-  onApplyFilter() {
+  onApplyFilter(filter: EmployeeFilter) {
+    this.filter = filter;
+    this.performFiltering();
+  }
+
+  private performFiltering() {
     this.filteredEmployees = EmployeeFiltrator.GetFilteredEmployees(this.employees, this.filter);
     this.focusFirstItem();
   }

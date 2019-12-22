@@ -1,5 +1,4 @@
-<app-employee-filter [filter]="filter"
-                    (applyFilter)="onApplyFilter()"></app-employee-filter>
+<app-employee-filter (applyFilter)="onApplyFilter($event)"></app-employee-filter>
 <table class="table">
   <tr>
     <th>
