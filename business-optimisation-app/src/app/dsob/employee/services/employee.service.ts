@@ -241,7 +241,7 @@ export class EmployeeService {
   // read - write
 
   private initializeStorage() {
-    if (!this.storageService.hasKey(this.employeesStorageKey)) {
+    if (!this.storageService.has(this.employeesStorageKey)) {
       this.storageService.set(this.employeesStorageKey, new Array<Employee>());
     }
     if (!this.storageService.has(this.documentsStorageKey)) {
