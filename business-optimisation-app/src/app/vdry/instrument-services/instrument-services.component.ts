@@ -16,7 +16,9 @@ export class InstrumentServicesComponent implements OnInit {
   constructor(private instrumentService: InstrumentService) { }
 
   ngOnInit() {
-    this.instruments = this.instrumentService.get();
+    if (this.instrumentService.has()) {
+      this.instruments = this.instrumentService.get();
+    }
   }
 
   redirectId(id: number) {
