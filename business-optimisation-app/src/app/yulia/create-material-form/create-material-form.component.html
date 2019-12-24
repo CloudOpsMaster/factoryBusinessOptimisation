@@ -1,12 +1,83 @@
-<div class="col-sm-5">
-  <form>
-    <div class="form-group">
-      <label for="formGroupExampleInput">Example label</label>
-      <input type="text" class="form-control form-control-sm" id="formGroupExampleInput" placeholder="Example input placeholder">
+<form>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="materialName">Название</label>
+        <input type="text" class="form-control" id="materialName">
+      </div>
+      <div class="form-group">
+        <label for="materialType">Категория</label>
+        <select class="form-control"
+                id="materialType"
+                name="type">
+          <option value="">Выберите категорию</option>
+          <option *ngFor="let c of categories" [ngValue]="c.name">{{c.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="materialProvider">Поставщик</label>
+        <select class="form-control"
+                id="materialProvider"
+                name="type">
+          <option value="">Выберите поставщика</option>
+          <option *ngFor="let p of providers" [ngValue]="p.name">{{p.name}}</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group">
+            <label for="width">Ширина, мм</label>
+            <input type="number" class="form-control" id="width">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="width">Высота, мм</label>
+            <input type="number" class="form-control" id="height">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="width">Длина, мм</label>
+            <input type="number" class="form-control" id="length">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="materialDoc">Документ</label>
+        <input type="file" class="form-control-file" id="materialDoc">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Another label</label>
-      <input type="text" class="form-control form-control-sm" id="formGroupExampleInput2" placeholder="Another input placeholder">
+    <div class="col">
+      <div class="form-group">
+        <label for="materialPrice">Цена, грн</label>
+        <input type="number" class="form-control" id="materialPrice">
+      </div>
+
+      <div class="form-group">
+        <label for="materialCount">Количество</label>
+        <input type="number" class="form-control" id="materialCount">
+      </div>
+
+      <div class="form-group">
+        <label for="materialUnit">Единицы измерения</label>
+        <select class="form-control"
+                id="materialUnit"
+                name="type">
+          <option value="">Выберите единицы измерения</option>
+          <option *ngFor="let u of units" [ngValue]="u.name">{{u.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="materialDesc">Описание</label>
+        <textarea class="form-control" id="materialDesc" rows="4"></textarea>
+      </div>
     </div>
-  </form>
-</div>
+  </div>
+  <div class="row justify-content-center">
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <button type="button" class="btn btn-secondary">Отмена</button>
+  </div>
+</form>
+
