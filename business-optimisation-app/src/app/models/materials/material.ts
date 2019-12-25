@@ -1,6 +1,11 @@
 import { Provider } from './provider';
 import { Category } from './category';
 
+export class Unit {
+  id: number;
+  name: string;
+}
+
 export class Material {
   id: number;
   name: string;

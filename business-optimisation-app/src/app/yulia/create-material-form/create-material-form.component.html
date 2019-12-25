@@ -5,24 +5,94 @@
         <label for="materialName">Название</label>
         <input type="text" class="form-control" id="materialName">
       </div>
-      <div class="form-group">
-        <label for="materialType">Категория</label>
-        <select class="form-control"
-                id="materialType"
-                name="type">
-          <option value="">Выберите категорию</option>
-          <option *ngFor="let c of categories" [ngValue]="c.name">{{c.name}}</option>
-        </select>
+      <div class="form-row">
+        <div class="col-2">
+          <button class="btn btn-secondary mt-32"
+                  type="button" data-toggle="collapse"
+                  data-target="#addCategoryForm" aria-expanded="false"
+                  aria-controls="addCategoryForm">+
+          </button>
+        </div>
+        <div class="col-10">
+          <div class="form-group">
+            <label for="materialType">Категория</label>
+            <select class="form-control"
+                    id="materialType"
+                    name="type">
+              <option value="">Выберите категорию</option>
+              <option *ngFor="let c of categories" [ngValue]="c.name">{{c.name}}</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="materialProvider">Поставщик</label>
-        <select class="form-control"
-                id="materialProvider"
-                name="type">
-          <option value="">Выберите поставщика</option>
-          <option *ngFor="let p of providers" [ngValue]="p.name">{{p.name}}</option>
-        </select>
+
+      <div class="form-row">
+        <div class="col-12">
+          <div class="collapse" id="addCategoryForm">
+            <div class="card card-body">
+              <form>
+                <div class="form-group">
+                  <label for="categoryName">Название категории</label>
+                  <input type="text" class="form-control form-control-sm" id="categoryName">
+                </div>
+                <button class="btn btn-primary" type="submit" data-toggle="collapse"
+                        data-target="#addCategoryForm" aria-expanded="false"
+                        aria-controls="addCategoryForm">Добавить</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="form-row">
+        <div class="col-2">
+          <button class="btn btn-secondary mt-32">+</button>
+        </div>
+        <div class="col-10">
+          <div class="form-group">
+            <label for="materialProvider">Поставщик</label>
+            <select class="form-control"
+                    id="materialProvider"
+                    name="type">
+              <option value="">Выберите поставщика</option>
+              <option *ngFor="let p of providers" [ngValue]="p.name">{{p.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-2">
+          <button class="btn btn-secondary mt-32">+</button>
+        </div>
+        <div class="col-10">
+          <div class="form-group">
+            <label for="materialUnit">Единицы измерения</label>
+            <select class="form-control"
+                    id="materialUnit"
+                    name="type">
+              <option value="">Выберите единицы измерения</option>
+              <option *ngFor="let u of units" [ngValue]="u.name">{{u.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="materialDoc">Документ</label>
+        <input type="file" class="form-control-file" id="materialDoc">
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="materialPrice">Цена, грн</label>
+        <input type="number" class="form-control" id="materialPrice">
+      </div>
+
+      <div class="form-group">
+        <label for="materialCount">Количество</label>
+        <input type="number" class="form-control" id="materialCount">
+      </div>
+
       <div class="form-row">
         <div class="col">
           <div class="form-group">
@@ -42,31 +112,6 @@
             <input type="number" class="form-control" id="length" min="0">
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="materialDoc">Документ</label>
-        <input type="file" class="form-control-file" id="materialDoc">
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="materialPrice">Цена, грн</label>
-        <input type="number" class="form-control" id="materialPrice">
-      </div>
-
-      <div class="form-group">
-        <label for="materialCount">Количество</label>
-        <input type="number" class="form-control" id="materialCount">
-      </div>
-
-      <div class="form-group">
-        <label for="materialUnit">Единицы измерения</label>
-        <select class="form-control"
-                id="materialUnit"
-                name="type">
-          <option value="">Выберите единицы измерения</option>
-          <option *ngFor="let u of units" [ngValue]="u.name">{{u.name}}</option>
-        </select>
       </div>
 
       <div class="form-group">
