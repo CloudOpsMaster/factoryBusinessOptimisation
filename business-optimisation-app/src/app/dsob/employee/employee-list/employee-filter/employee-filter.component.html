@@ -14,6 +14,8 @@
     Отчество:
     <input type="text" [(ngModel)]="filter.patronymic">
   </label>
-  <button (click)="onApplyClick()">Применить</button>
-  <button (click)="onResetClick()">Сбросить</button>
+  <div class="button-group pull-right">
+    <button (click)="onApplyClick()" class="btn btn-primary btn-sm">Применить</button>
+    <button (click)="onResetClick()" class="btn btn-light btn-sm">Сбросить</button>
+  </div>
 </div>
