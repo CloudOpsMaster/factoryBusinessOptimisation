@@ -25,6 +25,10 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
     return this.getCaption();
   }
 
+  get saveCaption(): string {
+    return this.viewMode === EmployeeViewMode.Delete ? 'Удалить' : 'Сохранить';
+  }
+
   constructor(private employeeService: EmployeeService,
               private validationService: EmployeeValidationService) { }
 
