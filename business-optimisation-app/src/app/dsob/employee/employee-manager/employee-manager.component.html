@@ -1,24 +1,28 @@
-<div id="leftpart">
-  <div id="buttonsBlock">
-    <h3 float='left'>Список сотрудников</h3>
-    <button [disabled]="addDisabled"
-            (click)="onAddClick($event)">Добавить</button>
-    <button [disabled]="editDisabled"
-            (click)="onEditClick($event)">Редактировать</button>
-    <button [disabled]="deleteDisabled"
-            (click)="onDeleteClick($event)">Удалить</button>
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <div>
+        <h3 float='left'>Список сотрудников</h3>
+        <button [disabled]="addDisabled" class="btn btn-primary btn-sm"
+                (click)="onAddClick($event)">Добавить</button>
+        <button [disabled]="editDisabled" class="btn btn-warning btn-sm"
+                (click)="onEditClick($event)">Редактировать</button>
+        <button [disabled]="deleteDisabled" class="btn btn-danger btn-sm"
+                (click)="onDeleteClick($event)">Удалить</button>
+      </div>
+      <div>
+        <app-employee-list [employees]="employees" 
+                            [focusEntityId]="currentEmployeeId"
+                            [locked]="editingInProcess"
+                            [hideSelection]="hideSelection"
+                        (currentEmpChanged)="onCurrentEmpChanged($event)"></app-employee-list>
+      </div>
+    </div>
+    <div class="col-5">
+      <app-employee-editor [employeeId]="currentEmployeeId"
+                            [viewMode]="viewMode"
+                            (canceled)="onCanceled()"
+                            (saved)="onSaved($event)"></app-employee-editor>
+    </div>
   </div>
-  <div id="table">
-    <app-employee-list [employees]="employees" 
-                        [focusEntityId]="currentEmployeeId"
-                        [locked]="editingInProcess"
-                        [hideSelection]="hideSelection"
-                    (currentEmpChanged)="onCurrentEmpChanged($event)"></app-employee-list>
-  </div>
-</div>
-<div id="editors">
-  <app-employee-editor [employeeId]="currentEmployeeId"
-                        [viewMode]="viewMode"
-                        (canceled)="onCanceled()"
-                        (saved)="onSaved($event)"></app-employee-editor>
 </div>

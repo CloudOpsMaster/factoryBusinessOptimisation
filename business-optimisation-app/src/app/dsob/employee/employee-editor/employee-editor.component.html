@@ -1,7 +1,7 @@
 <h4>{{caption}}</h4>
 <div *ngIf="buttonsBlockVisible">
-    <button (click)="onSave()">{{saveCaption}}</button>
-    <button (click)="onCancel()">Отмена</button>
+    <button (click)="onSave()" [ngClass]="saveClass">{{saveCaption}}</button>
+    <button (click)="onCancel()" class="btn btn-light btn-sm">Отмена</button>
 </div>
 <span *ngIf="!employee">Не указан сотрудник для отображения деталей!</span>
 <app-employee-info-editor *ngIf="employee" [mainInfo]="employee.mainInfo"
