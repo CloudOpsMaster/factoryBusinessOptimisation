@@ -1,23 +1,18 @@
-<div class="card">
-   <div class="card-header">
-      Основная информация
-   </div>
-   <div class="card-body">
-      <label>
-         Имя:
-         <input type="text" [(ngModel)]="mainInfo.firstName" [readonly]="!editMode">
-      </label>
-      <label>
-         Фамилия:
-         <input type="text" [(ngModel)]="mainInfo.secondName" [readonly]="!editMode">
-      </label>
-      <label>
-         Отчество:
-         <input type="text" [(ngModel)]="mainInfo.patronymic" [readonly]="!editMode">
-      </label>
-      <label>
-         Дата рождения:
-         <input type="date" [(ngModel)]="mainInfo.dob" [readonly]="!editMode">
-      </label>
-   </div>
+<div>
+   <label>
+      Имя:
+      <input type="text" [(ngModel)]="mainInfo.firstName" [readonly]="!editMode">
+   </label>
+   <label>
+      Фамилия:
+      <input type="text" [(ngModel)]="mainInfo.secondName" [readonly]="!editMode">
+   </label>
+   <label>
+      Отчество:
+      <input type="text" [(ngModel)]="mainInfo.patronymic" [readonly]="!editMode">
+   </label>
+   <label>
+      Дата рождения:
+      <input type="date" [(ngModel)]="mainInfo.dob" [readonly]="!editMode">
+   </label>
 </div>
