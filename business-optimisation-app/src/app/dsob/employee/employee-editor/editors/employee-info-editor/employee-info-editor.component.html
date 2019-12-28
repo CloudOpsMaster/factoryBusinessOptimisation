@@ -1,18 +1,13 @@
 <div>
-   <label>
-      Имя:
-      <input type="text" [(ngModel)]="mainInfo.firstName" [readonly]="!editMode">
-   </label>
-   <label>
-      Фамилия:
-      <input type="text" [(ngModel)]="mainInfo.secondName" [readonly]="!editMode">
-   </label>
-   <label>
-      Отчество:
-      <input type="text" [(ngModel)]="mainInfo.patronymic" [readonly]="!editMode">
-   </label>
-   <label>
-      Дата рождения:
-      <input type="date" [(ngModel)]="mainInfo.dob" [readonly]="!editMode">
-   </label>
+   <label for="firstName">Имя:</label>
+   <input type="text" [(ngModel)]="mainInfo.firstName" [readonly]="!editMode" id="firstName" class="form-control form-control-sm">
+   
+   <label for="secondName">Фамилия:</label>
+   <input type="text" [(ngModel)]="mainInfo.secondName" [readonly]="!editMode" id="secondName" class="form-control form-control-sm">
+
+   <label for="patronymic">Отчество:</label>
+   <input type="text" [(ngModel)]="mainInfo.patronymic" [readonly]="!editMode" id="patronymic" class="form-control form-control-sm">
+
+   <label for="dob">Дата рождения:</label>
+   <input type="date" [(ngModel)]="mainInfo.dob" [readonly]="!editMode" id="dob" class="form-control  form-control-sm">
 </div>
