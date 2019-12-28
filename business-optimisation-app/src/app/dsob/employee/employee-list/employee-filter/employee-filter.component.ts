@@ -8,6 +8,7 @@ import { EmployeeFilter } from './employee-filter';
 })
 export class EmployeeFilterComponent {
 
+  @Input() locked = false;
   @Output() applyFilter = new EventEmitter<EmployeeFilter>();
 
   visible = false;

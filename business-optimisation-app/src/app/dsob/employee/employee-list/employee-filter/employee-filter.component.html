@@ -3,21 +3,21 @@
   <div class="form-row">
     <div class="col">
       <label for="firstName">Имя:</label>
-      <input type="text" [(ngModel)]="filter.firstName" id="firstName" class="form-control form-control-sm">
+      <input type="text" [(ngModel)]="filter.firstName" id="firstName" class="form-control form-control-sm" [readonly]="locked">
     </div>
     <div class="col">
       <label for="secondName">Фамилия:</label>
-      <input type="text" [(ngModel)]="filter.secondName" id="secondName" class="form-control form-control-sm">
+      <input type="text" [(ngModel)]="filter.secondName" id="secondName" class="form-control form-control-sm" [readonly]="locked">
     </div>
     <div class="col">
       <label for="patronymic">Отчество:</label>
-      <input type="text" [(ngModel)]="filter.patronymic" id="patronymic" class="form-control form-control-sm">
+      <input type="text" [(ngModel)]="filter.patronymic" id="patronymic" class="form-control form-control-sm" [readonly]="locked">
     </div>
   </div>
   <br>
   <div class="button-group pull-right">
-    <button (click)="onApplyClick()" class="btn btn-primary btn-sm">Применить</button>
-    <button (click)="onResetClick()" class="btn btn-light btn-sm">Сбросить</button>
+    <button (click)="onApplyClick()" class="btn btn-primary btn-sm" [disabled]="locked">Применить</button>
+    <button (click)="onResetClick()" class="btn btn-light btn-sm" [disabled]="locked">Сбросить</button>
   </div>
   <br>
 </div>
