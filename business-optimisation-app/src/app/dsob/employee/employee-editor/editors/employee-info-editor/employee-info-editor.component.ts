@@ -1,26 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { EmployeeViewMode } from '../../../employee-view-mode.enum';
+import { Component, Input } from '@angular/core';
 import { EmployeeMainInfo } from '../../../EmployeeInfo';
+import { BaseEditor } from '../base-editor';
 
 @Component({
   selector: 'app-employee-info-editor',
   templateUrl: './employee-info-editor.component.html',
   styleUrls: ['./employee-info-editor.component.css']
 })
-export class EmployeeInfoEditorComponent implements OnInit {
+export class EmployeeInfoEditorComponent extends BaseEditor {
 
   @Input() mainInfo: EmployeeMainInfo;
-  @Input() viewMode: EmployeeViewMode = EmployeeViewMode.View;
 
-  get editMode(): boolean {
-    return this.viewMode !== EmployeeViewMode.View;
+  constructor() {
+    super();
   }
-
-  constructor() { }
-
-  ngOnInit() {
-    // this.updateForm();
-  }
-
 
 }

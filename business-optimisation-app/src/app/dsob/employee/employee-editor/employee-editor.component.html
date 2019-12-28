@@ -21,13 +21,13 @@
     <div class="card">
         <div class="card-header">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo2">
-                Основная информация
+                Документы
             </button>
         </div>
         <div id="mainInfo2" class="collapse" data-parent="#editorAccordion">
             <div class="card-body">
-                <app-employee-info-editor [mainInfo]="employee.mainInfo"
-                                        [viewMode]="viewMode"></app-employee-info-editor>
+                <app-document-info-editor [document]="employee.document"
+                                        [viewMode]="viewMode"></app-document-info-editor>
             </div>
         </div>  
     </div>

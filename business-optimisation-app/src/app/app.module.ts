@@ -21,6 +21,7 @@ import { InstrumentServiceTableComponent } from './vdry/instrument-services/inst
 import { InstrumentServiceTableItemComponent } from './vdry/instrument-services/instrument-service-table/instrument-service-table-item/instrument-service-table-item.component';
 import { CheckListComponent } from './vlad/check-list/check-list.component';
 import { EmployeeFilterComponent } from './dsob/employee/employee-list/employee-filter/employee-filter.component';
+import { DocumentInfoEditorComponent } from './dsob/employee/employee-editor/editors/document-info-editor/document-info-editor.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EmployeeFilterComponent } from './dsob/employee/employee-list/employee-
     EmployeeEditorComponent,
     EmployeeInfoEditorComponent,
     EmployeeFilterComponent,
+    DocumentInfoEditorComponent,
     CreateMaterialFormComponent,
     MaterialsDictionaryComponent,
     DayOffFormComponent,

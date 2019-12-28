@@ -1,0 +1,14 @@
+<div>
+  <label for="passport">Паспорт:</label>
+  <input type="text" [(ngModel)]="document.passport" [readonly]="!editMode" id="passport" class="form-control form-control-sm">
+  
+  <label for="abroadPassport">Загран паспорт:</label>
+  <input type="text" [(ngModel)]="document.abroadPassport" [readonly]="!editMode" id="abroadPassport" class="form-control form-control-sm">
+
+  <label for="taxNumber">Налоговый номер:</label>
+  <input type="text" [(ngModel)]="document.taxNumber" [readonly]="!editMode" id="taxNumber" class="form-control form-control-sm">
+
+  <label for="militaryId">Номер военного билета:</label>
+  <input type="text" [(ngModel)]="document.militaryId" [readonly]="!editMode" id="militaryId" class="form-control form-control-sm">
+
+</div>
