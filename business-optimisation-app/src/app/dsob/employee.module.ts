@@ -9,6 +9,7 @@ import { DocumentInfoEditorComponent } from './employee/employee-editor/editors/
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdressInfoEditorComponent } from './employee/employee-editor/editors/adress-info-editor/adress-info-editor.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EmployeeEditorComponent,
     EmployeeInfoEditorComponent,
     EmployeeFilterComponent,
-    DocumentInfoEditorComponent
+    DocumentInfoEditorComponent,
+    AdressInfoEditorComponent
   ]
 })
 export class EmployeeModule { }

@@ -1,0 +1,18 @@
+<div>
+   <label for="passport">Город:</label>
+   <input type="text" [(ngModel)]="adress.town" [readonly]="!editMode" id="town" class="form-control form-control-sm">
+   
+   <label for="abroadPassport">Улица:</label>
+   <input type="text" [(ngModel)]="adress.street" [readonly]="!editMode" id="street" class="form-control form-control-sm">
+ 
+   <label for="taxNumber">Дом:</label>
+   <input type="number" [(ngModel)]="adress.house" [readonly]="!editMode" id="house" class="form-control form-control-sm">
+ 
+   <label for="militaryId">Корпус:</label>
+   <input type="text" [(ngModel)]="adress.houseApendix" [readonly]="!editMode" id="apendix" class="form-control form-control-sm">
+   
+   <label for="militaryId">Квартира:</label>
+   <input type="number" [(ngModel)]="adress.appartment" [readonly]="!editMode" id="appartment" class="form-control form-control-sm">
+ 
+ </div>
+ 
