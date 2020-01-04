@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 export enum StorageKeys {
   Materials = 'materials',
- MaterialProviders = 'materialProviders',
-  MaterialUnits = 'materialUnits'
+  MaterialProviders = 'materialProviders',
+  MaterialUnits = 'materialUnits',
+  GettingTools = 'gettingTools'
 }
 
 @Injectable({

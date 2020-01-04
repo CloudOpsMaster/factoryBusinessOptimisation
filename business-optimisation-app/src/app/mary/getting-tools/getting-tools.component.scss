@@ -25,3 +25,22 @@
 .btn {
     margin-left: 2%;
 }
+
+.row {
+    color: black;
+    font-size: 18px;
+}
+
+th {
+    background: rgb(76, 172, 255);
+    /* Цвет фона */
+    color: grayscale($color: #000000);
+    /* Цвет текста */
+}
+
+tbody tr:hover {
+    background: rgb(162, 169, 175);
+    /* Цвет фона при наведении */
+    color: white;
+    /* Цвет текста при наведении */
+}
