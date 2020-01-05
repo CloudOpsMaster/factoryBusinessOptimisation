@@ -1,0 +1,13 @@
+<div>
+  <label for="phone">Телефон:</label>
+  <input type="text" [(ngModel)]="contact.phone" [readonly]="!editMode" id="phone" class="form-control form-control-sm">
+  
+  <label for="mail">E-mail:</label>
+  <input type="text" [(ngModel)]="contact.eMail" [readonly]="!editMode" id="mail" class="form-control form-control-sm">
+
+  <label for="messenger">Мессенджер:</label>
+  <input type="text" [(ngModel)]="contact.messenger" [readonly]="!editMode" id="messenger" class="form-control form-control-sm">
+
+</div>
+
+

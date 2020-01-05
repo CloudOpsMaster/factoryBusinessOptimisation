@@ -13,10 +13,10 @@
         </div>
         <div id="mainInfo" class="collapse show" data-parent="#editorAccordion">
             <div class="card-body">
-                <app-employee-info-editor [mainInfo]="employee.mainInfo"
-                                        [viewMode]="viewMode"></app-employee-info-editor>
+                <app-employee-info-editor [mainInfo]="employee.mainInfo" [viewMode]="viewMode">
+                </app-employee-info-editor>
             </div>
-        </div>  
+        </div>
     </div>
     <div class="card">
         <div class="card-header condensed">
@@ -26,23 +26,33 @@
         </div>
         <div id="mainInfo2" class="collapse" data-parent="#editorAccordion">
             <div class="card-body">
-                <app-document-info-editor [document]="employee.document"
-                                        [viewMode]="viewMode"></app-document-info-editor>
+                <app-document-info-editor [document]="employee.document" [viewMode]="viewMode">
+                </app-document-info-editor>
             </div>
-        </div>  
+        </div>
     </div>
     <div class="card">
-      <div class="card-header condensed">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo3">
-              Адрес
-          </button>
-      </div>
-      <div id="mainInfo3" class="collapse" data-parent="#editorAccordion">
-          <div class="card-body">
-              <app-adress-info-editor [adress]="employee.adress"
-                                      [viewMode]="viewMode"></app-adress-info-editor>
-          </div>
-      </div>  
-  </div>
+        <div class="card-header condensed">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo3">
+                Адрес
+            </button>
+        </div>
+        <div id="mainInfo3" class="collapse" data-parent="#editorAccordion">
+            <div class="card-body">
+                <app-adress-info-editor [adress]="employee.adress" [viewMode]="viewMode"></app-adress-info-editor>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header condensed">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo4">
+                Контакты
+            </button>
+        </div>
+        <div id="mainInfo4" class="collapse" data-parent="#editorAccordion">
+            <div class="card-body">
+                <app-contact-info-editor [contact]="employee.contact" [viewMode]="viewMode"></app-contact-info-editor>
+            </div>
+        </div>
+    </div>
 </div>
-

@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdressInfoEditorComponent } from './employee/employee-editor/editors/adress-info-editor/adress-info-editor.component';
+import { ContactInfoEditorComponent } from './employee/employee-editor/editors/contact-info-editor/contact-info-editor.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AdressInfoEditorComponent } from './employee/employee-editor/editors/ad
     EmployeeInfoEditorComponent,
     EmployeeFilterComponent,
     DocumentInfoEditorComponent,
-    AdressInfoEditorComponent
+    AdressInfoEditorComponent,
+    ContactInfoEditorComponent
   ]
 })
 export class EmployeeModule { }
