@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/models/HR/Employee';
-import { StorageService } from 'src/app/storage/storage.service';
+import { StorageService, StorageKey } from 'src/app/services/storage.service';
 import { EmployeeInfo } from '../EmployeeInfo';
 import { DocumentInfo } from 'src/app/models/HR/DocumentInfo';
 import { PositionInfo } from 'src/app/models/HR/PositionInfo';
@@ -18,17 +18,6 @@ import { EnsuranceInfo } from 'src/app/models/HR/EnsuranceInfo';
 export class EmployeeService {
   /** list of employees from storage */
   employees: Array<EmployeeInfo>;
-
-  private employeesStorageKey = 'EmployeesStorageKey';
-  private documentsStorageKey = 'documentsStorageKey';
-  private positionsStorageKey = 'positionsStorageKey ';
-  private adressesStorageKey = 'adressesStorageKey';
-  private contactsStorageKey = 'contactsStorageKey';
-  private familiesStorageKey = 'familiesStorageKey';
-  private educationsStorageKey = 'educationsStorageKey';
-  private employmentsStorageKey = 'employmentsStorageKey';
-  private medicalCardStorageKey = 'medicalCardStorageKey';
-  private ensurancesStorageKey = 'ensurancesStorageKey';
 
   private employeesData: Array<Employee>;
   private documents: Array<DocumentInfo>;
@@ -241,35 +230,35 @@ export class EmployeeService {
   // read - write
 
   private initializeStorage() {
-    if (!this.storageService.has(this.employeesStorageKey)) {
-      this.storageService.set(this.employeesStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeesStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeesStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.documentsStorageKey)) {
-      this.storageService.set(this.documentsStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeeDocumentsStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeeDocumentsStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.positionsStorageKey)) {
-      this.storageService.set(this.positionsStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeePositionsStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeePositionsStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.adressesStorageKey)) {
-      this.storageService.set(this.adressesStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeeAdressesStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeeAdressesStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.contactsStorageKey)) {
-      this.storageService.set(this.contactsStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeeContactsStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeeContactsStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.familiesStorageKey)) {
-      this.storageService.set(this.familiesStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeeFamiliesStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeeFamiliesStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.educationsStorageKey)) {
-      this.storageService.set(this.educationsStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeeEducationsStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeeEducationsStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.employmentsStorageKey)) {
-      this.storageService.set(this.employmentsStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmploymentsStorageKey)) {
+      this.storageService.setData(StorageKey.EmploymentsStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.medicalCardStorageKey)) {
-      this.storageService.set(this.medicalCardStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeeMedicalCardStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeeMedicalCardStorageKey, new Array<Employee>());
     }
-    if (!this.storageService.has(this.ensurancesStorageKey)) {
-      this.storageService.set(this.ensurancesStorageKey, new Array<Employee>());
+    if (!this.storageService.hasKey(StorageKey.EmployeeEnsurancesStorageKey)) {
+      this.storageService.setData(StorageKey.EmployeeEnsurancesStorageKey, new Array<Employee>());
     }
   }
 
@@ -295,29 +284,29 @@ export class EmployeeService {
   }
 
   private readStorage() {
-    this.employeesData = this.storageService.get(this.employeesStorageKey) || new Array<Employee>();
-    this.documents = this.storageService.get(this.documentsStorageKey) || new Array<DocumentInfo>();
-    this.positions = this.storageService.get(this.positionsStorageKey) || new Array<PositionInfo>();
-    this.adresses = this.storageService.get(this.adressesStorageKey) || new Array<AdressInfo>();
-    this.contacts = this.storageService.get(this.contactsStorageKey) || new Array<ContactInfo>();
-    this.families = this.storageService.get(this.familiesStorageKey) || new Array<FamilyInfo>();
-    this.educations = this.storageService.get(this.educationsStorageKey) || new Array<EducationInfo>();
-    this.employments = this.storageService.get(this.employmentsStorageKey) || new Array<EmploymentInfo>();
-    this.medicalCards = this.storageService.get(this.medicalCardStorageKey) || new Array<MedicalCard>();
-    this.ensurances = this.storageService.get(this.ensurancesStorageKey) || new Array<EnsuranceInfo>();
+    this.employeesData = this.storageService.getData(StorageKey.EmployeesStorageKey) || new Array<Employee>();
+    this.documents = this.storageService.getData(StorageKey.EmployeeDocumentsStorageKey) || new Array<DocumentInfo>();
+    this.positions = this.storageService.getData(StorageKey.EmployeePositionsStorageKey) || new Array<PositionInfo>();
+    this.adresses = this.storageService.getData(StorageKey.EmployeeAdressesStorageKey) || new Array<AdressInfo>();
+    this.contacts = this.storageService.getData(StorageKey.EmployeeContactsStorageKey) || new Array<ContactInfo>();
+    this.families = this.storageService.getData(StorageKey.EmployeeFamiliesStorageKey) || new Array<FamilyInfo>();
+    this.educations = this.storageService.getData(StorageKey.EmployeeEducationsStorageKey) || new Array<EducationInfo>();
+    this.employments = this.storageService.getData(StorageKey.EmploymentsStorageKey) || new Array<EmploymentInfo>();
+    this.medicalCards = this.storageService.getData(StorageKey.EmployeeMedicalCardStorageKey) || new Array<MedicalCard>();
+    this.ensurances = this.storageService.getData(StorageKey.EmployeeEnsurancesStorageKey) || new Array<EnsuranceInfo>();
   }
 
   private writeStorage() {
-    this.storageService.set(this.employeesStorageKey, this.employeesData);
-    this.storageService.set(this.documentsStorageKey, this.documents);
-    this.storageService.set(this.positionsStorageKey, this.positions);
-    this.storageService.set(this.adressesStorageKey, this.adresses);
-    this.storageService.set(this.contactsStorageKey, this.contacts);
-    this.storageService.set(this.familiesStorageKey, this.families);
-    this.storageService.set(this.educationsStorageKey, this.educations);
-    this.storageService.set(this.employmentsStorageKey, this.employments);
-    this.storageService.set(this.medicalCardStorageKey, this.medicalCards);
-    this.storageService.set(this.ensurancesStorageKey, this.ensurances);
+    this.storageService.setData(StorageKey.EmployeesStorageKey, this.employeesData);
+    this.storageService.setData(StorageKey.EmployeeDocumentsStorageKey, this.documents);
+    this.storageService.setData(StorageKey.EmployeePositionsStorageKey, this.positions);
+    this.storageService.setData(StorageKey.EmployeeAdressesStorageKey, this.adresses);
+    this.storageService.setData(StorageKey.EmployeeContactsStorageKey, this.contacts);
+    this.storageService.setData(StorageKey.EmployeeFamiliesStorageKey, this.families);
+    this.storageService.setData(StorageKey.EmployeeEducationsStorageKey, this.educations);
+    this.storageService.setData(StorageKey.EmploymentsStorageKey, this.employments);
+    this.storageService.setData(StorageKey.EmployeeMedicalCardStorageKey, this.medicalCards);
+    this.storageService.setData(StorageKey.EmployeeEnsurancesStorageKey, this.ensurances);
   }
 
 }

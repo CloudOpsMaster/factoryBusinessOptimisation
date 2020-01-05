@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/materials/category';
-import { StorageKeys, StorageService } from '../../services/storage.service';
+import { StorageKey, StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-materials-dictionary',
@@ -13,6 +13,6 @@ export class MaterialsDictionaryComponent implements OnInit {
   constructor(private storageService: StorageService) { }
 
   ngOnInit() {
-    this.categories = this.storageService.getData(StorageKeys.Materials);
+    this.categories = this.storageService.getData(StorageKey.Materials);
   }
 }

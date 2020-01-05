@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { StorageService } from 'src/app/storage/storage.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
 import { InstrumentService } from '../instrument.service';
 

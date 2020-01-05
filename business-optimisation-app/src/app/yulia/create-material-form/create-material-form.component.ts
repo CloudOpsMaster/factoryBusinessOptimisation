@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageKeys, StorageService } from '../../services/storage.service';
+import { StorageKey, StorageService } from '../../services/storage.service';
 import { Category } from '../../models/materials/category';
 import { Provider } from '../../models/materials/provider';
 import { Unit } from '../../models/materials/material';
@@ -23,21 +23,21 @@ export class CreateMaterialFormComponent implements OnInit {
   constructor(private st: StorageService) { }
 
   ngOnInit() {
-    this.categories = this.st.getData(StorageKeys.Materials);
-    this.providers = this.st.getData(StorageKeys.MaterialProviders) || [{name: 'Provider1'}, {name: 'Provider2'}];
-    this.units = this.st.getData(StorageKeys.MaterialUnits) || [{name: 'шт'}, {name: 'л'}, {name: 'мм'}];
+    this.categories = this.st.getData(StorageKey.Materials);
+    this.providers = this.st.getData(StorageKey.MaterialProviders) || [{name: 'Provider1'}, {name: 'Provider2'}];
+    this.units = this.st.getData(StorageKey.MaterialUnits) || [{name: 'шт'}, {name: 'л'}, {name: 'мм'}];
     console.log(this.categories);
   }
 
   set() {
-    this.st.setData(StorageKeys.Materials, this.category);
+    this.st.addData(StorageKey.Materials, this.category);
   }
 
   delete() {
-    this.st.deleteData(StorageKeys.Materials);
+    this.st.deleteData(StorageKey.Materials);
   }
 
   get() {
-    this.data = this.st.getData(StorageKeys.Materials);
+    this.data = this.st.getData(StorageKey.Materials);
   }
 }

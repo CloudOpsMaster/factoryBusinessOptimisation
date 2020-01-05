@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
-import { StorageService } from 'src/app/storage/storage.service';
+import { StorageService, StorageKey } from 'src/app/services/storage.service';
 
 
 @Injectable({
@@ -8,12 +8,12 @@ import { StorageService } from 'src/app/storage/storage.service';
 })
 export class InstrumentService {
 
-  public static readonly STORAGE_KEY = '_services';
+  public static readonly STORAGE_KEY = StorageKey.InstrumentsStorageKey;
 
   constructor(private storageService: StorageService) {}
 
-  public get(): InstrumentServis[] {
-    const items: InstrumentServis[] = this.storageService.get(InstrumentService.STORAGE_KEY);
+  public getData(): InstrumentServis[] {
+    const items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
       if (!items) {
           throw new Error(`Data for key - ${InstrumentService.STORAGE_KEY} is undefined`);
@@ -22,13 +22,13 @@ export class InstrumentService {
       return items;
   }
 
-  public has(): boolean {
-    return this.storageService.has(InstrumentService.STORAGE_KEY);
+  public hasKey(): boolean {
+    return this.storageService.hasKey(InstrumentService.STORAGE_KEY);
   }
 
   public getById(id: number): InstrumentServis {
 
-    const items: InstrumentServis[] = this.storageService.get(InstrumentService.STORAGE_KEY);
+    const items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
       const findElem = items.find((item: any) => {
           return item.id === id;
@@ -44,30 +44,30 @@ export class InstrumentService {
   public set(element: InstrumentServis): void {
     const randomId = Math.random();
     const newItem: InstrumentServis = { ...element, id: randomId };
-    let items: InstrumentServis[] = this.storageService.get(InstrumentService.STORAGE_KEY);
+    let items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
-    if (this.storageService.has(InstrumentService.STORAGE_KEY)) {
+    if (this.storageService.hasKey(InstrumentService.STORAGE_KEY)) {
       items.push(newItem);
     } else {
       items = [newItem];
     }
     
-    this.storageService.delete(InstrumentService.STORAGE_KEY);
-    this.storageService.set(InstrumentService.STORAGE_KEY, items);
+    this.storageService.deleteData(InstrumentService.STORAGE_KEY);
+    this.storageService.setData(InstrumentService.STORAGE_KEY, items);
   }
 
   public delete(id: number): void {
-    const items: InstrumentServis[] = this.storageService.get(InstrumentService.STORAGE_KEY);
+    const items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
     const filteredArray = items.filter((item: InstrumentServis) => {
         return item.id !== id;
     });
 
-    this.storageService.set(InstrumentService.STORAGE_KEY, filteredArray);
+    this.storageService.setData(InstrumentService.STORAGE_KEY, filteredArray);
   }
 
   public update(item: InstrumentServis): void {
-    const items: InstrumentServis[] = this.storageService.get(InstrumentService.STORAGE_KEY);
+    const items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
     const index = items.findIndex((element: InstrumentServis) => {
       return element.id === item.id;
@@ -75,11 +75,11 @@ export class InstrumentService {
 
     items.splice(index, 1, item);
 
-    this.storageService.update(InstrumentService.STORAGE_KEY, items)
+    this.storageService.setData(InstrumentService.STORAGE_KEY, items);
   }
 
   public clear(): void {
-    this.storageService.delete(InstrumentService.STORAGE_KEY);
+    this.storageService.deleteData(InstrumentService.STORAGE_KEY);
   }
 
 }

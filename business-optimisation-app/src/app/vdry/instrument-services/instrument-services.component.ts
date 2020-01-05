@@ -16,8 +16,8 @@ export class InstrumentServicesComponent implements OnInit {
   constructor(private instrumentService: InstrumentService) { }
 
   ngOnInit() {
-    if (this.instrumentService.has()) {
-      this.instruments = this.instrumentService.get();
+    if (this.instrumentService.hasKey()) {
+      this.instruments = this.instrumentService.getData();
     }
   }
 
@@ -28,13 +28,13 @@ export class InstrumentServicesComponent implements OnInit {
   public onAdd(item: InstrumentServis): void {
     this.instrumentService.set(item);
 
-    this.instruments = this.instrumentService.get();
+    this.instruments = this.instrumentService.getData();
   }
 
   public onDelete(id: number): void {
     this.instrumentService.delete(id);
 
-    this.instruments = this.instrumentService.get();
+    this.instruments = this.instrumentService.getData();
   }
 
   public onUpdate(id: number) {
@@ -44,6 +44,6 @@ export class InstrumentServicesComponent implements OnInit {
   public onSave(item: InstrumentServis) {
     this.instrumentService.update(item);
 
-    this.instruments = this.instrumentService.get();
+    this.instruments = this.instrumentService.getData();
   }
 }

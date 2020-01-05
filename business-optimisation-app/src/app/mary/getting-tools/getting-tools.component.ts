@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService, StorageKeys } from 'src/app/services/storage.service';
+import { StorageService, StorageKey } from 'src/app/services/storage.service';
 import { GettingTools } from 'src/app/models/getting-tools';
 
 @Component({
@@ -9,7 +9,7 @@ import { GettingTools } from 'src/app/models/getting-tools';
 })
 export class GettingToolsComponent implements OnInit {
   ngOnInit() {
-    this.items = this.storage.getData(StorageKeys.GettingTools);
+    this.items = this.storage.getData(StorageKey.GettingTools);
   }
 
   plots: Array<string> = [
@@ -37,8 +37,8 @@ export class GettingToolsComponent implements OnInit {
   private currentItem: GettingTools;
 
   private add(): void {
-    this.storage.setData(StorageKeys.GettingTools, this.setRow());
-    this.items = this.storage.getData(StorageKeys.GettingTools);
+    this.storage.addData(StorageKey.GettingTools, this.setRow());
+    this.items = this.storage.getData(StorageKey.GettingTools);
   }
 
   private change(): void {
@@ -103,9 +103,9 @@ export class GettingToolsComponent implements OnInit {
   }
 
   private rewriteStorage(): void {
-    this.storage.deleteData(StorageKeys.GettingTools);
+    this.storage.deleteData(StorageKey.GettingTools);
     this.items.forEach(item => {
-      this.storage.setData(StorageKeys.GettingTools, item);
+      this.storage.addData(StorageKey.GettingTools, item);
     });
   }
 }
