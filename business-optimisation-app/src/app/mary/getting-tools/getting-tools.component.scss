@@ -32,15 +32,20 @@
 }
 
 th {
-    background: rgb(76, 172, 255);
+    background: rgb(65, 149, 223);
     /* Цвет фона */
-    color: grayscale($color: #000000);
+    color: #ffffff;
     /* Цвет текста */
+    text-align: center;
 }
 
 tbody tr:hover {
-    background: rgb(162, 169, 175);
+    background: rgb(158, 162, 167);
     /* Цвет фона при наведении */
     color: white;
     /* Цвет текста при наведении */
+}
+
+input.ng-touched.ng-invalid {
+    border: solid #D9534F 1.5px;
 }

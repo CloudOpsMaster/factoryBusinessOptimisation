@@ -1,82 +1,97 @@
 <h2 class=paragraph>Получение инструмента</h2>
 <h6 class=subparagraph>Информация по работнику</h6>
-<div>
-    <div class="informationgroups">
-        <div>
+<form [formGroup]="gettingToolsForm" novalidate>
+    <div>
+        <div class="informationgroups" formGroupName="employeeInfo">
             <div>
-                <label>Имя:</label>
-                <input type="text" placeholder=" Александр" id="name" required>
-            </div>
-            <div>
-                <label>Участок:</label>
-                <select id="plot" [(ngModel)]="plot">
-                        <option *ngFor="let plot of plots" [ngValue]="plot">
+                <div>
+                    <label>Имя:</label>
+                    <input type="text" placeholder="Александр" (keyup)="onKeyName()" formControlName="name" list="name" required>
+                    <datalist id="name" autofocus required>
+                        <option *ngFor="let name of names">
+                        {{name}}
+                        </option>
+                </datalist>
+                </div>
+                <div>
+                    <label>Участок:</label>
+                    <input type="text" placeholder="Столярный" list="plot" formControlName="plot" required>
+                    <datalist id="plot" required>
+                        <option *ngFor="let plot of plots">
                         {{plot}}
                         </option>
-                    </select>
-            </div>
-        </div>
-        <div>
-            <div>
-                <label>Фамилия:</label>
-                <input type="text" placeholder=" Птушкин" id="lastname" required>
+                    </datalist>
+                </div>
             </div>
             <div>
-                <label>Должность:</label>
-                <select id="post" [(ngModel)]="post">
-                        <option *ngFor="let post of posts" [ngValue]="post">
-                        {{ post}}
+                <div>
+                    <label>Фамилия:</label>
+                    <input type="text" placeholder="Птушкин" (keyup)="onKeyLastname()" list="lastname" formControlName="lastname" required>
+                    <datalist id="lastname" required>
+                        <option *ngFor="let lastname of lastnames">
+                        {{lastname}}
                         </option>
-                    </select>
+                    </datalist>
+                </div>
+                <div>
+                    <label>Должность:</label>
+                    <input type="text" placeholder="Сборщик" list="post" formControlName="post" required>
+                    <datalist id="post" required>
+                        <option *ngFor="let post of posts">
+                        {{post}}
+                        </option>
+                    </datalist>
+                </div>
             </div>
-        </div>
-        <div>
             <div>
-                <label>Табельный номер:</label>
-                <input type="number" placeholder="1111" id="table-number" required min="0000">
+                <div>
+                    <label>Табельный номер:</label>
+                    <input type="number" placeholder="1111" formControlName="tableNumber" required min="0000">
+                </div>
             </div>
         </div>
-    </div>
-    <h6 class=subparagraph>Информация по иструменту</h6>
-    <div class="informationgroups">
-        <div>
-            <label>Инвентарный номер:</label>
-            <input type="number" placeholder="7843" id="inventory-number" required min="0000">
+        <h6 class=subparagraph>Информация по иструменту</h6>
+        <div class="informationgroups" formGroupName="toolInfo">
+            <div>
+                <label>Инвентарный номер:</label>
+                <input type="number" placeholder="7843" formControlName="inventoryNumber" required min="0000">
+            </div>
+            <div>
+                <label>Наименование:</label>
+                <input type="text" placeholder="Пила" formControlName="tool" required>
+            </div>
+            <div>
+                <label>Количество:</label>
+                <input type="number" placeholder="1" formControlName="count" required min="1">
+            </div>
         </div>
-        <div>
-            <label>Наименование:</label>
-            <input type="text" placeholder="Пила" id="tool" required>
-        </div>
-        <div>
-            <label>Количество:</label>
-            <input type="number" placeholder="1" id="count" required min="1">
-        </div>
-    </div>
-    <h6 class=subparagraph>Дата перемищения</h6>
-    <div class="informationgroups">
-        <div>
-            <label>Дата выдачи:</label>
-            <input type="date" placeholder="784" id="date-of-issue" required>
-        </div>
-        <div>
-            <label>Дата возврата:</label>
-            <input type="date" placeholder="Пила" id="date-of-return">
-        </div>
-        <div>
-            <label>Примечание:</label>
-            <select id="note" [(ngModel)]="note">
-                    <option *ngFor="let note of notes" [ngValue]="note">
+        <h6 class=subparagraph>Дата перемищения</h6>
+        <div class="informationgroups" formGroupName="dateOfMovement">
+            <div>
+                <label>Дата выдачи:</label>
+                <input type="date" placeholder="784" formControlName="dateOfIssue" required>
+            </div>
+            <div>
+                <label>Дата возврата:</label>
+                <input type="date" placeholder="Пила" formControlName="dateOfReturn">
+            </div>
+            <div>
+                <label>Примечание:</label>
+                <input type="text" placeholder="В ремонте" list="note" formControlName="note" required>
+                <datalist id="note" required>
+                    <option *ngFor="let note of notes">
                     {{note}}
                     </option>
-                </select>
+                </datalist>
+            </div>
+        </div>
+        <div class="informationgroups">
+            <button [disabled]="!gettingToolsForm.valid" class="btn btn-primary" on-click="add()">Добавить</button>
+            <button class="btn btn-warning" on-click="change()">Изменить</button>
+            <button class="btn btn-danger" on-click="delete()">Удалить</button>
         </div>
     </div>
-    <div class="informationgroups">
-        <button type="submit" class="btn btn-primary" on-click="add()">Добавить</button>
-        <button class="btn btn-warning" on-click="change()">Изменить</button>
-        <button class="btn btn-danger" on-click="delete()">Удалить</button>
-    </div>
-</div>
+</form>
 
 <br>
 
