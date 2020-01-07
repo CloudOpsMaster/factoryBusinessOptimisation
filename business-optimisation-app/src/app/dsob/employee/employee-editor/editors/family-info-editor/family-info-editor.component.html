@@ -7,4 +7,41 @@
     <option value="Divorced">Разведен (-а)</option>
   </select>
 
+  <label class="labelChildren">Дети:</label>
+  <label>{{childCount}}</label>
+
+  <div class="input-group" *ngFor="let child of family.children">
+    <div class="input-group-prepend">
+      <span class="input-group-text form-control form-control-sm">Д/Р:</span>
+    </div>
+    <input type="date" [(ngModel)]="child.dob"
+                      [readonly]="isDobReadonlyForChild(child)" 
+                      class="form-control form-control-sm">
+    <div class="input-group-append">
+      <button class="btn btn-warning btn-sm"
+            [disabled]="!editMode"
+            (click)="onEditClick(child)">{{editCaptionFor(child)}}</button>
+      <button class="btn btn-danger btn-sm"
+            [disabled]="!editMode"
+            (click)="onDeleteClick(child)">Delete</button>
+    </div>
+  </div>
+
+  <br>
+  <div *ngIf="editMode">
+    <label>Добавить ребенка</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text form-control form-control-sm">Д/Р:</span>
+      </div>
+      <input type="date" [(ngModel)]="newChild.dob"
+                          [readonly]="!editMode" 
+                          class="form-control form-control-sm">
+      <div class="input-group-append">
+        <button class="btn btn-success btn-sm" 
+                [disabled]="addNewChildDisabled"
+                (click)="onAddChild()">Добавить</button>
+      </div>
+    </div>
+  </div>
 </div>
