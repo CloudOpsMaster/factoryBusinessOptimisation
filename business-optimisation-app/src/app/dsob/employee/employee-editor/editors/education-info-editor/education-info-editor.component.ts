@@ -10,6 +10,19 @@ import { EducationInfo } from 'src/app/models/HR/EducationInfo';
 export class EducationInfoEditorComponent extends BaseEditor {
 
   @Input() education: EducationInfo;
+
+  get specialityReadonly(): boolean {
+    return !this.editMode || this.education.degree === 'no'
+            || this.education.degree === ''
+            || !this.education.degree;
+  }
+
+  onModelChanged() {
+    if (this.education.degree === 'no') {
+      this.education.speciality = '';
+    }
+  }
+
   constructor() {
     super();
   }
