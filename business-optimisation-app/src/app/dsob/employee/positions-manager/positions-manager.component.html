@@ -7,12 +7,12 @@
       <input type="text" [(ngModel)]="newPosition.title"
               id="newPositionTitle">
     </div>
-    <div class="col-6">
+    <div class="col-5">
       <label for="newPositionReq">Требования:</label><br>
       <textarea [(ngModel)]="newPosition.requirements"
                 id="newPositionReq"></textarea>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <button class="btn btn-success"
               (click)="onAdd()">Добавить</button>
     </div>
@@ -26,13 +26,15 @@
       <input type="text" [(ngModel)]="position.title"
             [readonly]="isReadonlyForPosition(position)">
     </div>
-    <div class="col-6">
+    <div class="col-5">
       <textarea [(ngModel)]="position.requirements"
             [readonly]="isReadonlyForPosition(position)"></textarea>
     </div>
-    <div class="col-3">
-      <button class="btn btn-warning"
+    <div class="col-4">
+      <button [class]="editButtonClassFor(position)"
               (click)="onEdit(position)">{{editCaptionFor(position)}}</button>
+      <button *ngIf="saveVisibleFor(position)" class="btn btn-success"
+              (click)="onEdit(position)">Сохранить</button>
       <button class="btn btn-danger"
               (click)="onDeleteClick(position)">Удалить</button>
     </div>

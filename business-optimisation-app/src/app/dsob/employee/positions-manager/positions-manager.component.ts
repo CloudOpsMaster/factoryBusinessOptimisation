@@ -56,6 +56,18 @@ export class PositionsManagerComponent implements OnInit {
     }
   }
 
+  editButtonClassFor(position): string {
+    if (position.id === this.editPositionId) {
+      return 'btn btn-light';
+    } else {
+      return 'btn btn-warning';
+    }
+  }
+
+  saveVisibleFor(position): boolean {
+    return position.id === this.editPositionId;
+  }
+
   private refreshData() {
     this.writeStorage();
     this.readStorage();
