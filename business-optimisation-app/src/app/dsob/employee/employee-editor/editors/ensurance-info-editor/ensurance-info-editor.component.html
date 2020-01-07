@@ -1,0 +1,20 @@
+<div>
+  <label for="ensuranceOrganisation">Страховая компания:</label>
+  <input type="text" [(ngModel)]="ensurance.ensuranceOrganisation" 
+                      [readonly]="!editMode" 
+                      id="ensuranceOrganisation" 
+                      class="form-control form-control-sm">
+  
+  <label for="policyNumber">Номер полиса:</label>
+  <input type="text" [(ngModel)]="ensurance.policyNumber"
+                     [readonly]="!editMode" 
+                     id="policyNumber" 
+                     class="form-control form-control-sm">
+
+  <label for="description">Описание:</label>
+  <textarea [(ngModel)]="ensurance.description" 
+            [readonly]="!editMode"
+            id="description" 
+            class="form-control form-control-sm"></textarea>
+
+</div>
