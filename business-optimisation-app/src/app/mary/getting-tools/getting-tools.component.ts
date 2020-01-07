@@ -37,6 +37,8 @@ export class GettingToolsComponent implements OnInit {
   ];
 
   constructor() {
+    this.names = [];
+    this.lastnames = [];
     const employees = EmployeeInfoService.getEmployee();
     employees.forEach((employee: Employee) => {
       this.employees.push({ name: employee.firstName, lastname: employee.secondName });
@@ -66,7 +68,6 @@ export class GettingToolsComponent implements OnInit {
         inventoryNumber: new FormControl(null),
         tool: new FormControl(null),
         count: new FormControl(null)
-
       }),
       dateOfMovement: new FormGroup({
         dateOfIssue: new FormControl(null),
@@ -146,7 +147,7 @@ export class GettingToolsComponent implements OnInit {
       if (employee.name.includes(value)) {
         this.lastnames.push(employee.lastname);
       }
-    })
+    });
   }
 
   private onKeyLastname(): void {
@@ -156,6 +157,6 @@ export class GettingToolsComponent implements OnInit {
       if (employee.lastname.includes(value)) {
         this.names.push(employee.name);
       }
-    })
+    });
   }
 }

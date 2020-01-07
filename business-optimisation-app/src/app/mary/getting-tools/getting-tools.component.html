@@ -1,173 +1,175 @@
-<h2 class=paragraph>Получение инструмента</h2>
-<h6 class=subparagraph>Информация по работнику</h6>
-<form [formGroup]="gettingToolsForm" novalidate>
-    <div>
-        <div class="informationgroups" formGroupName="employeeInfo">
-            <div>
+<div class="container">
+    <h2 class=paragraph>Получение инструмента</h2>
+    <h6 class=subparagraph>Информация по работнику</h6>
+    <form [formGroup]="gettingToolsForm" novalidate>
+        <div>
+            <div class="informationgroups" formGroupName="employeeInfo">
                 <div>
-                    <label>Имя:</label>
-                    <input type="text" placeholder="Александр" (keyup)="onKeyName()" formControlName="name" list="name" required>
-                    <datalist id="name" autofocus required>
+                    <div>
+                        <label>Имя:</label>
+                        <input type="text" placeholder="Александр" (keyup)="onKeyName()" formControlName="name" list="name" required>
+                        <datalist id="name" autofocus required>
                         <option *ngFor="let name of names">
                         {{name}}
                         </option>
-                </datalist>
-                </div>
-                <div>
-                    <label>Участок:</label>
-                    <input type="text" placeholder="Столярный" list="plot" formControlName="plot" required>
-                    <datalist id="plot" required>
+                        </datalist>
+                    </div>
+                    <div>
+                        <label>Участок:</label>
+                        <input type="text" placeholder="Столярный" list="plot" formControlName="plot" required>
+                        <datalist id="plot" required>
                         <option *ngFor="let plot of plots">
                         {{plot}}
                         </option>
                     </datalist>
+                    </div>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <label>Фамилия:</label>
-                    <input type="text" placeholder="Птушкин" (keyup)="onKeyLastname()" list="lastname" formControlName="lastname" required>
-                    <datalist id="lastname" required>
+                    <div>
+                        <label>Фамилия:</label>
+                        <input type="text" placeholder="Птушкин" (keyup)="onKeyLastname()" list="lastname" formControlName="lastname" required>
+                        <datalist id="lastname" required>
                         <option *ngFor="let lastname of lastnames">
                         {{lastname}}
                         </option>
                     </datalist>
+                    </div>
+                    <div>
+                        <label>Должность:</label>
+                        <input type="text" placeholder="Сборщик" list="post" formControlName="post" required>
+                        <datalist id="post" required>
+                            <option *ngFor="let post of posts">
+                            {{post}}
+                            </option>
+                            </datalist>
+                    </div>
                 </div>
                 <div>
-                    <label>Должность:</label>
-                    <input type="text" placeholder="Сборщик" list="post" formControlName="post" required>
-                    <datalist id="post" required>
-                        <option *ngFor="let post of posts">
-                        {{post}}
+                    <div>
+                        <label>Табельный номер:</label>
+                        <input type="number" placeholder="1111" formControlName="tableNumber" required min="0000">
+                    </div>
+                </div>
+            </div>
+            <h6 class=subparagraph>Информация по иструменту</h6>
+            <div class="informationgroups" formGroupName="toolInfo">
+                <div>
+                    <label>Инвентарный номер:</label>
+                    <input type="number" placeholder="7843" formControlName="inventoryNumber" required min="0000">
+                </div>
+                <div>
+                    <label>Наименование:</label>
+                    <input type="text" placeholder="Пила" formControlName="tool" required>
+                </div>
+                <div>
+                    <label>Количество:</label>
+                    <input type="number" placeholder="1" formControlName="count" required min="1">
+                </div>
+            </div>
+            <h6 class=subparagraph>Дата перемищения</h6>
+            <div class="informationgroups" formGroupName="dateOfMovement">
+                <div>
+                    <label>Дата выдачи:</label>
+                    <input type="date" placeholder="784" formControlName="dateOfIssue" required>
+                </div>
+                <div>
+                    <label>Дата возврата:</label>
+                    <input type="date" placeholder="Пила" formControlName="dateOfReturn">
+                </div>
+                <div>
+                    <label>Примечание:</label>
+                    <input type="text" placeholder="В ремонте" list="note" formControlName="note" required>
+                    <datalist id="note" required>
+                        <option *ngFor="let note of notes">
+                        {{note}}
                         </option>
-                    </datalist>
+                        </datalist>
                 </div>
             </div>
-            <div>
-                <div>
-                    <label>Табельный номер:</label>
-                    <input type="number" placeholder="1111" formControlName="tableNumber" required min="0000">
-                </div>
+            <div class="informationgroups">
+                <button [disabled]="!gettingToolsForm.valid" class="btn btn-primary" on-click="add()">Добавить</button>
+                <button class="btn btn-warning" on-click="change()">Изменить</button>
+                <button class="btn btn-danger" on-click="delete()">Удалить</button>
             </div>
         </div>
-        <h6 class=subparagraph>Информация по иструменту</h6>
-        <div class="informationgroups" formGroupName="toolInfo">
-            <div>
-                <label>Инвентарный номер:</label>
-                <input type="number" placeholder="7843" formControlName="inventoryNumber" required min="0000">
-            </div>
-            <div>
-                <label>Наименование:</label>
-                <input type="text" placeholder="Пила" formControlName="tool" required>
-            </div>
-            <div>
-                <label>Количество:</label>
-                <input type="number" placeholder="1" formControlName="count" required min="1">
-            </div>
-        </div>
-        <h6 class=subparagraph>Дата перемищения</h6>
-        <div class="informationgroups" formGroupName="dateOfMovement">
-            <div>
-                <label>Дата выдачи:</label>
-                <input type="date" placeholder="784" formControlName="dateOfIssue" required>
-            </div>
-            <div>
-                <label>Дата возврата:</label>
-                <input type="date" placeholder="Пила" formControlName="dateOfReturn">
-            </div>
-            <div>
-                <label>Примечание:</label>
-                <input type="text" placeholder="В ремонте" list="note" formControlName="note" required>
-                <datalist id="note" required>
-                    <option *ngFor="let note of notes">
-                    {{note}}
-                    </option>
-                </datalist>
-            </div>
-        </div>
-        <div class="informationgroups">
-            <button [disabled]="!gettingToolsForm.valid" class="btn btn-primary" on-click="add()">Добавить</button>
-            <button class="btn btn-warning" on-click="change()">Изменить</button>
-            <button class="btn btn-danger" on-click="delete()">Удалить</button>
-        </div>
-    </div>
-</form>
-
+    </form>
+</div>
 <br>
-
-<table class="table table-striped">
-    <thead class="table-primary">
-        <tr>
-            <th>
-                Имя
-            </th>
-            <th>
-                Фамилия
-            </th>
-            <th>
-                Табельный номер
-            </th>
-            <th>
-                Участок
-            </th>
-            <th>
-                Должность
-            </th>
-            <th>
-                Инвентарный номер
-            </th>
-            <th>
-                Наименование
-            </th>
-            <th>
-                Количество
-            </th>
-            <th>
-                Дата выдачи
-            </th>
-            <th>
-                Дата возврата
-            </th>
-            <th>
-                Примечание
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of items" on-click="onRowClick(item)">
-            <td>
-                {{item.name}}
-            </td>
-            <td>
-                {{item.lastname}}
-            </td>
-            <td>
-                {{item.tableNumber}}
-            </td>
-            <td>
-                {{item.plot}}
-            </td>
-            <td>
-                {{item.post}}
-            </td>
-            <td>
-                {{item.inventoryNumber}}
-            </td>
-            <td>
-                {{item.tool}}
-            </td>
-            <td>
-                {{item.count}}
-            </td>
-            <td>
-                {{item.dateOfIssue}}
-            </td>
-            <td>
-                {{item.dateOfReturn}}
-            </td>
-            <td>
-                {{item.note}}
-            </td>
-        </tr>
-    </tbody>
-    <table>
+<div>
+    <table class="table table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    Фамилия
+                </th>
+                <th>
+                    Табельный номер
+                </th>
+                <th>
+                    Участок
+                </th>
+                <th>
+                    Должность
+                </th>
+                <th>
+                    Инвентарный номер
+                </th>
+                <th>
+                    Наименование
+                </th>
+                <th>
+                    Количество
+                </th>
+                <th>
+                    Дата выдачи
+                </th>
+                <th>
+                    Дата возврата
+                </th>
+                <th>
+                    Примечание
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items" on-click="onRowClick(item)">
+                <td>
+                    {{item.name}}
+                </td>
+                <td>
+                    {{item.lastname}}
+                </td>
+                <td>
+                    {{item.tableNumber}}
+                </td>
+                <td>
+                    {{item.plot}}
+                </td>
+                <td>
+                    {{item.post}}
+                </td>
+                <td>
+                    {{item.inventoryNumber}}
+                </td>
+                <td>
+                    {{item.tool}}
+                </td>
+                <td>
+                    {{item.count}}
+                </td>
+                <td>
+                    {{item.dateOfIssue}}
+                </td>
+                <td>
+                    {{item.dateOfReturn}}
+                </td>
+                <td>
+                    {{item.note}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
