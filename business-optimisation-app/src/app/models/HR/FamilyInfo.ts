@@ -55,8 +55,8 @@ export class Child {
 }
 
 export enum FamilyStatus {
-    Unknown,
-    Single,
-    Married,
-    Divorced
+    Unknown = 'Unknown',
+    Single = 'Single',
+    Married = 'Married',
+    Divorced = 'Divorced'
 }

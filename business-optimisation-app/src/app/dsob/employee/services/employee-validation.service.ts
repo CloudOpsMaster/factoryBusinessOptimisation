@@ -6,7 +6,7 @@ import { EmployeeInfo, EmployeeMainInfo } from '../EmployeeInfo';
 })
 export class EmployeeValidationService {
 
-  // TODO: provide move info about error
+  // TODO: provide more info about error
   validate(employee: EmployeeInfo): string {
     let response = '';
     if (employee) {

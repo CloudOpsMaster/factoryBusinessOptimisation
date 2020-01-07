@@ -6,7 +6,7 @@ import { DocumentInfo } from 'src/app/models/HR/DocumentInfo';
 import { PositionInfo } from 'src/app/models/HR/PositionInfo';
 import { AdressInfo } from 'src/app/models/HR/AdressInfo';
 import { ContactInfo } from 'src/app/models/HR/ContactInfo';
-import { FamilyInfo } from 'src/app/models/HR/FamilyInfo';
+import { FamilyInfo, Child } from 'src/app/models/HR/FamilyInfo';
 import { EducationInfo } from 'src/app/models/HR/EducationInfo';
 import { EmploymentInfo } from 'src/app/models/HR/EmploymentInfo';
 import { MedicalCard } from 'src/app/models/HR/MedicalCard';
@@ -86,7 +86,8 @@ export class EmployeeService {
     employee.secondName = employeeInfo.mainInfo.secondName;
     employee.patronymic = employeeInfo.mainInfo.patronymic;
     employee.dob = employeeInfo.mainInfo.dob;
-    // TODO: rest ids (links) are not needed ?
+    employee.positionId = employeeInfo.position.id;
+    // TODO: previous experience ?
     return employee;
   }
 
@@ -97,6 +98,7 @@ export class EmployeeService {
     }
     employeeInfo.mainInfo.id = id;
     employeeInfo.document.id = employeeInfo.mainInfo.id;
+    // TODO: separate id for position
     employeeInfo.position.id = employeeInfo.mainInfo.id;
     employeeInfo.adress.id = employeeInfo.mainInfo.id;
     employeeInfo.contact.id = employeeInfo.mainInfo.id;
@@ -116,7 +118,7 @@ export class EmployeeService {
     this.updatePosition(employeeInfo);
     this.updateAdress(employeeInfo);
     this.updateContacts(employeeInfo);
-    // TODO: Family!!!
+    this.updateFamily(employeeInfo);
     this.updateEducation(employeeInfo);
     this.updateEmployment(employeeInfo);
     this.updateMedicalCard(employeeInfo);
@@ -132,6 +134,20 @@ export class EmployeeService {
       employeeToUpdate.dob = employeeInfo.mainInfo.dob;
     } else {
       console.error('EmployeeService.updateMainInfo: can not find employee for id ', employeeInfo.mainInfo.id);
+    }
+  }
+
+  private updateFamily(employeeInfo: EmployeeInfo) {
+    const family = this.families.find(f => f.id === employeeInfo.mainInfo.id);
+    if (family) {
+      family.status = employeeInfo.family.status;
+      family.statusChangeDate = employeeInfo.family.statusChangeDate;
+      family.children = new Array<Child>();
+      employeeInfo.family.children.forEach(child => {
+        family.children.push(child.clone());
+      })
+    } else {
+      console.error('EmployeeService.updateFamilyInfo: can not find family for id ', employeeInfo.mainInfo.id);
     }
   }
 

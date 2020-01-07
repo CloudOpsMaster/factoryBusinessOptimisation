@@ -1,0 +1,10 @@
+<div>
+  <label for="employmentDate">Семейное положение:</label>
+  <select class="custom-select" [(ngModel)]="family.status" 
+        [disabled]="!editMode" id="employmentDate" class="form-control form-control-sm">
+    <option value="Single">Не женат / не замужем</option>
+    <option value="Married">В браке</option>
+    <option value="Divorced">Разведен (-а)</option>
+  </select>
+
+</div>

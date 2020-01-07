@@ -45,6 +45,18 @@
     </div>
     <div class="card">
         <div class="card-header condensed">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#familyCard">
+                Семья
+            </button>
+        </div>
+        <div id="familyCard" class="collapse" data-parent="#editorAccordion">
+            <div class="card-body">
+                <app-family-info-editor [family]="employee.family" [viewMode]="viewMode"></app-family-info-editor>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header condensed">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo3">
                 Адрес / Контакты
             </button>
