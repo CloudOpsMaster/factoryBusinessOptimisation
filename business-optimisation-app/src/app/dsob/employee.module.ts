@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdressInfoEditorComponent } from './employee/employee-editor/editors/adress-info-editor/adress-info-editor.component';
 import { ContactInfoEditorComponent } from './employee/employee-editor/editors/contact-info-editor/contact-info-editor.component';
 import { EducationInfoEditorComponent } from './employee/employee-editor/editors/education-info-editor/education-info-editor.component';
+import { EmploymentInfoEditorComponent } from './employee/employee-editor/editors/employment-info-editor/employment-info-editor.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { EducationInfoEditorComponent } from './employee/employee-editor/editors
     DocumentInfoEditorComponent,
     AdressInfoEditorComponent,
     ContactInfoEditorComponent,
-    EducationInfoEditorComponent
+    EducationInfoEditorComponent,
+    EmploymentInfoEditorComponent
   ]
 })
 export class EmployeeModule { }

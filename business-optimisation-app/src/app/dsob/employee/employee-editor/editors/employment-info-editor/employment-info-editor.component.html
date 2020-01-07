@@ -1,0 +1,20 @@
+<div>
+  <label for="employmentDate">Дата приема на работу:</label>
+  <input type="date" [(ngModel)]="employment.employmentDate" 
+                      [readonly]="!editMode" 
+                      id="employmentDate" 
+                      class="form-control form-control-sm">
+  
+  <label for="dismissalDate">Дата увольнения:</label>
+  <input type="date" [(ngModel)]="employment.dismissalDate"
+                     [readonly]="!editMode" 
+                     id="dismissalDate" 
+                     class="form-control form-control-sm">
+
+  <label for="dismissReason">Причина увольнения:</label>
+  <textarea [(ngModel)]="employment.dismissReason" 
+                        [readonly]="reasonReadonly"
+                        id="dismissReason" 
+                        class="form-control form-control-sm"></textarea>
+
+</div>

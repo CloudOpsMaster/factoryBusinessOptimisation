@@ -67,4 +67,16 @@
             </div>
         </div>
     </div>
+    <div class="card">
+        <div class="card-header condensed">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo6">
+                Прием на работу/ Увольнение
+            </button>
+        </div>
+        <div id="mainInfo6" class="collapse" data-parent="#editorAccordion">
+            <div class="card-body">
+                <app-employment-info-editor [employment]="employee.employment" [viewMode]="viewMode"></app-employment-info-editor>
+            </div>
+        </div>
+    </div>
 </div>
