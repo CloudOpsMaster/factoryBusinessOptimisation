@@ -28,9 +28,9 @@ export class FamilyInfoEditorComponent extends BaseEditor {
 
   editCaptionFor(child: Child): string {
     if (child.id === this.editChildId) {
-      return 'Cancel';
+      return 'Отмена';
     } else {
-      return 'Edit';
+      return 'Изменить';
     }
   }
 
@@ -62,7 +62,7 @@ export class FamilyInfoEditorComponent extends BaseEditor {
 
   private assignIdForNewChild() {
     if (this.family.children.length > 0) {
-      this.newChild.id = this.family.children[this.family.children.length].id + 1;
+      this.newChild.id = this.family.children[this.family.children.length - 1].id + 1;
     } else {
       this.newChild.id = 1;
     }
