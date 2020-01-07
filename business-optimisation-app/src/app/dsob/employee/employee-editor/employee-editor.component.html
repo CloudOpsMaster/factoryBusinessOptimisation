@@ -69,6 +69,18 @@
     </div>
     <div class="card">
         <div class="card-header condensed">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#medicalCard">
+                Медицинская карта
+            </button>
+        </div>
+        <div id="medicalCard" class="collapse" data-parent="#editorAccordion">
+            <div class="card-body">
+                <app-medical-info-editor [medicalCard]="employee.medicalCard" [viewMode]="viewMode"></app-medical-info-editor>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header condensed">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo6">
                 Прием на работу/ Увольнение
             </button>

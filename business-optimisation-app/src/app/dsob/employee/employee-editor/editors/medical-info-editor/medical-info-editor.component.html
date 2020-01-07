@@ -1,0 +1,15 @@
+<div>
+  <div>
+    <label for="meddisabled">Инвалидность:</label>
+    <input type="checkbox" [(ngModel)]="medicalCard.disabled" 
+                          [disabled]="!editMode" 
+                          id="meddisabled" >
+  </div>
+
+  <label for="description">Описание:</label>
+  <textarea [(ngModel)]="medicalCard.description" 
+                        [readonly]="descriptionReadonly"
+                        id="description" 
+                        class="form-control form-control-sm"></textarea>
+
+</div>
