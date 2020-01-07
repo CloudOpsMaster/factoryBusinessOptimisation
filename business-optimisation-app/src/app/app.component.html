@@ -3,12 +3,15 @@
         <li class="nav navbar-nav">
             <a routerLink="/home" routerLinkActive="active" class="nav-link active">Главная</a>
         </li>
-        <li class="nav navbar-nav">
-            <a routerLink="/employee" routerLinkActive="active" class="nav-link">Учет работников</a>
+
+        <li class="nav nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">Управление персоналом</a>
+            <div class="dropdown-menu">
+                <a routerLink="/employee" routerLinkActive="active" class="nav-link">Учет работников</a>
+                <a routerLink="/ihor" routerLinkActive="active" class="nav-link">Рабочие окна</a>
+            </div>
         </li>
-        <li class="nav navbar-nav">
-            <a routerLink="/ihor" routerLinkActive="active" class="nav-link">Рабочие окна</a>
-        </li>
+
         <li class="nav navbar-nav">
             <a routerLink="/instrument-services" routerLinkActive="active" class="nav-link">Обслуживание
                 оборудования</a>
