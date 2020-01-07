@@ -43,7 +43,7 @@ export class EmployeeService {
   deleteEmployee(employeeInfo: EmployeeInfo) {
     this.employeesData = this.employeesData.filter(i => i.id !== employeeInfo.mainInfo.id);
     this.documents = this.documents.filter(i => i.id !== employeeInfo.mainInfo.id);
-    this.positions = this.positions.filter(i => i.id !== employeeInfo.mainInfo.id);
+    this.positions = this.positions.filter(i => i.id !== employeeInfo.position.id);
     this.adresses = this.adresses.filter(i => i.id !== employeeInfo.mainInfo.id);
     this.contacts = this.contacts.filter(i => i.id !== employeeInfo.mainInfo.id);
     this.families = this.families.filter(i => i.id !== employeeInfo.mainInfo.id);
@@ -98,8 +98,6 @@ export class EmployeeService {
     }
     employeeInfo.mainInfo.id = id;
     employeeInfo.document.id = employeeInfo.mainInfo.id;
-    // TODO: separate id for position
-    employeeInfo.position.id = employeeInfo.mainInfo.id;
     employeeInfo.adress.id = employeeInfo.mainInfo.id;
     employeeInfo.contact.id = employeeInfo.mainInfo.id;
     employeeInfo.family.id = employeeInfo.mainInfo.id;

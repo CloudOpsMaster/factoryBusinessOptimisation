@@ -8,6 +8,7 @@ import { GettingToolsComponent } from "./mary/getting-tools/getting-tools.compon
 import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
 import { MeteringComponent } from './vadim/metering/metering.component';
 import { CheckListComponent } from './vlad/check-list/check-list.component';
+import { PositionsManagerComponent } from './dsob/employee/positions-manager/positions-manager.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'employee',
     component: EmployeeManagerComponent
+  },
+  {
+    path: 'positions',
+    component: PositionsManagerComponent
   },
   {
     path: 'ihor',

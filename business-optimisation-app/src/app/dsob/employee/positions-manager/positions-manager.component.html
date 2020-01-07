@@ -1,0 +1,40 @@
+<h3 float='left'>Менеджер должностей</h3>
+<!-- add new -->
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <label for="newPositionTitle">Название должности:</label>
+      <input type="text" [(ngModel)]="newPosition.title"
+              id="newPositionTitle">
+    </div>
+    <div class="col-6">
+      <label for="newPositionReq">Требования:</label><br>
+      <textarea [(ngModel)]="newPosition.requirements"
+                id="newPositionReq"></textarea>
+    </div>
+    <div class="col-3">
+      <button class="btn btn-success"
+              (click)="onAdd()">Добавить</button>
+    </div>
+  </div>
+</div>
+
+<!-- existing -->
+<div class="container">
+  <div class="row" *ngFor="let position of filteredPositions">
+    <div class="col-3">
+      <input type="text" [(ngModel)]="position.title"
+            [readonly]="isReadonlyForPosition(position)">
+    </div>
+    <div class="col-6">
+      <textarea [(ngModel)]="position.requirements"
+            [readonly]="isReadonlyForPosition(position)"></textarea>
+    </div>
+    <div class="col-3">
+      <button class="btn btn-warning"
+              (click)="onEdit(position)">{{editCaptionFor(position)}}</button>
+      <button class="btn btn-danger"
+              (click)="onDeleteClick(position)">Удалить</button>
+    </div>
+  </div>
+</div>
