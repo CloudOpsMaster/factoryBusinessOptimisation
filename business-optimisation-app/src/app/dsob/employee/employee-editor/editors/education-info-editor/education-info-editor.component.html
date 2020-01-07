@@ -1,0 +1,18 @@
+<div>
+  <label for="heiTitle">Учебное заведение:</label>
+  <input type="text" [(ngModel)]="education.heiTitle" [readonly]="!editMode" id="heiTitle" class="form-control form-control-sm">
+  
+  <label for="graduateDate">Дата окончания:</label>
+  <input type="date" [(ngModel)]="education.graduateDate" [readonly]="!editMode" id="graduateDate" class="form-control form-control-sm">
+
+  <label for="degree1">Уровень:</label>
+  <select class="custom-select" [(ngModel)]="education.degree" [disabled]="!editMode" id="degree1" class="form-control form-control-sm">
+    <option value="junior">младший специалист</option>
+    <option value="bakalavr">бакалавр</option>
+    <option value="magister">магистр</option>
+  </select>
+
+  <label for="speciality">Специальность:</label>
+  <input type="text" [(ngModel)]="education.speciality" [readonly]="!editMode" id="speciality" class="form-control form-control-sm">
+
+</div>

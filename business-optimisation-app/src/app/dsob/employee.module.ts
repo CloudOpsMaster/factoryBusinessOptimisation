@@ -11,6 +11,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdressInfoEditorComponent } from './employee/employee-editor/editors/adress-info-editor/adress-info-editor.component';
 import { ContactInfoEditorComponent } from './employee/employee-editor/editors/contact-info-editor/contact-info-editor.component';
+import { EducationInfoEditorComponent } from './employee/employee-editor/editors/education-info-editor/education-info-editor.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ContactInfoEditorComponent } from './employee/employee-editor/editors/c
     EmployeeFilterComponent,
     DocumentInfoEditorComponent,
     AdressInfoEditorComponent,
-    ContactInfoEditorComponent
+    ContactInfoEditorComponent,
+    EducationInfoEditorComponent
   ]
 })
 export class EmployeeModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseEditor } from '../base-editor';
 import { ContactInfo } from 'src/app/models/HR/ContactInfo';
 

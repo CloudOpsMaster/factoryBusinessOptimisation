@@ -33,6 +33,18 @@
     </div>
     <div class="card">
         <div class="card-header condensed">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo5">
+                Образование
+            </button>
+        </div>
+        <div id="mainInfo5" class="collapse" data-parent="#editorAccordion">
+            <div class="card-body">
+                <app-education-info-editor [education]="employee.education" [viewMode]="viewMode"></app-education-info-editor>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header condensed">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo3">
                 Адрес
             </button>
