@@ -1,4 +1,4 @@
-<form [formGroup]="servicesForm" novalidate>
+<form [formGroup]="servicesForm">
   <!-- <div class="form-group">
     <label for="IdInstrument">Идентификатор инструмента</label>
     <input type="number" class="form-control" id="IdInstrument"  formControlName="id" required>
@@ -6,15 +6,15 @@
   </div> -->
   <div class="form-group">
     <label for="startDate">Дата сдачи в ремонт</label>
-    <input type="date" class="form-control" id="startDate"  formControlName="startDate">
+    <input type="date" class="form-control" id="startDate"  formControlName="startDate" required>
   </div>
   <div class="form-group">
     <label for="endtDate">Дата получения из ремонта</label>
-    <input type="date" class="form-control" id="endDate"  formControlName="endDate">
+    <input type="date" class="form-control" id="endDate"  formControlName="endDate" required>
   </div>
   <div class="form-group">
     <label for="status">Статус</label>
-    <select id="status" class="form-control" formControlName="status">
+    <select id="status" class="form-control" formControlName="status" required>
       <option selected>Готов</option>
       <option>Не готов</option>
       <option>Не подлежит восстановления</option>
@@ -24,11 +24,11 @@
     <label for="description">Описание</label>
     <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
   </div>
-  <button  (click)="onAdd()"
-          type="button" class="btn btn-primary">Отправить</button>
+  <button (click)="onAdd()"
+          type="button" class="btn btn-primary" [disabled]="!servicesForm.valid">Отправить</button>
 
-          <button (click)="onSave()"
-          type="button" class="btn btonUppdaten-primary">Сохранить</button>
+  <button (click)="onSave()"
+  type="button" class="btn btonUppdaten-primary">Сохранить</button>
 </form>
 
 
