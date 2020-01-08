@@ -32,6 +32,7 @@ export class InstrumentServiceFormComponent implements OnInit {
   public servicesForm: FormGroup;
 
   public disabled = true;
+  public errorDate = false;
 
   private updateItemId;
 
@@ -54,6 +55,14 @@ export class InstrumentServiceFormComponent implements OnInit {
       endDate: new FormControl('', [Validators.required]),
       status: new FormControl('', [Validators.required]),
       description: new FormControl('')
+    });
+
+    this.servicesForm.controls.startDate.valueChanges.subscribe((valStartDate) => {
+      this.servicesForm.controls.endDate.valueChanges.subscribe((valEndDate) => {
+          this.errorDate = (valStartDate > valEndDate) ? true : false;
+          this.disabled = (valStartDate > valEndDate) ? true : false;
+      });
+      
     });
   }
 
