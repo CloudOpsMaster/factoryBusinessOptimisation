@@ -1,5 +1,6 @@
 <h3 float='left'>Менеджер должностей</h3>
 <!-- add new -->
+<h4 float='left'>Новая должность</h4>
 <div class="container">
   <div class="row">
     <div class="col-3">
@@ -10,16 +11,33 @@
     <div class="col-5">
       <label for="newPositionReq">Требования:</label><br>
       <textarea [(ngModel)]="newPosition.requirements"
-                id="newPositionReq"></textarea>
+               class="positionReq"
+               id="newPositionReq"></textarea>
     </div>
     <div class="col-4">
-      <button class="btn btn-success"
-              (click)="onAdd()">Добавить</button>
+      <button class="btn btn-success btn-sm btn-add"
+              (click)="onAdd()"
+              [disabled]="!addEnabled">Добавить</button>
     </div>
   </div>
 </div>
 
 <!-- existing -->
+<h4 float='left'>Каталог должностей</h4>
+<div class="filterBlock">
+   <label for="filterPositionTitle" class="labelFilter">Фильтр по должности:</label>
+   <input type="text" [(ngModel)]="filter.title"
+                        id="filterPositionTitle">
+   <label for="filterPositionReq" class="labelFilter">Фильтр по требованиям:</label>
+   <input type="text" [(ngModel)]="filter.requirements" class="positionFilterInput"
+                        id="filterPositionReq">
+   <button class="btn btn-primary btn-sm"
+                        (click)="onFilterClick()"
+                        [disabled]="!filterEnabled">Фильтровать</button>
+   <button class="btn btn-light btn-sm"
+                        (click)="onFilterClearClick()"
+                        [disabled]="!filterEnabled">Очистить</button>
+</div>
 <div class="container">
   <div class="row" *ngFor="let position of filteredPositions">
     <div class="col-3">
@@ -28,14 +46,15 @@
     </div>
     <div class="col-5">
       <textarea [(ngModel)]="position.requirements"
-            [readonly]="isReadonlyForPosition(position)"></textarea>
+            [readonly]="isReadonlyForPosition(position)"
+            class="positionReq"></textarea>
     </div>
     <div class="col-4">
       <button [class]="editButtonClassFor(position)"
               (click)="onEdit(position)">{{editCaptionFor(position)}}</button>
-      <button *ngIf="saveVisibleFor(position)" class="btn btn-success"
-              (click)="onEdit(position)">Сохранить</button>
-      <button class="btn btn-danger"
+      <button *ngIf="saveVisibleFor(position)" class="btn btn-success btn-sm"
+              (click)="onSave(position)">Сохранить</button>
+      <button class="btn btn-danger btn-sm"
               (click)="onDeleteClick(position)">Удалить</button>
     </div>
   </div>

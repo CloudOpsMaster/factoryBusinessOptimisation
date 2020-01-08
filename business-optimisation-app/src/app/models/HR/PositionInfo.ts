@@ -20,4 +20,9 @@ export class PositionInfo {
         this.title = position.title;
         this.requirements = position.requirements;
     }
+
+    isAllFieldsNotEmpty(): boolean {
+      return this.title && this.title.length > 0
+            && this.requirements && this.requirements.length > 0;
+    }
 }
