@@ -5,13 +5,13 @@
   <div class="row">
     <div class="col-3">
       <label for="newPositionTitle">Название должности:</label>
-      <input type="text" [(ngModel)]="newPosition.title"
+      <input type="text" [(ngModel)]="newPosition.title" class="fullWidth"
               id="newPositionTitle">
     </div>
     <div class="col-5">
       <label for="newPositionReq">Требования:</label><br>
       <textarea [(ngModel)]="newPosition.requirements"
-               class="positionReq"
+               class="fullWidth"
                id="newPositionReq"></textarea>
     </div>
     <div class="col-4">
@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-
+<hr>
 <!-- existing -->
 <h4 float='left'>Каталог должностей</h4>
 <div class="filterBlock">
@@ -42,12 +42,13 @@
   <div class="row" *ngFor="let position of filteredPositions">
     <div class="col-3">
       <input type="text" [(ngModel)]="position.title"
-            [readonly]="isReadonlyForPosition(position)">
+            [readonly]="isReadonlyForPosition(position)"
+            [class]="getTextClassFor(position)">
     </div>
     <div class="col-5">
       <textarea [(ngModel)]="position.requirements"
             [readonly]="isReadonlyForPosition(position)"
-            class="positionReq"></textarea>
+            [class]="getTextClassFor(position)"></textarea>
     </div>
     <div class="col-4">
       <button [class]="editButtonClassFor(position)"

@@ -35,6 +35,12 @@ export class PositionsManagerComponent implements OnInit {
    }
 
    onAdd() {
+      const validationError = this.getValidationError(this.newPosition);
+      if (validationError.length !== 0) {
+         // TODO: provide normal dialog
+         alert(validationError);
+         return;
+      }
       this.assignIdForNewPosition();
       this.allPositions.push(this.newPosition);
       this.newPosition = new PositionInfo();
@@ -47,6 +53,8 @@ export class PositionsManagerComponent implements OnInit {
       } else {
          this.editPositionId = position.id;
       }
+      // TODO: handle cross switching :-)
+      this.restoreFieldsFor(position);
    }
 
    onDeleteClick(position: PositionInfo) {
@@ -55,6 +63,12 @@ export class PositionsManagerComponent implements OnInit {
    }
 
    onSave(position: PositionInfo) {
+      const validationError = this.getValidationError(position);
+      if (validationError.length !== 0) {
+         // TODO: provide normal dialog
+         alert(validationError);
+         return;
+      }
       const currentPosition = this.allPositions.find(p => p.id === position.id);
       currentPosition.title = position.title;
       currentPosition.requirements = position.requirements;
@@ -91,6 +105,14 @@ export class PositionsManagerComponent implements OnInit {
       }
    }
 
+   getTextClassFor(position: PositionInfo): string {
+      if (position.id === this.editPositionId) {
+         return 'fullWidth enabledText';
+      } else {
+         return 'fullWidth disabledText';
+      }
+   }
+
    saveVisibleFor(position): boolean {
       return position.id === this.editPositionId;
    }
@@ -104,6 +126,11 @@ export class PositionsManagerComponent implements OnInit {
    private readStorage() {
       this.allPositions = this.storageService.getData(StorageKey.EmployeePositionsStorageKey)
          || new Array<PositionInfo>();
+      this.allPositions = this.allPositions.map(p => {
+         const info = new PositionInfo();
+         info.initFrom(p);
+         return info;
+      });
    }
 
    private writeStorage() {
@@ -119,13 +146,29 @@ export class PositionsManagerComponent implements OnInit {
    }
 
    private applyFiltration() {
-      this.filteredPositions = this.allPositions.filter(p => p);
+      this.filteredPositions = new Array<PositionInfo>();
+      this.allPositions.forEach(p => {
+         this.filteredPositions.push(p.clone());
+      });
       if (this.filter.title && this.filter.title.length > 0) {
          this.filteredPositions = this.filteredPositions.filter(p => p.title.startsWith(this.filter.title));
       }
       if (this.filter.requirements && this.filter.requirements.length > 0) {
          this.filteredPositions = this.filteredPositions.filter(p => p.requirements.includes(this.filter.requirements));
       }
+   }
+
+   private getValidationError(position: PositionInfo): string {
+      let response = '';
+      if (this.allPositions.some(p => p.title.trim() === position.title.trim())) {
+         response = 'Position with such title already exists!';
+      }
+      return response;
+   }
+
+   private restoreFieldsFor(position: PositionInfo) {
+      const originalPosition = this.allPositions.find(p => p.id === position.id);
+      position.initFrom(originalPosition);
    }
 
 }

@@ -10,10 +10,18 @@
    margin-bottom: 20px;
 }
 
-.positionReq {
+.fullWidth {
    width: 100%;
 }
 
 .btn-add {
    margin-top: 30px;
+}
+
+.disabledText {
+   background-color: lightgray;
+}
+
+.enabledText {
+   background-color: white;
 }
