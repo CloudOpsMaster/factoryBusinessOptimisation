@@ -16,7 +16,7 @@ export class InstrumentServiceTableItemComponent implements OnInit {
 
   @Output() itemId: EventEmitter<number> = new EventEmitter();
   @Output() deleteItem: EventEmitter<number> = new EventEmitter();
-  @Output() updateItem: EventEmitter<number> = new EventEmitter()
+  @Output() updateItem: EventEmitter<number> = new EventEmitter();
 
   public updade = false;
   public servicesForm: FormGroup;
@@ -34,7 +34,4 @@ export class InstrumentServiceTableItemComponent implements OnInit {
   onUpdate() {
     this.updateItem.emit(this.instrument.id);
   }
-
-  
-
 }

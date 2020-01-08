@@ -7,5 +7,4 @@ export class InstrumentServis {
         public description: string,
         public id?: number
     ) {}
-    
 }

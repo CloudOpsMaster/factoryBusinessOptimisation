@@ -15,11 +15,11 @@ export class InstrumentService {
   public getData(): InstrumentServis[] {
     const items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
-      if (!items) {
-          throw new Error(`Data for key - ${InstrumentService.STORAGE_KEY} is undefined`);
-      }
+    if (!items) {
+        throw new Error(`Data for key - ${InstrumentService.STORAGE_KEY} is undefined`);
+    }
 
-      return items;
+    return items;
   }
 
   public hasKey(): boolean {
@@ -30,20 +30,20 @@ export class InstrumentService {
 
     const items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
-      const findElem = items.find((item: any) => {
-          return item.id === id;
-      });
+    const findElem = items.find((item: any) => {
+        return item.id === id;
+    });
 
-      if (findElem) {
-          return findElem;
-      }
-
-      throw new Error(`Incorrect id - ${id}`);
+    if (findElem) {
+      return findElem;
+    }
+    throw new Error(`Incorrect id - ${id}`);
   }
 
+
   public set(element: InstrumentServis): void {
-    const randomId = Math.random();
-    const newItem: InstrumentServis = { ...element, id: randomId };
+    const randomId = Math.floor(Math.random() * 1000000 );
+    const newItem: InstrumentServis = { ...element, id: randomId};
     let items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
     if (this.storageService.hasKey(InstrumentService.STORAGE_KEY)) {
@@ -51,7 +51,7 @@ export class InstrumentService {
     } else {
       items = [newItem];
     }
-    
+
     this.storageService.deleteData(InstrumentService.STORAGE_KEY);
     this.storageService.setData(InstrumentService.STORAGE_KEY, items);
   }
@@ -71,7 +71,7 @@ export class InstrumentService {
 
     const index = items.findIndex((element: InstrumentServis) => {
       return element.id === item.id;
-    })
+    });
 
     items.splice(index, 1, item);
 

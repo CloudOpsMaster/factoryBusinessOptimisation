@@ -24,14 +24,18 @@ export class InstrumentServiceFormComponent implements OnInit {
   }
 
   @Output() private setItem: EventEmitter<InstrumentServis> = new EventEmitter();
-  @Output() private updateItem: EventEmitter<InstrumentServis> = new EventEmitter()
+  @Output() private updateItem: EventEmitter<InstrumentServis> = new EventEmitter();
 
 
 // ##############################
 
   public servicesForm: FormGroup;
 
+  public disabled = true;
+
   private updateItemId;
+
+
   // ##############################
 
   constructor(private storage: StorageService,
@@ -41,10 +45,14 @@ export class InstrumentServiceFormComponent implements OnInit {
   // ##############################
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
     this.servicesForm = new FormGroup({
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
-      status: new FormControl(''),
+      startDate: new FormControl('', [Validators.required]),
+      endDate: new FormControl('', [Validators.required]),
+      status: new FormControl('', [Validators.required]),
       description: new FormControl('')
     });
   }
@@ -58,6 +66,8 @@ export class InstrumentServiceFormComponent implements OnInit {
       );
 
     this.setItem.emit(newItem);
+
+    this.initForm();
     }
 
     onSave() {
@@ -69,7 +79,7 @@ export class InstrumentServiceFormComponent implements OnInit {
         this.updateItemId
         );
 
-        this.updateItem.emit(newSaveItem);
+      this.updateItem.emit(newSaveItem);
     }
   }
 
