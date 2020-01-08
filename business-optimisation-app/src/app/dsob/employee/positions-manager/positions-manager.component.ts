@@ -50,11 +50,14 @@ export class PositionsManagerComponent implements OnInit {
    onEdit(position: PositionInfo) {
       if (position.id === this.editPositionId) {
          this.editPositionId = -1;
+         this.restoreFieldsFor(position);
       } else {
+         if (this.editPositionId > -1) {
+            const positionToUpdate = this.filteredPositions.find(p => p.id === this.editPositionId);
+            this.restoreFieldsFor(positionToUpdate);
+         }
          this.editPositionId = position.id;
       }
-      // TODO: handle cross switching :-)
-      this.restoreFieldsFor(position);
    }
 
    onDeleteClick(position: PositionInfo) {
@@ -151,10 +154,11 @@ export class PositionsManagerComponent implements OnInit {
          this.filteredPositions.push(p.clone());
       });
       if (this.filter.title && this.filter.title.length > 0) {
-         this.filteredPositions = this.filteredPositions.filter(p => p.title.startsWith(this.filter.title));
+         this.filteredPositions = this.filteredPositions.filter(p => p.title.toUpperCase().startsWith(this.filter.title.toUpperCase()));
       }
       if (this.filter.requirements && this.filter.requirements.length > 0) {
-         this.filteredPositions = this.filteredPositions.filter(p => p.requirements.includes(this.filter.requirements));
+         this.filteredPositions =
+            this.filteredPositions.filter(p => p.requirements.toUpperCase().includes(this.filter.requirements.toUpperCase()));
       }
    }
 
