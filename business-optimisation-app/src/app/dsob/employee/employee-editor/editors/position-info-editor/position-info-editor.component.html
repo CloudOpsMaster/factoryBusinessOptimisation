@@ -5,5 +5,8 @@
          [value]="position.id">{{position.title}}</option>
 </select>
 <br>
-<button *ngIf="editMode">Создать новую должность</button>
+<button *ngIf="editMode" (click)="onCreateNewPosition()">{{createNewCaption}}</button>
+<app-position-creator *ngIf="creationMode"
+                        (positionAdded)="onPositionAdded()"
+                        [horizontalLayout]="false"></app-position-creator>
 

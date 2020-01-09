@@ -1,18 +1,17 @@
-<h4 float='left'>Новая должность</h4>
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-sm-12">
+    <div [class]="titleColumnClass">
       <label for="newPositionTitle">Название должности:</label>
       <input type="text" [(ngModel)]="newPosition.title" class="fullWidth"
               id="newPositionTitle">
     </div>
-    <div class="col-lg-5 col-sm-12">
+    <div [class]="reqColumnClass">
       <label for="newPositionReq">Требования:</label><br>
       <textarea [(ngModel)]="newPosition.requirements"
                class="fullWidth"
                id="newPositionReq"></textarea>
     </div>
-    <div class="col-lg-4 col-sm-12">
+    <div [class]="buttonColumnClass">
       <button class="btn btn-success btn-sm btn-add"
               (click)="onAdd()"
               [disabled]="!addEnabled">Добавить</button>

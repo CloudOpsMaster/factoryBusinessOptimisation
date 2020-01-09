@@ -305,7 +305,6 @@ export class EmployeeService {
   private writeStorage() {
     this.storageService.setData(StorageKey.EmployeesStorageKey, this.employeesData);
     this.storageService.setData(StorageKey.EmployeeDocumentsStorageKey, this.documents);
-    this.storageService.setData(StorageKey.EmployeePositionsStorageKey, this.positions);
     this.storageService.setData(StorageKey.EmployeeAdressesStorageKey, this.adresses);
     this.storageService.setData(StorageKey.EmployeeContactsStorageKey, this.contacts);
     this.storageService.setData(StorageKey.EmployeeFamiliesStorageKey, this.families);

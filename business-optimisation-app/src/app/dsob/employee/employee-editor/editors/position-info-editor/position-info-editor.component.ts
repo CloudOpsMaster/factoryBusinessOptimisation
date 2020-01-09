@@ -12,8 +12,26 @@ export class PositionInfoEditorComponent extends BaseEditor implements OnInit {
 
    @Input() position: PositionInfo;
    allPositions = new Array<PositionInfo>();
+   creationMode = false;
+
+   get createNewCaption(): string {
+      if (this.creationMode) {
+         return 'Отмена создания новой должности';
+      } else {
+         return 'Создание новой должности';
+      }
+   }
 
    ngOnInit(): void {
+   }
+
+   onCreateNewPosition() {
+      this.creationMode = !this.creationMode;
+   }
+
+   onPositionAdded() {
+      this.creationMode = false;
+      this.readStorage();
    }
 
    constructor(private storageService: StorageService) {
