@@ -1,26 +1,6 @@
 <h3 float='left'>Менеджер должностей</h3>
 <!-- add new -->
-<h4 float='left'>Новая должность</h4>
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <label for="newPositionTitle">Название должности:</label>
-      <input type="text" [(ngModel)]="newPosition.title" class="fullWidth"
-              id="newPositionTitle">
-    </div>
-    <div class="col-5">
-      <label for="newPositionReq">Требования:</label><br>
-      <textarea [(ngModel)]="newPosition.requirements"
-               class="fullWidth"
-               id="newPositionReq"></textarea>
-    </div>
-    <div class="col-4">
-      <button class="btn btn-success btn-sm btn-add"
-              (click)="onAdd()"
-              [disabled]="!addEnabled">Добавить</button>
-    </div>
-  </div>
-</div>
+<app-position-creator (positionAdded)="onPositionAdded()"></app-position-creator>
 <hr>
 <!-- existing -->
 <h4 float='left'>Каталог должностей</h4>

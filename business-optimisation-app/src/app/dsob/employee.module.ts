@@ -17,6 +17,7 @@ import { MedicalInfoEditorComponent } from './employee/employee-editor/editors/m
 import { EnsuranceInfoEditorComponent } from './employee/employee-editor/editors/ensurance-info-editor/ensurance-info-editor.component';
 import { FamilyInfoEditorComponent } from './employee/employee-editor/editors/family-info-editor/family-info-editor.component';
 import { PositionsManagerComponent } from './employee/positions-manager/positions-manager.component';
+import { PositionCreatorComponent } from './employee/positions-manager/position-creator/position-creator.component';
 import { PositionInfoEditorComponent } from './employee/employee-editor/editors/position-info-editor/position-info-editor.component';
 
 
@@ -43,7 +44,8 @@ import { PositionInfoEditorComponent } from './employee/employee-editor/editors/
     EnsuranceInfoEditorComponent,
     FamilyInfoEditorComponent,
     PositionsManagerComponent,
-    PositionInfoEditorComponent
+    PositionInfoEditorComponent,
+    PositionCreatorComponent
   ]
 })
 export class EmployeeModule { }

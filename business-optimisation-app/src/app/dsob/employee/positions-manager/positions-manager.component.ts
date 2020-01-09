@@ -10,12 +10,8 @@ import { PositionInfo } from 'src/app/models/HR/PositionInfo';
 export class PositionsManagerComponent implements OnInit {
 
    filteredPositions: Array<PositionInfo>;
-   newPosition: PositionInfo;
    filter: PositionInfo;
 
-   get addEnabled(): boolean {
-      return this.newPosition.isAllFieldsNotEmpty();
-   }
    get filterEnabled(): boolean {
       return (this.filter.title && this.filter.title.length > 0)
             || (this.filter.requirements && this.filter.requirements.length > 0);
@@ -25,7 +21,6 @@ export class PositionsManagerComponent implements OnInit {
    private editPositionId = -1;
 
    constructor(private storageService: StorageService) {
-      this.newPosition = new PositionInfo();
       this.filter = new PositionInfo();
    }
 
@@ -34,16 +29,7 @@ export class PositionsManagerComponent implements OnInit {
       this.applyFiltration();
    }
 
-   onAdd() {
-      const validationError = this.getValidationError(this.newPosition);
-      if (validationError.length !== 0) {
-         // TODO: provide normal dialog
-         alert(validationError);
-         return;
-      }
-      this.assignIdForNewPosition();
-      this.allPositions.push(this.newPosition);
-      this.newPosition = new PositionInfo();
+   onPositionAdded() {
       this.refreshData();
    }
 
@@ -62,6 +48,7 @@ export class PositionsManagerComponent implements OnInit {
 
    onDeleteClick(position: PositionInfo) {
       this.allPositions = this.allPositions.filter(p => p.id !== position.id);
+      this.writeStorage();
       this.refreshData();
    }
 
@@ -76,6 +63,7 @@ export class PositionsManagerComponent implements OnInit {
       currentPosition.title = position.title;
       currentPosition.requirements = position.requirements;
       this.editPositionId = -1;
+      this.writeStorage();
       this.refreshData();
    }
 
@@ -121,7 +109,6 @@ export class PositionsManagerComponent implements OnInit {
    }
 
    private refreshData() {
-      this.writeStorage();
       this.readStorage();
       this.applyFiltration();
    }
@@ -140,14 +127,6 @@ export class PositionsManagerComponent implements OnInit {
       this.storageService.setData(StorageKey.EmployeePositionsStorageKey, this.allPositions);
    }
 
-   private assignIdForNewPosition() {
-      if (this.allPositions.length > 0) {
-         this.newPosition.id = this.allPositions[this.allPositions.length - 1].id + 1;
-      } else {
-         this.newPosition.id = 1;
-      }
-   }
-
    private applyFiltration() {
       this.filteredPositions = new Array<PositionInfo>();
       this.allPositions.forEach(p => {
@@ -164,7 +143,7 @@ export class PositionsManagerComponent implements OnInit {
 
    private getValidationError(position: PositionInfo): string {
       let response = '';
-      if (this.allPositions.some(p => p.title.trim() === position.title.trim())) {
+      if (this.allPositions.some(p => p.title.trim() === position.title.trim() && p.id !== position.id)) {
          response = 'Position with such title already exists!';
       }
       return response;
