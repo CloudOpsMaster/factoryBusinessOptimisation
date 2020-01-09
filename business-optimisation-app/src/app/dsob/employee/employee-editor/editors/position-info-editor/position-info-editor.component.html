@@ -5,5 +5,5 @@
          [value]="position.id">{{position.title}}</option>
 </select>
 <br>
-<button [disabled]="!editMode">Создать новую должность</button>
+<button *ngIf="editMode">Создать новую должность</button>
 

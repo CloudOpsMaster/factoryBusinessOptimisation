@@ -11,6 +11,9 @@ export class EmployeeInfoEditorComponent extends BaseEditor {
 
   @Input() mainInfo: EmployeeMainInfo;
 
+  onModelChange(path: any) {
+     console.log('path:', path);
+  }
   constructor() {
     super();
   }

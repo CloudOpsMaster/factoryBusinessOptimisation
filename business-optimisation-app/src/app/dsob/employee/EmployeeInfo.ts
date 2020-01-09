@@ -16,6 +16,7 @@ export class EmployeeMainInfo {
     patronymic: string;
     dob: Date;
     photo: string;
+    signature: string;
 
     constructor() {
         this.id = -1;
@@ -28,6 +29,7 @@ export class EmployeeMainInfo {
         this.patronymic = employee.patronymic;
         this.dob = employee.dob;
         this.photo = employee.photo;
+        this.signature = employee.signature;
     }
 
     clone(): EmployeeMainInfo {
@@ -37,6 +39,8 @@ export class EmployeeMainInfo {
         mainInfo.secondName = this.secondName;
         mainInfo.patronymic = this.patronymic;
         mainInfo.dob = this.dob;
+        mainInfo.photo = this.photo;
+        mainInfo.signature = this.signature;
         return mainInfo;
     }
 }

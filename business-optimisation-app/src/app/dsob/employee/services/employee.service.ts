@@ -84,6 +84,8 @@ export class EmployeeService {
     employee.secondName = employeeInfo.mainInfo.secondName;
     employee.patronymic = employeeInfo.mainInfo.patronymic;
     employee.dob = employeeInfo.mainInfo.dob;
+    employee.photo = employeeInfo.mainInfo.photo;
+    employee.signature = employeeInfo.mainInfo.signature;
     employee.positionId = +employeeInfo.position.id;
     // TODO: previous experience ?
     return employee;
@@ -128,6 +130,7 @@ export class EmployeeService {
       employeeToUpdate.patronymic = employeeInfo.mainInfo.patronymic;
       employeeToUpdate.dob = employeeInfo.mainInfo.dob;
       employeeToUpdate.photo = employeeInfo.mainInfo.photo;
+      employeeToUpdate.signature = employeeInfo.mainInfo.signature;
       employeeToUpdate.positionId = +employeeInfo.position.id;
     } else {
       console.error('EmployeeService.updateMainInfo: can not find employee for id ', employeeInfo.mainInfo.id);

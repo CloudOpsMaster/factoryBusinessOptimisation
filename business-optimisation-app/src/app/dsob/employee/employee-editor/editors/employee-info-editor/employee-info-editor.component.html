@@ -10,4 +10,19 @@
 
    <label for="dob">Дата рождения:</label>
    <input type="date" [(ngModel)]="mainInfo.dob" [readonly]="!editMode" id="dob" class="form-control  form-control-sm">
+
+   <label for="photo">Фото:</label>
+   <br>
+   <img [src]="mainInfo.photo" class="img-fluid" alt="Фото" id="photo">
+   <br>
+   <input name="photoChooser" type="file" accept="image/*" *ngIf="editMode" [(ngModel)]="mainInfo.photo" (ngModelChange)="onModelChange($event)">
+
+   <br>
+   <label for="signature">Подпись:</label>
+   <br>
+   <img [src]="mainInfo.signature" class="img-fluid" alt="Подпись" id="signature">
+   <br>
+   <input name="signatureChooser" type="file" accept="image/*" *ngIf="editMode" [(ngModel)]="mainInfo.signature" (ngModelChange)="onModelChange($event)">
+   
+   
 </div>

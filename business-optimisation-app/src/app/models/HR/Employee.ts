@@ -6,6 +6,8 @@ export class Employee {
     dob: Date;
     /** location of the foto */
     photo: string;
+    /** localtion of signature scan/photo */
+    signature: string;
     /** link to position description */
     positionId: number;
     /** link to previous experience records */
