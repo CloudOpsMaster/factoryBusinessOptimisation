@@ -43,7 +43,6 @@ export class EmployeeService {
   deleteEmployee(employeeInfo: EmployeeInfo) {
     this.employeesData = this.employeesData.filter(i => i.id !== employeeInfo.mainInfo.id);
     this.documents = this.documents.filter(i => i.id !== employeeInfo.mainInfo.id);
-    this.positions = this.positions.filter(i => i.id !== employeeInfo.position.id);
     this.adresses = this.adresses.filter(i => i.id !== employeeInfo.mainInfo.id);
     this.contacts = this.contacts.filter(i => i.id !== employeeInfo.mainInfo.id);
     this.families = this.families.filter(i => i.id !== employeeInfo.mainInfo.id);
@@ -69,7 +68,6 @@ export class EmployeeService {
     this.employeesData.push(employeeData);
 
     this.documents.push(employeeInfo.document);
-    this.positions.push(employeeInfo.position);
     this.adresses.push(employeeInfo.adress);
     this.contacts.push(employeeInfo.contact);
     this.families.push(employeeInfo.family);
@@ -86,7 +84,7 @@ export class EmployeeService {
     employee.secondName = employeeInfo.mainInfo.secondName;
     employee.patronymic = employeeInfo.mainInfo.patronymic;
     employee.dob = employeeInfo.mainInfo.dob;
-    employee.positionId = employeeInfo.position.id;
+    employee.positionId = +employeeInfo.position.id;
     // TODO: previous experience ?
     return employee;
   }
@@ -113,7 +111,6 @@ export class EmployeeService {
   private performUpdateEmployee(employeeInfo: EmployeeInfo) {
     this.updateMainInfo(employeeInfo);
     this.updateDocument(employeeInfo);
-    this.updatePosition(employeeInfo);
     this.updateAdress(employeeInfo);
     this.updateContacts(employeeInfo);
     this.updateFamily(employeeInfo);
@@ -130,6 +127,8 @@ export class EmployeeService {
       employeeToUpdate.secondName = employeeInfo.mainInfo.secondName;
       employeeToUpdate.patronymic = employeeInfo.mainInfo.patronymic;
       employeeToUpdate.dob = employeeInfo.mainInfo.dob;
+      employeeToUpdate.photo = employeeInfo.mainInfo.photo;
+      employeeToUpdate.positionId = +employeeInfo.position.id;
     } else {
       console.error('EmployeeService.updateMainInfo: can not find employee for id ', employeeInfo.mainInfo.id);
     }
@@ -143,7 +142,7 @@ export class EmployeeService {
       family.children = new Array<Child>();
       employeeInfo.family.children.forEach(child => {
         family.children.push(child.clone());
-      })
+      });
     } else {
       console.error('EmployeeService.updateFamilyInfo: can not find family for id ', employeeInfo.mainInfo.id);
     }
@@ -158,16 +157,6 @@ export class EmployeeService {
       doc.militaryId = employeeInfo.document.militaryId;
     } else {
       console.error('EmployeeService.updateMainInfo: can not find doc for id ', employeeInfo.mainInfo.id);
-    }
-  }
-
-  private updatePosition(employeeInfo: EmployeeInfo) {
-    const pos = this.positions.find(e => e.id === employeeInfo.mainInfo.id);
-    if (pos) {
-      pos.title = employeeInfo.position.title;
-      pos.requirements = employeeInfo.position.requirements;
-    } else {
-      console.error('EmployeeService.updateMainInfo: can not find position for id ', employeeInfo.mainInfo.id);
     }
   }
 
@@ -284,7 +273,7 @@ export class EmployeeService {
 
       employeeInfo.mainInfo.initFrom(employee);
       employeeInfo.document.initFrom(this.documents.find(i => i.id === employee.id) || new DocumentInfo());
-      employeeInfo.position.initFrom(this.positions.find(i => i.id === employee.id) || new PositionInfo());
+      employeeInfo.position.initFrom(this.positions.find(i => i.id === employee.positionId) || new PositionInfo());
       employeeInfo.adress.initFrom(this.adresses.find(i => i.id === employee.id) || new AdressInfo());
       employeeInfo.contact.initFrom(this.contacts.find(i => i.id === employee.id) || new ContactInfo());
       employeeInfo.family.initFrom(this.families.find(i => i.id === employee.id) || new FamilyInfo());

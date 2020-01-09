@@ -17,6 +17,7 @@ import { MedicalInfoEditorComponent } from './employee/employee-editor/editors/m
 import { EnsuranceInfoEditorComponent } from './employee/employee-editor/editors/ensurance-info-editor/ensurance-info-editor.component';
 import { FamilyInfoEditorComponent } from './employee/employee-editor/editors/family-info-editor/family-info-editor.component';
 import { PositionsManagerComponent } from './employee/positions-manager/positions-manager.component';
+import { PositionInfoEditorComponent } from './employee/employee-editor/editors/position-info-editor/position-info-editor.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { PositionsManagerComponent } from './employee/positions-manager/position
     MedicalInfoEditorComponent,
     EnsuranceInfoEditorComponent,
     FamilyInfoEditorComponent,
-    PositionsManagerComponent
+    PositionsManagerComponent,
+    PositionInfoEditorComponent
   ]
 })
 export class EmployeeModule { }

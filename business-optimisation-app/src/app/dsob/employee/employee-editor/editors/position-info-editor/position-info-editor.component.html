@@ -1,0 +1,9 @@
+<label for="positionSelect">Текущая должность:</label>
+<select class="custom-select" [(ngModel)]="position.id"
+      [disabled]="!editMode" id="positionSelect" class="form-control form-control-sm">
+   <option *ngFor="let position of allPositions"
+         [value]="position.id">{{position.title}}</option>
+</select>
+<br>
+<button [disabled]="!editMode">Создать новую должность</button>
+
