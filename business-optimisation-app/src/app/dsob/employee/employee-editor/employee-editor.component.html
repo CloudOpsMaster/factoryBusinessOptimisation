@@ -72,24 +72,13 @@
    <div class="card">
       <div class="card-header condensed">
          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#medicalCard">
-            Медицинская карта
+            Медицинская карта / Страховка
          </button>
       </div>
       <div id="medicalCard" class="collapse" data-parent="#editorAccordion">
          <div class="card-body">
             <app-medical-info-editor [medicalCard]="employee.medicalCard" [viewMode]="viewMode">
             </app-medical-info-editor>
-         </div>
-      </div>
-   </div>
-   <div class="card">
-      <div class="card-header condensed">
-         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#ensuranceCard">
-            Страховая информация
-         </button>
-      </div>
-      <div id="ensuranceCard" class="collapse" data-parent="#editorAccordion">
-         <div class="card-body">
             <app-ensurance-info-editor [ensurance]="employee.ensurance" [viewMode]="viewMode">
             </app-ensurance-info-editor>
          </div>
@@ -98,25 +87,14 @@
    <div class="card">
       <div class="card-header condensed">
          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo6">
-            Прием на работу/ Увольнение
+            Прием на работу / Должность / Увольнение
          </button>
       </div>
       <div id="mainInfo6" class="collapse" data-parent="#editorAccordion">
          <div class="card-body">
+            <app-position-info-editor [position]="employee.position" [viewMode]="viewMode"></app-position-info-editor>
             <app-employment-info-editor [employment]="employee.employment" [viewMode]="viewMode">
             </app-employment-info-editor>
-         </div>
-      </div>
-   </div>
-   <div class="card">
-      <div class="card-header condensed">
-         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#position">
-            Должность
-         </button>
-      </div>
-      <div id="position" class="collapse" data-parent="#editorAccordion">
-         <div class="card-body">
-            <app-position-info-editor [position]="employee.position" [viewMode]="viewMode"></app-position-info-editor>
          </div>
       </div>
    </div>
