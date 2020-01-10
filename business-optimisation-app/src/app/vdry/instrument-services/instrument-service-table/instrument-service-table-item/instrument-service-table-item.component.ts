@@ -21,8 +21,8 @@ export class InstrumentServiceTableItemComponent implements OnInit {
   public updade = false;
   public servicesForm: FormGroup;
 
-  constructor( private instrumentService: InstrumentService,
-               private storage: StorageService) { }
+
+  constructor( private instrumentService: InstrumentService) { }
 
   ngOnInit() {
   }
@@ -33,5 +33,6 @@ export class InstrumentServiceTableItemComponent implements OnInit {
 
   onUpdate() {
     this.updateItem.emit(this.instrument.id);
+    this.instrumentService.disabledFlag(true);
   }
 }

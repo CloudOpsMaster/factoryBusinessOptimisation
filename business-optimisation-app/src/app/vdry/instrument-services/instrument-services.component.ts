@@ -10,8 +10,9 @@ import { InstrumentService } from './instrument.service';
 export class InstrumentServicesComponent implements OnInit {
 
   public itemId;
-
+public test = this.instrumentService.getDisabledFlag();
   public instruments: InstrumentServis[] = [];
+  public myDisabled;
 
   constructor(private instrumentService: InstrumentService) { }
 
@@ -19,6 +20,7 @@ export class InstrumentServicesComponent implements OnInit {
     if (this.instrumentService.hasKey()) {
       this.instruments = this.instrumentService.getData();
     }
+
   }
 
   redirectId(id: number) {
@@ -42,6 +44,7 @@ export class InstrumentServicesComponent implements OnInit {
   }
 
   public onSave(item: InstrumentServis) {
+    this.itemId = -1;
     this.instrumentService.update(item);
 
     this.instruments = this.instrumentService.getData();

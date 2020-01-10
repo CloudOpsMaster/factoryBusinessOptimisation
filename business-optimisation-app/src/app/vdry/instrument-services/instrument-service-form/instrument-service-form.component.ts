@@ -12,7 +12,7 @@ import { InstrumentService } from '../instrument.service';
 export class InstrumentServiceFormComponent implements OnInit {
 
   @Input() set itemId(id: number) {
-    if (id) {
+    if (id && id > -1) {
      const item = this.instrumentService.getById(id);
      this.servicesForm.get('startDate').setValue(item.startDate),
      this.servicesForm.get('endDate').setValue(item.endDate),
@@ -21,6 +21,7 @@ export class InstrumentServiceFormComponent implements OnInit {
     }
     this.updateItemId = id;
 
+    this.disabledSaveBtn = this.instrumentService.getDisabledFlag();
   }
 
   @Output() private setItem: EventEmitter<InstrumentServis> = new EventEmitter();
@@ -33,6 +34,7 @@ export class InstrumentServiceFormComponent implements OnInit {
 
   public disabled = true;
   public errorDate = false;
+  public disabledSaveBtn = true;
 
   private updateItemId;
 
@@ -61,9 +63,10 @@ export class InstrumentServiceFormComponent implements OnInit {
       this.servicesForm.controls.endDate.valueChanges.subscribe((valEndDate) => {
           this.errorDate = (valStartDate > valEndDate) ? true : false;
           this.disabled = (valStartDate > valEndDate) ? true : false;
+          this.disabledSaveBtn = (valStartDate < valEndDate) ? true : false;
       });
-      
     });
+
   }
 
   onAdd() {
@@ -89,6 +92,11 @@ export class InstrumentServiceFormComponent implements OnInit {
         );
 
       this.updateItem.emit(newSaveItem);
+
+      this.instrumentService.disabledFlag(false);
+      this.disabledSaveBtn = false;
+      this.initForm();
     }
+
   }
 

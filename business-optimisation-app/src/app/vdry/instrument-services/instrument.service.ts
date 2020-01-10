@@ -9,6 +9,7 @@ import { StorageService, StorageKey } from 'src/app/services/storage.service';
 export class InstrumentService {
 
   public static readonly STORAGE_KEY = StorageKey.InstrumentsStorageKey;
+  public disabled: boolean;
 
   constructor(private storageService: StorageService) {}
 
@@ -80,6 +81,14 @@ export class InstrumentService {
 
   public clear(): void {
     this.storageService.deleteData(InstrumentService.STORAGE_KEY);
+  }
+
+  public disabledFlag(val: boolean): void {
+    this.disabled = val;
+  }
+
+  public getDisabledFlag(): boolean {
+    return this.disabled;
   }
 
 }
