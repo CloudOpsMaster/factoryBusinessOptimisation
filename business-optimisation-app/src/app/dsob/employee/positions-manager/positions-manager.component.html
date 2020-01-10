@@ -16,8 +16,7 @@
                         (click)="onFilterClick()"
                         [disabled]="!filterEnabled">Фильтровать</button>
    <button class="btn btn-light btn-sm"
-                        (click)="onFilterClearClick()"
-                        [disabled]="!filterEnabled">Очистить</button>
+                        (click)="onFilterClearClick()">Очистить</button>
 </div>
 <div class="container">
   <div class="row" *ngFor="let position of filteredPositions">

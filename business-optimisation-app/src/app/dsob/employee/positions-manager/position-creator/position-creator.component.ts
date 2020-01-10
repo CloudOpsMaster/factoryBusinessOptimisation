@@ -81,6 +81,7 @@ export class PositionCreatorComponent implements OnInit {
          info.initFrom(p);
          return info;
       });
+      this.allPositions = this.allPositions.filter(p => p);
    }
 
    private writeStorage() {
