@@ -18,6 +18,12 @@ export class EmployeeMainInfo {
     photo: string;
     signature: string;
 
+    get shortName(): string {
+       return this.secondName + ' ' +
+               this.firstName.substr(0, 1) + '. ' +
+               this.patronymic.substr(0, 1) + '.';
+    }
+
     constructor() {
         this.id = -1;
     }

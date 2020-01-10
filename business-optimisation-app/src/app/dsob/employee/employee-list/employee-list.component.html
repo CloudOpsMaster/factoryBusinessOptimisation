@@ -1,36 +1,36 @@
 <app-employee-filter (applyFilter)="onApplyFilter($event)" [locked]="locked"></app-employee-filter>
 <table class="table table-striped">
-  <thead class="thead-light">
-    <tr>
-      <th>
-        Имя
-      </th>
-      <th>
-        Фамилия
-      </th>
-      <th>
-        Отчество
-      </th>
-      <th>
-        Дата рождения
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let employee of filteredEmployees" (click)="onRowClick(employee)"
-              [ngClass]="{'table-primary' : isSelected(employee) }">
-      <td>
-        {{employee.mainInfo.firstName}}
-      </td>
-      <td>
-        {{employee.mainInfo.secondName}}
-      </td>
-      <td>
-        {{employee.mainInfo.patronymic}}
-      </td>
-      <td>
-        {{employee.mainInfo.dob}}
-      </td>
-    </tr>
-  </tbody>
+   <thead class="thead-light">
+      <tr>
+         <th>
+            ФИО
+         </th>
+         <th>
+            Должность
+         </th>
+         <th>
+            Работает с
+         </th>
+         <th>
+            Телефон
+         </th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor="let employee of filteredEmployees" (click)="onRowClick(employee)"
+         [ngClass]="{'table-primary' : isSelected(employee) }">
+         <td>
+            {{employee.mainInfo.shortName}}
+         </td>
+         <td>
+            {{employee.position.title}}
+         </td>
+         <td>
+            {{employee.employment.employmentDate}}
+         </td>
+         <td>
+            {{employee.contact.phone}}
+         </td>
+      </tr>
+   </tbody>
 </table>
