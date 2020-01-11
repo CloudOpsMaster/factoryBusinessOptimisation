@@ -3,6 +3,9 @@
    <thead class="thead-light">
       <tr>
          <th>
+            Таб.№
+         </th>
+         <th>
             ФИО
          </th>
          <th>
@@ -19,6 +22,9 @@
    <tbody>
       <tr *ngFor="let employee of filteredEmployees" (click)="onRowClick(employee)"
          [ngClass]="{'table-primary' : isSelected(employee) }">
+         <td>
+            {{employee.mainInfo.id}}
+         </td>
          <td>
             {{employee.mainInfo.shortName}}
          </td>
