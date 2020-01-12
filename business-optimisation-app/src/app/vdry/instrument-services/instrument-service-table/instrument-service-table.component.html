@@ -1,6 +1,9 @@
-<table class="table">
-  <app-instrument-service-table-item (deleteItem)="onDelete($event)" (itemId)="redirectId($event)" 
-  (updateItem)="onUpdate($event)"
-  [instrument]="instrument" [indexItem]="i" 
-  *ngFor="let instrument of instrumentList; let i = index"></app-instrument-service-table-item>
+<table class="table table-striped">
+    <tbody>
+        <app-instrument-service-table-item (deleteItem)="onDelete($event)" (itemId)="redirectId($event)" 
+        (updateItem)="onUpdate($event)"
+        (saveItem)="onSave($event)"
+        [instrument]="instrument" [indexItem]="i" 
+        *ngFor="let instrument of instrumentList; let i = index"></app-instrument-service-table-item>
+    </tbody>
 </table>

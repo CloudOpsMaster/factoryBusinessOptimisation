@@ -25,7 +25,7 @@ export class InstrumentServiceFormComponent implements OnInit {
   }
 
   @Output() private setItem: EventEmitter<InstrumentServis> = new EventEmitter();
-  @Output() private updateItem: EventEmitter<InstrumentServis> = new EventEmitter();
+  // @Output() private updateItem: EventEmitter<InstrumentServis> = new EventEmitter();
 
 
 // ##############################
@@ -82,21 +82,21 @@ export class InstrumentServiceFormComponent implements OnInit {
     this.initForm();
     }
 
-    onSave() {
-      const newSaveItem = new InstrumentServis(
-        this.servicesForm.get('startDate').value,
-        this.servicesForm.get('endDate').value,
-        this.servicesForm.get('status').value,
-        this.servicesForm.get('description').value,
-        this.updateItemId
-        );
+    // onSave() {
+    //   const newSaveItem = new InstrumentServis(
+    //     this.servicesForm.get('startDate').value,
+    //     this.servicesForm.get('endDate').value,
+    //     this.servicesForm.get('status').value,
+    //     this.servicesForm.get('description').value,
+    //     this.updateItemId
+    //     );
 
-      this.updateItem.emit(newSaveItem);
+    //   this.updateItem.emit(newSaveItem);
 
-      this.instrumentService.disabledFlag(false);
-      this.disabledSaveBtn = false;
-      this.initForm();
-    }
+    //   this.instrumentService.disabledFlag(false);
+    //   this.disabledSaveBtn = false;
+    //   this.initForm();
+    // }
 
   }
 

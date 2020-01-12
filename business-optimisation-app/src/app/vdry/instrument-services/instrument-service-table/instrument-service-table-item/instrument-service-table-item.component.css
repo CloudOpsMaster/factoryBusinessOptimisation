@@ -1,0 +1,39 @@
+.edit-form {
+    display: flex;
+    align-items: center;
+}
+
+.form-group {
+    width: 25%;
+    padding: 0 0.75em;
+}
+
+.btn-table-block {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.btn {
+    padding: 0;
+    display: inline-block;
+    margin: 8px;
+}
+
+.btn svg {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.delete {
+    fill: #f00;
+}
+
+.update {
+    fill: #ff8d0e;
+}
+
+.save {
+    fill: #88c149;
+}
+

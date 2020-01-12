@@ -12,7 +12,7 @@ export class InstrumentServiceTableComponent implements OnInit {
 
   @Output() deleteItem: EventEmitter<number> = new EventEmitter();
   @Output() updateItem: EventEmitter<number> = new EventEmitter();
-
+  @Output() saveItem: EventEmitter<InstrumentServis> = new EventEmitter();
   @Input() public instrumentList: InstrumentServis[] = [];
 
   constructor() { }
@@ -29,6 +29,10 @@ export class InstrumentServiceTableComponent implements OnInit {
 
   public onUpdate(id: number): void {
     this.updateItem.emit(id);
+  }
+
+  public onSave(item: InstrumentServis) {
+    this.saveItem.emit(item);
   }
 }
 

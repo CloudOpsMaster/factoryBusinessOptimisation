@@ -1,0 +1,3 @@
+.table ::ng-deep td {
+    vertical-align: middle;
+}
