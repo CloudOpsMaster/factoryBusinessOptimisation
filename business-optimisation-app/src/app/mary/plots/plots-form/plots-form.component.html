@@ -1,0 +1,68 @@
+<h2 class=paragraph>Участки производства</h2>
+<br>
+<form [formGroup]="plotsForm" novalidate>
+    <h6 class=subparagraph>Информация по участку</h6>
+    <div class="informationgroups" formGroupName="plotInfo">
+        <div>
+            <label>Адрес:</label>
+            <input type="text" placeholder="ул. Пушкина кв.13" formControlName="address" autofocus required>
+            <label>Название:</label>
+            <input type="text" placeholder="Швейный" formControlName="plotname" required>
+        </div>
+    </div>
+    <h6 class=subparagraph>Мастер участка</h6>
+    <div class="informationgroups" formGroupName="employeeInfo">
+        <div>
+            <label>ФИО:</label>
+            <input type="text" placeholder="Александров А. М." list="employee" formControlName="employee" required>
+            <datalist id="employee" required>
+                <option *ngFor="let employee of employees">
+                {{employee}}
+            </option>
+            </datalist>
+        </div>
+    </div>
+    <div>
+        <h6 class=subparagraph>Оборудование</h6>
+        <div class="informationgroups" formGroupName="toolInfo">
+            <div>
+                <label>Название:</label>
+                <input type="text" placeholder="ЧПУ" ist="toolname" formControlName="toolname" required>
+                <datalist id="toolname" required>
+                    <option *ngFor="let toolname of toolnames">
+                    {{toolname}}
+                    </option>
+                    </datalist>
+                <label>Табельный номер:</label>
+                <input type="number" placeholder="1" list="tableNumber" formControlName="tableNumber" required>
+                <datalist id="tableNumber" required>
+                    <option *ngFor="let tableNumber of tableNumbers">
+                    {{tableNumber}}
+                    </option>
+                </datalist>
+            </div>
+            <div>
+                <label>Отвественные:</label>
+                <input type="text" placeholder="Александров А. М." list="employee" formControlName="responsible">
+                <datalist id="employee">
+                    <option *ngFor="let employee of employees">
+                    {{employee}}
+                </option>
+                </datalist>
+            </div>
+        </div>
+        <div formGroupName="toolInfo">
+            <textarea type="text" formControlName="listResponsible" readonly required></textarea>
+        </div>
+
+        <div class="groupButton">
+            <button class="btn btn-success" on-click="addResponsible()"><b>✓</b></button>
+            <button class="btn btn-danger" on-click="deleteResponsible()">&#10008;</button>
+        </div>
+    </div>
+</form>
+<div class="informationgroups">
+    <button [disabled]="!plotsForm.valid" class="btn btn-primary " on-click="add() ">Добавить</button>
+    <button [disabled]="!plotsForm.valid" class="btn btn-warning " on-click="change() ">Изменить</button>
+    <button class="btn btn-danger " on-click="delete() ">Удалить</button>
+</div>

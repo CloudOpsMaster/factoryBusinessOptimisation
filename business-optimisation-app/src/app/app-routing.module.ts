@@ -9,6 +9,7 @@ import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/mater
 import { MeteringComponent } from './vadim/metering/metering.component';
 import { CheckListComponent } from './vlad/check-list/check-list.component';
 import { PositionsManagerComponent } from './dsob/employee/positions-manager/positions-manager.component';
+import { PlotsComponent } from './mary/plots/plots.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,6 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-
   {
     path: 'employee',
     component: EmployeeManagerComponent
@@ -38,21 +38,22 @@ const routes: Routes = [
     component: GettingToolsComponent
   },
   {
+    path: 'plots',
+    component: PlotsComponent
+  },
+  {
     path: 'materials-dictionary',
     component: MaterialsDictionaryComponent
   },
-
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
-
   {
     path: 'metering',
     component: MeteringComponent
   },
-
   {
     path: 'check-list',
     component: CheckListComponent

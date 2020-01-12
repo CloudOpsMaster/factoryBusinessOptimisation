@@ -1,0 +1,3 @@
+<app-plots-form [item]="plot" (plots)="getItems($event)"></app-plots-form>
+<br>
+<app-plots-table [plots]="allPlots" (plot)="getRow($event)"></app-plots-table>

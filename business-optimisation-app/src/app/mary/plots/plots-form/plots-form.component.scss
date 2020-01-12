@@ -1,0 +1,57 @@
+.paragraph {
+    color: #373A3C;
+}
+
+.subparagraph {
+    margin-left: 2%;
+    color: #0275D8;
+}
+
+.informationgroups {
+    margin-left: 3%;
+    margin-right: 2%;
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.informationgroups label {
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.btn {
+    margin-left: 2%;
+}
+
+.h5 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+textarea {
+    display: flex;
+    justify-content: left;
+    margin-left: 64%;
+    width: 305px;
+}
+
+.groupButton {
+    margin-top: 5px;
+    margin-left: 83%;
+}
+
+input.ng-touched.ng-invalid {
+    border: solid #D9534F 1.5px;
+}
+
+textarea.ng-touched.ng-invalid {
+    border: solid #D9534F 1.5px;
+}

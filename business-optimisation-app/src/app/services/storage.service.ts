@@ -5,6 +5,7 @@ export enum StorageKey {
   MaterialProviders = 'materialProviders',
   MaterialUnits = 'materialUnits',
   GettingTools = 'gettingTools',
+  Plots='plots',
 
   EmployeesStorageKey = 'EmployeesStorageKey',
   EmployeeDocumentsStorageKey = 'EmployeeDocumentsStorageKey',

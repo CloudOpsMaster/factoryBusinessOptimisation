@@ -17,6 +17,9 @@ import { InstrumentServiceTableComponent } from './vdry/instrument-services/inst
 import { InstrumentServiceTableItemComponent } from './vdry/instrument-services/instrument-service-table/instrument-service-table-item/instrument-service-table-item.component';
 import { CheckListComponent } from './vlad/check-list/check-list.component';
 import { EmployeeModule } from './dsob/employee.module';
+import { PlotsComponent } from './mary/plots/plots.component';
+import { PlotsFormComponent } from './mary/plots/plots-form/plots-form.component';
+import { PlotsTableComponent } from './mary/plots/plots-table/plots-table.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { EmployeeModule } from './dsob/employee.module';
     InstrumentServiceTableItemComponent,
     GettingToolsComponent,
     MeteringComponent,
-    CheckListComponent
+    CheckListComponent,
+    PlotsComponent,
+    PlotsFormComponent,
+    PlotsTableComponent
   ],
   imports: [
     BrowserModule,
