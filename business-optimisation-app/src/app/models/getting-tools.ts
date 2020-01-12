@@ -1,7 +1,8 @@
 export class GettingTools {
     name: string;
     lastname: string;
-    plot: string;
+    plotName: string;
+    plotAddress: string;
     post: string;
     tableNumber: number;
     inventoryNumber: number;

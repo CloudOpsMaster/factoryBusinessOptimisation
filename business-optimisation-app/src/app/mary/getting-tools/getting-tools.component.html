@@ -15,14 +15,15 @@
                         </datalist>
                     </div>
                     <div>
-                        <label>Участок:</label>
-                        <input type="text" placeholder="Столярный" list="plot" formControlName="plot" required>
-                        <datalist id="plot" required>
-                        <option *ngFor="let plot of plots">
-                        {{plot}}
-                        </option>
-                    </datalist>
+                        <label>Должность:</label>
+                        <input type="text" placeholder="Сборщик" list="position" formControlName="post" required>
+                        <datalist id="position" required>
+                            <option *ngFor="let position of positions">
+                            {{position.title}}
+                            </option>
+                        </datalist>
                     </div>
+
                 </div>
                 <div>
                     <div>
@@ -35,19 +36,33 @@
                     </datalist>
                     </div>
                     <div>
-                        <label>Должность:</label>
-                        <input type="text" placeholder="Сборщик" list="post" formControlName="post" required>
-                        <datalist id="post" required>
-                            <option *ngFor="let post of posts">
-                            {{post}}
-                            </option>
-                            </datalist>
+                        <label>Участок:</label>
+                        <input type="text" placeholder="Столярный" list="plotName" (keyup)="onKeyPlotName()" formControlName="plotName" required>
+                        <datalist id="plotName" required>
+                        <option *ngFor="let plotName of plotNames">
+                        {{plotName}}
+                        </option>
+                    </datalist>
                     </div>
                 </div>
                 <div>
                     <div>
                         <label>Табельный номер:</label>
-                        <input type="number" placeholder="1111" formControlName="tableNumber" required min="0000">
+                        <input type="text" placeholder="1" list="tableNumber" (keyup)="onKeyId()" formControlName="tableNumber" required min="0">
+                        <datalist id="tableNumber" required>
+                            <option *ngFor="let tableNumber of tableNumbers">
+                            {{tableNumber}}
+                            </option>
+                        </datalist>
+                    </div>
+                    <div>
+                        <label>Адрес участка:</label>
+                        <input type="text" placeholder="ул. Пушкина д.13" list="plotAddress" (keyup)="onKeyPlotAddress()" formControlName="plotAddress" required>
+                        <datalist id="plotAddress" required>
+                        <option *ngFor="let plotAddress of plotAddresses">
+                        {{plotAddress}}
+                        </option>
+                    </datalist>
                     </div>
                 </div>
             </div>
@@ -75,6 +90,7 @@
                 <div>
                     <label>Дата возврата:</label>
                     <input type="date" placeholder="Пила" formControlName="dateOfReturn">
+                    <p *ngIf="errorDate" class="error">Дата не корректна</p>
                 </div>
                 <div>
                     <label>Примечание:</label>
@@ -87,8 +103,8 @@
                 </div>
             </div>
             <div class="informationgroups">
-                <button [disabled]="!gettingToolsForm.valid" class="btn btn-primary" on-click="add()">Добавить</button>
-                <button class="btn btn-warning" on-click="change()">Изменить</button>
+                <button [disabled]="!gettingToolsForm.valid || disabled" class="btn btn-primary" on-click="add()">Добавить</button>
+                <button [disabled]="!gettingToolsForm.valid || disabled" class="btn btn-warning" on-click="change()">Изменить</button>
                 <button class="btn btn-danger" on-click="delete()">Удалить</button>
             </div>
         </div>
@@ -110,6 +126,9 @@
                 </th>
                 <th>
                     Участок
+                </th>
+                <th>
+                    Адрес участка
                 </th>
                 <th>
                     Должность
@@ -146,7 +165,10 @@
                     {{item.tableNumber}}
                 </td>
                 <td>
-                    {{item.plot}}
+                    {{item.plotName}}
+                </td>
+                <td>
+                    {{item.plotAddress}}
                 </td>
                 <td>
                     {{item.post}}
