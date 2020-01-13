@@ -2,16 +2,20 @@
 <div *ngIf="visible">
   <div class="form-row">
     <div class="col">
-      <label for="firstName">Имя:</label>
-      <input type="text" [(ngModel)]="filter.firstName" id="firstName" class="form-control form-control-sm" [readonly]="locked">
+      <label for="firstName">Табельный №:</label>
+      <input type="text" [(ngModel)]="filter.id" id="firstName" class="form-control form-control-sm" [readonly]="locked">
     </div>
     <div class="col">
       <label for="secondName">Фамилия:</label>
       <input type="text" [(ngModel)]="filter.secondName" id="secondName" class="form-control form-control-sm" [readonly]="locked">
     </div>
     <div class="col">
-      <label for="patronymic">Отчество:</label>
-      <input type="text" [(ngModel)]="filter.patronymic" id="patronymic" class="form-control form-control-sm" [readonly]="locked">
+      <label for="patronymic">Паспорт:</label>
+      <input type="text" [(ngModel)]="filter.passport" id="patronymic" class="form-control form-control-sm" [readonly]="locked">
+    </div>
+    <div class="col">
+      <label for="taxNumber">Налоговый №:</label>
+      <input type="text" [(ngModel)]="filter.taxNumber" id="taxNumber" class="form-control form-control-sm" [readonly]="locked">
     </div>
   </div>
   <br>
