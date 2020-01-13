@@ -92,7 +92,7 @@ export class PositionCreatorComponent implements OnInit {
    private getValidationError(position: PositionInfo): string {
       let response = '';
       if (this.allPositions.some(p => p.title.trim() === position.title.trim())) {
-         response = 'Position with such title already exists!';
+         response = 'Позиция с таким названием уже существует!';
       }
       return response;
    }
