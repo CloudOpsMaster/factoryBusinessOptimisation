@@ -14,38 +14,38 @@
   </td>
 </tr> -->
 
-<tr>
-  <td>{{instrument.id}}</td>
-  <td  colspan="3">
+<div class="table-body">
+  <div class="table-body-cell table-body-cell__id">{{instrument.id}}</div>
+  <div class="table-body-cell table-body-cell__form">
     <form [formGroup]="servicesEditForm" class="edit-form">
       <div class="form-group">
-        <label for="startDate">Дата сдачи</label>
-        <input type="date" class="form-control" id="startDate"  formControlName="startDate" required [readOnly]=readonly>
+        <input type="date" class="form-control" [ngClass]="{error:errorDate}" id="startDate"  formControlName="startDate" required [readOnly]=readonly>
       </div>
       <div class="form-group">
-        <label for="endtDate">Дата получения</label>
-        <input type="date" class="form-control" id="endDate"  formControlName="endDate" required [readOnly]=readonly>
+        <input type="date" class="form-control" [ngClass]="{error:errorDate}" id="endDate"  formControlName="endDate" required [readOnly]=readonly>
       </div>
       <div class="form-group">
-        <label for="status">Статус</label>
-        <select id="status" class="form-control" formControlName="status" required [disabled]=readonly>  
-          <option selected>Готов</option>
-          <option>Не готов</option>
-          <option>Не восстановлен</option>
-        </select>
+        <ng-select id="status"
+          formControlName="status" required  
+          bindLabel="name" 
+          [items]="items" 
+          [(ngModel)]="selected"
+          [readonly]=readonly
+          placeholder={{instrument.status}}>  
+        </ng-select>
       </div>
       <div class="form-group">
-        <label for="description">Описание</label>
         <textarea class="form-control" id="description" rows="2" formControlName="description" [readOnly]=readonly></textarea>
       </div>
     </form>
-  </td>
+  </div>
  
-  <td> 
+  <div class="table-body-cell table-body-cell__btn"> 
     <div class="btn-table-block">
       <button (click)="onSave()"
               type="button" 
               class="btn"
+              [disabled]=readonly
               data-toggle="tooltip" data-placement="top" title="Сохранить">
         <svg class="bi bi-check-box save"  viewBox="3 5 14 10" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"></path>
@@ -83,5 +83,8 @@
       </svg>
   </button>
     </div>
-  </td>
-</tr>
+  </div>
+</div>
+
+
+

@@ -1,3 +1,15 @@
+<div class="table-header">
+    <div class="table-header-cell table-header-cell__id">ID</div>
+    <div class="table-header-cell table-header-cell__form">
+        <div class="table-header-cell__date-first">Дата сдачи</div>
+        <div class="table-header-cell__date-end">Дата получения</div>
+        <div class="table-header-cell__status">Статус</div>
+        <div class="table-header-cell__description">Описание</div>
+    </div>
+    <div class="table-header-cell table-header-cell__btn"></div>
+</div>
+
+
 <table class="table table-striped">
     <tbody>
         <app-instrument-service-table-item (deleteItem)="onDelete($event)" (itemId)="redirectId($event)" 

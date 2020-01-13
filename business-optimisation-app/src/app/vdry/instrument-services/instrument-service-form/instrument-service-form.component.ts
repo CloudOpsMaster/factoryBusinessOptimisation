@@ -11,18 +11,18 @@ import { InstrumentService } from '../instrument.service';
 })
 export class InstrumentServiceFormComponent implements OnInit {
 
-  @Input() set itemId(id: number) {
-    if (id && id > -1) {
-     const item = this.instrumentService.getById(id);
-     this.servicesForm.get('startDate').setValue(item.startDate),
-     this.servicesForm.get('endDate').setValue(item.endDate),
-      this.servicesForm.get('status').setValue(item.status),
-      this.servicesForm.get('description').setValue(item.description);
-    }
-    this.updateItemId = id;
+  // @Input() set itemId(id: number) {
+  //   if (id && id > -1) {
+  //    const item = this.instrumentService.getById(id);
+  //    this.servicesForm.get('startDate').setValue(item.startDate),
+  //    this.servicesForm.get('endDate').setValue(item.endDate),
+  //     this.servicesForm.get('status').setValue(item.status),
+  //     this.servicesForm.get('description').setValue(item.description);
+  //   }
+  //   this.updateItemId = id;
 
-    this.disabledSaveBtn = this.instrumentService.getDisabledFlag();
-  }
+  //   this.disabledSaveBtn = this.instrumentService.getDisabledFlag();
+  // }
 
   @Output() private setItem: EventEmitter<InstrumentServis> = new EventEmitter();
   // @Output() private updateItem: EventEmitter<InstrumentServis> = new EventEmitter();

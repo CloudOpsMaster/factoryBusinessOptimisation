@@ -1,14 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { InstrumentService } from '../../instrument.service';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-instrument-service-table-item',
   templateUrl: './instrument-service-table-item.component.html',
-  styleUrls: ['./instrument-service-table-item.component.css']
+  styleUrls: ['./instrument-service-table-item.component.scss']
 })
-export class InstrumentServiceTableItemComponent implements OnInit {
+export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
 
   @Input() instrument: InstrumentServis;
   @Input() indexItem: number;
@@ -23,7 +24,15 @@ export class InstrumentServiceTableItemComponent implements OnInit {
   public instruments: InstrumentServis[] = [];
   public readonly = true;
 
+  public errorDate = false;
+
   private updateItemId;
+
+  items = [
+    'Готов',
+    'Не готов',
+    'Не восстановлен'
+  ];
 
 
   constructor( private instrumentService: InstrumentService) { }
@@ -37,6 +46,11 @@ export class InstrumentServiceTableItemComponent implements OnInit {
     this.initForm();
   }
 
+  ngOnChanges() {
+    this.initForm();
+    this.validatorDate();
+  }
+
   initForm() {
     const item = this.instrumentService.getById(this.instrument.id);
 
@@ -45,6 +59,13 @@ export class InstrumentServiceTableItemComponent implements OnInit {
       endDate: new FormControl(item.endDate, [Validators.required]),
       status: new FormControl(item.status, [Validators.required]),
       description: new FormControl(item.description)
+    });
+
+    this.servicesEditForm.controls.startDate.valueChanges.subscribe((valStartDate) => {
+      this.servicesEditForm.controls.endDate.valueChanges.subscribe((valEndDate) => {
+          this.errorDate = (valStartDate > valEndDate) ? true : false;
+          this.readonly = (valStartDate > valEndDate) ? true : false;
+      });
     });
   }
 
@@ -55,7 +76,7 @@ export class InstrumentServiceTableItemComponent implements OnInit {
   onUpdate() {
     this.updateItem.emit(this.instrument.id);
     this.instrumentService.disabledFlag(true);
-    this.readonly = false;
+    this.disable();
   }
 
   onSave() {
@@ -67,7 +88,31 @@ export class InstrumentServiceTableItemComponent implements OnInit {
       this.updateItemId = this.instrument.id
     );
 
-    this.saveItem.emit(newItem);
-    this.readonly = true;
+    if (this.validatorDate()) {
+      return;
+    } else {
+      this.saveItem.emit(newItem);
+      this.disable();
+    }
+
+    // if (this.servicesEditForm.controls.startDate.value > this.servicesEditForm.controls.endDate.value ) {
+    //   this.errorDate = true;
+    //   return;
+    // } else {
+    //   this.saveItem.emit(newItem);
+    //   this.disable();
+    // }
+
+  }
+
+  validatorDate(): boolean {
+    if (this.servicesEditForm.controls.startDate.value > this.servicesEditForm.controls.endDate.value ) {
+      this.errorDate = true;
+      return true;
+    }
+  }
+
+  disable() {
+    this.readonly = !this.readonly;
   }
 }

@@ -20,6 +20,7 @@ import { EmployeeModule } from './dsob/employee.module';
 import { PlotsComponent } from './mary/plots/plots.component';
 import { PlotsFormComponent } from './mary/plots/plots-form/plots-form.component';
 import { PlotsTableComponent } from './mary/plots/plots-table/plots-table.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PlotsTableComponent } from './mary/plots/plots-table/plots-table.compon
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    EmployeeModule
+    EmployeeModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

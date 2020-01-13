@@ -1,2 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/bootstrap.min.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+*:disabled,
+*[readonly] {
+    cursor: default;
+
+    &:focus {
+        border-color: #ced4da;
+        box-shadow: none;
+    }
+}

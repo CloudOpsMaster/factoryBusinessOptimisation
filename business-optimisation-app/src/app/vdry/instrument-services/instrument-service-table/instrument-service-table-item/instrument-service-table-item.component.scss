@@ -1,0 +1,76 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+.edit-form {
+    display: flex;
+    align-items: center;
+
+    ::ng-deep {
+        .ng-select.ng-select-single .ng-select-container {
+            min-height: 38px;
+        }
+    }
+}
+
+.form-group {
+    width: 25%;
+    padding: 0 8px;
+    margin-bottom: 0;
+}
+
+.btn-table-block {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.btn {
+    padding: 0;
+    display: inline-block;
+    margin: 8px;
+}
+
+.btn svg {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.delete {
+    fill: #f00;
+}
+
+.update {
+    fill: #ff8d0e;
+}
+
+.save {
+    fill: #88c149;
+}
+
+.table-body {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding: 8px;
+}
+
+.table-body-cell {
+    flex: 0 0 16.66%;
+    padding: 0 8px;
+}
+
+.table-body-cell__id {
+    max-width: 75px;
+}
+
+.table-body-cell__form {
+    flex: 1 0 66.64%;
+    padding: 0;
+}
+
+.table-body-cell__btn {
+    max-width: 116px;
+}
+
+.error {
+    border-color: #f00;
+}
+

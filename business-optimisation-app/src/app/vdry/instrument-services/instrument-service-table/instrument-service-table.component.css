@@ -1,3 +1,40 @@
-.table ::ng-deep td {
-    vertical-align: middle;
+
+.table-header {
+    display: flex;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0px 8px;
+}
+
+.table-header-cell {
+    flex: 0 0 16.66%;
+    padding: 8px;
+}
+
+.table-header-cell__id {
+    max-width: 75px;
+}
+
+.table-header-cell__form {
+    flex: 1 0 66.64%;
+    display: flex;
+    padding: 0;
+    align-items: center;
+}
+
+.table-header-cell__form > * {
+    flex: 1 0 25%;
+    padding: 0 8px;
+}
+
+.table-header-cell__btn {
+    max-width: 116px;
+}
+
+app-instrument-service-table-item {
+    display: block;
+}
+
+app-instrument-service-table-item:nth-of-type(even) {
+    background-color: rgba(0,0,0,0.05);
 }
