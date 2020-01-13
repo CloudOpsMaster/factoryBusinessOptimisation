@@ -1,6 +1,6 @@
 <div>
-   <label for="tabNumber" *ngIf="mainInfo.id > -1">Табельный номер:</label>
-   <input *ngIf="mainInfo.id > -1" type="text" [(ngModel)]="mainInfo.id" [readonly]="true" id="tabNumber" class="form-control form-control-sm">
+   <label for="tabNumber" *ngIf="showId && mainInfo.id > -1">Табельный номер:</label>
+   <input *ngIf="showId && mainInfo.id > -1" type="text" [(ngModel)]="mainInfo.id" [readonly]="true" id="tabNumber" class="form-control form-control-sm">
 
    <label for="firstName">Имя:</label>
    <input type="text" [(ngModel)]="mainInfo.firstName" [readonly]="!editMode" id="firstName" class="form-control form-control-sm">
