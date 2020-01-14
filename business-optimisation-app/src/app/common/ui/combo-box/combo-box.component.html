@@ -1,0 +1,4 @@
+<select class="custom-select" [(ngModel)]="comboBoxModel"
+      [disabled]="disabled" class="form-control form-control-sm">
+   <option *ngFor="let dvItem of comboBoxItems"
+         [value]="dvItem.valueMember">{{dvItem.displayMember}}</option>
