@@ -1,9 +1,10 @@
 <label for="positionSelect">Текущая должность:</label>
-<select class="custom-select" [(ngModel)]="position.id"
-      [disabled]="!editMode" id="positionSelect" class="form-control form-control-sm">
-   <option *ngFor="let position of allPositions"
-         [value]="position.id">{{position.title}}</option>
-</select>
+<app-combo-box [dataSource]="allPositions"
+               [(ngModel)]="position.id"
+               displayMember="title"
+               valueMember="id"
+               [disabled]="!editMode"></app-combo-box>
+
 <br>
 <button *ngIf="editMode" (click)="onCreateNewPosition()">{{createNewCaption}}</button>
 <app-position-creator *ngIf="creationMode"

@@ -19,7 +19,7 @@ import { FamilyInfoEditorComponent } from './employee/employee-editor/editors/fa
 import { PositionsManagerComponent } from './employee/positions-manager/positions-manager.component';
 import { PositionCreatorComponent } from './employee/positions-manager/position-creator/position-creator.component';
 import { PositionInfoEditorComponent } from './employee/employee-editor/editors/position-info-editor/position-info-editor.component';
-
+import { CommonAppModule } from '../common/common.module';
 
 @NgModule({
   imports: [
@@ -27,7 +27,8 @@ import { PositionInfoEditorComponent } from './employee/employee-editor/editors/
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonAppModule
   ],
   declarations: [
     EmployeeManagerComponent,
