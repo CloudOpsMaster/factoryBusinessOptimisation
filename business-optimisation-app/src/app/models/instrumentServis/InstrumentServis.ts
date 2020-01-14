@@ -8,3 +8,9 @@ export class InstrumentServis {
         public id?: number
     ) {}
 }
+
+export enum StatusItem {
+    Ready = 'Ready',
+    NotReady = 'NotReady',
+    NotRestored = 'NotRestored'
+}

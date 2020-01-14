@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
 import { InstrumentService } from '../instrument.service';
+import { DisplayValueItem } from 'src/app/common/model/display-value-item';
+import { CreateStatusItemsService } from '../create-status-items.service';
 
 @Component({
   selector: 'app-instrument-service-form',
@@ -36,13 +38,18 @@ export class InstrumentServiceFormComponent implements OnInit {
   public errorDate = false;
   public disabledSaveBtn = true;
 
+  statusItems: Array<DisplayValueItem>;
+
   private updateItemId;
 
 
   // ##############################
 
   constructor(private storage: StorageService,
-              private instrumentService: InstrumentService) { }
+              private instrumentService: InstrumentService,
+              private createStatusItemsService: CreateStatusItemsService) {
+                this.createStatusItems();
+              }
 
 
   // ##############################
@@ -63,7 +70,6 @@ export class InstrumentServiceFormComponent implements OnInit {
       this.servicesForm.controls.endDate.valueChanges.subscribe((valEndDate) => {
           this.errorDate = (valStartDate > valEndDate) ? true : false;
           this.disabled = (valStartDate > valEndDate) ? true : false;
-          this.disabledSaveBtn = (valStartDate < valEndDate) ? true : false;
       });
     });
 
@@ -79,8 +85,23 @@ export class InstrumentServiceFormComponent implements OnInit {
 
     this.setItem.emit(newItem);
 
-    this.initForm();
-    }
+    // this.initForm();
+    this.resetSearchForm();
+  }
+
+
+  createStatusItems() {
+    this.statusItems = this.createStatusItemsService.getStatusItems();
+  }
+
+  resetSearchForm() {
+    this.servicesForm.patchValue({
+      startDate: undefined,
+      endDate: undefined,
+      status: undefined,
+      description: ''
+    });
+  }
 
     // onSave() {
     //   const newSaveItem = new InstrumentServis(

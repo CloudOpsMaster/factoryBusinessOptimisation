@@ -1,24 +1,22 @@
 <form [formGroup]="servicesForm">
   <div class="form-group">
-    <label for="startDate">Дата сдачи в ремонт</label>
-    <input type="date" class="form-control" id="startDate"  formControlName="startDate" required>
+    <label>Дата сдачи в ремонт</label>
+    <input type="date" class="form-control form-control-sm" formControlName="startDate" required>
   </div>
   <div class="form-group">
-    <label for="endtDate">Дата получения из ремонта</label>
-    <input type="date" class="form-control" id="endDate"  formControlName="endDate" required>
+    <label>Дата получения из ремонта</label>
+    <input type="date" class="form-control form-control-sm" formControlName="endDate" required>
     <p *ngIf="errorDate" class="error">Дата не корректна</p>
   </div>
   <div class="form-group">
-    <label for="status">Статус</label>
-    <select id="status" class="form-control" formControlName="status" required>
-      <option selected>Готов</option>
-      <option>Не готов</option>
-      <option>Не подлежит восстановления</option>
-    </select>
+    <label>Статус</label>
+    <app-combo-box formControlName="status"
+                   [dataSource]="statusItems">
+    </app-combo-box>
   </div>
   <div class="form-group">
-    <label for="description">Описание</label>
-    <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+    <label>Описание</label>
+    <textarea class="form-control form-control-sm" rows="3" formControlName="description"></textarea>
   </div>
   <button (click)="onAdd()"
           type="button" class="btn btn-primary" [disabled]="!servicesForm.valid || disabled">Отправить</button>

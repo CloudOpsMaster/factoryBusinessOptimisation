@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { InstrumentService } from '../../instrument.service';
-import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
+import { InstrumentServis, StatusItem } from 'src/app/models/instrumentServis/InstrumentServis';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { DisplayValueItem } from 'src/app/common/model/display-value-item';
+import { CreateStatusItemsService } from '../../create-status-items.service';
 
 
 @Component({
@@ -33,17 +35,14 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
 
   private updateItemId;
 
-  items = [
-    'Готов',
-    'Не готов',
-    'Не восстановлен'
-  ];
+  statusItems: Array<DisplayValueItem>;
 
-
-  constructor( private instrumentService: InstrumentService) { }
+  constructor( private instrumentService: InstrumentService,
+               private createStatusItemsService: CreateStatusItemsService) {
+    this.createStatusItems();
+  }
 
   ngOnInit() {
-
     if (this.instrumentService.hasKey()) {
       this.instruments = this.instrumentService.getData();
     }
@@ -55,6 +54,8 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
     this.initForm();
     this.validatorDate();
   }
+
+  // ##################################
 
   initForm() {
     const item = this.instrumentService.getById(this.instrument.id);
@@ -73,6 +74,8 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
       });
     });
   }
+
+  // ##################################
 
   onDelete() {
     this.deleteItem.emit(this.instrument.id);
@@ -116,5 +119,9 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
 
   onShowCancelBtn() {
     this.showCancelBtn = !this.showCancelBtn;
+  }
+
+  createStatusItems() {
+    this.statusItems = this.createStatusItemsService.getStatusItems();
   }
 }
