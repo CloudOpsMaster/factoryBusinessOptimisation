@@ -4,6 +4,9 @@ import { ComboBoxComponent } from './ui/combo-box/combo-box.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SaveButtonComponent } from './ui/combo-box/save-button/save-button.component';
+import { EditButtonComponent } from './ui/combo-box/edit-button/edit-button.component';
+import { DeleteButtonComponent } from './ui/combo-box/delete-button/delete-button.component';
 
 
 @NgModule({
@@ -15,10 +18,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       ReactiveFormsModule
    ],
    declarations: [
-      ComboBoxComponent
+      ComboBoxComponent,
+      SaveButtonComponent,
+      EditButtonComponent,
+      DeleteButtonComponent
    ],
    exports: [
-      ComboBoxComponent
+      ComboBoxComponent,
+      SaveButtonComponent,
+      EditButtonComponent,
+      DeleteButtonComponent
    ]
 })
 export class CommonAppModule { }

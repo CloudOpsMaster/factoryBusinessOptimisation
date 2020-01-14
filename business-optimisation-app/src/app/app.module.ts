@@ -21,6 +21,7 @@ import { PlotsComponent } from './mary/plots/plots.component';
 import { PlotsFormComponent } from './mary/plots/plots-form/plots-form.component';
 import { PlotsTableComponent } from './mary/plots/plots-table/plots-table.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CommonAppModule } from './common/common.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     ReactiveFormsModule,
     EmployeeModule,
-    NgSelectModule
+    NgSelectModule,
+    CommonAppModule
   ],
   providers: [],
   bootstrap: [AppComponent]

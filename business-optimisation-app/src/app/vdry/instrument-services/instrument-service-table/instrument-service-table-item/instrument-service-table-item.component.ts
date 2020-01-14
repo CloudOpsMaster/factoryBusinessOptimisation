@@ -19,6 +19,11 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
   @Output() updateItem: EventEmitter<number> = new EventEmitter();
   @Output() private saveItem: EventEmitter<InstrumentServis> = new EventEmitter();
 
+
+  public titleSaveBtn = 'Сохранить';
+  public titleEdidtBtn = 'Изменить';
+  public titleDeleteBtn = 'Удалить';
+  public showCancelBtn = false;
   public updade = false;
   public servicesEditForm: FormGroup;
   public instruments: InstrumentServis[] = [];
@@ -76,6 +81,7 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
   onUpdate() {
     this.updateItem.emit(this.instrument.id);
     this.instrumentService.disabledFlag(true);
+    this.onShowCancelBtn();
     this.disable();
   }
 
@@ -93,16 +99,8 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
     } else {
       this.saveItem.emit(newItem);
       this.disable();
+      this.onShowCancelBtn();
     }
-
-    // if (this.servicesEditForm.controls.startDate.value > this.servicesEditForm.controls.endDate.value ) {
-    //   this.errorDate = true;
-    //   return;
-    // } else {
-    //   this.saveItem.emit(newItem);
-    //   this.disable();
-    // }
-
   }
 
   validatorDate(): boolean {
@@ -114,5 +112,9 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
 
   disable() {
     this.readonly = !this.readonly;
+  }
+
+  onShowCancelBtn() {
+    this.showCancelBtn = !this.showCancelBtn;
   }
 }

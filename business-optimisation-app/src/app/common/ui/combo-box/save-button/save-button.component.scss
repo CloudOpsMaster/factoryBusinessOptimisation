@@ -1,0 +1,16 @@
+.btn {
+    padding: 0;
+    display: inline-block;
+    margin: 8px;
+
+    svg {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+
+        &.save {
+            fill: #88c149;
+        }
+    }
+}
+
