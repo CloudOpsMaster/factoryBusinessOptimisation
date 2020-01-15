@@ -1,7 +1,12 @@
 <h4>{{caption}}</h4>
 <div *ngIf="buttonsBlockVisible">
-   <button (click)="onSave()" [ngClass]="saveClass">{{saveCaption}}</button>
-   <button (click)="onCancel()" class="btn btn-light btn-sm">Отмена</button>
+   <save-button *ngIf="saveVisible" (click)="onSave()" 
+                  titlePlaceholder="Сохранить"></save-button>
+   <delete-button *ngIf="!saveVisible" (click)="onSave()" 
+                  titlePlaceholder="Удалить"></delete-button>
+   <edit-button  (click)="onCancel()"
+                  titlePlaceholder="Отмена"
+                  [showCancelBtn]="true"></edit-button>
 </div>
 <span *ngIf="!employee">Не указан сотрудник для отображения деталей!</span>
 <div *ngIf="employee" class="accordion" id="editorAccordion">

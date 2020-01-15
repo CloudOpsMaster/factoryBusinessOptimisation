@@ -5,10 +5,14 @@
         <h3 float='left'>Список сотрудников</h3>
         <button [disabled]="addDisabled" class="btn btn-primary btn-sm"
                 (click)="onAddClick($event)">Добавить</button>
-        <button [disabled]="editDisabled" class="btn btn-warning btn-sm"
-                (click)="onEditClick($event)">Редактировать</button>
-        <button [disabled]="deleteDisabled" class="btn btn-danger btn-sm"
-                (click)="onDeleteClick($event)">Удалить</button>
+         <edit-button  (click)="onEditClick($event)"
+                     titlePlaceholder="Редактировать"
+                     [showCancelBtn]="false"
+                     [disabled]="editDisabled"></edit-button>
+         <delete-button (click)="onDeleteClick($event)" 
+                     titlePlaceholder="Удалить"
+                     [disabled]="deleteDisabled"></delete-button>
+   
       </div>
       <div>
         <app-employee-list [employees]="employees" 
