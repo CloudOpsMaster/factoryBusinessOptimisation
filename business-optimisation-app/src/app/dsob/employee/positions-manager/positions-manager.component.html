@@ -31,12 +31,14 @@
             [class]="getTextClassFor(position)"></textarea>
     </div>
     <div class="col-4">
-      <button [class]="editButtonClassFor(position)"
-              (click)="onEdit(position)">{{editCaptionFor(position)}}</button>
-      <button *ngIf="saveVisibleFor(position)" class="btn btn-success btn-sm"
-              (click)="onSave(position)">Сохранить</button>
-      <button class="btn btn-danger btn-sm"
-              (click)="onDeleteClick(position)">Удалить</button>
+      <save-button (click)="onSave(position)" 
+                     titlePlaceholder="Сохранить"
+                     [disabled]="saveDisabledFor(position)"></save-button>
+      <edit-button (click)="onEdit(position)"
+                     [titlePlaceholder]="editCaptionFor(position)"
+                     [showCancelBtn]="showCancelBtnFor(position)"></edit-button>
+      <delete-button (click)="onDeleteClick(position)"
+                     titlePlaceholder="Удалить"></delete-button>
     </div>
   </div>
 </div>

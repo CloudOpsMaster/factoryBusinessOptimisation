@@ -88,11 +88,11 @@ export class PositionsManagerComponent implements OnInit {
       }
    }
 
-   editButtonClassFor(position): string {
+   showCancelBtnFor(position): boolean {
       if (position.id === this.editPositionId) {
-         return 'btn btn-light btn-sm';
+         return true;
       } else {
-         return 'btn btn-warning btn-sm';
+         return false;
       }
    }
 
@@ -104,8 +104,8 @@ export class PositionsManagerComponent implements OnInit {
       }
    }
 
-   saveVisibleFor(position): boolean {
-      return position.id === this.editPositionId;
+   saveDisabledFor(position): boolean {
+      return position.id !== this.editPositionId;
    }
 
    private refreshData() {
