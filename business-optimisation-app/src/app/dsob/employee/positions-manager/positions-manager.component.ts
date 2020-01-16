@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService, StorageKey } from 'src/app/services/storage.service';
 import { PositionInfo } from 'src/app/models/HR/PositionInfo';
+import { PositionService } from './services/position.service';
 
 @Component({
    selector: 'app-positions-manager',
@@ -20,13 +20,12 @@ export class PositionsManagerComponent implements OnInit {
    private allPositions: Array<PositionInfo>;
    private editPositionId = -1;
 
-   constructor(private storageService: StorageService) {
+   constructor(private positionService: PositionService) {
       this.filter = new PositionInfo();
    }
 
    ngOnInit() {
-      this.readStorage();
-      this.applyFiltration();
+      this.refreshData();
    }
 
    onPositionAdded() {
@@ -47,23 +46,18 @@ export class PositionsManagerComponent implements OnInit {
    }
 
    onDeleteClick(position: PositionInfo) {
-      this.allPositions = this.allPositions.filter(p => p.id !== position.id);
-      this.writeStorage();
+      this.positionService.deletePosition(position);
       this.refreshData();
    }
 
    onSave(position: PositionInfo) {
-      const validationError = this.getValidationError(position);
-      if (validationError.length !== 0) {
+      const response = this.positionService.updatePosition(position);
+      if (!response.success) {
          // TODO: provide normal dialog
-         alert(validationError);
+         alert(response.error);
          return;
       }
-      const currentPosition = this.allPositions.find(p => p.id === position.id);
-      currentPosition.title = position.title;
-      currentPosition.requirements = position.requirements;
       this.editPositionId = -1;
-      this.writeStorage();
       this.refreshData();
    }
 
@@ -109,22 +103,8 @@ export class PositionsManagerComponent implements OnInit {
    }
 
    private refreshData() {
-      this.readStorage();
+      this.allPositions = this.positionService.AllPositions;
       this.applyFiltration();
-   }
-
-   private readStorage() {
-      this.allPositions = this.storageService.getData(StorageKey.EmployeePositionsStorageKey)
-         || new Array<PositionInfo>();
-      this.allPositions = this.allPositions.map(p => {
-         const info = new PositionInfo();
-         info.initFrom(p);
-         return info;
-      });
-   }
-
-   private writeStorage() {
-      this.storageService.setData(StorageKey.EmployeePositionsStorageKey, this.allPositions);
    }
 
    private applyFiltration() {
@@ -139,14 +119,6 @@ export class PositionsManagerComponent implements OnInit {
          this.filteredPositions =
             this.filteredPositions.filter(p => p.requirements.toUpperCase().includes(this.filter.requirements.toUpperCase()));
       }
-   }
-
-   private getValidationError(position: PositionInfo): string {
-      let response = '';
-      if (this.allPositions.some(p => p.title.trim() === position.title.trim() && p.id !== position.id)) {
-         response = 'Позиция с таким названием уже существует!';
-      }
-      return response;
    }
 
    private restoreFieldsFor(position: PositionInfo) {
