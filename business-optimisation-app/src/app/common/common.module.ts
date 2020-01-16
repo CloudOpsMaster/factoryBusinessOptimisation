@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SaveButtonComponent } from './ui/combo-box/save-button/save-button.component';
 import { EditButtonComponent } from './ui/combo-box/edit-button/edit-button.component';
 import { DeleteButtonComponent } from './ui/combo-box/delete-button/delete-button.component';
+import { AddButtonComponent } from './ui/combo-box/add-button/add-button.component';
+import { ResetButtonComponent } from './ui/combo-box/reset-button/reset-button.component';
 
 
 @NgModule({
@@ -21,13 +23,17 @@ import { DeleteButtonComponent } from './ui/combo-box/delete-button/delete-butto
       ComboBoxComponent,
       SaveButtonComponent,
       EditButtonComponent,
-      DeleteButtonComponent
+      DeleteButtonComponent,
+      AddButtonComponent,
+      ResetButtonComponent
    ],
    exports: [
       ComboBoxComponent,
       SaveButtonComponent,
       EditButtonComponent,
-      DeleteButtonComponent
+      DeleteButtonComponent,
+      AddButtonComponent,
+      ResetButtonComponent
    ]
 })
 export class CommonAppModule { }

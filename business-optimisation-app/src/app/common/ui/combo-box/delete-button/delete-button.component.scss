@@ -1,3 +1,7 @@
+:host.eventsDisabled {
+    pointer-events: none;
+}
+
 .btn {
     padding: 0;
     display: inline-block;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
@@ -11,7 +11,7 @@ import { CreateStatusItemsService } from '../create-status-items.service';
   templateUrl: './instrument-service-form.component.html',
   styleUrls: ['./instrument-service-form.component.css']
 })
-export class InstrumentServiceFormComponent implements OnInit {
+export class InstrumentServiceFormComponent implements OnInit, OnChanges {
 
   // @Input() set itemId(id: number) {
   //   if (id && id > -1) {
@@ -37,6 +37,7 @@ export class InstrumentServiceFormComponent implements OnInit {
   public disabled = true;
   public errorDate = false;
   public disabledSaveBtn = true;
+  public titleAddBtn = 'Добавить';
 
   statusItems: Array<DisplayValueItem>;
 
@@ -56,6 +57,7 @@ export class InstrumentServiceFormComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.ngOnChanges();
   }
 
   initForm() {
@@ -69,10 +71,14 @@ export class InstrumentServiceFormComponent implements OnInit {
     this.servicesForm.controls.startDate.valueChanges.subscribe((valStartDate) => {
       this.servicesForm.controls.endDate.valueChanges.subscribe((valEndDate) => {
           this.errorDate = (valStartDate > valEndDate) ? true : false;
-          this.disabled = (valStartDate > valEndDate) ? true : false;
+          this.disabled = (this.errorDate && valStartDate > valEndDate) ? true : false;
       });
     });
 
+  }
+
+  ngOnChanges() {
+    this.initForm();
   }
 
   onAdd() {
@@ -84,6 +90,7 @@ export class InstrumentServiceFormComponent implements OnInit {
       );
 
     this.setItem.emit(newItem);
+
 
     // this.initForm();
     this.resetSearchForm();
@@ -101,6 +108,8 @@ export class InstrumentServiceFormComponent implements OnInit {
       status: undefined,
       description: ''
     });
+
+    this.disabled = true;
   }
 
     // onSave() {

@@ -3,17 +3,17 @@ import { AbstractButton } from '../abstract-button';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'delete-button',
-  templateUrl: './delete-button.component.html',
-  styleUrls: ['./delete-button.component.scss']
+  selector: 'add-button',
+  templateUrl: './add-button.component.html',
+  styleUrls: ['./add-button.component.scss']
 })
-export class DeleteButtonComponent extends AbstractButton implements OnInit {
+export class AddButtonComponent extends AbstractButton implements OnInit {
 
   @HostBinding('class.eventsDisabled') disabled;
 
   constructor() {
     super();
-  }
+   }
 
   ngOnInit() {
   }

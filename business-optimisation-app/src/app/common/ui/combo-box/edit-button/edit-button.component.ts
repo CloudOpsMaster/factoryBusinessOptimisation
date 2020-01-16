@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { AbstractButton } from '../abstract-button';
 
 @Component({
@@ -10,6 +10,8 @@ import { AbstractButton } from '../abstract-button';
 export class EditButtonComponent extends AbstractButton implements OnInit {
 
   @Input() showCancelBtn = false;
+
+  @HostBinding('class.eventsDisabled') disabled;
 
   constructor() {
     super();

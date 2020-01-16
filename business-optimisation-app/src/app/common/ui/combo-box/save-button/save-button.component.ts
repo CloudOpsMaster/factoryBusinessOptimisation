@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { AbstractButton } from '../abstract-button';
 
 @Component({
@@ -8,6 +8,9 @@ import { AbstractButton } from '../abstract-button';
   styleUrls: ['./save-button.component.scss']
 })
 export class SaveButtonComponent extends AbstractButton implements OnInit {
+
+  @HostBinding('class.eventsDisabled') disabled;
+
   constructor( ) {
     super();
   }
