@@ -25,6 +25,9 @@ export class EmployeeFiltrator {
       if (filter.taxNumber && filter.taxNumber.length > 0) {
          filteredEmployees = filteredEmployees.filter(e => e.document.taxNumber.toString().startsWith(filter.taxNumber));
       }
+      if (filter.position && filter.position.id > -1) {
+         filteredEmployees = filteredEmployees.filter(e => e.position.id === +filter.position.id);
+      }
 
       return filteredEmployees;
    }

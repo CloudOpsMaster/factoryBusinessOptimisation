@@ -19,6 +19,11 @@
     </div>
   </div>
   <br>
+  <div class="form-row">
+      <label for="position">Должность:</label>
+      <app-position-selector [position]="filter.position" id="position" [disabled]="locked"></app-position-selector>
+  </div>
+  <br>
   <div class="button-group pull-right">
     <button (click)="onApplyClick()" class="btn btn-primary btn-sm" [disabled]="locked">Применить</button>
     <button (click)="onResetClick()" class="btn btn-light btn-sm" [disabled]="locked">Сбросить</button>

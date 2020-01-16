@@ -1,9 +1,5 @@
 <label for="positionSelect">Текущая должность:</label>
-<app-combo-box [dataSource]="allPositions"
-               [(ngModel)]="position.id"
-               displayMember="title"
-               valueMember="id"
-               [disabled]="!editMode"></app-combo-box>
+<app-position-selector [position]="position" [disabled]="!editMode"></app-position-selector>
 
 <br>
 <button *ngIf="editMode" (click)="onCreateNewPosition()">{{createNewCaption}}</button>

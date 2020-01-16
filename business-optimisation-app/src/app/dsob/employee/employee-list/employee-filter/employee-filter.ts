@@ -1,3 +1,4 @@
+import { PositionInfo } from '../../../../models/HR/PositionInfo';
 
 export class EmployeeFilter {
     firstName: string;
@@ -6,6 +7,11 @@ export class EmployeeFilter {
     id: string;
     passport: string;
     taxNumber: string;
+    position: PositionInfo;
     // TODO: provide more filters
+
+    constructor() {
+      this.position = new PositionInfo();
+    }
 }
 
