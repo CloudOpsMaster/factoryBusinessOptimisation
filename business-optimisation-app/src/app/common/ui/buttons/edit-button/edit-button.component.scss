@@ -1,0 +1,23 @@
+:host.eventsDisabled {
+    pointer-events: none;
+}
+
+.btn {
+    padding: 0;
+    display: inline-block;
+    margin: 8px;
+
+    svg {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+
+        &.update {
+            fill: #ff8d0e;
+        }
+
+        &.cancel {
+            fill: #808080;
+        }
+    }
+}
