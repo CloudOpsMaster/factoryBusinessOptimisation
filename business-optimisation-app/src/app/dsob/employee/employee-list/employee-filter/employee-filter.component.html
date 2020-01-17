@@ -23,10 +23,13 @@
       <label for="position">Должность:</label>
       <app-position-selector [position]="filter.position" id="position" [disabled]="locked"></app-position-selector>
   </div>
-  <br>
   <div class="button-group pull-right">
-    <button (click)="onApplyClick()" class="btn btn-primary btn-sm" [disabled]="locked">Применить</button>
-    <button (click)="onResetClick()" class="btn btn-light btn-sm" [disabled]="locked">Сбросить</button>
+    <filter-button (click)="onApplyClick()" 
+                  titlePlaceholder="Применить фильтр"
+                  [disabled]="locked"></filter-button>
+    <edit-button  (click)="onResetClick()"
+                  titlePlaceholder="Сбросить фильтр"
+                  [disabled]="locked"
+                  [showCancelBtn]="true"></edit-button>
   </div>
-  <br>
 </div>

@@ -3,8 +3,9 @@
     <div class="col-7">
       <div>
         <h3 float='left'>Список сотрудников</h3>
-        <button [disabled]="addDisabled" class="btn btn-primary btn-sm"
-                (click)="onAddClick($event)">Добавить</button>
+         <add-button (click)="onAddClick($event)"
+                     titlePlaceholder="Добавить"
+                     [disabled]="addDisabled"></add-button>
          <edit-button  (click)="onEditClick($event)"
                      titlePlaceholder="Редактировать"
                      [showCancelBtn]="false"

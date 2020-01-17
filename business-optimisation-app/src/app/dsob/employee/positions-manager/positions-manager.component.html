@@ -12,11 +12,13 @@
    <label for="filterPositionReq" class="labelFilter">Фильтр по требованиям:</label>
    <input type="text" [(ngModel)]="filter.requirements" class="positionFilterInput"
                         id="filterPositionReq">
-   <button class="btn btn-primary btn-sm"
-                        (click)="onFilterClick()"
-                        [disabled]="!filterEnabled">Фильтровать</button>
-   <button class="btn btn-light btn-sm"
-                        (click)="onFilterClearClick()">Очистить</button>
+   <filter-button (click)="onFilterClick()" 
+                  titlePlaceholder="Применить фильтр"
+                  [disabled]="!filterEnabled"></filter-button>
+   <edit-button  (click)="onFilterClearClick()"
+               titlePlaceholder="Сбросить фильтр"
+               [showCancelBtn]="true"></edit-button>
+
 </div>
 <div class="container">
   <div class="row" *ngFor="let position of filteredPositions">
@@ -25,12 +27,12 @@
             [readonly]="isReadonlyForPosition(position)"
             [class]="getTextClassFor(position)">
     </div>
-    <div class="col-5">
+    <div class="col-6">
       <textarea [(ngModel)]="position.requirements"
             [readonly]="isReadonlyForPosition(position)"
             [class]="getTextClassFor(position)"></textarea>
     </div>
-    <div class="col-4">
+    <div class="col-3">
       <save-button (click)="onSave(position)" 
                      titlePlaceholder="Сохранить"
                      [disabled]="saveDisabledFor(position)"></save-button>

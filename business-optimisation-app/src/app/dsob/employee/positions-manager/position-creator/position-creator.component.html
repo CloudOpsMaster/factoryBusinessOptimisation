@@ -12,9 +12,9 @@
                id="newPositionReq"></textarea>
     </div>
     <div [class]="buttonColumnClass">
-      <button class="btn btn-success btn-sm btn-add"
-              (click)="onAdd()"
-              [disabled]="!addEnabled">Добавить</button>
+      <add-button (click)="onAdd()"
+            titlePlaceholder="Добавить"
+            [disabled]="!addEnabled"></add-button>
     </div>
   </div>
 </div>
