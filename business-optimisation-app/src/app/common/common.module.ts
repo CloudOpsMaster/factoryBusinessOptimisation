@@ -9,6 +9,7 @@ import { EditButtonComponent } from './ui/combo-box/edit-button/edit-button.comp
 import { DeleteButtonComponent } from './ui/combo-box/delete-button/delete-button.component';
 import { AddButtonComponent } from './ui/combo-box/add-button/add-button.component';
 import { ResetButtonComponent } from './ui/combo-box/reset-button/reset-button.component';
+import { FilterButtonComponent } from './ui/combo-box/filter-button/filter-button.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ResetButtonComponent } from './ui/combo-box/reset-button/reset-button.c
       EditButtonComponent,
       DeleteButtonComponent,
       AddButtonComponent,
-      ResetButtonComponent
+      ResetButtonComponent,
+      FilterButtonComponent
    ],
    exports: [
       ComboBoxComponent,
@@ -33,7 +35,8 @@ import { ResetButtonComponent } from './ui/combo-box/reset-button/reset-button.c
       EditButtonComponent,
       DeleteButtonComponent,
       AddButtonComponent,
-      ResetButtonComponent
+      ResetButtonComponent,
+      FilterButtonComponent
    ]
 })
 export class CommonAppModule { }
