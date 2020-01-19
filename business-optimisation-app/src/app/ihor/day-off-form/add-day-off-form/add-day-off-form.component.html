@@ -1,0 +1,31 @@
+<button class="btn btn-primary" 
+        *ngIf="!isShowForm"
+        (click)="showForm()">
+        Добавить</button>
+
+<form *ngIf="isShowForm" [formGroup]="addDayOffForm">
+    <div class="form-body">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" 
+                   placeholder="Name:"
+                   formControlName="name">
+        </div>
+
+        <div class="form-group">
+            <label>Surname:</label>
+            <input type="text" 
+                   placeholder="Surname:"
+                   formControlName="surname">
+        </div>
+    </div>
+
+    <div class="form-footer">
+        <button type="submit"
+                class="submit"
+                [disabled] = "!addDayOffForm.valid"
+                (click)="onSubmit()">
+                Сохранить
+        </button>
+    </div>
+</form>

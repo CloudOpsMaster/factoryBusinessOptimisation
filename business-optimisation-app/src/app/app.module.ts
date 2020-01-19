@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
 import { CreateMaterialFormComponent } from './yulia/create-material-form/create-material-form.component';
 import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
+import { AddDayOffFormComponent } from './ihor/day-off-form/add-day-off-form/add-day-off-form.component';
+import { DayOffListComponent } from './ihor/day-off-form/day-off-list/day-off-list.component';
 import { InstrumentServicesComponent } from './vdry/instrument-services/instrument-services.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GettingToolsComponent } from './mary/getting-tools/getting-tools.component';
@@ -30,6 +32,8 @@ import { CommonAppModule } from './common/common.module';
     CreateMaterialFormComponent,
     MaterialsDictionaryComponent,
     DayOffFormComponent,
+    AddDayOffFormComponent,
+    DayOffListComponent,
     InstrumentServicesComponent,
     InstrumentServiceFormComponent,
     InstrumentServiceTableComponent,
@@ -39,7 +43,7 @@ import { CommonAppModule } from './common/common.module';
     CheckListComponent,
     PlotsComponent,
     PlotsFormComponent,
-    PlotsTableComponent
+    PlotsTableComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DayOffForm } from './day-off.model';
+import { DayOffFormsService } from './services/day-off-forms.service';
+
 
 @Component({
   selector: 'app-day-off-form',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./day-off-form.component.scss']
 })
 export class DayOffFormComponent implements OnInit {
+  public dayOffForms: DayOffForm[] = [];
 
-  constructor() { }
+  constructor(
+    private dayOffFormsService: DayOffFormsService
+  ) { }
 
   ngOnInit() {
+    this.update();
+  }
+
+  public update(): void {
+    this.dayOffForms = this.dayOffFormsService.update();
   }
 
 }

@@ -1,0 +1,45 @@
+<app-add-day-off-form></app-add-day-off-form>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Дата с которой отсутствовал(-а):</th>
+            <th>Дата до которой отсутствовал(-а):</th>
+            <th>Причина отсутсвия</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+
+        <tr class="dayOffForm" *ngFor="let dayOffForm of dayOffForms" (remove)="updateContacts()">
+            <td>
+                {{ dayOffForm.name }}
+            </td>
+            
+            <td>
+                {{ dayOffForm.surname }}
+            </td>
+            
+            <td>
+               
+            </td>
+        
+            <td>
+            </td>
+        
+            <td> 
+            </td>
+
+            <td>
+                <button class="btn btn-warning">Редактрировать</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="remove()">Удалить</button>
+            </td>
+        </tr>
+
+
+</table>
