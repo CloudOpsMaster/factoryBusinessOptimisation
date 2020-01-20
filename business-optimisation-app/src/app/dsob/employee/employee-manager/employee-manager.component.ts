@@ -23,6 +23,14 @@ export class EmployeeManagerComponent implements OnInit {
     return this.currentEmployeeId < 0 || this.editingInProcess;
   }
 
+  get isGridVisible(): boolean {
+     return this.viewMode === EmployeeViewMode.View;
+  }
+
+  get isDetailsVisible(): boolean {
+     return this.viewMode !== EmployeeViewMode.View;
+  }
+
   currentEmployeeId = -1;
   employees = new Array<EmployeeInfo>();
   viewMode = EmployeeViewMode.View;
@@ -44,6 +52,10 @@ export class EmployeeManagerComponent implements OnInit {
     this.editingInProcess = true;
     this.hideSelection = true;
     this.viewMode = EmployeeViewMode.Add;
+  }
+
+  onDetailsRequested() {
+     this.viewMode = EmployeeViewMode.Details;
   }
 
   onEditClick(event: MouseEvent) {

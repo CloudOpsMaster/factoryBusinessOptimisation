@@ -5,6 +5,7 @@ export class BaseEditor {
     @Input() viewMode: EmployeeViewMode = EmployeeViewMode.View;
 
     get editMode(): boolean {
-        return this.viewMode !== EmployeeViewMode.View;
+        return this.viewMode !== EmployeeViewMode.View &&
+               this.viewMode !== EmployeeViewMode.Details;
     }
 }

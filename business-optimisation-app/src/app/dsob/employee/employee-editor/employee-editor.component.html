@@ -1,13 +1,12 @@
-<h4>{{caption}}</h4>
-<div *ngIf="buttonsBlockVisible">
-   <save-button *ngIf="saveVisible" (click)="onSave()" 
+<span class="header">{{caption}}</span>
+   <save-button *ngIf="buttonsBlockVisible && saveVisible" (click)="onSave()" 
                   titlePlaceholder="Сохранить"></save-button>
-   <delete-button *ngIf="!saveVisible" (click)="onSave()" 
+   <delete-button *ngIf="buttonsBlockVisible && !saveVisible" (click)="onSave()" 
                   titlePlaceholder="Удалить"></delete-button>
-   <edit-button  (click)="onCancel()"
+   <edit-button  *ngIf="buttonsBlockVisible" 
+                  (click)="onCancel()"
                   titlePlaceholder="Отмена"
                   [showCancelBtn]="true"></edit-button>
-</div>
 <span *ngIf="!employee">Не указан сотрудник для отображения деталей!</span>
 <div *ngIf="employee" class="accordion" id="editorAccordion">
    <div class="card">

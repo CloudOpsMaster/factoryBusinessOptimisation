@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-7">
+    <div class="col-12" *ngIf="isGridVisible">
       <div>
-        <h3 float='left'>Список сотрудников</h3>
+         <span class="header">Список сотрудников</span>
          <add-button (click)="onAddClick($event)"
                      titlePlaceholder="Добавить"
                      [disabled]="addDisabled"></add-button>
+         <button (click)="onDetailsRequested()">{{"Детали"}}</button>
          <edit-button  (click)="onEditClick($event)"
                      titlePlaceholder="Редактировать"
                      [showCancelBtn]="false"
@@ -13,7 +14,7 @@
          <delete-button (click)="onDeleteClick($event)" 
                      titlePlaceholder="Удалить"
                      [disabled]="deleteDisabled"></delete-button>
-   
+         
       </div>
       <div>
         <app-employee-list [employees]="employees" 
@@ -23,7 +24,7 @@
                         (currentEmpChanged)="onCurrentEmpChanged($event)"></app-employee-list>
       </div>
     </div>
-    <div class="col-5">
+    <div class="col-12" *ngIf="isDetailsVisible">
       <app-employee-editor [employeeId]="currentEmployeeId"
                             [viewMode]="viewMode"
                             (canceled)="onCanceled()"

@@ -71,7 +71,7 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
 
   private getCaption(): string {
     let response = '';
-    if (this.viewMode === EmployeeViewMode.View) {
+    if (this.viewMode === EmployeeViewMode.Details) {
       response = 'Сотрудник - детали';
     } else if (this.viewMode === EmployeeViewMode.Edit) {
       response = 'Сотрудник - редактирование';
