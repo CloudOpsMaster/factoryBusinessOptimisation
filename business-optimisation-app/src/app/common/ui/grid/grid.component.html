@@ -1,0 +1,17 @@
+<table class="table table-striped">
+   <thead class="thead-light">
+      <tr>
+         <th *ngFor="let column of columns">
+            {{column.header}}
+         </th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor="let data of dataSource" (click)="onRowClick(data)"
+         [ngClass]="{'table-primary' : isSelected(data) }">
+         <td *ngFor="let column of columns">
+            {{getFieldValue(data, column.field)}}
+         </td>
+      </tr>
+   </tbody>
+</table>

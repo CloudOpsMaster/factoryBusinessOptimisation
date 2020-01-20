@@ -10,6 +10,7 @@ import { DeleteButtonComponent } from './ui/buttons/delete-button/delete-button.
 import { AddButtonComponent } from './ui/buttons/add-button/add-button.component';
 import { ResetButtonComponent } from './ui/buttons/reset-button/reset-button.component';
 import { FilterButtonComponent } from './ui/buttons/filter-button/filter-button.component';
+import { GridComponent } from './ui/grid/grid.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FilterButtonComponent } from './ui/buttons/filter-button/filter-button.
       DeleteButtonComponent,
       AddButtonComponent,
       ResetButtonComponent,
-      FilterButtonComponent
+      FilterButtonComponent,
+      GridComponent
    ],
    exports: [
       ComboBoxComponent,
@@ -36,7 +38,8 @@ import { FilterButtonComponent } from './ui/buttons/filter-button/filter-button.
       DeleteButtonComponent,
       AddButtonComponent,
       ResetButtonComponent,
-      FilterButtonComponent
+      FilterButtonComponent,
+      GridComponent
    ]
 })
 export class CommonAppModule { }
