@@ -1,5 +1,5 @@
-<table class="table table-striped">
-   <thead class="thead-light">
+<table [class]="options.tableClass">
+   <thead [class]="options.headerClass">
       <tr>
          <th *ngFor="let column of columns">
             {{column.header}}
@@ -8,7 +8,7 @@
    </thead>
    <tbody>
       <tr *ngFor="let data of dataSource" (click)="onRowClick(data)"
-         [ngClass]="{'table-primary' : isSelected(data) }">
+         [class]="getRowClassFor(data)">
          <td *ngFor="let column of columns">
             {{getFieldValue(data, column.field)}}
          </td>

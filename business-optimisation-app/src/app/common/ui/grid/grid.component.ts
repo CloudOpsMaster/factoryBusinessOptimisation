@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GridColumn } from './model/grid-column';
+import { GridOptions } from './model/grid-options';
 
 @Component({
    // tslint:disable-next-line:component-selector
@@ -11,6 +12,7 @@ export class GridComponent implements OnInit {
 
    @Input() dataSource: Array<any>;
    @Input() columns: Array<GridColumn>;
+   @Input() options: GridOptions = new GridOptions();
    @Input() locked = false;
    @Input() hideSelection = false;
    @Input() focusEntityId: any; // ???
@@ -30,8 +32,14 @@ export class GridComponent implements OnInit {
       this.currentRowChanged.emit(data);
    }
 
-   isSelected(data: any): boolean {
-      return !this.hideSelection && this.focusEntityId === this.getFieldValue(data, this.tracktionField);
+   getRowClassFor(data: any): string {
+      let response = '';
+      const isSelected = !this.hideSelection
+                        && this.focusEntityId === this.getFieldValue(data, this.tracktionField);
+      if (isSelected) {
+         response = this.options.selectedRowClass;
+      }
+      return response;
     }
 
    private getFieldValue(data: any, field: string): any {
