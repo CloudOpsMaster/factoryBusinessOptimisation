@@ -5,14 +5,16 @@ import { AbstractButton } from '../abstract-button';
   // tslint:disable-next-line:component-selector
   selector: 'filter-button',
   templateUrl: './filter-button.component.html',
-  styleUrls: ['./filter-button.component.scss']
+  styleUrls: [
+    './filter-button.component.scss',
+    '../base-button.component.scss']
 })
 export class FilterButtonComponent extends AbstractButton {
 
-   @HostBinding('class.eventsDisabled') disabled;
+  @HostBinding('class.eventsDisabled') disabled;
 
-   constructor( ) {
-     super();
-   }
+  constructor() {
+    super();
+  }
 
 }

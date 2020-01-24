@@ -1,0 +1,26 @@
+.add-btn{
+    margin-top: 8px;
+    margin-bottom: 100px;
+}
+
+.checkbox:checked+input{
+    font-weight: bold;
+    transition: 0ms;
+}
+
+.right-task-text{ 
+    width: 100%;
+    border-bottom:1px solid #d1d1d1;
+    background: none;  
+    transition: 200ms;
+}
+
+.right-task-text:focus{
+    border-bottom:1px solid #0086a7;
+    transition: 200ms;
+}
+
+.right-task-trash{
+    margin: 0 0 -1% -1%;
+    transform: scale(0.7);
+}

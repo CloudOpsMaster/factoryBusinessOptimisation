@@ -34,12 +34,15 @@
         <li class="nav navbar-nav">
             <a routerLink="/metering" routerLinkActive="active" class="nav-link">Счётчики</a>
         </li>
-        <li class="nav navbar-nav">
-            <a routerLink="/check-list" routerLinkActive="active" class="nav-link">Чек-лист</a>
+        <li class="nav nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">Список задач</a>
+            <div class="dropdown-menu">
+                <a routerLink="/check-list-edit" routerLinkActive="active" class="nav-link">Редактирование</a>
+                <a routerLink="/check-list-view" routerLinkActive="active" class="nav-link">Просмотр</a>
+            </div>
         </li>
     </ul>
 </div>
-
 <div class="container">
     <router-outlet></router-outlet>
 </div>

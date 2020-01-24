@@ -7,7 +7,8 @@ import { InstrumentServicesComponent } from './vdry/instrument-services/instrume
 import { GettingToolsComponent } from "./mary/getting-tools/getting-tools.component";
 import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
 import { MeteringComponent } from './vadim/metering/metering.component';
-import { CheckListComponent } from './vlad/check-list/check-list.component';
+import { CheckListViewComponent } from './vlad/check-list-view/check-list-view.component';
+import { CheckListEditComponent } from './vlad/check-list-edit/check-list-edit.component';
 import { PositionsManagerComponent } from './dsob/employee/positions-manager/positions-manager.component';
 import { PlotsComponent } from './mary/plots/plots.component';
 
@@ -55,8 +56,12 @@ const routes: Routes = [
     component: MeteringComponent
   },
   {
-    path: 'check-list',
-    component: CheckListComponent
+    path: 'check-list-edit',
+    component: CheckListEditComponent
+  },
+  {
+    path: 'check-list-view',
+    component: CheckListViewComponent
   }
 ];
 

@@ -1,23 +1,22 @@
-:host.eventsDisabled {
-    pointer-events: none;
+.btn {
+    svg {
+        &.cancel {
+            margin-top: 2px;
+        }
+    }
+    
 }
 
-.btn {
-    padding: 0;
-    display: inline-block;
-    margin: 8px;
-
+:hover {
     svg {
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
         &.update {
-            fill: #ff8d0e;
+            fill: rgb(218, 165, 32);
         }
 
         &.cancel {
-            fill: #808080;
+            fill: rgb(128, 128, 128);
         }
+
+        opacity: 0.8;
     }
 }
