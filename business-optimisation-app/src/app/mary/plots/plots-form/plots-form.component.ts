@@ -1,9 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Employee } from 'src/app/models/HR/Employee';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { StorageService, StorageKey } from 'src/app/services/storage.service';
-import { Plot } from 'src/app/models/plot';
-import { VirtualTimeScheduler } from 'rxjs';
+import { Plot } from 'src/app/models/plot/plot';
+import { ILocationAddress } from 'src/app/models/plot/location-address';
+import { Validation } from './validation';
+import { IWorkSite } from 'src/app/models/plot/work-site';
+import { productionDepartments, IDepartment } from 'src/app/models/plot/department';
 
 @Component({
   selector: 'app-plots-form',
@@ -11,158 +13,184 @@ import { VirtualTimeScheduler } from 'rxjs';
   styleUrls: ['./plots-form.component.scss']
 })
 
-export class PlotsFormComponent implements OnInit {
+export class PlotsFormComponent {
+
+  readonly guildID = 1;
+  readonly officeID = 2;
+  readonly floor: AbstractControl;
+  readonly workSite: AbstractControl;
+  readonly room: AbstractControl;
+  readonly place: AbstractControl;
 
   private plotsForm: FormGroup;
-  private items = new Array<Plot>();
-  private employees = new Array<string>();
+  private codeOfDepartment: number;
+  private productionDepartments = new Array<string>();
+  private locationAddresses = new Array<ILocationAddress>();
+  private workSites = new Array<IWorkSite>();
+  private arrayOfPlots = new Array<Plot>();
   private storage = new StorageService();
-  private selectedEmployees = new Array<string>();
-  private currentItem: Plot;
+  private validation: Validation;
 
+  private sideCode = new Array<number>();
+
+  private partOfOfficeForm: boolean;
+  private partOfGuildForm: boolean;
+  private form: boolean;
+
+  @Input() set openForm(value: boolean) { this.form = value; }
+  @Output() closedForm = new EventEmitter<boolean>();
   @Output() plots = new EventEmitter<Array<Plot>>();
-  @Input() set item(plot: Plot) {
-    if (plot) {
-      this.currentItem = plot;
-      this.plotsForm.get("plotInfo.address").setValue(plot.address);
-      this.plotsForm.get("plotInfo.plotname").setValue(plot.plotname);
-      this.plotsForm.get("employeeInfo.employee").setValue(plot.employee);
-      this.plotsForm.get("toolInfo.toolname").setValue(plot.toolname);
-      this.plotsForm.get("toolInfo.tableNumber").setValue(plot.tableNumber);
-      this.selectedEmployees = plot.responsible;
-      this.setTextToTextArea(plot.responsible);
-    }
-  }
-
-  private pushToTable(plots: Array<Plot>): void {
-    this.plots.emit(plots);
-  }
 
   constructor() {
+    this.initProductionDepartment();
+    this.initDatalist(StorageKey.LocationAddresses, this.locationAddresses);
+    this.initDatalist(StorageKey.Plots,this.arrayOfPlots);
     this.createForm();
-    this.getEmployees();
-  }
-
-  ngOnInit() {
-    this.getItems();
+    this.floor = this.plotsForm.get('detailsInfo.floor');
+    this.workSite = this.plotsForm.get('detailsInfo.workSite');
+    this.room = this.plotsForm.get('detailsInfo.room');
+    this.place = this.plotsForm.get('detailsInfo.place');
+    this.validation = new Validation(this.floor, this.workSite, this.room, this.place);
+    this.validation.clearValidations();
   }
 
   private createForm(): void {
     this.plotsForm = new FormGroup({
-      plotInfo: new FormGroup({
+      commonInfo: new FormGroup({
         address: new FormControl(null),
-        plotname: new FormControl(null)
+        productionDepartment: new FormControl(null)
       }),
-      employeeInfo: new FormGroup({
-        employee: new FormControl(null)
-      }),
-      toolInfo: new FormGroup({
-        toolname: new FormControl(null),
-        tableNumber: new FormControl(null),
-        responsible: new FormControl(null),
-        listResponsible: new FormControl(null)
+      detailsInfo: new FormGroup({
+        floor: new FormControl(null),
+        workSite: new FormControl(null),
+        room: new FormControl(null),
+        place: new FormControl(null)
       })
-    })
-  }
-
-  private getItems(): void {
-    this.items = this.storage.getData(StorageKey.Plots);
-    this.pushToTable(this.items);
-  }
-
-  private find(value: string, array: Array<string>): boolean {
-    for (let elem of array) {
-      if (value === elem) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  private addResponsible(): void {
-    const responsible = this.plotsForm.get("toolInfo.responsible").value;
-    if (this.find(responsible, this.selectedEmployees) && responsible != null) {
-      this.plotsForm.get("toolInfo.responsible").setValue(null);
-      this.selectedEmployees.push(responsible);
-      this.setTextToTextArea(this.selectedEmployees);
-    }
-  }
-
-  private deleteResponsible(): void {
-    const responsible = this.plotsForm.get("toolInfo.responsible").value;
-    if (!this.find(responsible, this.selectedEmployees) && responsible != null) {
-      this.plotsForm.get("toolInfo.responsible").setValue(null);
-      const index = this.selectedEmployees.indexOf(responsible);
-      this.selectedEmployees.splice(index, 1);
-      this.setTextToTextArea(this.selectedEmployees);
-    }
-  }
-
-
-  private getEmployees(): void {
-    const employees: Employee[] = this.storage.getData(StorageKey.EmployeesStorageKey);
-    employees.forEach((employee: Employee) => {
-      this.employees.push(this.shortName(employee.firstName, employee.secondName, employee.patronymic));
     });
   }
 
-  private shortName(name: string, lastname: string, patronymic: string): string {
-    return lastname + ' ' + name.substr(0, 1) + '. ' + patronymic.substr(0, 1) + '.';
+  private initProductionDepartment(): void {
+    productionDepartments.forEach((department: IDepartment) => {
+      this.productionDepartments.push(department.value);
+    });
   }
 
-  private add(): void {
-    this.storage.addData(StorageKey.Plots, this.setRow());
-    this.getItems();
+  private initDatalist<T>(stogareKey: StorageKey, array: Array<T>): void {
+    array.length = 0;
+    if (this.storage.hasKey(stogareKey)) {
+      const storageArray = this.storage.getData(stogareKey);
+      storageArray.forEach((value: T) => {
+        array.push(value);
+      });
+    }
   }
 
-  private change(): void {
-    for (let i = 0; i < this.items.length; i++) {
-      if (JSON.stringify(this.items[i]) === JSON.stringify(this.currentItem)) {
-        this.items.splice(i, 1, this.setRow());
+  private checkTypeOfDepartment(): void {
+    const productionDepartment = this.plotsForm.get("commonInfo.productionDepartment").value;
+    for (let department of productionDepartments) {
+      if (department.value === productionDepartment) {
+        this.setPartOfForm(department.key);
+        this.codeOfDepartment = department.key;
         break;
       }
     }
-    this.rewriteStorage();
-    this.getItems();
   }
 
-  private delete(): void {
-    for (let i = 0; i < this.items.length; i++) {
-      if (JSON.stringify(this.items[i]) === JSON.stringify(this.currentItem)) {
-        this.items.splice(i, 1);
+  private setPartOfForm(key: number): void {
+    switch (key) {
+      case this.guildID: {
+        this.initDatalist(StorageKey.WorkSiteForGuild, this.workSites);
+        this.validation.setValidatorsForGuild();
+        this.partOfOfficeForm = false;
+        this.partOfGuildForm = true;
+        break;
+      }
+      case this.officeID: {
+        this.initDatalist(StorageKey.WorkSiteForOffice, this.workSites);
+        this.validation.setValidatorsForOffice();
+        this.partOfOfficeForm = true;
+        this.partOfGuildForm = false;
+        break;
+      }
+      default: {
+        this.validation.clearValidations();
+        this.partOfOfficeForm = false;
+        this.partOfGuildForm = false;
         break;
       }
     }
-    this.rewriteStorage();
-    this.getItems();
-    this.selectedEmployees.length = 0;
+    this.validation.updateValidators();
+  }
+
+  private onSave(): void {
+    this.sideCode.length = 0;
+    let newPlot: Plot = new Plot();
+    newPlot.address = this.plotsForm.get('commonInfo.address').value;
+    newPlot.productionDepartment = this.plotsForm.get('commonInfo.productionDepartment').value;
+    this.sideCode.push(this.checkingForExistenceOfDatalist(newPlot.address, this.locationAddresses, StorageKey.LocationAddresses));
+    this.sideCode.push(this.codeOfDepartment);
+    if (this.sideCode[1] == this.guildID) {
+      newPlot.floor = this.floor.value;
+      this.sideCode.push(newPlot.floor);
+      newPlot.workSite = this.workSite.value;
+      this.sideCode.push(this.checkingForExistenceOfDatalist(newPlot.workSite, this.workSites, StorageKey.WorkSiteForGuild));
+      newPlot.place = this.place.value;
+      this.sideCode.push(newPlot.place);
+    }
+    else if (this.sideCode[1] == this.officeID) {
+      newPlot.floor = this.floor.value;
+      this.sideCode.push(newPlot.floor);
+      newPlot.workSite = this.workSite.value;
+      this.sideCode.push(this.checkingForExistenceOfDatalist(newPlot.workSite, this.workSites, StorageKey.WorkSiteForOffice));
+      newPlot.room = this.room.value;
+      newPlot.place = this.place.value;
+      this.sideCode.push(newPlot.room);
+      this.sideCode.push(newPlot.place);
+
+    }
+    newPlot.id = this.creaateIDforPlot(this.sideCode);
+    this.arrayOfPlots.push(newPlot);
+    this.rewriteStorage(StorageKey.Plots,this.arrayOfPlots);
     this.plotsForm.reset();
   }
 
-  private setRow(): Plot {
-    const item = new Plot();
-    item.address = this.plotsForm.get("plotInfo.address").value;
-    item.plotname = this.plotsForm.get("plotInfo.plotname").value;
-    item.employee = this.plotsForm.get("employeeInfo.employee").value;
-    item.toolname = this.plotsForm.get("toolInfo.toolname").value;
-    item.tableNumber = this.plotsForm.get("toolInfo.tableNumber").value;
-    item.responsible = this.selectedEmployees;
-    return item;
+  private creaateIDforPlot(elements: Array<number>): string {
+    return elements.join('.');
   }
 
-  private setTextToTextArea(employees: Array<string>): void {
-    let shortNames: string = '';
-    employees.forEach((employee: string) => {
-      shortNames += employee;
-      shortNames += "  ";
-    });
-    this.plotsForm.get("toolInfo.listResponsible").setValue(shortNames);
+  private checkingForExistenceOfDatalist(element: string, array: Array<any>, storageKey: StorageKey): number {
+    let codeElem: number;
+    //Sorry, but here useing of "any" is necessary because I need to interact with various interfaces.
+    let flag: boolean;
+    if (array != null) {
+      for (let value of array) {
+        if (value.name == element) {
+          flag = true;
+          codeElem = value.id;
+          break;
+        }
+      }
+    }
+    if (!flag) {
+      let sizeArray = array.length;
+      let newID = ((sizeArray === 0) ? 0 : (array[--sizeArray].id)) + 1;
+      let newElement: any = { id: newID, name: element };
+      array.push(newElement);
+      codeElem = newID;
+      this.rewriteStorage(storageKey, array);
+    }
+    return codeElem;
   }
 
-  private rewriteStorage(): void {
-    this.storage.deleteData(StorageKey.Plots);
-    this.items.forEach(item => {
-      this.storage.addData(StorageKey.Plots, item);
+  private rewriteStorage<T>(stogareKey: StorageKey, array: Array<T>): void {
+    this.storage.deleteData(stogareKey);
+    array.forEach((value: T) => {
+      this.storage.addData(stogareKey, value);
     });
+  }
+
+  private onCancel(): void {
+    this.closedForm.emit(false);
+    this.plotsForm.reset();
   }
 }

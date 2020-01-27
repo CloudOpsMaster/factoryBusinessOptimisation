@@ -1,0 +1,32 @@
+.toolbar {
+    margin-right: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.icon {
+    margin-top: 5px;
+    height: 29px;
+    width: 26px;
+}
+
+.btntree {
+    margin-right: 5px;
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(255, 255, 255);
+}
+
+.btntable {
+    margin-right: 5px;
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(255, 255, 255);
+}
+
+section {
+    float: left;
+}
+
+.myselect {
+    margin-top: 15px;
+}

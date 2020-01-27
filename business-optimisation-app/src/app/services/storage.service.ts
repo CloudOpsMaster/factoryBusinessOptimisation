@@ -6,6 +6,9 @@ export enum StorageKey {
   MaterialUnits = 'materialUnits',
   GettingTools = 'gettingTools',
   Plots='plots',
+  LocationAddresses = 'LocationAddressesStorageKey',
+  WorkSiteForOffice = 'WorkSiteForOfficceStorageKey',
+  WorkSiteForGuild = 'WorkSiteForGuildStorageKey',
 
   EmployeesStorageKey = 'EmployeesStorageKey',
   EmployeeDocumentsStorageKey = 'EmployeeDocumentsStorageKey',

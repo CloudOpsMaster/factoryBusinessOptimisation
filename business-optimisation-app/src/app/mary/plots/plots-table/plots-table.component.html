@@ -1,50 +1,10 @@
-<div>
-    <table class="table table-striped">
-        <thead class="table-primary">
-            <tr>
-                <th>
-                    Адрес
-                </th>
-                <th>
-                    Участок
-                </th>
-                <th>
-                    ФИО
-                </th>
-                <th>
-                    Оборудование
-                </th>
-                <th>
-                    Номер
-                </th>
-                <th>
-                    Отвественные
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let plot of plots" on-click="onRowClick(plot)">
-                <td>
-                    {{plot.address}}
-                </td>
-                <td>
-                    {{plot.plotname}}
-                </td>
-                <td>
-                    {{plot.employee}}
-                </td>
-                <td>
-                    {{plot.toolname}}
-                </td>
-                <td>
-                    {{plot.tableNumber}}
-                </td>
-                <td>
-                    <p *ngFor="let plot of plot.responsible">
-                        {{plot}}
-                    </p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<!-- class="browser-default custom-select" -->
+<div *ngIf="table">
+    <button class="btn btn-primary btn-sm" *ngFor="let item of items | keyvalue" (click)="print(item.value)"> {{item.value}}</button>
+</div>
+<div *ngIf="table" class="mydiv">
+    <app-table-for-plots [openTableForPlots]="tableForPlots"></app-table-for-plots>
+    <app-table-for-location [openTableForLocation]="tableForLocation"></app-table-for-location>
+    <app-table-work-site-for-office [openTableForWorkSiteOfOffice]="tableForWorkSiteOfOffice"></app-table-work-site-for-office>
+    <app-table-work-site-for-guild [openTableForWorkSiteOfGuild]="tableForWorkSiteOfGuild"></app-table-work-site-for-guild>
 </div>

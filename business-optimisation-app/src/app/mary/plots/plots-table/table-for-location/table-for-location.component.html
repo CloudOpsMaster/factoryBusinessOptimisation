@@ -1,0 +1,51 @@
+<div *ngIf="table">
+    <br>
+    <div class="i">
+        <div class="btnFilters">
+            <button class="btn btn-outline-primary btn-sm" (click)="displayOfFilters()">Фильтр</button>
+        </div>
+        <div *ngIf="filters" class="myform">
+            <div class="point">
+                <small>ID</small>
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="idSearch">
+            </div>
+            <div class="point">
+                <small>Адрес локации</small>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="addressSearch">
+            </div>
+            <div class="mybutton">
+                <save-button (click)="onSearch()" titlePlaceholder="Применить">
+                </save-button>
+                <edit-button (click)="onCancel()" titlePlaceholder="Отменить" [disabled]="locked" [showCancelBtn]="true">
+                </edit-button>
+            </div>
+        </div>
+    </div>
+    <div class="f">
+        <app-location-form [openForm]="openForm" [row]="currentLocation"></app-location-form>
+    </div>
+    <div class="tab">
+        <table class="table table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Адрес локации
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let addressLocation of filteredData" [class.active]="addressLocation==currentLocation" on-click="onRowClick(addressLocation) ">
+                    <td>
+                        {{addressLocation.id}}
+                    </td>
+                    <td>
+                        {{addressLocation.name}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

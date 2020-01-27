@@ -1,0 +1,20 @@
+<form [formGroup]="locationForm" class="myform" *ngIf="form">
+    <div class="myform" formGroupName="commonInfo">
+        <div class="point">
+            <small>ID</small>
+            <input type="text" class="form-control form-control-sm" formControlName="address" disabled>
+        </div>
+        <div class="point">
+            <small>Адрес локации</small>
+            <input type="text" class="form-control form-control-sm" formControlName="productionDepartment" required>
+        </div>
+        <div class="mybutton">
+            <save-button [disabled]=readonly [titlePlaceholder]=titleSaveBtn (click)="onSave()">
+            </save-button>
+            <edit-button (click)="onCancel()" titlePlaceholder="Отменить" [showCancelBtn]="true">
+            </edit-button>
+            <delete-button [titlePlaceholder]=titleDeleteBtn (click)="onDelete()">
+            </delete-button>
+        </div>
+    </div>
+</form>

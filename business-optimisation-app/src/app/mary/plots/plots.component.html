@@ -1,3 +1,19 @@
-<app-plots-form [item]="plot" (plots)="getItems($event)"></app-plots-form>
+<div class="toolbar1">
+    <section class="myselect">
+        <h2>Участки производства</h2>
+    </section>
+    <section class="myselect">
+        <add-button (click)="editForm()"></add-button>
+    </section>
+    <section class="myselect">
+        <button class="btntree"><img class="icon" src="https://icon-icons.com/icons2/906/PNG/96/file-tree-1_icon-icons.com_70146.png"/></button>
+    </section>
+    <section class="myselect">
+        <button class="btntable" (click)="editTable()"><img class="icon" src="https://icon-icons.com/icons2/20/PNG/96/business_table_order_report_history_2332.png"/></button>
+    </section>
+    <section>
+        <app-plots-form [openForm]="openForm" (closedForm)="cancelForm($event)"></app-plots-form>
+    </section>
+</div>
 <br>
-<app-plots-table [plots]="allPlots" (plot)="getRow($event)"></app-plots-table>
+<app-plots-table [openTable]="openTable" (closedTable)="cancelTable($event)"></app-plots-table>

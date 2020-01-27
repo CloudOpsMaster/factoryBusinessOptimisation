@@ -1,68 +1,70 @@
-<h2 class=paragraph>Участки производства</h2>
-<br>
-<form [formGroup]="plotsForm" novalidate>
-    <h6 class=subparagraph>Информация по участку</h6>
-    <div class="informationgroups" formGroupName="plotInfo">
-        <div>
-            <label>Адрес:</label>
-            <input type="text" placeholder="ул. Пушкина кв.13" formControlName="address" autofocus required>
-            <label>Название:</label>
-            <input type="text" placeholder="Швейный" formControlName="plotname" required>
+<form [formGroup]="plotsForm" class="myform" *ngIf="form">
+    <div class="myform" formGroupName="commonInfo">
+        <div class="point">
+            <label>Адрес</label>
+            <input type="text" class="form-control form-control-sm" list="address" formControlName="address" required>
+            <datalist id="address">
+                <option *ngFor="let locationAddress of locationAddresses">
+                {{locationAddress.name}}
+            </option>
+            </datalist>
         </div>
-    </div>
-    <h6 class=subparagraph>Мастер участка</h6>
-    <div class="informationgroups" formGroupName="employeeInfo">
-        <div>
-            <label>ФИО:</label>
-            <input type="text" placeholder="Александров А. М." list="employee" formControlName="employee" required>
-            <datalist id="employee" required>
-                <option *ngFor="let employee of employees">
-                {{employee}}
+        <div class="point">
+            <label>Отдел производства</label>
+            <input type="text" class="form-control form-control-sm" list="productionDepartment" formControlName="productionDepartment" (keyup)="checkTypeOfDepartment()" required>
+            <datalist id="productionDepartment">
+                <option *ngFor="let productionDepartment of productionDepartments">
+                {{productionDepartment}}
             </option>
             </datalist>
         </div>
     </div>
-    <div>
-        <h6 class=subparagraph>Оборудование</h6>
-        <div class="informationgroups" formGroupName="toolInfo">
-            <div>
-                <label>Название:</label>
-                <input type="text" placeholder="ЧПУ" ist="toolname" formControlName="toolname" required>
-                <datalist id="toolname" required>
-                    <option *ngFor="let toolname of toolnames">
-                    {{toolname}}
-                    </option>
-                    </datalist>
-                <label>Табельный номер:</label>
-                <input type="number" placeholder="1" list="tableNumber" formControlName="tableNumber" required>
-                <datalist id="tableNumber" required>
-                    <option *ngFor="let tableNumber of tableNumbers">
-                    {{tableNumber}}
-                    </option>
-                </datalist>
-            </div>
-            <div>
-                <label>Отвественные:</label>
-                <input type="text" placeholder="Александров А. М." list="employee" formControlName="responsible">
-                <datalist id="employee">
-                    <option *ngFor="let employee of employees">
-                    {{employee}}
-                </option>
-                </datalist>
-            </div>
+    <div class="myform" *ngIf="partOfGuildForm" formGroupName="detailsInfo">
+        <div class="point">
+            <label>Этаж</label>
+            <input type="number" class="form-control form-control-sm" formControlName="floor">
         </div>
-        <div formGroupName="toolInfo">
-            <textarea type="text" formControlName="listResponsible" readonly required></textarea>
+        <div class="point">
+            <label>Рабочий участок</label>
+            <input type="text" class="form-control form-control-sm" list="workSite" formControlName="workSite">
+            <datalist id="workSite">
+                <option *ngFor="let workSite of workSites">
+                {{workSite.name}}
+            </option>
+            </datalist>
         </div>
-
-        <div class="groupButton">
-            <button class="btn btn-success" on-click="addResponsible()"><b>✓</b></button>
-            <button class="btn btn-danger" on-click="deleteResponsible()">&#10008;</button>
+        <div class="point">
+            <label>Рабочее место</label>
+            <input type="number" class="form-control form-control-sm" formControlName="place">
         </div>
     </div>
+    <div class="myform" *ngIf="partOfOfficeForm" formGroupName="detailsInfo">
+        <div class="point">
+            <label>Этаж</label>
+            <input type="number" class="form-control form-control-sm" formControlName="floor">
+        </div>
+        <div class="point">
+            <label>Отдел</label>
+            <input type="text" class="form-control form-control-sm" list="workSite" formControlName="workSite">
+            <datalist id="workSite">
+                <option *ngFor="let workSite of workSites">
+                {{workSite.name}}
+            </option>
+            </datalist>
+        </div>
+        <div class="point">
+            <label>Комната</label>
+            <input type="number" class="form-control form-control-sm" formControlName="room">
+        </div>
+        <div class="point">
+            <label>Рабочее место</label>
+            <input type="number" class="form-control form-control-sm" formControlName="place">
+        </div>
+    </div>
+    <div class="mybutton">
+        <save-button [disabled]="!plotsForm.valid" (click)="onSave()">
+        </save-button>
+        <edit-button (click)="onCancel()" titlePlaceholder="Отменить" [disabled]="locked" [showCancelBtn]="true">
+        </edit-button>
+    </div>
 </form>
-<div class="informationgroups">
-    <button [disabled]="!plotsForm.valid" class="btn btn-primary " on-click="add() ">Добавить</button>
-    <button [disabled]="!plotsForm.valid" class="btn btn-warning " on-click="change() ">Изменить</button>
-    <button class="btn btn-danger " on-click="delete() ">Удалить</button>
-</div>

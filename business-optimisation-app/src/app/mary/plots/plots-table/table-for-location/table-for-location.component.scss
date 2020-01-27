@@ -1,0 +1,66 @@
+.row {
+    color: black;
+    font-size: 18px;
+}
+
+th {
+    background: #2FA4E7;
+    /* Цвет фона */
+    color: #ffffff;
+    /* Цвет текста */
+    text-align: center;
+}
+
+tbody tr:hover {
+    background: rgb(158, 162, 167);
+    /* Цвет фона при наведении */
+    color: white;
+    /* Цвет текста при наведении */
+}
+
+td {
+    text-align: center;
+}
+
+.table tr.active td {
+    background-color: #6d7883 !important;
+    color: white;
+}
+
+.myform {
+    margin-top: -15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.mybutton {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: row;
+}
+
+.point {
+    margin-right: 10px;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+}
+
+.btnFilters {
+    margin-top: 9px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.i {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    float: left;
+}
+
+.f {
+    float: right;
+}

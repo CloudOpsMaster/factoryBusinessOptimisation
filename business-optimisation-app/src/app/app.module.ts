@@ -24,6 +24,11 @@ import { PlotsFormComponent } from './mary/plots/plots-form/plots-form.component
 import { PlotsTableComponent } from './mary/plots/plots-table/plots-table.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonAppModule } from './common/common.module';
+import { TableForPlotsComponent } from './mary/plots/plots-table/table-for-plots/table-for-plots.component';
+import { TableWorkSiteForOfficeComponent } from './mary/plots/plots-table/table-work-site-for-office/table-work-site-for-office.component';
+import { TableForLocationComponent } from './mary/plots/plots-table/table-for-location/table-for-location.component';
+import { TableWorkSiteForGuildComponent } from './mary/plots/plots-table/table-work-site-for-guild/table-work-site-for-guild.component';
+import { LocationFormComponent } from './mary/plots/plots-table/table-for-location/location-form/location-form.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,11 @@ import { CommonAppModule } from './common/common.module';
     PlotsComponent,
     PlotsFormComponent,
     PlotsTableComponent,
+    TableForPlotsComponent,
+    TableWorkSiteForOfficeComponent,
+    TableForLocationComponent,
+    TableWorkSiteForGuildComponent,
+    LocationFormComponent
   ],
   imports: [
     BrowserModule,
