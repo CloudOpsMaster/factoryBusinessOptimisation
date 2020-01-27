@@ -1,7 +1,7 @@
 <span class="header">{{caption}}</span>
    <save-button *ngIf="buttonsBlockVisible && saveVisible" (click)="onSave()" 
                   titlePlaceholder="Сохранить"></save-button>
-   <delete-button *ngIf="buttonsBlockVisible && !saveVisible" (click)="onSave()" 
+   <delete-button *ngIf="buttonsBlockVisible && deleteVisible" (click)="onSave()" 
                   titlePlaceholder="Удалить"></delete-button>
    <edit-button  *ngIf="buttonsBlockVisible" 
                   (click)="onCancel()"
