@@ -5,7 +5,9 @@ import { AbstractButton } from '../abstract-button';
   // tslint:disable-next-line:component-selector
   selector: 'add-button',
   templateUrl: './add-button.component.html',
-  styleUrls: ['./add-button.component.scss']
+  styleUrls: [
+    './add-button.component.scss',
+    '../base-button.component.scss']
 })
 export class AddButtonComponent extends AbstractButton implements OnInit {
 
@@ -13,7 +15,7 @@ export class AddButtonComponent extends AbstractButton implements OnInit {
 
   constructor() {
     super();
-   }
+  }
 
   ngOnInit() {
   }

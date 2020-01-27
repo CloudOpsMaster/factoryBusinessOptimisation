@@ -5,7 +5,10 @@ import { AbstractButton } from '../abstract-button';
   // tslint:disable-next-line:component-selector
   selector: 'edit-button',
   templateUrl: './edit-button.component.html',
-  styleUrls: ['./edit-button.component.scss']
+  styleUrls: [
+    './edit-button.component.scss',
+    '../base-button.component.scss'
+  ]
 })
 export class EditButtonComponent extends AbstractButton implements OnInit {
 

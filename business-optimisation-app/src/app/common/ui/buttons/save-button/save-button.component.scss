@@ -1,20 +1,13 @@
-:host.eventsDisabled {
-    pointer-events: none;
+.btn {
+    margin: 0 0 0 8px;
 }
 
-.btn {
-    padding: 0;
-    display: inline-block;
-    margin: 8px;
-
+.btn:hover {
     svg {
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        &.save {
-            fill: #88c149;
+        &.save{
+            fill: rgb(36, 218, 32);
         }
+
+        opacity: 0.5;
     }
 }
-

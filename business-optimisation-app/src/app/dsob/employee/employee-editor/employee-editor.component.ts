@@ -26,7 +26,12 @@ export class EmployeeEditorComponent implements OnInit, OnChanges {
   }
 
   get saveVisible(): boolean {
-      return this.viewMode !== EmployeeViewMode.Delete;
+      return this.viewMode === EmployeeViewMode.Edit ||
+            this.viewMode === EmployeeViewMode.Add;
+  }
+
+  get deleteVisible(): boolean {
+      return this.viewMode === EmployeeViewMode.Delete;
   }
 
   constructor(private employeeService: EmployeeService,

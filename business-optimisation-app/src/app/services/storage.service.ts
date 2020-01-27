@@ -9,6 +9,7 @@ export enum StorageKey {
   LocationAddresses = 'LocationAddressesStorageKey',
   WorkSiteForOffice = 'WorkSiteForOfficceStorageKey',
   WorkSiteForGuild = 'WorkSiteForGuildStorageKey',
+  CheckList = 'checkList',
 
   EmployeesStorageKey = 'EmployeesStorageKey',
   EmployeeDocumentsStorageKey = 'EmployeeDocumentsStorageKey',
@@ -32,12 +33,23 @@ export class StorageService {
   private storage: Storage = window.localStorage;
 
   /**
-   * Returns data associated with specified key in local storage
+   * Returns data array associated with specified key in local storage
    * @param key storage key
    */
-  public getTypedData<T>(key: StorageKey): T[] {
+  public getTypedArray<T>(key: StorageKey): T[] {
     if (this.storage.getItem(key)) {
       return JSON.parse(this.storage.getItem(key)) as T[];
+    }
+    return null;
+  }
+
+  /**
+ * Returns data associated with specified key in local storage
+ * @param key storage key
+ */
+  public getTypedData<T>(key: StorageKey): T {
+    if (this.storage.getItem(key)) {
+      return JSON.parse(this.storage.getItem(key)) as T;
     }
     return null;
   }

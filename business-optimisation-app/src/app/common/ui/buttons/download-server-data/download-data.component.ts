@@ -2,15 +2,15 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { AbstractButton } from '../abstract-button';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'delete-button',
-  templateUrl: './delete-button.component.html',
+  selector: 'download-data-button',
+  templateUrl: './download-data.component.html',
   styleUrls: [
-    './delete-button.component.scss',
+    './download-data.component.scss',
     '../base-button.component.scss'
   ]
 })
-export class DeleteButtonComponent extends AbstractButton implements OnInit {
+
+export class DownloadDataComponent extends AbstractButton implements OnInit {
 
   @HostBinding('class.eventsDisabled') disabled;
 
@@ -20,5 +20,4 @@ export class DeleteButtonComponent extends AbstractButton implements OnInit {
 
   ngOnInit() {
   }
-
 }

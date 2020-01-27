@@ -1,0 +1,10 @@
+
+.btn:hover {
+    svg {
+        &.download{
+            fill: rgb(32, 150, 218);
+        }
+
+        opacity: 0.8;
+    }
+}

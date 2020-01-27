@@ -2,19 +2,24 @@
     pointer-events: none;
 }
 
-.btn {
-    background: #88c149;
-    padding: 0px 8px 4px;
-    display: inline-block;
-    margin: 8px;
 
-    svg {
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
+.btn {
+    svg {     
 
         &.add {
-            fill: #fff;
+            height: 28px;
+            width: 28px;
+
+            fill: rgb(106, 218, 32);
+            opacity: 0.9;
+        }
+    }
+}
+
+.btn:hover {
+    svg {     
+        &.add {
+            opacity: 1;
         }
     }
 }

@@ -1,19 +1,16 @@
-:host.eventsDisabled {
-    pointer-events: none;
+.btn {
+    svg {
+        width: 26px;
+        height: 26px;
+    }
 }
 
-.btn {
-    padding: 0;
-    display: inline-block;
-    margin: 8px;
-
+.btn:hover {
     svg {
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        &.delete {
-            fill: #ff382a;
+        &.delete{
+            fill: rgb(218, 32, 32);
         }
+
+        opacity: 0.8;
     }
 }

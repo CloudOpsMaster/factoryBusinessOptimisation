@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CheckListComponent } from './check-list.component';
+import { CheckListViewComponent } from './check-list-view.component';
 
-describe('CheckListComponent', () => {
-  let component: CheckListComponent;
-  let fixture: ComponentFixture<CheckListComponent>;
+describe('CheckListViewComponent', () => {
+  let component: CheckListViewComponent;
+  let fixture: ComponentFixture<CheckListViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckListComponent ]
+      declarations: [ CheckListViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckListComponent);
+    fixture = TestBed.createComponent(CheckListViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

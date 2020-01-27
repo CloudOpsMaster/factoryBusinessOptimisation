@@ -19,40 +19,33 @@
   <div class="table-body-cell table-body-cell__form">
     <form [formGroup]="servicesEditForm" class="edit-form">
       <div class="form-group">
-        <input type="date" class="form-control form-control-sm" [ngClass]="{error:errorDate}" formControlName="startDate" required [readOnly]=readonly>
+        <input type="date" class="form-control form-control-sm" [ngClass]="{error:errorDate}"
+          formControlName="startDate" required [readOnly]=readonly>
       </div>
       <div class="form-group">
-        <input type="date" class="form-control form-control-sm" [ngClass]="{error:errorDate}" formControlName="endDate" required [readOnly]=readonly>
+        <input type="date" class="form-control form-control-sm" [ngClass]="{error:errorDate}" formControlName="endDate"
+          required [readOnly]=readonly>
       </div>
       <div class="form-group">
-        <app-combo-box formControlName="status"
-                       [dataSource]="statusItems"
-                       [(ngModel)]="instrument.status"
-                       [disabled]="readonly">
+        <app-combo-box formControlName="status" [dataSource]="statusItems" [(ngModel)]="instrument.status"
+          [disabled]="readonly">
         </app-combo-box>
       </div>
       <div class="form-group">
-        <textarea class="form-control form-control-sm" rows="2" formControlName="description" [readOnly]=readonly></textarea>
+        <textarea class="form-control form-control-sm" rows="2" formControlName="description"
+          [readOnly]=readonly></textarea>
       </div>
     </form>
   </div>
- 
-  <div class="table-body-cell table-body-cell__btn"> 
+
+  <div class="table-body-cell table-body-cell__btn">
     <div class="btn-table-block">
-      <save-button [disabled]=readonly 
-                   [titlePlaceholder]=titleSaveBtn 
-                   (click)="onSave()">
+      <save-button [disabled]=readonly [titlePlaceholder]=titleSaveBtn (click)="onSave()">
       </save-button>
-      <edit-button [titlePlaceholder]=titleEdidtBtn 
-                   [showCancelBtn]=showCancelBtn
-                   (click)="onUpdate()">
+      <edit-button [titlePlaceholder]=titleEdidtBtn [showCancelBtn]=showCancelBtn (click)="onUpdate()">
       </edit-button>
-      <delete-button [titlePlaceholder]=titleDeleteBtn 
-                     (click)="onDelete()">
+      <delete-button [titlePlaceholder]=titleDeleteBtn (click)="onDelete()">
       </delete-button>
     </div>
   </div>
 </div>
-
-
-

@@ -17,7 +17,8 @@ import { InstrumentServiceFormComponent } from './vdry/instrument-services/instr
 import { InstrumentServiceTableComponent } from './vdry/instrument-services/instrument-service-table/instrument-service-table.component';
 // tslint:disable-next-line:max-line-length
 import { InstrumentServiceTableItemComponent } from './vdry/instrument-services/instrument-service-table/instrument-service-table-item/instrument-service-table-item.component';
-import { CheckListComponent } from './vlad/check-list/check-list.component';
+import { CheckListEditComponent } from './vlad/check-list-edit/check-list-edit.component';
+import { CheckListViewComponent } from './vlad/check-list-view/check-list-view.component';
 import { EmployeeModule } from './dsob/employee.module';
 import { PlotsComponent } from './mary/plots/plots.component';
 import { PlotsFormComponent } from './mary/plots/plots-form/plots-form.component';
@@ -45,7 +46,8 @@ import { LocationFormComponent } from './mary/plots/plots-table/table-for-locati
     InstrumentServiceTableItemComponent,
     GettingToolsComponent,
     MeteringComponent,
-    CheckListComponent,
+    CheckListEditComponent,
+    CheckListViewComponent,
     PlotsComponent,
     PlotsFormComponent,
     PlotsTableComponent,

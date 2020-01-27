@@ -11,6 +11,7 @@ import { AddButtonComponent } from './ui/buttons/add-button/add-button.component
 import { ResetButtonComponent } from './ui/buttons/reset-button/reset-button.component';
 import { FilterButtonComponent } from './ui/buttons/filter-button/filter-button.component';
 import { GridComponent } from './ui/grid/grid.component';
+import { DownloadDataComponent } from './ui/buttons/download-server-data/download-data.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { GridComponent } from './ui/grid/grid.component';
       SaveButtonComponent,
       EditButtonComponent,
       DeleteButtonComponent,
+      DownloadDataComponent,
       AddButtonComponent,
       ResetButtonComponent,
       FilterButtonComponent,
@@ -36,6 +38,7 @@ import { GridComponent } from './ui/grid/grid.component';
       SaveButtonComponent,
       EditButtonComponent,
       DeleteButtonComponent,
+      DownloadDataComponent,
       AddButtonComponent,
       ResetButtonComponent,
       FilterButtonComponent,
