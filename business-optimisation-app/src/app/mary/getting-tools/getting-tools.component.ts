@@ -4,7 +4,7 @@ import { GettingTools } from 'src/app/models/getting-tools';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Employee } from 'src/app/models/HR/Employee';
 import { PositionInfo } from 'src/app/models/HR/PositionInfo';
-import { Plot } from 'src/app/models/plot';
+import { Plot } from 'src/app/models/plot/plot';
 
 @Component({
   selector: 'app-getting-tools',
@@ -12,7 +12,7 @@ import { Plot } from 'src/app/models/plot';
   styleUrls: ['./getting-tools.component.scss']
 })
 
-export class GettingToolsComponent implements OnInit {
+export class GettingToolsComponent{
   private gettingToolsForm: FormGroup;
   private items: Array<GettingTools> = new Array<GettingTools>();
   private storage = new StorageService();
@@ -38,12 +38,38 @@ export class GettingToolsComponent implements OnInit {
   ];
 
   constructor() {
-    this.initEmployees();
-    this.initPositions();
-    this.initPlots();
+    this.createForm();
   }
 
-  private initPlots(): void {
+  private createForm(): void {
+    this.gettingToolsForm = new FormGroup({
+      employeeInfo: new FormGroup({
+        name: new FormControl(null),
+        lastname: new FormControl(null),
+        tableNumber: new FormControl(null),
+        post: new FormControl(null),
+        plotName: new FormControl(null),
+        plotAddress: new FormControl(null)
+      }),
+      toolInfo: new FormGroup({
+        inventoryNumber: new FormControl(null),
+        tool: new FormControl(null),
+        count: new FormControl(null)
+      }),
+      dateOfMovement: new FormGroup({
+        dateOfIssue: new FormControl(null),
+        dateOfReturn: new FormControl(null),
+        note: new FormControl(null)
+      })
+    });
+  }
+
+  //   this.initEmployees();
+  //   this.initPositions();
+  //   this.initPlots();
+  // }
+
+  /*private initPlots(): void {
     this.plotAddresses = [];
     this.plotNames = [];
     this.plots = this.storage.getData(StorageKey.Plots);
@@ -245,5 +271,5 @@ export class GettingToolsComponent implements OnInit {
           this.plotNames.push(plot.plotname);
         }
       })
-  }
+  }*/
 }

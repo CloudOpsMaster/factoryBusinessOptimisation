@@ -103,17 +103,22 @@
                 </div>
             </div>
             <div class="informationgroups">
-                <button [disabled]="!gettingToolsForm.valid || disabled" class="btn btn-primary" on-click="add()">Добавить</button>
-                <button [disabled]="!gettingToolsForm.valid || disabled" class="btn btn-warning" on-click="change()">Изменить</button>
-                <button class="btn btn-danger" on-click="delete()">Удалить</button>
+                <save-button [disabled]="!gettingToolsForm.valid || disabled" [titlePlaceholder]=titleSaveBtn on-click="add()">
+                </save-button>
+                <edit-button [titlePlaceholder]=titleEdidtBtn [showCancelBtn]=showCancelBtn [disabled]="!gettingToolsForm.valid || disabled " on-click="change()">
+                </edit-button>
+                <delete-button [titlePlaceholder]=titleDeleteBtn on-click="delete()">
+                </delete-button>
+
+
             </div>
         </div>
     </form>
 </div>
 <br>
 <div>
-    <table class="table table-striped">
-        <thead class="table-primary">
+    <table class="table table-striped ">
+        <thead class="table-primary ">
             <tr>
                 <th>
                     Имя
@@ -154,7 +159,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of items" on-click="onRowClick(item)">
+            <tr id="currentRow" *ngFor="let item of items " [class.active]="item==currentItem" on-click="onRowClick(item) ">
                 <td>
                     {{item.name}}
                 </td>
