@@ -8,7 +8,62 @@
                   titlePlaceholder="Отмена"
                   [showCancelBtn]="true"></edit-button>
 <span *ngIf="!employee">Не указан сотрудник для отображения деталей!</span>
-<div *ngIf="employee" class="accordion" id="editorAccordion">
+
+
+<ul *ngIf="employee" class="nav nav-tabs">
+   <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#mainInfo">Основная информация</a></li>
+   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#docs">Документы</a></li>
+   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#education">Образование</a></li>
+   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#familyCard">Семья</a></li>
+   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#adress">Адрес / Контакты</a></li>
+   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#medicalCard">Медицинская карта / Страховка</a></li>
+   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#work">Прием на работу / Должность / Увольнение</a></li>
+ </ul>
+
+<div *ngIf="employee" class="tab-content">
+   <div id="mainInfo" class="tab-pane fade active">
+     <h3>Основная информация</h3>
+     <app-employee-info-editor [mainInfo]="employee.mainInfo" [viewMode]="viewMode">
+      </app-employee-info-editor>
+   </div>
+   <div id="docs" class="tab-pane fade">
+      <h3>Документы</h3>
+      <app-document-info-editor [document]="employee.document" [viewMode]="viewMode">
+      </app-document-info-editor>
+    </div>
+    <div id="education" class="tab-pane fade">
+      <h3>Образование</h3>
+      <app-education-info-editor [education]="employee.education" [viewMode]="viewMode">
+      </app-education-info-editor>
+    </div>
+    <div id="familyCard" class="tab-pane fade">
+      <h3>Семья</h3>
+      <app-family-info-editor [family]="employee.family" [viewMode]="viewMode">
+      </app-family-info-editor>
+    </div>
+    <div id="adress" class="tab-pane fade">
+      <h3>Адрес / Контакты</h3>
+      <app-adress-info-editor [adress]="employee.adress" [viewMode]="viewMode">
+      </app-adress-info-editor>
+      <app-contact-info-editor [contact]="employee.contact" [viewMode]="viewMode">
+      </app-contact-info-editor>
+    </div>
+    <div id="medicalCard" class="tab-pane fade">
+      <h3>Медицинская карта / Страховка</h3>
+      <app-medical-info-editor [medicalCard]="employee.medicalCard" [viewMode]="viewMode">
+      </app-medical-info-editor>
+      <app-ensurance-info-editor [ensurance]="employee.ensurance" [viewMode]="viewMode">
+      </app-ensurance-info-editor>
+    </div>
+    <div id="work" class="tab-pane fade">
+      <h3>Прием на работу / Должность / Увольнение</h3>
+      <app-position-info-editor [position]="employee.position" [viewMode]="viewMode"></app-position-info-editor>
+      <app-employment-info-editor [employment]="employee.employment" [viewMode]="viewMode">
+      </app-employment-info-editor>
+    </div>
+ </div>
+
+<!-- <div *ngIf="employee" class="accordion" id="editorAccordion">
    <div class="card">
       <div class="card-header condensed">
          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#mainInfo">
@@ -102,4 +157,4 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
