@@ -36,7 +36,7 @@ h6{
     // background: linear-gradient(180deg, rgb(255, 255, 255) ,rgba(255, 255, 255, 0.75));
     // backdrop-filter: blur(13px);
     position: sticky;
-    z-index: 9999;
+    z-index: 1000;
     margin: 0;
     top: 0;
 }
@@ -44,7 +44,7 @@ h6{
 .footer{
     background-color: white;
     position: sticky;
-    z-index: 9999;
+    z-index: 1000;
     margin: 0;
     bottom: 0;
 }
