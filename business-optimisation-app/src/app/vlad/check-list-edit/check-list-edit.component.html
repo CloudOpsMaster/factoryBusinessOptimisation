@@ -14,15 +14,15 @@
         <option *ngFor="let list of listTypes" [ngValue]="list">{{ list.name }}</option>
       </select>
             <div class="flex-center">
-                <!-- <add-button titlePlaceholder="Добавить список" (click)="addList()"></add-button>
+                <add-button titlePlaceholder="Добавить список" (click)="addList()"></add-button>
                 <download-data-button titlePlaceholder="Загрузить список с сервера" (click)="serverList()">
-                </download-data-button> -->
+                </download-data-button>
             </div>
         </div>
     </div>
 
     <div class="right-box overflow" *ngIf="currentList!=null">
-        <div class="flex-center-column">
+        <div class="flex-center-column header">
             <div class="flex-center">
                 <h2>
                     <b>Чек-лист</b>

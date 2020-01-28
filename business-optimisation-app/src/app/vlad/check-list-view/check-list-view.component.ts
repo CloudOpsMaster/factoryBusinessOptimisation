@@ -59,7 +59,14 @@ export class CheckListViewComponent implements OnInit {
 
     if (request !== null) {
       this.checkList = request.list;
-      this.currentList = this.checkList[request.lastSeen || 0];
+
+      let index = 0;
+
+      if (request.lastSeen < this.checkList.length) {
+        index = request.lastSeen
+      }
+
+      this.currentList = this.checkList[index];
     }
   }
 

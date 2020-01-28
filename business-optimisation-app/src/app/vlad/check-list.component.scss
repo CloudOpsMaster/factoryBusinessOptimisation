@@ -31,6 +31,24 @@ h6{
     height: 85vh;
 }
 
+.header{
+    background: rgb(255,255,255);
+    // background: linear-gradient(180deg, rgb(255, 255, 255) ,rgba(255, 255, 255, 0.75));
+    // backdrop-filter: blur(13px);
+    position: sticky;
+    z-index: 9999;
+    margin: 0;
+    top: 0;
+}
+
+.footer{
+    background-color: white;
+    position: sticky;
+    z-index: 9999;
+    margin: 0;
+    bottom: 0;
+}
+
 .flex{
     display: flex;
     align-items: flex-start;

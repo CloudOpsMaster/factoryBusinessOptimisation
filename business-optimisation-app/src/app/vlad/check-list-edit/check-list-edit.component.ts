@@ -132,13 +132,14 @@ export class CheckListEditComponent implements OnInit {
     // this.storage.deleteData(StorageKey.CheckList)
 
     if (request !== null) {
+      this.checkList = request.list;
+
       let index = 0;
 
-      if (request.lastSeen <= this.checkList.length) {
+      if (request.lastSeen < this.checkList.length) {
         index = request.lastSeen
       }
 
-      this.checkList = request.list;
       this.currentList = this.checkList[index];
     }
     else {
@@ -158,11 +159,13 @@ export class CheckListEditComponent implements OnInit {
 
   private scrollToDown(className: string) {
     const element = document.querySelector(className);
-
-    element.scrollTo({
-      top: element.scrollHeight,
-      behavior: 'smooth'
-    })
+    
+    if (element !== null) {
+      element.scrollTo({
+        top: element.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }
 
   private isEmptyOrSpaces(text) {
