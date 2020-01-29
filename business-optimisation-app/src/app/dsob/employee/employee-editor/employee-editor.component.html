@@ -12,8 +12,7 @@
 
 <ul *ngIf="employee" class="nav nav-tabs">
    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#mainInfo">Основная информация</a></li>
-   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#docs">Документы</a></li>
-   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#education">Образование</a></li>
+   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#docs">Документы / Образование</a></li>
    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#familyCard">Семья</a></li>
    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#adress">Адрес / Контакты</a></li>
    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#medicalCard">Медицинская карта / Страховка</a></li>
@@ -27,13 +26,18 @@
    </div>
    <div id="docs" class="tab-pane">
       <!-- <h3>Документы</h3> -->
-      <app-document-info-editor [document]="employee.document" [viewMode]="viewMode">
-      </app-document-info-editor>
-    </div>
-    <div id="education" class="tab-pane">
-      <!-- <h3>Образование</h3> -->
-      <app-education-info-editor [education]="employee.education" [viewMode]="viewMode">
-      </app-education-info-editor>
+      <div class="container">
+         <div class="row">
+            <div class="col-6">
+               <app-document-info-editor [document]="employee.document" [viewMode]="viewMode">
+               </app-document-info-editor>
+            </div>
+            <div class="col-6">
+               <app-education-info-editor [education]="employee.education" [viewMode]="viewMode">
+               </app-education-info-editor>
+            </div>
+         </div>
+      </div>
     </div>
     <div id="familyCard" class="tab-pane">
       <!-- <h3>Семья</h3> -->
@@ -42,17 +46,33 @@
     </div>
     <div id="adress" class="tab-pane">
       <!-- <h3>Адрес / Контакты</h3> -->
-      <app-adress-info-editor [adress]="employee.adress" [viewMode]="viewMode">
-      </app-adress-info-editor>
-      <app-contact-info-editor [contact]="employee.contact" [viewMode]="viewMode">
-      </app-contact-info-editor>
+      <div class="container">
+         <div class="row">
+            <div class="col-6">
+               <app-adress-info-editor [adress]="employee.adress" [viewMode]="viewMode">
+               </app-adress-info-editor>
+            </div>
+            <div class="col-6">
+               <app-contact-info-editor [contact]="employee.contact" [viewMode]="viewMode">
+               </app-contact-info-editor>
+            </div>
+         </div>
+      </div>
     </div>
     <div id="medicalCard" class="tab-pane">
       <!-- <h3>Медицинская карта / Страховка</h3> -->
-      <app-medical-info-editor [medicalCard]="employee.medicalCard" [viewMode]="viewMode">
-      </app-medical-info-editor>
-      <app-ensurance-info-editor [ensurance]="employee.ensurance" [viewMode]="viewMode">
-      </app-ensurance-info-editor>
+      <div class="container">
+         <div class="row">
+            <div class="col-6">
+               <app-medical-info-editor [medicalCard]="employee.medicalCard" [viewMode]="viewMode">
+               </app-medical-info-editor>
+            </div>
+            <div class="col-6">
+               <app-ensurance-info-editor [ensurance]="employee.ensurance" [viewMode]="viewMode">
+               </app-ensurance-info-editor>
+            </div>
+         </div>
+      </div>
     </div>
  </div>
 <hr>

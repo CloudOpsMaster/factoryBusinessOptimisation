@@ -1,31 +1,34 @@
-<div>
-   <label for="tabNumber" *ngIf="showId && mainInfo.id > -1">Табельный номер:</label>
-   <input *ngIf="showId && mainInfo.id > -1" type="text" [(ngModel)]="mainInfo.id" [readonly]="true" id="tabNumber" class="form-control form-control-sm">
+<div class="container">
+   <div class="row">
+      <div class="col-8">
+         <label for="tabNumber" *ngIf="showId && mainInfo.id > -1">Табельный номер:</label>
+         <input *ngIf="showId && mainInfo.id > -1" type="text" [(ngModel)]="mainInfo.id" [readonly]="true" id="tabNumber" class="form-control form-control-sm">
 
-   <label for="firstName">Имя:</label>
-   <input type="text" [(ngModel)]="mainInfo.firstName" [readonly]="!editMode" id="firstName" class="form-control form-control-sm">
-   
-   <label for="secondName">Фамилия:</label>
-   <input type="text" [(ngModel)]="mainInfo.secondName" [readonly]="!editMode" id="secondName" class="form-control form-control-sm">
+         <label for="firstName">Имя:</label>
+         <input type="text" [(ngModel)]="mainInfo.firstName" [readonly]="!editMode" id="firstName" class="form-control form-control-sm">
+         
+         <label for="secondName">Фамилия:</label>
+         <input type="text" [(ngModel)]="mainInfo.secondName" [readonly]="!editMode" id="secondName" class="form-control form-control-sm">
 
-   <label for="patronymic">Отчество:</label>
-   <input type="text" [(ngModel)]="mainInfo.patronymic" [readonly]="!editMode" id="patronymic" class="form-control form-control-sm">
+         <label for="patronymic">Отчество:</label>
+         <input type="text" [(ngModel)]="mainInfo.patronymic" [readonly]="!editMode" id="patronymic" class="form-control form-control-sm">
 
-   <label for="dob">Дата рождения:</label>
-   <input type="date" [(ngModel)]="mainInfo.dob" [readonly]="!editMode" id="dob" class="form-control  form-control-sm">
-
-   <label for="photo">Фото:</label>
-   <br>
-   <img [src]="mainInfo.photo" class="img-fluid" alt="Фото" id="photo">
-   <br>
-   <input name="photoChooser" type="file" accept="image/*" *ngIf="editMode" [(ngModel)]="mainInfo.photo" (ngModelChange)="onModelChange($event)">
-
-   <br>
-   <label for="signature">Подпись:</label>
-   <br>
-   <img [src]="mainInfo.signature" class="img-fluid" alt="Подпись" id="signature">
-   <br>
-   <input name="signatureChooser" type="file" accept="image/*" *ngIf="editMode" [(ngModel)]="mainInfo.signature" (ngModelChange)="onModelChange($event)">
-   
-   
+         <label for="dob">Дата рождения:</label>
+         <input type="date" [(ngModel)]="mainInfo.dob" [readonly]="!editMode" id="dob" class="form-control  form-control-sm">
+      </div>
+      <div class="col-4">
+         <label for="photo">Фото:</label>
+         <br>
+         <img [src]="mainInfo.photo" class="img-fluid" alt="Фото" id="photo">
+         <br>
+         <input name="photoChooser" type="file" accept="image/*" *ngIf="editMode" [(ngModel)]="mainInfo.photo" (ngModelChange)="onModelChange($event)">
+      
+         <br>
+         <label for="signature">Подпись:</label>
+         <br>
+         <img [src]="mainInfo.signature" class="img-fluid" alt="Подпись" id="signature">
+         <br>
+         <input name="signatureChooser" type="file" accept="image/*" *ngIf="editMode" [(ngModel)]="mainInfo.signature" (ngModelChange)="onModelChange($event)">
+      </div>
+   </div>
 </div>
