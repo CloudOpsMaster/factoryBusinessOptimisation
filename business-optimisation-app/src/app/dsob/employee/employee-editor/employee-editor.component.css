@@ -9,3 +9,11 @@
    color: #2FA4E7;
    font-size: 1.5rem;
 }
+
+.fixed-half-height {
+   height: 40%;
+}
+
+.scrolable {
+   overflow: auto;
+}
