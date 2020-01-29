@@ -1,0 +1,10 @@
+<label for="photoChooser">{{caption}}</label>
+<br>
+<img *ngIf="trustedImageUrl"
+      [src]="trustedImageUrl" class="img-fluid" alt="Фото" id="photo">
+<br>
+<input *ngIf="!readonly"
+      name="photoChooser"
+      #photoChooser
+      type="file" accept="image/*" 
+      (change)="onModelChange(photoChooser)">
