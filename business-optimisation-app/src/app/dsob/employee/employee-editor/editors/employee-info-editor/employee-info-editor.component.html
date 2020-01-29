@@ -1,6 +1,6 @@
 <div class="container">
    <div class="row">
-      <div class="col-8">
+      <div class="col-6">
          <label for="tabNumber" *ngIf="showId && mainInfo.id > -1">Табельный номер:</label>
          <input *ngIf="showId && mainInfo.id > -1" type="text" [(ngModel)]="mainInfo.id" [readonly]="true" id="tabNumber" class="form-control form-control-sm">
 
@@ -16,19 +16,19 @@
          <label for="dob">Дата рождения:</label>
          <input type="date" [(ngModel)]="mainInfo.dob" [readonly]="!editMode" id="dob" class="form-control  form-control-sm">
       </div>
-      <div class="col-4">
-         <label for="photo">Фото:</label>
-         <br>
-         <img [src]="mainInfo.photo" class="img-fluid" alt="Фото" id="photo">
-         <br>
-         <input name="photoChooser" type="file" accept="image/*" *ngIf="editMode" [(ngModel)]="mainInfo.photo" (ngModelChange)="onModelChange($event)">
-      
-         <br>
-         <label for="signature">Подпись:</label>
-         <br>
-         <img [src]="mainInfo.signature" class="img-fluid" alt="Подпись" id="signature">
-         <br>
-         <input name="signatureChooser" type="file" accept="image/*" *ngIf="editMode" [(ngModel)]="mainInfo.signature" (ngModelChange)="onModelChange($event)">
+      <div class="col-3">
+         <image-chooser
+            [imageBase64]="mainInfo.photo"
+            [readonly]="!editMode"
+            caption="Фото:"
+            (imageChanged)="onImageChanged($event)"></image-chooser>
+      </div>
+      <div class="col-3">
+         <image-chooser
+            [imageBase64]="mainInfo.signature"
+            [readonly]="!editMode"
+            caption="Подпись:"
+            (imageChanged)="onSignatureChanged($event)"></image-chooser>
       </div>
    </div>
 </div>
