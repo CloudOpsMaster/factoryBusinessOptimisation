@@ -12,6 +12,7 @@ import { ResetButtonComponent } from './ui/buttons/reset-button/reset-button.com
 import { FilterButtonComponent } from './ui/buttons/filter-button/filter-button.component';
 import { GridComponent } from './ui/grid/grid.component';
 import { DownloadDataComponent } from './ui/buttons/download-server-data/download-data.component';
+import { ImageChooserComponent } from './ui/image-chooser/image-chooser.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DownloadDataComponent } from './ui/buttons/download-server-data/downloa
       AddButtonComponent,
       ResetButtonComponent,
       FilterButtonComponent,
-      GridComponent
+      GridComponent,
+      ImageChooserComponent
    ],
    exports: [
       ComboBoxComponent,
@@ -42,7 +44,8 @@ import { DownloadDataComponent } from './ui/buttons/download-server-data/downloa
       AddButtonComponent,
       ResetButtonComponent,
       FilterButtonComponent,
-      GridComponent
+      GridComponent,
+      ImageChooserComponent
    ]
 })
 export class CommonAppModule { }
