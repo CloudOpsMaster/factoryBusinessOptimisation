@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Plot } from 'src/app/models/plot/plot';
-import { GridColumn } from 'src/app/common/ui/grid/model/grid-column';
 
 @Component({
   selector: 'app-plots-table',
@@ -8,52 +6,48 @@ import { GridColumn } from 'src/app/common/ui/grid/model/grid-column';
   styleUrls: ['./plots-table.component.scss']
 })
 export class PlotsTableComponent implements OnInit {
-  private table: boolean;
-  private tableForPlots: boolean ;
-  private tableForLocation: boolean = true;
-  private tableForWorkSiteOfGuild: boolean;
-  private tableForWorkSiteOfOffice: boolean;
-  @Input() set openTable(value: boolean) { this.table = value; }
-  @Output() closedTable = new EventEmitter<boolean>();
-  items: Map<number, string> = new Map<number, string>();
+  private canOpenTable: boolean;
+  private isPlots: boolean ;
+  private isLocationAddresses: boolean = true;
+  private isWorkSitesForGuild: boolean;
+  private isWorkSitesForOffice: boolean;
+  
+  @Input() set componentForTables(value: boolean) { this.canOpenTable = value; }
+  @Output() collapseTable = new EventEmitter<boolean>();
+
+  tableNames: Map<number, string> = new Map<number, string>();
+
   ngOnInit() {
   }
+
   constructor() {
-    this.items.set(1, 'Участки');
-    this.items.set(2, 'Адреса локаций');
-    this.items.set(3, 'Отделы');
-    this.items.set(4, 'Рабочие участки');
+    this.tableNames.set(1, 'Участки');
+    this.tableNames.set(2, 'Адреса локаций');
+    this.tableNames.set(3, 'Отделы');
+    this.tableNames.set(4, 'Рабочие участки');
   }
 
-  private print(value): void {
+  private openTable(value): void {
     switch (value) {
-      case this.items.get(1):
+      case this.tableNames.get(1):
         this.setTable(true, false, false, false);
         break;
-      case this.items.get(2):
+      case this.tableNames.get(2):
         this.setTable(false, true, false, false);
         break;
-      case this.items.get(3):
+      case this.tableNames.get(3):
         this.setTable(false, false, true, false);
         break;
-      case this.items.get(4):
+      case this.tableNames.get(4):
         this.setTable(false, false, false, true);
         break;
     }
   }
-  private setTable(tableForPlots: boolean, tableForLocation: boolean, tableForWorkSiteOfOffice: boolean, tableForWorkSiteOfGuild: boolean): void {
-    this.tableForPlots = tableForPlots;
-    this.tableForLocation = tableForLocation;
-    this.tableForWorkSiteOfOffice = tableForWorkSiteOfOffice;
-    this.tableForWorkSiteOfGuild = tableForWorkSiteOfGuild;
-  }
 
-  /* @Input() plots = new Array<Plot>();
-   @Output() plot = new EventEmitter<Plot>();
-   columns = new Array<GridColumn>();
- 
-   private onRowClick(plot: Plot): void {
-     this.plot.emit(plot);
-   }
-  */
+  private setTable(Plots: boolean, LocationAddresses: boolean, WorkSitesForOffice: boolean, WorkSitesForGuild: boolean): void {
+    this.isPlots = Plots;
+    this.isLocationAddresses = LocationAddresses;
+    this.isWorkSitesForOffice = WorkSitesForOffice;
+    this.isWorkSitesForGuild = WorkSitesForGuild;
+  }
 }

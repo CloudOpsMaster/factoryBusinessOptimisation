@@ -10,39 +10,23 @@ export class PlotsComponent implements OnInit {
 
   ngOnInit() {
   }
-  openForm: boolean;
-  openTable: boolean = true;
-  openTree: boolean;
+  canOpenForm: boolean;
+  canOpenTable: boolean = true;
+  canOpenTree: boolean;
 
-  private editForm(): void {
-    this.openForm = true;
+  private openForm(): void {
+    this.canOpenForm = true;
   }
 
-  private editTable(): void {
-    if(this.openTable) {
-      this.openTable = false;
-    }
-    else {
-      this.openTable = true;
-    }
+  private openTable(): void {
+    this.canOpenTable = (this.canOpenTable === true) ? false : true;
   }
 
   private cancelForm(event: boolean): void {
-    this.openForm = event;
+    this.canOpenForm = event;
   }
 
   private cancelTable(event: boolean): void {
-    this.openTable = event;
-  }
-  /**********old************/
-
-  private allPlots = new Array<Plot>();
-  private plot: Plot;
-
-  getItems(event: Array<Plot>): void {
-    this.allPlots = event;
-  }
-  getRow(event: Plot): void {
-    this.plot = event;
+    this.canOpenTable = event;
   }
 }

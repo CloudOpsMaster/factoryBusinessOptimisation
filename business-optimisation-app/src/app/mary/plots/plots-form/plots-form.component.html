@@ -1,11 +1,11 @@
-<form [formGroup]="plotsForm" class="myform" *ngIf="form">
+<form [formGroup]="plotsForm" class="myform" *ngIf="canDisplayForm">
     <div class="myform" formGroupName="commonInfo">
         <div class="point">
             <label>Адрес</label>
             <input type="text" class="form-control form-control-sm" list="address" formControlName="address" required>
             <datalist id="address">
-                <option *ngFor="let locationAddress of locationAddresses">
-                {{locationAddress.name}}
+                <option *ngFor="let location of locations">
+                {{location.name}}
             </option>
             </datalist>
         </div>
@@ -19,7 +19,7 @@
             </datalist>
         </div>
     </div>
-    <div class="myform" *ngIf="partOfGuildForm" formGroupName="detailsInfo">
+    <div class="myform" *ngIf="canDisplayPartOfGuildForm" formGroupName="detailsInfo">
         <div class="point">
             <label>Этаж</label>
             <input type="number" class="form-control form-control-sm" formControlName="floor">
@@ -38,7 +38,7 @@
             <input type="number" class="form-control form-control-sm" formControlName="place">
         </div>
     </div>
-    <div class="myform" *ngIf="partOfOfficeForm" formGroupName="detailsInfo">
+    <div class="myform" *ngIf="canDisplayPartOfOfficeForm" formGroupName="detailsInfo">
         <div class="point">
             <label>Этаж</label>
             <input type="number" class="form-control form-control-sm" formControlName="floor">

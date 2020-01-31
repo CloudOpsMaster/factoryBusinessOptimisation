@@ -1,8 +1,3 @@
-.row {
-    color: black;
-    font-size: 18px;
-}
-
 th {
     background: #2FA4E7;
     /* Цвет фона */
@@ -27,13 +22,13 @@ td {
     color: white;
 }
 
-.myform {
+.groupingOfElements {
     margin-top: -15px;
     display: flex;
     flex-direction: row;
 }
 
-.mybutton {
+.mybuttonForForm {
     margin-top: 22px;
     display: flex;
     flex-direction: row;
@@ -43,24 +38,19 @@ td {
     margin-right: 10px;
 }
 
-.filters {
-    display: flex;
-    flex-direction: row;
-}
-
 .btnFilters {
     margin-top: 9px;
     margin-right: 10px;
     margin-bottom: 5px;
 }
 
-.i {
+.fuilterForLocation {
     margin-top: 15px;
     display: flex;
     flex-direction: row;
     float: left;
 }
 
-.f {
+.formForLocation {
     float: right;
 }

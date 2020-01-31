@@ -1,10 +1,10 @@
-<div *ngIf="table">
+<div *ngIf="canOpenTable">
     <br>
-    <div class="i">
+    <div class="fuilterForLocation">
         <div class="btnFilters">
-            <button class="btn btn-outline-primary btn-sm" (click)="displayOfFilters()">Фильтр</button>
+            <button class="btn btn-outline-primary btn-sm" (click)="displayFilters()">Фильтр</button>
         </div>
-        <div *ngIf="filters" class="myform">
+        <div *ngIf="canUseFuilter" class="groupingOfElements">
             <div class="point">
                 <small>ID</small>
                 <input type="number" class="form-control form-control-sm" [(ngModel)]="idSearch">
@@ -13,7 +13,7 @@
                 <small>Адрес локации</small>
                 <input type="text" class="form-control form-control-sm" [(ngModel)]="addressSearch">
             </div>
-            <div class="mybutton">
+            <div class="mybuttonForForm">
                 <save-button (click)="onSearch()" titlePlaceholder="Применить">
                 </save-button>
                 <edit-button (click)="onCancel()" titlePlaceholder="Отменить" [disabled]="locked" [showCancelBtn]="true">
@@ -21,10 +21,10 @@
             </div>
         </div>
     </div>
-    <div class="f">
-        <app-location-form [openForm]="openForm" [row]="currentLocation"></app-location-form>
+    <div class="formForLocation">
+        <app-location-form [openForm]="isOpenLocationForm" [row]="currentLocation" (renovation)="update($event)" (reset)="cancelCurrentLocation()" (deletion)="delete($event)"></app-location-form>
     </div>
-    <div class="tab">
+    <div>
         <table class="table table-striped">
             <thead class="table-primary">
                 <tr>
@@ -37,12 +37,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let addressLocation of filteredData" [class.active]="addressLocation==currentLocation" on-click="onRowClick(addressLocation) ">
+                <tr *ngFor="let location of changeableLocations" [class.active]="location===currentLocation" on-click="onRowClick(location)">
                     <td>
-                        {{addressLocation.id}}
+                        {{location.id}}
                     </td>
                     <td>
-                        {{addressLocation.name}}
+                        {{location.name}}
                     </td>
                 </tr>
             </tbody>

@@ -1,10 +1,10 @@
 <!-- class="browser-default custom-select" -->
-<div *ngIf="table">
-    <button class="btn btn-primary btn-sm" *ngFor="let item of items | keyvalue" (click)="print(item.value)"> {{item.value}}</button>
+<div *ngIf="canOpenTable">
+    <button class="btn btn-primary btn-sm" *ngFor="let name of tableNames | keyvalue" (click)="openTable(name.value)"> {{name.value}}</button>
 </div>
-<div *ngIf="table" class="mydiv">
-    <app-table-for-plots [openTableForPlots]="tableForPlots"></app-table-for-plots>
-    <app-table-for-location [openTableForLocation]="tableForLocation"></app-table-for-location>
-    <app-table-work-site-for-office [openTableForWorkSiteOfOffice]="tableForWorkSiteOfOffice"></app-table-work-site-for-office>
-    <app-table-work-site-for-guild [openTableForWorkSiteOfGuild]="tableForWorkSiteOfGuild"></app-table-work-site-for-guild>
+<div *ngIf="canOpenTable">
+    <app-table-for-plots [openTableForPlots]="isPlots"></app-table-for-plots>
+    <app-table-for-location [isOpenTableForLocation]="isLocationAddresses"></app-table-for-location>
+    <app-table-work-site-for-office [openTableForWorkSiteOfOffice]="isWorkSitesForGuild"></app-table-work-site-for-office>
+    <app-table-work-site-for-guild [openTableForWorkSiteOfGuild]="isWorkSitesForOffice"></app-table-work-site-for-guild>
 </div>
