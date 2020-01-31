@@ -91,8 +91,6 @@ export class InstrumentServiceFormComponent implements OnInit, OnChanges {
 
     this.setItem.emit(newItem);
 
-
-    // this.initForm();
     this.resetSearchForm();
   }
 
@@ -112,21 +110,5 @@ export class InstrumentServiceFormComponent implements OnInit, OnChanges {
     this.disabled = true;
   }
 
-    // onSave() {
-    //   const newSaveItem = new InstrumentServis(
-    //     this.servicesForm.get('startDate').value,
-    //     this.servicesForm.get('endDate').value,
-    //     this.servicesForm.get('status').value,
-    //     this.servicesForm.get('description').value,
-    //     this.updateItemId
-    //     );
-
-    //   this.updateItem.emit(newSaveItem);
-
-    //   this.instrumentService.disabledFlag(false);
-    //   this.disabledSaveBtn = false;
-    //   this.initForm();
-    // }
-
-  }
+}
 

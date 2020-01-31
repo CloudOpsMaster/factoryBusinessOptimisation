@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Номер Id</th>
+      <th>Дата сдачи</th>
+      <th>Дата получения</th>
+      <th>Статус</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let instrument of instrumentList">
+      <td>{{instrument.id}}</td>
+      <td>{{instrument.startDate}}</td>
+      <td>{{instrument.endDate}}</td>
+      <td [innerHTML]='getStatusvalue(instrument.status)'></td>
+      <td>{{instrument.description}}</td>
+    </tr>
+  </tbody>
+</table>

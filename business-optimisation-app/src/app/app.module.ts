@@ -30,6 +30,8 @@ import { TableWorkSiteForOfficeComponent } from './mary/plots/plots-table/table-
 import { TableForLocationComponent } from './mary/plots/plots-table/table-for-location/table-for-location.component';
 import { TableWorkSiteForGuildComponent } from './mary/plots/plots-table/table-work-site-for-guild/table-work-site-for-guild.component';
 import { LocationFormComponent } from './mary/plots/plots-table/table-for-location/location-form/location-form.component';
+// tslint:disable-next-line:max-line-length
+import { InstrumentServiceTableHistoryComponent } from './vdry/instrument-services/instrument-service-table-history/instrument-service-table-history.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { LocationFormComponent } from './mary/plots/plots-table/table-for-locati
     TableWorkSiteForOfficeComponent,
     TableForLocationComponent,
     TableWorkSiteForGuildComponent,
-    LocationFormComponent
+    LocationFormComponent,
+    InstrumentServiceTableHistoryComponent
   ],
   imports: [
     BrowserModule,
