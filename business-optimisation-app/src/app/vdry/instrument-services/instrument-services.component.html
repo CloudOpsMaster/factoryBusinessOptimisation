@@ -1,20 +1,43 @@
-<br>
+<h2>Обслуживание оборудования</h2>
 <div class="col-lg-12">
+  <ul class="nav nav-tabs">
+    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#service-form">Заявка подачи\получения</a></li>
+    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#editing">Редактирование</a></li>
+    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#history">История</a></li>
+  </ul>
+</div>
+<div class="tab-content"> 
+  <div id="service-form" class="tab-pane active">
+    <div class="col-lg-6">
+      <br>
+      <h3>Оформление заявки</h3>
+      <br>
+      <app-instrument-service-form (setItem)="onAdd($event)" (updateItem)="onSave($event)" ></app-instrument-service-form> <!-- [itemId]="itemId" -->
+    </div>
+  </div>
+  <div id="editing" class="tab-pane">
+    <div class="col-lg-12">
+      <br>
+      <h3>Редактирование заявок</h3>
+      <br>
+      <app-instrument-service-table [instrumentList]="instruments" 
+        (deleteItem)="onDelete($event)" 
+        (updateItem)="onUpdate($event)" 
+        (itemId)="redirectId($event)" 
+        (saveItem)="onSave($event)">
+      </app-instrument-service-table>
+    </div>
+  </div>
 
-<h2>Заявка подачи\получения оборудования из сервиса</h2>
+  <div id="history" class="tab-pane">
+    <div class="col-lg-12">
+      <br>
+      <h3>История заявок</h3>
+      <br>
+      <app-instrument-service-table-history [instrumentList]="instruments">
+      </app-instrument-service-table-history>
+    </div>
+  </div>
 
-<app-instrument-service-form (setItem)="onAdd($event)" (updateItem)="onSave($event)" ></app-instrument-service-form> <!-- [itemId]="itemId" -->
 </div>
 
-
-
-<div class="col-lg-12">
-  
-  <h3>Добавленные элементы</h3>
-  <app-instrument-service-table [instrumentList]="instruments" 
-                                (deleteItem)="onDelete($event)" 
-                                (updateItem)="onUpdate($event)" 
-                                (itemId)="redirectId($event)" 
-                                (saveItem)="onSave($event)"
-                                ></app-instrument-service-table>
-</div>

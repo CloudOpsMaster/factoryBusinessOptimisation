@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { InstrumentServis } from 'src/app/models/instrumentServis/InstrumentServis';
 import { InstrumentService } from './instrument.service';
 
@@ -8,6 +8,7 @@ import { InstrumentService } from './instrument.service';
   styleUrls: ['./instrument-services.component.scss']
 })
 export class InstrumentServicesComponent implements OnInit {
+  // @Input() public instrumentList: InstrumentServis[] = [];
 
   public itemId;
 public test = this.instrumentService.getDisabledFlag();

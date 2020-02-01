@@ -12,10 +12,12 @@
 
 <table class="table table-striped">
     <tbody>
-        <app-instrument-service-table-item (deleteItem)="onDelete($event)" (itemId)="redirectId($event)" 
-        (updateItem)="onUpdate($event)"
-        (saveItem)="onSave($event)"
-        [instrument]="instrument" [indexItem]="i" 
-        *ngFor="let instrument of instrumentList; let i = index"></app-instrument-service-table-item>
+        <app-instrument-service-table-item (deleteItem)='onDelete($event)' (itemId)='redirectId($event)' 
+        (updateItem)='onUpdate($event)'
+        (saveItem)='onSave($event)'
+        *ngFor='let instrument of instrumentList; let i = index'
+        [instrument]='instrument' 
+        [indexItem]='i'>
+        </app-instrument-service-table-item>
     </tbody>
 </table>

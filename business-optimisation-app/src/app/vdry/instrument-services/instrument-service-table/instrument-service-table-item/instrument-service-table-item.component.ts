@@ -37,6 +37,8 @@ export class InstrumentServiceTableItemComponent implements OnInit, OnChanges {
 
   statusItems: Array<DisplayValueItem>;
 
+  historyArr: InstrumentServis[] = [];
+
   constructor( private instrumentService: InstrumentService,
                private createStatusItemsService: CreateStatusItemsService) {
     this.createStatusItems();
