@@ -8,9 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PlotsTableComponent implements OnInit {
   private canOpenTable: boolean;
   private isPlots: boolean ;
-  private isLocationAddresses: boolean = true;
+  private isLocationAddresses: boolean;
   private isWorkSitesForGuild: boolean;
-  private isWorkSitesForOffice: boolean;
+  private isWorkSitesForOffice: boolean =true;
   
   @Input() set componentForTables(value: boolean) { this.canOpenTable = value; }
   @Output() collapseTable = new EventEmitter<boolean>();

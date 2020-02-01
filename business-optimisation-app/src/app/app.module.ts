@@ -26,10 +26,11 @@ import { PlotsTableComponent } from './mary/plots/plots-table/plots-table.compon
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonAppModule } from './common/common.module';
 import { TableForPlotsComponent } from './mary/plots/plots-table/table-for-plots/table-for-plots.component';
-import { TableWorkSiteForOfficeComponent } from './mary/plots/plots-table/table-work-site-for-office/table-work-site-for-office.component';
 import { TableForLocationComponent } from './mary/plots/plots-table/table-for-location/table-for-location.component';
-import { TableWorkSiteForGuildComponent } from './mary/plots/plots-table/table-work-site-for-guild/table-work-site-for-guild.component';
+import { TableWorkSiteForGuildComponent } from './mary/plots/plots-table/work-site/table-work-site-for-guild/table-work-site-for-guild.component';
 import { LocationFormComponent } from './mary/plots/plots-table/table-for-location/location-form/location-form.component';
+import { WorkSiteFormComponent } from './mary/plots/plots-table/work-site/work-site-form/work-site-form.component';
+import { TableWorkSiteForOfficeComponent } from './mary/plots/plots-table/work-site/table-work-site-for-office/table-work-site-for-office.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { LocationFormComponent } from './mary/plots/plots-table/table-for-locati
     TableWorkSiteForOfficeComponent,
     TableForLocationComponent,
     TableWorkSiteForGuildComponent,
-    LocationFormComponent
+    LocationFormComponent,
+    WorkSiteFormComponent
   ],
   imports: [
     BrowserModule,

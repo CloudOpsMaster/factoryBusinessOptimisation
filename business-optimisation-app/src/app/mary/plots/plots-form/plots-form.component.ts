@@ -48,6 +48,12 @@ export class PlotsFormComponent implements OnInit {
       this.locations = [];
       this.locations = data;
     });
+    this.updateDataService.dataForOffice.subscribe(data => {
+      this.setPartOfForm(this.departmentId);
+    })
+    this.updateDataService.dataForGuild.subscribe(data => {
+      this.setPartOfForm(this.departmentId);
+    })
   }
 
   ngOnInit() {
@@ -144,7 +150,7 @@ export class PlotsFormComponent implements OnInit {
       newPlot.floor = this.floor.value;
       newPlot.workSite = this.workSite.value;
       newPlot.place = this.place.value;
-      const workSideId = this.checkingForExistenceOfDatalist(newPlot.workSite, this.workSites, StorageKey.WorkSiteForOffice);
+      const workSideId = this.checkingForExistenceOfDatalist(newPlot.workSite, this.workSites, StorageKey.WorkSiteForGuild);
       this.sideCode.push(newPlot.floor);
       this.sideCode.push(workSideId);
       this.sideCode.push(newPlot.place);
@@ -189,9 +195,19 @@ export class PlotsFormComponent implements OnInit {
       checkedArray.push(newElement);
       elemId = newId;
       this.rewriteStorage(storageKey, checkedArray);
-      this.updateDataService.setLocations();
+      this.updateValusForWorkSite(storageKey);
     }
     return elemId;
+  }
+
+  private updateValusForWorkSite(storageKey: StorageKey): void {
+    switch (storageKey) {
+      case StorageKey.WorkSiteForOffice:
+        this.updateDataService.setWorkSiteForOffice();
+        break;
+      case StorageKey.WorkSiteForGuild:
+        break;
+    }
   }
 
   private rewriteStorage<T>(stogareKey: StorageKey, data: Array<T>): void {

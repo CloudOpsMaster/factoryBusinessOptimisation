@@ -1,0 +1,18 @@
+input.ng-touched.ng-invalid {
+    border: solid #D9534F 1.5px;
+}
+
+.myform {
+    display: flex;
+    flex-direction: row;
+}
+
+.mybutton {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: row;
+}
+
+.point {
+    margin-right: 10px;
+}

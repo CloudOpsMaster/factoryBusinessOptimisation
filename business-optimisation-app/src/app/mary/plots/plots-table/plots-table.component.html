@@ -3,8 +3,8 @@
     <button class="btn btn-primary btn-sm" *ngFor="let name of tableNames | keyvalue" (click)="openTable(name.value)"> {{name.value}}</button>
 </div>
 <div *ngIf="canOpenTable">
-    <app-table-for-plots [openTableForPlots]="isPlots"></app-table-for-plots>
+    <app-table-for-plots [isOpenTableForPlots]="isPlots"></app-table-for-plots>
     <app-table-for-location [isOpenTableForLocation]="isLocationAddresses"></app-table-for-location>
-    <app-table-work-site-for-office [openTableForWorkSiteOfOffice]="isWorkSitesForGuild"></app-table-work-site-for-office>
-    <app-table-work-site-for-guild [openTableForWorkSiteOfGuild]="isWorkSitesForOffice"></app-table-work-site-for-guild>
+    <app-table-work-site-for-office [isOpenTableForWorkSiteOfOffice]="isWorkSitesForOffice"></app-table-work-site-for-office>
+    <app-table-work-site-for-guild [isOpenTableForWorkSiteOfGuild]="isWorkSitesForGuild"></app-table-work-site-for-guild>
 </div>
