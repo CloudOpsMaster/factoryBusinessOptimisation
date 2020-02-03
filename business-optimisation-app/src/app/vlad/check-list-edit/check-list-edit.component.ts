@@ -16,7 +16,6 @@ import { CheckListArray } from 'src/app/models/CheckList/CheckListArray';
 export class CheckListEditComponent extends CheckListBase implements OnInit {
 
   ngOnInit() {
-
   }
 
   public listCreate() {

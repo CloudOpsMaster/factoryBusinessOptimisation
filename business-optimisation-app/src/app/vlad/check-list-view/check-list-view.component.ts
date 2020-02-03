@@ -14,6 +14,5 @@ import { CheckListBase } from '../check-list-base';
 export class CheckListViewComponent extends CheckListBase implements OnInit {
 
   ngOnInit() {
-
   }
 }
