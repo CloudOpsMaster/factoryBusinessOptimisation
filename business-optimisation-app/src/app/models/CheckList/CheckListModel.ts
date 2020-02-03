@@ -6,7 +6,7 @@ export interface ICheckListModel {
 export interface ICheckList {
     name: string;
     type: ListType;
-    list: ICheckItem[];
+    tasks: ICheckItem[];
 }
 
 export interface ICheckItem {
@@ -19,7 +19,12 @@ export enum ListType {
     Free
 }
 
-export const ListTypeInfo = [
+export interface ListTypeInfoSelect {
+    name: string;
+    type: ListType;
+}
+
+export const ListTypeInfo: ListTypeInfoSelect[] = [
     {
         name: 'Сортированный',
         type: ListType.Sorted

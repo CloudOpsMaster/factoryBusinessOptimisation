@@ -1,8 +1,8 @@
 <div class="container flex">
 
   <div class="left-box overflow">
-    <div class="flex-center" *ngFor="let list of checkList; let listI = index">
-      <button class="btn btn-primary left-item" (click)="chooseList(listI)">
+    <div class="flex-center" *ngFor="let list of checkList.array; let listI = index">
+      <button class="btn btn-primary left-item" (click)="listSelect(listI)">
         <b>{{list.name}}</b>
         <br>
         <a>{{listTypes[list.type].name}}</a>
@@ -10,18 +10,18 @@
     </div>
   </div>
 
-  <div class="right-box overflow" *ngIf="currentList!=null">
+  <div class="right-box overflow" *ngIf="checkList.current.list!=null">
     <div class="flex-center-column header">
       <div class="flex-center">
         <h2>
           <b>Чек-лист</b>
         </h2>
       </div>
-      <h5 class="right-task-name">{{currentList.name}}</h5>
+      <h5 class="right-task-name">{{checkList.current.list.name}}</h5>
     </div>
-    <div class="flex-stretch" *ngFor="let task of currentList.list; let taskI = index">
+    <div class="flex-stretch" *ngFor="let task of checkList.current.list.tasks; let taskI = index">
       <input class="checkbox" type="checkbox" [disabled]="!canCheck(taskI)" [(ngModel)]="task.checked"
-        (change)="saveData()">
+        (change)="dataSave()">
       <a class="right-task-text">{{task.name || 'Пустая ячейка'}}</a>
     </div>
   </div>
