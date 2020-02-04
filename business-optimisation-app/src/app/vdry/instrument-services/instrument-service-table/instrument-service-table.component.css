@@ -35,6 +35,6 @@ app-instrument-service-table-item {
     display: block;
 }
 
-app-instrument-service-table-item:nth-of-type(even) {
+app-instrument-service-table-item:nth-of-type(odd) {
     background-color: rgba(0,0,0,0.05);
 }

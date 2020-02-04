@@ -79,6 +79,24 @@ export class InstrumentService {
     this.storageService.setData(InstrumentService.STORAGE_KEY, items);
   }
 
+// ========== History =======
+
+  public history(item: InstrumentServis): void {
+    let items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
+    const newItem: InstrumentServis = { ...item, id: item.id};
+
+    if (this.storageService.hasKey(InstrumentService.STORAGE_KEY)) {
+      items.push(newItem);
+    } else {
+      items = [newItem];
+    }
+
+    this.storageService.setData(InstrumentService.STORAGE_KEY, items);
+  }
+
+
+  // ========== History =======
+
   public clear(): void {
     this.storageService.deleteData(InstrumentService.STORAGE_KEY);
   }

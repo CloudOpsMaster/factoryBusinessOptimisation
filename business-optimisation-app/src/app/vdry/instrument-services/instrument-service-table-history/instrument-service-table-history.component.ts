@@ -17,12 +17,10 @@ export class InstrumentServiceTableHistoryComponent implements OnInit {
 
   statusItems: Array<DisplayValueItem>;
 
-  public instruments: InstrumentServis[] = [];
   public instrumentsArray: any[];
 
 
-  constructor( private createStatusItemsService: CreateStatusItemsService,
-               private instrumentService: InstrumentService ) {
+  constructor( private createStatusItemsService: CreateStatusItemsService) {
     this.createStatusItems();
   }
 
