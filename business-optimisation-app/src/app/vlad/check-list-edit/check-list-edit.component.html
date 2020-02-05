@@ -1,44 +1,46 @@
 <div class="container flex">
 
     <div class="left-box overflow">
-        <div class="flex-center" *ngFor="let list of checkList; let listI = index">
-            <button class="btn btn-primary left-item" (click)="chooseList(listI)">
-        <b>{{list.name}}</b>
-        <br>
-        <a>{{listTypes[list.type].name}}</a>
-      </button>
-            <delete-button titlePlaceholder="Удалить список" (click)="deleteList(listI)"></delete-button>
+        <div class="flex-center" *ngFor="let list of checkList.array; let listI = index">
+            <button class="btn btn-primary left-item" (click)="listSelect(listI)">
+                <b>{{list.name}}</b>
+                <br>
+                <a>{{listTypes[list.type].name}}</a>
+            </button>
+            <delete-button titlePlaceholder="Удалить список" (click)="listDelete(listI)"></delete-button>
         </div>
         <div class="flex-center-column">
-            <select class="custom-select" [(ngModel)]="selectType">
-        <option *ngFor="let list of listTypes" [ngValue]="list">{{ list.name }}</option>
-      </select>
+            <select class="custom-select" [(ngModel)]="checkList.selectType">
+                <option *ngFor="let list of listTypes" [ngValue]="list">{{ list.name }}</option>
+            </select>
             <div class="flex-center">
-                <add-button titlePlaceholder="Добавить список" (click)="addList()"></add-button>
-                <download-data-button titlePlaceholder="Загрузить список с сервера" (click)="serverList()">
+                <add-button titlePlaceholder="Добавить список" (click)="listCreate()"></add-button>
+                <download-data-button titlePlaceholder="Загрузить список с сервера" (click)="listServer()">
                 </download-data-button>
             </div>
         </div>
     </div>
 
-    <div class="right-box overflow" *ngIf="currentList!=null">
+    <div class="right-box overflow" *ngIf="checkList.current.list!=null">
         <div class="flex-center-column header">
             <div class="flex-center">
                 <h2>
                     <b>Чек-лист</b>
                 </h2>
-                <edit-button (click)="renameList()" titlePlaceholder="Переименовать"></edit-button>
+                <edit-button (click)="listRename()" titlePlaceholder="Переименовать"></edit-button>
             </div>
-            <h5 class="right-task-name">{{currentList.name}}</h5>
+            <h5 class="right-task-name">{{checkList.current.list.name}}</h5>
         </div>
-        <div class="flex-center" *ngFor="let task of currentList.list; let taskI = index">
-            <input class="checkbox" type="checkbox" [disabled]="!canCheck(taskI)" [(ngModel)]="task.checked" (change)="saveData()">
-            <input class="right-task-text" placeholder="Новая задача.." [disabled]="task.checked" [(ngModel)]="task.name" (input)="saveData()">
-            <delete-button class="right-task-trash" titlePlaceholder="Удалить задачу" (click)="deleteItem(taskI)">
+        <div class="flex-center" *ngFor="let task of checkList.current.list.tasks; let taskI = index">
+            <input class="checkbox" type="checkbox" [disabled]="!canCheck(taskI)" [(ngModel)]="task.checked"
+                (change)="dataSave()">
+            <input class="right-task-text" placeholder="Новая задача.." [disabled]="task.checked"
+                [(ngModel)]="task.name" (input)="dataSave()">
+            <delete-button class="right-task-trash" titlePlaceholder="Удалить задачу" (click)="taskDelete(taskI)">
             </delete-button>
         </div>
         <div class="flex-center">
-            <add-button class="add-btn" titlePlaceholder="Добавить задачу" (click)="addItem()"></add-button>
+            <add-button class="add-btn" titlePlaceholder="Добавить задачу" (click)="taskCreate()"></add-button>
         </div>
     </div>
 

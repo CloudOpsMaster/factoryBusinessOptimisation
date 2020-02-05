@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService, StorageKey } from 'src/app/services/storage.service';
-import { ICheckListModel, ICheckList, ListTypeInfo, ListType } from 'src/app/models/check-list';
+import { StorageKey } from 'src/app/services/storage.service';
+import { ICheckListModel } from 'src/app/models/CheckList/CheckListModel';
+import { CheckListBase } from '../check-list-base';
+import { CheckListArray } from 'src/app/models/CheckList/CheckListArray';
 
 @Component({
   selector: 'app-check-list',
@@ -11,180 +13,81 @@ import { ICheckListModel, ICheckList, ListTypeInfo, ListType } from 'src/app/mod
   ]
 })
 
-export class CheckListEditComponent implements OnInit {
-
-  public listTypes = ListTypeInfo;
-  public selectType: { name: string, type: ListType };
-
-  public checkList: ICheckList[] = [];
-  public currentList: ICheckList;
-
-  private storage = new StorageService();
-  private currentIndex: number;
-  private listNameTemplate = "Новый список"
-
-  constructor() {
-    this.selectType = ListTypeInfo[1];
-    this.requestData()
-  }
+export class CheckListEditComponent extends CheckListBase implements OnInit {
 
   ngOnInit() {
-
   }
 
-  canCheck(taskIndex: number) {
-    const name = this.currentList.list[taskIndex].name;
-    const one = this.currentList.type === ListType.Free;
-    const two = taskIndex === 0 || this.currentList.list[taskIndex - 1].checked;
-
-    return (one || two)
-      && !this.isEmptyOrSpaces(name)
-      && !this.currentList.list[taskIndex].checked;
-  }
-
-  addList() {
-    const newName = `${this.listNameTemplate} ${this.nameIndex()}`;
-
-    const listLength = this.checkList.push({
-      name: newName,
-      type: this.selectType.type,
-      list: [
-        {
-          name,
-          checked: false
-        }
-      ]
-    });
-
-    this.currentList = this.checkList[listLength - 1];
-    this.currentIndex = listLength - 1;
-
+  public listCreate() {
+    this.checkList.listCreate();
     this.scrollToDown('.left-box');
-    this.saveData();
+    this.dataSave();
   }
 
-  renameList() {
-    const newName = prompt('Введите новое название:', this.currentList.name);
+  public listRename() {
+    const newName = prompt('Введите новое название:', this.checkList.current.list.name);
 
-    if (newName !== null) {
-      if (newName.length && newName.length < 50 && !this.isEmptyOrSpaces(newName)) {
-        this.currentList.name = newName;
-      }
-      else {
-        alert('Имя может содержать до 50 символов и не должно быть пустым!');
-        this.renameList();
-      }
+    try {
+      this.checkList.listRename(newName);
+      this.dataSave();
     }
-
-    this.saveData();
+    catch (e) {
+      alert(e);
+      this.listRename();
+    }
   }
 
-  chooseList(listIndex: number) {
-    this.currentList = this.checkList[listIndex];
-    this.currentIndex = listIndex;
-
-    this.saveData();
-  }
-
-  deleteList(listIndex: number) {
-    const result = confirm(`Удалить "${this.checkList[listIndex].name}"?`);
+  public listDelete(listIndex: number) {
+    const result = confirm(`Удалить "${this.checkList.array[listIndex].name}"?`);
 
     if (result === true) {
-      this.checkList.splice(listIndex, 1);
-
-      if (this.checkList.length === 0) this.addList();
-      else this.currentList = this.checkList[this.checkList.length - 1];
+      this.checkList.listDelete(listIndex);
+      this.dataSave();
     }
-
-    this.saveData();
   }
 
-  addItem() {
-    this.currentList.list.push({
-      name,
-      checked: false
-    });
-
+  public taskCreate() {
+    this.checkList.taskCreate();
     this.scrollToDown('.right-box');
-    this.saveData();
+    this.dataSave();
   }
 
-  deleteItem(taskIndex: number) {
-    this.currentList.list.splice(taskIndex, 1);
-
-    if (this.currentList.list.length === 0) this.addItem();
-
-    this.saveData();
+  public taskDelete(taskIndex: number) {
+    this.checkList.taskDelete(taskIndex);
+    this.dataSave();
   }
 
-  saveData() {
-    let save: ICheckListModel = {
-      lastSeen: this.currentIndex,
-      list: this.checkList
-    }
-
-    this.storage.setData(StorageKey.CheckList, save);
-  }
-
-  requestData() {
+  public dataRequest() {
     const request = this.storage.getTypedData<ICheckListModel>(StorageKey.CheckList);
-
     // this.storage.deleteData(StorageKey.CheckList)
 
     if (request !== null) {
-      this.checkList = request.list;
-
-      let index = 0;
+      this.checkList = new CheckListArray(request.list);
 
       if (request.lastSeen < this.checkList.length) {
-        index = request.lastSeen
+        this.checkList.listSelect(request.lastSeen)
       }
-
-      this.currentList = this.checkList[index];
     }
     else {
-      this.addList();
-      this.saveData();
+      this.listCreate();
     }
   }
 
-  serverList() {
-    this.addList();
-    this.currentList.list[0] = {
-      name: 'Чек-лист загружен успешно с сервера',
-      checked: true
-    };
-    this.addItem();
+  public listServer() {
+    this.listCreate();
+    this.checkList.taskCreate('Чек-лист загружен успешно с сервера', true);
+    this.checkList.taskDelete(0);
+    this.taskCreate();
   }
 
   private scrollToDown(className: string) {
     const element = document.querySelector(className);
-    
+
     if (element !== null) {
       element.scrollTo({
         top: element.scrollHeight,
         behavior: 'smooth'
       });
     }
-  }
-
-  private isEmptyOrSpaces(text) {
-    return text === null || text.match(/^ *$/) !== null;
-  }
-
-  private nameIndex(startIndex: number = 0) {
-    const name = this.listNameTemplate;
-
-    for (const list of this.checkList) {
-      if (list.name.includes(name)) {
-        const value = +list.name
-          .replace(name, '')
-          .trim();
-
-        if (!isNaN(value) && value > startIndex) startIndex = value;
-      }
-    }
-
-    return startIndex + 1;
   }
 }

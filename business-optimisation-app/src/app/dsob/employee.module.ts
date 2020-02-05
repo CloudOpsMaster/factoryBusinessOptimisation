@@ -22,6 +22,7 @@ import { PositionInfoEditorComponent } from './employee/employee-editor/editors/
 import { CommonAppModule } from '../common/common.module';
 import { PositionService } from './employee/positions-manager/services/position.service';
 import { PositionSelectorComponent } from './employee/positions-manager/position-selector/position-selector.component';
+import { EmploymentManagerComponent } from './employee/employee-editor/editors/employment-manager/employment-manager.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { PositionSelectorComponent } from './employee/positions-manager/position
     PositionsManagerComponent,
     PositionInfoEditorComponent,
     PositionCreatorComponent,
-    PositionSelectorComponent
+    PositionSelectorComponent,
+    EmploymentManagerComponent
   ],
   providers: [
    PositionService

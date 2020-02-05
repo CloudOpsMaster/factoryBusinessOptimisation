@@ -83,8 +83,8 @@
  <div *ngIf="employee" class="tab-content">
     <div id="work" class="tab-pane active">
       <!-- <h3>Прием на работу / Должность / Увольнение</h3> -->
-      <app-position-info-editor [position]="employee.position" [viewMode]="viewMode"></app-position-info-editor>
-      <app-employment-info-editor [employment]="employee.employment" [viewMode]="viewMode">
-      </app-employment-info-editor>
+      <app-employment-manager [position]="employee.position"
+                              [employment]="employee.employment"
+                              [viewMode]="viewMode"></app-employment-manager>
     </div>
  </div>
