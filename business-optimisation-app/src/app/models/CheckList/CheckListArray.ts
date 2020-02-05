@@ -1,15 +1,15 @@
-import { ListTypeInfo, ListTypeInfoSelect, ICheckList } from './CheckListModel';
+import { ListTypeInfo, ListTypeInfoSelect, CheckList } from './CheckListModel';
 
 export class CheckListArray {
 
     public selectType: ListTypeInfoSelect;
 
-    private _array: ICheckList[];
+    private _array: CheckList[];
     private _current: number;
     private _template = "Новый список";
 
-    constructor(CheckList: ICheckList[] = []) {
-        this._array = CheckList;
+    constructor(checkList: CheckList[] = []) {
+        this._array = checkList;
         this._current = 0;
         this.selectType = ListTypeInfo[1];
     }

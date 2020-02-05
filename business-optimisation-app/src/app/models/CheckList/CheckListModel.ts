@@ -1,27 +1,27 @@
 export interface ICheckListModel {
     lastSeen: number;
-    list: ICheckList[];
+    list: CheckList[];
 }
 
-export interface ICheckList {
+export interface CheckList {
     name: string;
     type: ListType;
-    tasks: ICheckItem[];
+    tasks: CheckItem[];
 }
 
-export interface ICheckItem {
+export interface CheckItem {
     name: string;
     checked: boolean;
-}
-
-export enum ListType {
-    Sorted,
-    Free
 }
 
 export interface ListTypeInfoSelect {
     name: string;
     type: ListType;
+}
+
+export enum ListType {
+    Sorted,
+    Free
 }
 
 export const ListTypeInfo: ListTypeInfoSelect[] = [

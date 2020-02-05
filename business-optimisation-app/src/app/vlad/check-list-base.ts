@@ -1,4 +1,4 @@
-import { ListTypeInfo, ListType, ICheckList } from '../models/CheckList/CheckListModel';
+import { ListTypeInfo, ListType } from '../models/CheckList/CheckListModel';
 import { ICheckListModel } from '../models/CheckList/CheckListModel';
 import { StorageService, StorageKey } from '../services/storage.service';
 import { CheckListArray } from '../models/CheckList/CheckListArray';

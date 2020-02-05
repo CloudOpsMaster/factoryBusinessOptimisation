@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ICheckListModel, ICheckList, ListType, ListTypeInfo } from 'src/app/models/CheckList/CheckListModel';
-import { StorageService, StorageKey } from 'src/app/services/storage.service';
 import { CheckListBase } from '../check-list-base';
 
 @Component({
