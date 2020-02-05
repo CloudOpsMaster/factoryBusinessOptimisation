@@ -1,51 +1,46 @@
-<div *ngIf="canOpenTable">
-    <br>
-    <div class="fuilter">
-        <div class="btnFilters">
-            <button class="btn btn-outline-primary btn-sm" (click)="displayFilters()">Фильтр</button>
-        </div>
-        <div *ngIf="canUseFuilter" class="groupingOfElements">
-            <div class="point">
-                <small>ID</small>
-                <input type="number" class="form-control form-control-sm" [(ngModel)]="idForSearch">
+<div class="col-12 row">
+    <div class="col-7">
+        <div class="row">
+            <div class="col-2">
+                <br>
+                <button class="btn btn-outline-primary btn-sm" (click)="displayFilters()">Фильтр</button>
             </div>
-            <div class="point">
-                <small>Название рабочего участка</small>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="nameForSearch">
-            </div>
-            <div class="mybuttonForForm">
-                <save-button (click)="onSearch()" titlePlaceholder="Применить">
-                </save-button>
-                <edit-button (click)="onCancel()" titlePlaceholder="Отменить" [disabled]="locked" [showCancelBtn]="true">
-                </edit-button>
+            <div class="col-10">
+                <div *ngIf="canUseFuilter" class="row">
+                    <div class="col-3">
+                        <small>ID</small>
+                        <input type="number" class="form-control form-control-sm" [(ngModel)]="idForSearch">
+                    </div>
+                    <div class="col-6">
+                        <small>Название рабочего участка</small>
+                        <input type="text" class="form-control form-control-sm" [(ngModel)]="nameForSearch">
+                    </div>
+                    <div class="col-3">
+                        <br>
+                        <save-button (click)="onSearch()" titlePlaceholder="Применить">
+                        </save-button>
+                        <edit-button (click)="onCancel()" titlePlaceholder="Отменить" [disabled]="locked" [showCancelBtn]="true">
+                        </edit-button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="formForWorkSite">
+    <div class="col-5">
         <app-work-site-form [openForm]="isOpenForm" [row]="currentWorkSite" (renovation)="update($event)" (reset)="cancelCurrentWorkSite()" (deletion)="delete($event)"></app-work-site-form>
     </div>
-    <div>
-        <table class="table table-striped">
-            <thead class="table-primary">
-                <tr>
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        Название рабочего участка
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let workSite of changeableWorkSites" [class.active]="workSite===currentWorkSite" on-click="onRowClick(workSite)">
-                    <td>
-                        {{workSite.id}}
-                    </td>
-                    <td>
-                        {{workSite.name}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
+<table class="table table-striped col-12">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Название рабочего участка</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let workSite of changeableWorkSites" [class.active]="workSite===currentWorkSite" (click)="onRowClick(workSite)">
+            <td>{{workSite.id}}</td>
+            <td>{{workSite.name}}</td>
+        </tr>
+    </tbody>
+</table>

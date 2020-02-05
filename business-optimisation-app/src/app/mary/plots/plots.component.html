@@ -1,19 +1,13 @@
-<div>
-    <section class="mysection">
-        <h2>Участки производства</h2>
-    </section>
-    <section class="mysection">
-        <add-button (click)="openForm()"></add-button>
-    </section>
-    <section class="mysection">
-        <button class="btnfortoolbar"><img class="icon" src="https://icon-icons.com/icons2/906/PNG/96/file-tree-1_icon-icons.com_70146.png"/></button>
-    </section>
-    <section class="mysection">
-        <button class="btnfortoolbar" (click)="openTable()"><img class="icon" src="https://icon-icons.com/icons2/20/PNG/96/business_table_order_report_history_2332.png"/></button>
-    </section>
-    <section>
-        <app-plots-form [openForm]="canOpenForm" (closedForm)="cancelForm($event)"></app-plots-form>
-    </section>
+<div class="col-lg-12">
+    <span class="header">Участки производства</span>
+    <add-button (click)="openForm()"></add-button>
+    <button class="btnfortoolbar"><img class="icon" src="https://icon-icons.com/icons2/906/PNG/96/file-tree-1_icon-icons.com_70146.png"/></button>
+    <button class="btnfortoolbar" (click)="openTable()"><img class="icon" src="https://icon-icons.com/icons2/20/PNG/96/business_table_order_report_history_2332.png"/></button>
+</div>
+<div class="col-lg-12">
+    <app-plots-form [openForm]="canOpenForm" (closedForm)="cancelForm($event)"></app-plots-form>
 </div>
 <br>
-<app-plots-table [componentForTables]="canOpenTable" (collapseTable)="cancelTable($event)"></app-plots-table>
+<div class="col-lg-12">
+    <app-plots-table [componentForTables]="canOpenTable" (collapseTable)="cancelTable($event)"></app-plots-table>
+</div>

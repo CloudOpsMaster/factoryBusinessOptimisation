@@ -1,17 +1,16 @@
-<form [formGroup]="locationForm" class="myform" *ngIf="canDisplayForm">
-    <div class="myform">
-        <div class="point">
-            <small>ID</small>
-            <input type="text" class="form-control form-control-sm" formControlName="id" disabled>
-        </div>
-        <div class="point">
-            <small>Адрес локации</small>
-            <input type="text" class="form-control form-control-sm" formControlName="name" required>
-        </div>
-        <div class="mybutton">
-            <filter-button [disabled]="!locationForm.valid" (click)="onChange()"></filter-button>
-            <delete-button [titlePlaceholder]=titleDeleteBtn (click)="onDelete()"></delete-button>
-            <reset-button (click)="onReset()"></reset-button>
-        </div>
+<form [formGroup]="locationForm" *ngIf="canDisplayForm" class="row">
+    <div class="col">
+        <small>ID</small>
+        <input type="text" class="form-control form-control-sm" formControlName="id" disabled>
+    </div>
+    <div class="col">
+        <small>Адрес локации</small>
+        <input type="text" class="form-control form-control-sm" formControlName="name" required>
+    </div>
+    <div class="col">
+        <br>
+        <filter-button [disabled]="!locationForm.valid" (click)="onChange()"></filter-button>
+        <delete-button [titlePlaceholder]=titleDeleteBtn (click)="onDelete()"></delete-button>
+        <reset-button (click)="onReset()"></reset-button>
     </div>
 </form>

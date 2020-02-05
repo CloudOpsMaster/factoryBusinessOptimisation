@@ -26,8 +26,6 @@ export class TableForPlotsComponent implements OnInit {
   private plots = new Array<Plot>();
   private changeablePlots = new Array<Plot>();
 
-  @Input() set isOpenTableForPlots(value: boolean) { this.canOpenTable = value; }
-
   constructor(private updateDataService: DataService, private storage: StorageService) {
     this.updateDataService.dataForLocation.subscribe(data => {
       this.plots = [];
