@@ -9,6 +9,7 @@ import { StorageService, StorageKey } from 'src/app/services/storage.service';
 export class InstrumentService {
 
   public static readonly STORAGE_KEY = StorageKey.InstrumentsStorageKey;
+  public static readonly STORAGE_KEY_HISTORY = StorageKey.InstrumentsStorageKeyHistory;
   public disabled: boolean;
 
   constructor(private storageService: StorageService) {}
@@ -22,6 +23,18 @@ export class InstrumentService {
 
     return items;
   }
+
+  public getDataHistory(): InstrumentServis[] {
+    const items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY_HISTORY);
+
+    if (!items) {
+        throw new Error(`Data for key - ${InstrumentService.STORAGE_KEY_HISTORY} is undefined`);
+    }
+
+    return items;
+  }
+
+
 
   public hasKey(): boolean {
     return this.storageService.hasKey(InstrumentService.STORAGE_KEY);
@@ -57,6 +70,24 @@ export class InstrumentService {
     this.storageService.setData(InstrumentService.STORAGE_KEY, items);
   }
 
+  public setHistory(element: InstrumentServis): void {
+    const newItem: InstrumentServis = { ...element};
+    let items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY_HISTORY);
+
+    if (this.storageService.hasKey(InstrumentService.STORAGE_KEY_HISTORY)) {
+      items.push(newItem);
+    } else {
+      items = [newItem];
+    }
+
+    this.storageService.deleteData(InstrumentService.STORAGE_KEY_HISTORY);
+    this.storageService.setData(InstrumentService.STORAGE_KEY_HISTORY, items);
+  }
+
+
+
+
+
   public delete(id: number): void {
     const items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
 
@@ -82,16 +113,16 @@ export class InstrumentService {
 // ========== History =======
 
   public history(item: InstrumentServis): void {
-    let items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY);
+    let items: InstrumentServis[] = this.storageService.getData(InstrumentService.STORAGE_KEY_HISTORY);
     const newItem: InstrumentServis = { ...item, id: item.id};
 
-    if (this.storageService.hasKey(InstrumentService.STORAGE_KEY)) {
+    if (this.storageService.hasKey(InstrumentService.STORAGE_KEY_HISTORY)) {
       items.push(newItem);
     } else {
       items = [newItem];
     }
 
-    this.storageService.setData(InstrumentService.STORAGE_KEY, items);
+    this.storageService.setData(InstrumentService.STORAGE_KEY_HISTORY, items);
   }
 
 

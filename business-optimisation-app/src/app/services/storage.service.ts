@@ -22,7 +22,8 @@ export enum StorageKey {
   EmployeeMedicalCardStorageKey = 'EmployeeMedicalCardStorageKey',
   EmployeeEnsurancesStorageKey = 'EmployeeEnsurancesStorageKey',
   // TODO: provide more specific value
-  InstrumentsStorageKey = '_services'
+  InstrumentsStorageKey = '_services',
+  InstrumentsStorageKeyHistory = '_servicesHistory'
 }
 
 @Injectable({

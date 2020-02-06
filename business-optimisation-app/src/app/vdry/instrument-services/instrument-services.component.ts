@@ -22,7 +22,7 @@ public test = this.instrumentService.getDisabledFlag();
   ngOnInit() {
     if (this.instrumentService.hasKey()) {
       this.instruments = this.instrumentService.getData();
-      this.instrumentsHistory = this.instrumentService.getData();
+      this.instrumentsHistory = this.instrumentService.getDataHistory();
     }
 
   }
@@ -49,12 +49,10 @@ public test = this.instrumentService.getDisabledFlag();
 
   public onSave(item: InstrumentServis) {
     this.itemId = -1;
-    const actualId = item.id;
     this.instrumentService.update(item);
-    // this.instruments = this.instrumentService.getData();
-    if (item.id === actualId) {
-      this.instrumentService.history(item);
-      this.instrumentsHistory = this.instrumentService.getData();
-    }
+    this.instruments = this.instrumentService.getData();
+    this.instrumentService.history(item);
+    this.instrumentsHistory = this.instrumentService.getDataHistory();
+
   }
 }
