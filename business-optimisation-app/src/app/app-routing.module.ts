@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EmployeeManagerComponent } from './dsob/employee/employee-manager/employee-manager.component';
-import { HomeComponent } from './home/home/home.component';
-import { DayOffFormComponent } from './ihor/day-off-form/day-off-form.component';
-import { InstrumentServicesComponent } from './vdry/instrument-services/instrument-services.component';
-import { GettingToolsComponent } from "./mary/getting-tools/getting-tools.component";
-import { MaterialsDictionaryComponent } from './yulia/materials-dictionary/materials-dictionary.component';
-import { MeteringComponent } from './vadim/metering/metering.component';
-import { CheckListViewComponent } from './vlad/check-list-view/check-list-view.component';
-import { CheckListEditComponent } from './vlad/check-list-edit/check-list-edit.component';
-import { PositionsManagerComponent } from './dsob/employee/positions-manager/positions-manager.component';
-import { PlotsComponent } from './mary/plots/plots.component';
+import { EmployeeManagerComponent } from './chapters/employee-management/employee/employee-manager/employee-manager.component';
+import { HomeComponent } from './chapters/home/home.component';
+import { DayOffFormComponent } from './chapters/employee-management/employee/day-off/day-off-form.component';
+import { InstrumentServicesComponent } from './chapters/technical/instrument-services/instrument-services.component';
+import { GettingToolsComponent } from "./chapters/warehouse/tools/getting-tools/getting-tools.component";
+import { MaterialsDictionaryComponent } from './chapters/warehouse/materials/materials-dictionary/materials-dictionary.component';
+import { MeteringComponent } from './chapters/count-register/metering/metering.component';
+import { CheckListViewComponent } from './chapters/check-list/check-list-view/check-list-view.component';
+import { CheckListEditComponent } from './chapters/check-list/check-list-edit/check-list-edit.component';
+import { PositionsManagerComponent } from './chapters/employee-management/employee/positions-manager/positions-manager.component';
+import { PlotsComponent } from './chapters/manufacture/plots/plots.component';
 
 
 const routes: Routes = [
@@ -27,7 +27,7 @@ const routes: Routes = [
     component: PositionsManagerComponent
   },
   {
-    path: 'ihor',
+    path: 'day-off',
     component: DayOffFormComponent
   },
   {
