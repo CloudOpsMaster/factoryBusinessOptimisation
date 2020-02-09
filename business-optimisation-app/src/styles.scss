@@ -11,22 +11,26 @@
     }
 }
 
-.btn {
-    height: 30px;
-    width: 30px;
+.mybtn {
+    height: 25px;
+    width: 25px;
     margin: 5px;
     display: inline-block;
-    background-color: transparent;
-    background-size: contain;
     border: none;
     outline: none;
+    background-color: transparent;
+    background-size: contain;
     -webkit-filter: grayscale(99%);
     filter: grayscale(99%);
 }
 
-.btn:hover {
+.mybtn:hover {
     -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
+}
+
+.mybtn:focus {
+    outline: none;
 }
 
 .add-btn {
