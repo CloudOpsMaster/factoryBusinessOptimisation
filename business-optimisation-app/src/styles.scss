@@ -1,13 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "assets/bootstrap.min.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
-
 *:disabled,
 *[readonly] {
     cursor: default;
-
     &:focus {
         border-color: #ced4da;
         box-shadow: none;
     }
+}
+
+.btn {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+    display: inline-block;
+    background-color: transparent;
+    background-size: contain;
+    border: none;
+    outline: none;
+    -webkit-filter: grayscale(99%);
+    filter: grayscale(99%);
+}
+
+.btn:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+}
+
+.add-btn {
+    background-image: url('./assets/image/icons/add.png');
+}
+
+.cancel-btn {
+    background-image: url('./assets/image/icons/cancel.png');
+}
+
+.cloudup-btn {
+    background-image: url('./assets/image/icons/cloudup.png');
+}
+
+.delete-btn {
+    background-image: url('./assets/image/icons/delete.png');
+}
+
+.edit {
+    background-image: url('./assets/image/icons/edit.png');
+}
+
+.save-btn {
+    background-image: url('./assets/image/icons/save.png');
+}
+
+.search-btn {
+    background-image: url('./assets/image/icons/search.png');
+}
+
+.trash-can-btn {
+    background-image: url('./assets/image/icons/trash-can.png');
 }
