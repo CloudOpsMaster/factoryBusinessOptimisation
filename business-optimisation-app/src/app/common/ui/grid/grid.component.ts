@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GridColumn } from './model/grid-column';
 import { GridOptions } from './model/grid-options';
+import { GridService } from './service/grid.service';
 
 @Component({
    // tslint:disable-next-line:component-selector
@@ -27,14 +28,15 @@ export class GridComponent implements OnInit {
    /** Event that fires on row selection changed. Uses selected object as argument */
    @Output() currentRowChanged = new EventEmitter<any>();
 
-   constructor() { }
+
+   constructor(private gridService: GridService) { }
 
    ngOnInit() {
    }
 
    onRowClick(data: any) {
       if (this.locked || !data) {
-        return;
+         return;
       }
       this.focusEntityId = this.getFieldValue(data, this.tracktionField);
       this.currentRowChanged.emit(data);
@@ -43,23 +45,30 @@ export class GridComponent implements OnInit {
    getRowClassFor(data: any): string {
       let response = '';
       const isSelected = !this.hideSelection
-                        && this.focusEntityId === this.getFieldValue(data, this.tracktionField);
+         && this.focusEntityId === this.getFieldValue(data, this.tracktionField);
       if (isSelected) {
          response = this.options.selectedRowClass;
       }
       return response;
-    }
+   }
+
+   getSortCaptionFor(column: GridColumn): string {
+      const direction = this.gridService.getDirectionForField(column.field);
+      let response = 'assets/image/icons/sort-undefined.png';
+      if (direction === -1) {
+         response = 'assets/image/icons/sort-down.png';
+      } else if (direction === 1) {
+         response = 'assets/image/icons/sort-up.png';
+      }
+      return response;
+   }
+
+   sortBy(column: GridColumn) {
+      this.gridService.sortRecords(this.dataSource, column.field);
+   }
 
    private getFieldValue(data: any, field: string): any {
-      if (!data || !field) {
-         return undefined;
-      }
-      const parts = field.split('.');
-      let fieldValue = data;
-      parts.forEach(part => {
-       fieldValue = fieldValue[part];
-      });
-      return fieldValue;
+      return this.gridService.getFieldValue(data, field);
    }
 
 }

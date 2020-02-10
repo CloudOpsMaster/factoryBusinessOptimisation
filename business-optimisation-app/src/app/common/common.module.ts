@@ -13,6 +13,7 @@ import { FilterButtonComponent } from './ui/buttons/filter-button/filter-button.
 import { GridComponent } from './ui/grid/grid.component';
 import { DownloadDataComponent } from './ui/buttons/download-server-data/download-data.component';
 import { ImageChooserComponent } from './ui/image-chooser/image-chooser.component';
+import { GridService } from './ui/grid/service/grid.service';
 
 
 @NgModule({
@@ -34,6 +35,9 @@ import { ImageChooserComponent } from './ui/image-chooser/image-chooser.componen
       FilterButtonComponent,
       GridComponent,
       ImageChooserComponent
+   ],
+   providers: [
+      GridService
    ],
    exports: [
       ComboBoxComponent,

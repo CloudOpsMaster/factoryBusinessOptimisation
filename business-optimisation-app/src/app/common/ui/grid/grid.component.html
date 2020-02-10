@@ -3,6 +3,8 @@
       <tr>
          <th *ngFor="let column of columns">
             {{column.header}}
+         <!-- <button (click)="sortBy(column)">{{getSortCaptionFor(column)}}</button> -->
+         <input type="image" (click)="sortBy(column)" [src]="getSortCaptionFor(column)" />
          </th>
       </tr>
    </thead>
