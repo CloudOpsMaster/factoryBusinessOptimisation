@@ -32,11 +32,15 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    }
 
    get firingEnabled(): boolean {
-      return this.editMode && this.canBeFired();
+      return this.editMode && this.canBeFired() && !this.showPositionCreator;
    }
 
    get firingMode(): boolean {
       return this.workMode === EmploymentWorkMode.Firing;
+   }
+
+   get firingCaption(): string {
+      return this.firingMode ? 'Отменить увольнение' : 'Уволить';
    }
 
    ngOnInit(): void {
@@ -55,7 +59,11 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    }
 
    onEmployeeFireRequested() {
-      this.workMode = EmploymentWorkMode.Firing;
+      if (this.workMode === EmploymentWorkMode.Firing) {
+         this.workMode = EmploymentWorkMode.Employment;
+      } else {
+         this.workMode = EmploymentWorkMode.Firing;
+      }
    }
 
    constructor() {
