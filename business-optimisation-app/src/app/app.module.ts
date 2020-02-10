@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+
+import { LocalizationModule, L10nLoader, L10nConfig, LogLevel } from 'angular-l10n';
+import { EN } from 'src/assets/languages/en';
+import { RU } from 'src/assets/languages/ru';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +37,30 @@ import { TableWorkSiteForOfficeComponent } from './chapters/manufacture/plots/pl
 // tslint:disable-next-line:max-line-length
 import { InstrumentServiceTableHistoryComponent } from './chapters/technical/instrument-services/instrument-service-table-history/instrument-service-table-history.component';
 import { TableForLocationComponent } from './chapters/manufacture/plots/plots-table/table-for-location/table-for-location.component';
+
+const l10nConfig: L10nConfig = {
+  logger: {
+    level: LogLevel.Warn
+  },
+  locale: {
+    languages: [
+      { code: 'en', dir: 'ltr' },
+      { code: 'ru', dir: 'ltr' }
+    ],
+    defaultLocale: { languageCode: 'ru', countryCode: 'RU' },
+  },
+  translation: {
+    translationData: [
+      { languageCode: 'en', data: EN },
+      { languageCode: 'ru', data: RU }
+    ],
+    missingValue: 'No key'
+  }
+};
+
+export function initL10n(l10nLoader: L10nLoader): Function {
+  return () => l10nLoader.load();
+}
 
 @NgModule({
   declarations: [
@@ -69,9 +97,19 @@ import { TableForLocationComponent } from './chapters/manufacture/plots/plots-ta
     ReactiveFormsModule,
     EmployeeModule,
     NgSelectModule,
-    CommonAppModule
+    CommonAppModule,
+    LocalizationModule.forRoot(l10nConfig)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initL10n,
+      deps: [L10nLoader],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
