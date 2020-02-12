@@ -29,9 +29,9 @@ export class GridService {
       }
       const parts = field.split('.');
       let fieldValue = data;
-      parts.forEach(part => {
-         fieldValue = fieldValue[part];
-      });
+      for (let i = 0; i < parts.length && fieldValue; i ++) {
+         fieldValue = fieldValue[parts[i]];
+      }
       return fieldValue;
    }
 
