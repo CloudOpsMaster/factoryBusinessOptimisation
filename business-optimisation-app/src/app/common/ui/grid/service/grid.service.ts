@@ -40,18 +40,51 @@ export class GridService {
    private sortFunction = (record1: any, record2: any): number => {
       const value1 = this.getFieldValue(record1, this.currentSortingField);
       const value2 = this.getFieldValue(record2, this.currentSortingField);
-      const type1 = typeof(value1);
-      const type2 = typeof(value2);
-      if (type1 !== type2) {
-         return 0; // can not sort data of different types;
+      const checkResponse = this.checkValues(value1, value2);
+      if (!checkResponse.typesCompatible) {
+         return 0; // can not sort values of different types
       }
       let response = 0;
-      if (type1 === 'string') {
-         response = this.compareStrings(value1, value2);
-      } else if (type1 === 'number') {
-         response =  value1 > value2 ? 1 : -1;
+      if (checkResponse.type === 'string') {
+         response = this.compareStrings(checkResponse.value1, checkResponse.value2);
+      } else if (checkResponse.type === 'number') {
+         response =  checkResponse.value1 > checkResponse.value2 ? 1 : -1;
+      } else if (checkResponse.type === 'boolean') {
+         response = this.compareStrings(checkResponse.value1.toString(), checkResponse.value2.toString());
       }
       return response * this.getDirectionForField(this.currentSortingField);
+   }
+
+   private checkValues(value1: any, value2: any): ValueCheckResult {
+      const response = new ValueCheckResult();
+      let type1 = typeof(value1);
+      let type2 = typeof(value2);
+      if (type1 === 'undefined' && type2 !== 'undefined') {
+         type1 = type2;
+         value1 = this.getDefaultValueFor(type1);
+      }
+      if (type2 === 'undefined' && type1 !== undefined) {
+         type2 = type1;
+         value2 = this.getDefaultValueFor(type2);
+      }
+
+      response.value1 = value1;
+      response.value2 = value2;
+      response.type = type1;
+      response.typesCompatible = type1 === type2;
+      return response;
+   }
+
+   private getDefaultValueFor(type: any): any {
+      let response: any;
+      if (type === 'number' || type === 'bigint') {
+         response = 0;
+      } else if (type === 'string' || type === 'symbol') {
+         response = '';
+      } else if (type === 'boolean') {
+         response = false;
+      }
+      return response;
    }
 
    private updateSortDirections(field: string) {
@@ -105,4 +138,11 @@ export class GridService {
       return result;
    }
 
+}
+
+class ValueCheckResult {
+   value1: any;
+   value2: any;
+   type: any;
+   typesCompatible: boolean;
 }
