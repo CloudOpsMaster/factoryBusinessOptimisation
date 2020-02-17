@@ -43,7 +43,12 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
       return this.firingMode ? 'Отменить увольнение' : 'Уволить';
    }
 
+   private originalPosition: PositionInfo;
+   private originalEmployment: EmploymentInfo;
+
    ngOnInit(): void {
+      this.originalEmployment = this.employment.clone();
+      this.originalPosition = this.position.clone();
    }
 
    onCreateNewPosition() {
@@ -61,6 +66,8 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    onEmployeeFireRequested() {
       if (this.workMode === EmploymentWorkMode.Firing) {
          this.workMode = EmploymentWorkMode.Employment;
+         this.employment.dismissalDate = undefined;
+         this.employment.dismissReason = undefined;
       } else {
          this.workMode = EmploymentWorkMode.Firing;
       }
@@ -71,7 +78,7 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    }
 
    private canBeFired(): boolean {
-      return !this.employment.dismissalDate && this.employment.employmentDate !== undefined;
+      return !this.originalEmployment.dismissalDate && this.originalEmployment.employmentDate !== undefined;
    }
 
 }
