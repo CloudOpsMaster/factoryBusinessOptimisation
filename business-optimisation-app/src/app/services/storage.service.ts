@@ -5,7 +5,7 @@ export enum StorageKey {
   MaterialProviders = 'materialProviders',
   MaterialUnits = 'materialUnits',
   GettingTools = 'gettingTools',
-  Plots='plots',
+  Plots = 'plots',
   LocationAddresses = 'LocationAddressesStorageKey',
   WorkSiteForOffice = 'WorkSiteForOfficceStorageKey',
   WorkSiteForGuild = 'WorkSiteForGuildStorageKey',
@@ -30,7 +30,6 @@ export enum StorageKey {
   providedIn: 'root'
 })
 export class StorageService {
-
   private storage: Storage = window.localStorage;
 
   /**
@@ -45,9 +44,9 @@ export class StorageService {
   }
 
   /**
- * Returns data associated with specified key in local storage
- * @param key storage key
- */
+   * Returns data associated with specified key in local storage
+   * @param key storage key
+   */
   public getTypedData<T>(key: StorageKey): T {
     if (this.storage.getItem(key)) {
       return JSON.parse(this.storage.getItem(key)) as T;
@@ -105,8 +104,6 @@ export class StorageService {
   public deleteData(key: StorageKey) {
     this.storage.removeItem(key);
   }
-
-
 
   // getData(key: StorageKey): any[] {
   //   const data = this.getStorage();
