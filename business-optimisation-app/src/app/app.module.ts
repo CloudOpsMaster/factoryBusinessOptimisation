@@ -6,28 +6,28 @@ import { initL10n, l10nConfig } from './localication';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './chapters/home/home.component';
-import { CreateMaterialFormComponent } from './chapters/warehouse/materials/create-material-form/create-material-form.component';
-import { DayOffFormComponent } from './chapters/employee-management/employee/day-off/day-off-form.component';
-import { AddDayOffFormComponent } from './chapters/employee-management/employee/day-off/add-day-off-form/add-day-off-form.component';
-import { DayOffListComponent } from './chapters/employee-management/employee/day-off/day-off-list/day-off-list.component';
-import { InstrumentServicesComponent } from './chapters/technical/instrument-services/instrument-services.component';
+import { HomeComponent } from './modules/shared/home/home.component';
+import { CreateMaterialFormComponent } from './modules/production/warehouse/materials/create-material-form/create-material-form.component';
+import { DayOffFormComponent } from './modules/setup/employee-management/employee/day-off/day-off-form.component';
+import { AddDayOffFormComponent } from './modules/setup/employee-management/employee/day-off/add-day-off-form/add-day-off-form.component';
+import { DayOffListComponent } from './modules/setup/employee-management/employee/day-off/day-off-list/day-off-list.component';
+import { InstrumentServicesComponent } from './modules/production/technical/instrument-services/instrument-services.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { GettingToolsComponent } from './chapters/warehouse/tools/getting-tools/getting-tools.component';
-import { MaterialsDictionaryComponent } from './chapters/warehouse/materials/materials-dictionary/materials-dictionary.component';
-import { MeteringComponent } from './chapters/count-register/metering/metering.component';
-import { InstrumentServiceFormComponent } from './chapters/technical/instrument-services/instrument-service-form/instrument-service-form.component';
-import { InstrumentServiceTableComponent } from './chapters/technical/instrument-services/instrument-service-table/instrument-service-table.component';
+import { GettingToolsComponent } from './modules/production/warehouse/tools/getting-tools/getting-tools.component';
+import { MaterialsDictionaryComponent } from './modules/production/warehouse/materials/materials-dictionary/materials-dictionary.component';
+import { MeteringComponent } from './modules/production/count-register/metering/metering.component';
+import { InstrumentServiceFormComponent } from './modules/production/technical/instrument-services/instrument-service-form/instrument-service-form.component';
+import { InstrumentServiceTableComponent } from './modules/production/technical/instrument-services/instrument-service-table/instrument-service-table.component';
 // tslint:disable-next-line:max-line-length
-import { InstrumentServiceTableItemComponent } from './chapters/technical/instrument-services/instrument-service-table/instrument-service-table-item/instrument-service-table-item.component';
-import { CheckListEditComponent } from './chapters/check-list/check-list-edit/check-list-edit.component';
-import { CheckListViewComponent } from './chapters/check-list/check-list-view/check-list-view.component';
-import { EmployeeModule } from './chapters/employee-management/employee.module';
+import { FacilitiesManagementModule } from './modules/production/manufacture/facilities-management/facilities-management.module';
+import { InstrumentServiceTableItemComponent } from './modules/production/technical/instrument-services/instrument-service-table/instrument-service-table-item/item.component';
+import { CheckListEditComponent } from './modules/production/check-list/check-list-edit/check-list-edit.component';
+import { CheckListViewComponent } from './modules/production/check-list/check-list-view/check-list-view.component';
+import { EmployeeModule } from './modules/setup/employee-management/employee.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonAppModule } from './common/common.module';
 // tslint:disable-next-line:max-line-length
-import { InstrumentServiceTableHistoryComponent } from './chapters/technical/instrument-services/instrument-service-table-history/instrument-service-table-history.component';
-import { FacilitiesManagementModule } from './chapters/manufacture/facilities-management/facilities-management.module';
+import { InstrumentServiceTableHistoryComponent } from './modules/production/technical/instrument-services/instrument-service-table-history/instrument-service-table-history.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +69,4 @@ import { FacilitiesManagementModule } from './chapters/manufacture/facilities-ma
   ],
   bootstrap: [AppComponent]
 })
-
-export class AppModule {
-}
-
+export class AppModule {}
