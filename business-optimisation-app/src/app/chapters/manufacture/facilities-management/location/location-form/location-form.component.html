@@ -1,0 +1,29 @@
+<div *ngIf="canShowLocationForm">
+    <form class="col-10 row" [formGroup]="locationForm">
+        <div class="col-2">
+            <label l10nTranslate>city</label>
+            <input type="text" class="form-control form-control-sm" formControlName="city" required>
+        </div>
+        <div class="col-2">
+            <label l10nTranslate>street</label>
+            <input type="text" class="form-control form-control-sm" formControlName="street" required>
+        </div>
+        <div class="col-2">
+            <label l10nTranslate>buildingNumber</label>
+            <input type="number" class="form-control form-control-sm" formControlName="buildingNumber" required>
+        </div>
+        <div class="col-2">
+            <label l10nTranslate>countFloors</label>
+            <input type="number" class="form-control form-control-sm" formControlName="floors" required>
+        </div>
+        <div class="col-2">
+            <label>Описание</label>
+            <textarea class="form-control form-control-sm" rows="2" formControlName="comment"></textarea>
+
+        </div>
+        <div class="col-2 m-t-md">
+            <button class="mybtn save-btn" [disabled]="!locationForm.valid" (click)="onSave()"></button>
+            <button class="mybtn delete-btn" (click)="onCancel()"></button>
+        </div>
+    </form>
+</div>

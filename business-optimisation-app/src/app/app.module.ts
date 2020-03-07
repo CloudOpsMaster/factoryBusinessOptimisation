@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 
-import { LocalizationModule, L10nLoader, L10nConfig, LogLevel } from 'angular-l10n';
-import { EN } from 'src/assets/languages/en';
-import { RU } from 'src/assets/languages/ru';
+import { LocalizationModule, L10nLoader } from 'angular-l10n';
+import { initL10n, l10nConfig } from './localication';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,43 +23,11 @@ import { InstrumentServiceTableItemComponent } from './chapters/technical/instru
 import { CheckListEditComponent } from './chapters/check-list/check-list-edit/check-list-edit.component';
 import { CheckListViewComponent } from './chapters/check-list/check-list-view/check-list-view.component';
 import { EmployeeModule } from './chapters/employee-management/employee.module';
-import { PlotsComponent } from './chapters/manufacture/plots/plots.component';
-import { PlotsFormComponent } from './chapters/manufacture/plots/plots-form/plots-form.component';
-import { PlotsTableComponent } from './chapters/manufacture/plots/plots-table/plots-table.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonAppModule } from './common/common.module';
-import { TableForPlotsComponent } from './chapters/manufacture/plots/plots-table/table-for-plots/table-for-plots.component';
-import { TableWorkSiteForGuildComponent } from './chapters/manufacture/plots/plots-table/work-site/table-work-site-for-guild/table-work-site-for-guild.component';
-import { LocationFormComponent } from './chapters/manufacture/plots/plots-table/table-for-location/location-form/location-form.component';
-import { WorkSiteFormComponent } from './chapters/manufacture/plots/plots-table/work-site/work-site-form/work-site-form.component';
-import { TableWorkSiteForOfficeComponent } from './chapters/manufacture/plots/plots-table/work-site/table-work-site-for-office/table-work-site-for-office.component';
 // tslint:disable-next-line:max-line-length
 import { InstrumentServiceTableHistoryComponent } from './chapters/technical/instrument-services/instrument-service-table-history/instrument-service-table-history.component';
-import { TableForLocationComponent } from './chapters/manufacture/plots/plots-table/table-for-location/table-for-location.component';
-
-const l10nConfig: L10nConfig = {
-  logger: {
-    level: LogLevel.Warn
-  },
-  locale: {
-    languages: [
-      { code: 'en', dir: 'ltr' },
-      { code: 'ru', dir: 'ltr' }
-    ],
-    defaultLocale: { languageCode: 'ru', countryCode: 'RU' },
-  },
-  translation: {
-    translationData: [
-      { languageCode: 'en', data: EN },
-      { languageCode: 'ru', data: RU }
-    ],
-    missingValue: 'No key'
-  }
-};
-
-export function initL10n(l10nLoader: L10nLoader): Function {
-  return () => l10nLoader.load();
-}
+import { FacilitiesManagementModule } from './chapters/manufacture/facilities-management/facilities-management.module';
 
 @NgModule({
   declarations: [
@@ -79,15 +46,6 @@ export function initL10n(l10nLoader: L10nLoader): Function {
     MeteringComponent,
     CheckListEditComponent,
     CheckListViewComponent,
-    PlotsComponent,
-    PlotsFormComponent,
-    PlotsTableComponent,
-    TableForPlotsComponent,
-    TableWorkSiteForOfficeComponent,
-    TableForLocationComponent,
-    TableWorkSiteForGuildComponent,
-    LocationFormComponent,
-    WorkSiteFormComponent,
     InstrumentServiceTableHistoryComponent
   ],
   imports: [
@@ -98,6 +56,7 @@ export function initL10n(l10nLoader: L10nLoader): Function {
     EmployeeModule,
     NgSelectModule,
     CommonAppModule,
+    FacilitiesManagementModule,
     LocalizationModule.forRoot(l10nConfig)
   ],
   providers: [
@@ -111,5 +70,6 @@ export function initL10n(l10nLoader: L10nLoader): Function {
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}
 

@@ -4,7 +4,6 @@ import { GettingTools } from 'src/app/models/getting-tools/getting-tools';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Employee } from 'src/app/models/hr/employee';
 import { PositionInfo } from 'src/app/models/hr/position-info';
-import { Plot } from 'src/app/models/plot/plot';
 
 @Component({
   selector: 'app-getting-tools',
@@ -24,7 +23,6 @@ export class GettingToolsComponent {
   private tableNumbers = new Array<number>();
   private plotAddresses = new Array<string>();
   private plotNames = new Array<string>();
-  private plots = new Array<Plot>();
 
   private positions = new Array<PositionInfo>()
   public disabled = false;

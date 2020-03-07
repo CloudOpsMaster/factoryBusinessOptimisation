@@ -10,8 +10,6 @@ import { MeteringComponent } from './chapters/count-register/metering/metering.c
 import { CheckListViewComponent } from './chapters/check-list/check-list-view/check-list-view.component';
 import { CheckListEditComponent } from './chapters/check-list/check-list-edit/check-list-edit.component';
 import { PositionsManagerComponent } from './chapters/employee-management/employee/positions-manager/positions-manager.component';
-import { PlotsComponent } from './chapters/manufacture/plots/plots.component';
-
 
 const routes: Routes = [
   {
@@ -39,8 +37,8 @@ const routes: Routes = [
     component: GettingToolsComponent
   },
   {
-    path: 'plots',
-    component: PlotsComponent
+    path: 'facilities-management',
+    loadChildren: () => import('./chapters/manufacture/facilities-management/facilities-management.module').then(m => m.FacilitiesManagementModule)
   },
   {
     path: 'materials-dictionary',
