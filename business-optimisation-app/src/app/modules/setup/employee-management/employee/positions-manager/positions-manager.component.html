@@ -1,7 +1,19 @@
 <h3 float='left'>Менеджер должностей</h3>
 <!-- add new -->
 <h4 float='left'>Новая должность</h4>
-<app-position-creator (positionAdded)="onPositionAdded()"></app-position-creator>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <app-position-creator [newPosition]="newPosition"></app-position-creator>
+    </div>
+    <div class="col-3">
+      <add-button (click)="onAdd()"
+                  titlePlaceholder="Добавить"
+                  [disabled]="!addEnabled"></add-button>
+    </div>
+  </div>
+</div>
+
 <hr>
 <!-- existing -->
 <h4 float='left'>Каталог должностей</h4>

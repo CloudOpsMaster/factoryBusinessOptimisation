@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { BaseEditor } from '../base-editor';
 import { PositionInfo } from '../../../../../../../models/hr/position-info';
 import { EmploymentInfo } from '../../../../../../../models/hr/employment-info';
+import { PositionService } from '../../../positions-manager/services/position.service';
 
 @Component({
    selector: 'app-employment-manager',
@@ -12,16 +13,11 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
 
    @Input() position: PositionInfo;
    @Input() employment: EmploymentInfo;
+   @ViewChild('addPositionModal', {static: false}) addPositionModal: any;
 
    workMode: EmploymentWorkMode = EmploymentWorkMode.Employment;
-
-   get createNewCaption(): string {
-      if (this.workMode === EmploymentWorkMode.NewPositionCreation) {
-         return 'Отмена создания новой должности';
-      } else {
-         return 'Создание новой должности';
-      }
-   }
+   showModal: boolean;
+   newPosition: PositionInfo;
 
    get reasonReadonly(): boolean {
       return !this.editMode || !this.employment.dismissalDate;
@@ -43,6 +39,10 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
       return this.firingMode ? 'Отменить увольнение' : 'Уволить';
    }
 
+   get positionFilled(): boolean {
+      return this.newPosition.isAllFieldsNotEmpty();
+   }
+
    private originalPosition: PositionInfo;
    private originalEmployment: EmploymentInfo;
 
@@ -52,11 +52,29 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    }
 
    onCreateNewPosition() {
-      if (this.workMode === EmploymentWorkMode.NewPositionCreation) {
-         this.workMode = EmploymentWorkMode.Employment;
-      } else {
-         this.workMode = EmploymentWorkMode.NewPositionCreation;
+      this.newPosition = new PositionInfo();
+      this.workMode = EmploymentWorkMode.NewPositionCreation;
+      this.showModal = true;
+   }
+
+   addClick() {
+      this.showModal = false;
+      this.workMode = EmploymentWorkMode.Employment;
+      const response = this.positionService.addPosition(this.newPosition);
+      if (!response.success) {
+         // TODO: provide normal dialog
+         alert(response.error);
+         return;
       }
+   }
+
+   onCancelAddClick() {
+      this.showModal = false;
+      this.workMode = EmploymentWorkMode.Employment;
+   }
+
+   hidePositionCreationModal() {
+      this.showModal = false;
    }
 
    onPositionAdded() {
@@ -73,8 +91,9 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
       }
    }
 
-   constructor() {
+   constructor(private positionService: PositionService) {
       super();
+      this.newPosition = new PositionInfo();
    }
 
    private canBeFired(): boolean {
