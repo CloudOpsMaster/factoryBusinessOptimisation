@@ -7,8 +7,8 @@
             <label for="positionSelect">Текущая должность:</label>
             <app-position-selector [position]="position" [disabled]="!editMode"></app-position-selector>
          </div>
-         <div class="col-1">
-            <add-button  *ngIf="editMode" (click)="onCreateNewPosition()" class="addPositionButtonClass"
+         <div class="col-1" class="addPositionButtonClass">
+            <add-button  *ngIf="editMode" (click)="onCreateNewPosition()"
                   titlePlaceholder="Добавить новую должность"></add-button>
          </div>
       </div>
