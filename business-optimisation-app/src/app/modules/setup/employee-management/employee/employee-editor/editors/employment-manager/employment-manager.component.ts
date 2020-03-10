@@ -58,8 +58,7 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    }
 
    addClick() {
-      this.showModal = false;
-      this.workMode = EmploymentWorkMode.Employment;
+      this.hidePositionCreationModal();
       const response = this.positionService.addPosition(this.newPosition);
       if (!response.success) {
          // TODO: provide normal dialog
@@ -69,15 +68,11 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    }
 
    onCancelAddClick() {
-      this.showModal = false;
-      this.workMode = EmploymentWorkMode.Employment;
+      this.hidePositionCreationModal();
    }
 
    hidePositionCreationModal() {
       this.showModal = false;
-   }
-
-   onPositionAdded() {
       this.workMode = EmploymentWorkMode.Employment;
    }
 

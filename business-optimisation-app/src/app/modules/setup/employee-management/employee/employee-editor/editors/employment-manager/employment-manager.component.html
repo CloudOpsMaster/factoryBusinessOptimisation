@@ -35,8 +35,8 @@
             </button>
          </div>
          <div class="modal-body">
-            <app-position-creator (positionAdded)="onPositionAdded()" [newPosition]="newPosition"
-                           [horizontalLayout]="false"></app-position-creator>
+            <app-position-creator [newPosition]="newPosition"
+                                 [horizontalLayout]="false"></app-position-creator>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="addPositionModal" (click)="onCancelAddClick()">Отмена</button>
