@@ -3,6 +3,7 @@ import { EmployeeInfo } from '../../../../../modules/setup/employee-management/e
 import { EmployeeFilter } from './employee-filter/employee-filter';
 import { EmployeeFiltrator } from './employee-filter/employee-filtrator';
 import { GridColumn } from '../../../../../common/ui/grid/model/grid-column';
+import { EmployeeListPresentation } from './employee-list-presentation';
 
 @Component({
    selector: 'app-employee-list',
@@ -16,7 +17,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
    @Input() focusEntityId = 0;
    @Output() currentEmpChanged = new EventEmitter<number>();
 
-   filteredEmployees: Array<EmployeeInfo>;
+   filteredEmployees: Array<EmployeeListPresentation>;
 
    columns = new Array<GridColumn>();
    tracktionField = 'mainInfo.id';
@@ -36,11 +37,11 @@ export class EmployeeListComponent implements OnInit, OnChanges {
       this.focusFirstItem();
    }
 
-   onRowClick(employee: EmployeeInfo) {
+   onRowClick(employee: EmployeeListPresentation) {
       if (this.locked || !employee) {
          return;
       }
-      this.focusEntityId = employee.mainInfo.id;
+      this.focusEntityId = employee.id;
       this.currentEmpChanged.emit(this.focusEntityId);
    }
 
@@ -50,13 +51,33 @@ export class EmployeeListComponent implements OnInit, OnChanges {
    }
 
    private performFiltering() {
-      this.filteredEmployees = EmployeeFiltrator.GetFilteredEmployees(this.employees, this.filter);
+      this.filteredEmployees = this.getListPresentation(EmployeeFiltrator.GetFilteredEmployees(this.employees, this.filter));
       this.focusFirstItem();
+   }
+
+   // TODO: provide localization
+   private getListPresentation(employees: EmployeeInfo[]): EmployeeListPresentation[] {
+      const response = new Array<EmployeeListPresentation>();
+      if (!employees) {
+         return response;
+      }
+      employees.forEach(emp => {
+         const presentation: EmployeeListPresentation = {
+            id: emp.mainInfo.id,
+            name: emp.mainInfo.shortName,
+            positionName: emp.employment.employmentDate ? emp.position.title : 'Уволен',
+            changeDate: emp.employment.employmentDate ? emp.employment.employmentDate : emp.employment.dismissalDate,
+            phone: emp.contact.phone
+         };
+
+         response.push(presentation);
+      });
+      return response;
    }
 
    private focusFirstItem() {
       if (this.filteredEmployees && this.filteredEmployees.length > 0) {
-         const employeeToFocus = this.filteredEmployees.find(e => e.mainInfo.id === this.focusEntityId);
+         const employeeToFocus = this.filteredEmployees.find(e => e.id === this.focusEntityId);
          if (employeeToFocus) {
             this.onRowClick(employeeToFocus);
          } else {
@@ -68,11 +89,11 @@ export class EmployeeListComponent implements OnInit, OnChanges {
    }
 
    private prepareGridData() {
-      this.columns.push({ header: 'Таб.№', field: 'mainInfo.id' });
-      this.columns.push({ header: 'ФИО', field: 'mainInfo.shortName' });
-      this.columns.push({ header: 'Должность', field: 'position.title' });
-      this.columns.push({ header: 'Работает с', field: 'employment.employmentDate' });
-      this.columns.push({ header: 'Телефон', field: 'contact.phone' });
+      this.columns.push({ header: 'Таб.№', field: 'id' });
+      this.columns.push({ header: 'ФИО', field: 'name' });
+      this.columns.push({ header: 'Должность', field: 'positionName' });
+      this.columns.push({ header: 'Изменено', field: 'changeDate' });
+      this.columns.push({ header: 'Телефон', field: 'phone' });
    }
 
 }
