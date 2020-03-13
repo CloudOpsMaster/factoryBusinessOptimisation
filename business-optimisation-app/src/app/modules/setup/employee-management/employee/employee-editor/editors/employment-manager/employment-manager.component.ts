@@ -61,12 +61,12 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    ngOnInit(): void {
       this.originalEmployment = this.employment.clone();
       this.originalPosition = this.position.clone();
-      this.workMode = this.canBeFired() ? EmploymentWorkMode.Employment : EmploymentWorkMode.Firing;
+      this.workMode = this.originalEmployment.dismissalDate ? EmploymentWorkMode.Firing : EmploymentWorkMode.Employment;
    }
 
    onCreateNewPosition() {
       this.newPosition = new PositionInfo();
-      this.workMode = EmploymentWorkMode.NewPositionCreation;
+      // this.workMode = EmploymentWorkMode.NewPositionCreation;
       this.showModal = true;
    }
 
