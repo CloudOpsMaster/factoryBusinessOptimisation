@@ -31,12 +31,24 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
       return this.editMode && this.canBeFired() && !this.showPositionCreator;
    }
 
+   get employmentEnabled(): boolean {
+      return this.editMode && this.originalEmployment.dismissalDate !== undefined;
+   }
+
    get firingMode(): boolean {
       return this.workMode === EmploymentWorkMode.Firing;
    }
 
+   get employmentMode(): boolean {
+      return this.workMode === EmploymentWorkMode.Employment;
+   }
+
    get firingCaption(): string {
       return this.firingMode ? 'Отменить увольнение' : 'Уволить';
+   }
+
+   get employmentCaption(): string {
+      return this.employmentMode ? 'Отменить прием' : 'Принять на работу';
    }
 
    get positionFilled(): boolean {
@@ -49,6 +61,7 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    ngOnInit(): void {
       this.originalEmployment = this.employment.clone();
       this.originalPosition = this.position.clone();
+      this.workMode = this.canBeFired() ? EmploymentWorkMode.Employment : EmploymentWorkMode.Firing;
    }
 
    onCreateNewPosition() {
@@ -78,11 +91,17 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
 
    onEmployeeFireRequested() {
       if (this.workMode === EmploymentWorkMode.Firing) {
-         this.workMode = EmploymentWorkMode.Employment;
-         this.employment.dismissalDate = undefined;
-         this.employment.dismissReason = undefined;
+         this.setModeToEmployment();
       } else {
-         this.workMode = EmploymentWorkMode.Firing;
+         this.setModeToFiring();
+      }
+   }
+
+   onEmployementRequested() {
+      if (this.workMode === EmploymentWorkMode.Employment) {
+         this.setModeToFiring();
+      } else {
+         this.setModeToEmployment();
       }
    }
 
@@ -93,6 +112,22 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
 
    private canBeFired(): boolean {
       return !this.originalEmployment.dismissalDate && this.originalEmployment.employmentDate !== undefined;
+   }
+
+   private setModeToFiring(): void {
+      this.workMode = EmploymentWorkMode.Firing;
+      this.employment.dismissReason = this.originalEmployment.dismissReason;
+      this.employment.dismissalDate = this.originalEmployment.dismissalDate;
+      this.employment.employmentDate = undefined;
+      this.position.id = -1;
+   }
+
+   private setModeToEmployment(): void {
+      this.workMode = EmploymentWorkMode.Employment;
+      this.employment.dismissReason = undefined;
+      this.employment.dismissalDate = undefined;
+      this.employment.employmentDate = this.originalEmployment.employmentDate;
+      this.position.id = this.originalPosition.id;
    }
 
 }
