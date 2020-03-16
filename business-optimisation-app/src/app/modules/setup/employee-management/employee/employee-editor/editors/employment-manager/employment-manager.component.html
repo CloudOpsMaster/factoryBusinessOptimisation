@@ -10,7 +10,7 @@
          </div>
          <div class="col-1" class="addPositionButtonClass">
             <add-button  *ngIf="editMode" (click)="onCreateNewPosition()"
-                  titlePlaceholder="Добавить новую должность"></add-button>
+                  titlePlaceholder="Добавить новую должность" data-toggle="modal" data-target="#addPositionModal"></add-button>
          </div>
       </div>
       <div class="row">
@@ -60,8 +60,8 @@
                               [horizontalLayout]="false"></app-position-creator>
       </div>
       <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-dismiss="addPositionModal" (click)="onCancelAddClick()">Отмена</button>
-         <button type="button" class="btn btn-primary" (click)="addClick()" [disabled]="!positionFilled">Добавить</button>
+         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hidePositionCreationModal()">Отмена</button>
+         <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addClick()" [disabled]="!positionFilled">Добавить</button>
       </div>
    </div>
    </div>

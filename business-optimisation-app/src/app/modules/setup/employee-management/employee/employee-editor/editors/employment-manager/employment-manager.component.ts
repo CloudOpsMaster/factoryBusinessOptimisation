@@ -71,18 +71,16 @@ export class EmploymentManagerComponent extends BaseEditor implements OnInit {
    }
 
    addClick() {
-      this.hidePositionCreationModal();
       const response = this.positionService.addPosition(this.newPosition);
       if (!response.success) {
          // TODO: provide normal dialog
          alert(response.error);
          return;
       }
-   }
 
-   onCancelAddClick() {
       this.hidePositionCreationModal();
    }
+
 
    hidePositionCreationModal() {
       this.showModal = false;
