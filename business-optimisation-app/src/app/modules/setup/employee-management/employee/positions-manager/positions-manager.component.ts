@@ -11,10 +11,15 @@ export class PositionsManagerComponent implements OnInit {
 
    filteredPositions: Array<PositionInfo>;
    filter: PositionInfo;
+   newPosition: PositionInfo;
 
    get filterEnabled(): boolean {
       return (this.filter.title && this.filter.title.length > 0)
          || (this.filter.requirements && this.filter.requirements.length > 0);
+   }
+
+   get addEnabled(): boolean {
+      return this.newPosition.isAllFieldsNotEmpty();
    }
 
    private allPositions: Array<PositionInfo>;
@@ -22,13 +27,21 @@ export class PositionsManagerComponent implements OnInit {
 
    constructor(private positionService: PositionService) {
       this.filter = new PositionInfo();
+      this.newPosition = new PositionInfo();
    }
 
    ngOnInit() {
       this.refreshData();
    }
 
-   onPositionAdded() {
+   onAdd() {
+      const response = this.positionService.addPosition(this.newPosition);
+      if (!response.success) {
+         // TODO: provide normal dialog
+         alert(response.error);
+         return;
+      }
+      this.newPosition = new PositionInfo();
       this.refreshData();
    }
 

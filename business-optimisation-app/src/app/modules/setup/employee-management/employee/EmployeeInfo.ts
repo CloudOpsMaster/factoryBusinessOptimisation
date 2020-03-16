@@ -1,13 +1,13 @@
-import { DocumentInfo } from 'src/app/models/hr/document-info';
-import { PositionInfo } from 'src/app/models/hr/position-info';
-import { AdressInfo } from 'src/app/models/hr/adress-info';
-import { ContactInfo } from 'src/app/models/hr/contact-info';
-import { FamilyInfo } from 'src/app/models/hr/family-info';
-import { EducationInfo } from 'src/app/models/hr/education-info';
-import { EmploymentInfo } from 'src/app/models/hr/employment-info';
-import { MedicalCard } from 'src/app/models/hr/medical-card';
-import { EnsuranceInfo } from 'src/app/models/hr/ensurance-info';
-import { Employee } from 'src/app/models/hr/employee';
+import { DocumentInfo } from '../../../../../app/models/hr/document-info';
+import { PositionInfo } from '../../../../../app/models/hr/position-info';
+import { AdressInfo } from '../../../../../app/models/hr/adress-info';
+import { ContactInfo } from '../../../../../app/models/hr/contact-info';
+import { FamilyInfo } from '../../../../../app/models/hr/family-info';
+import { EducationInfo } from '../../../../../app/models/hr/education-info';
+import { EmploymentInfo } from '../../../../../app/models/hr/employment-info';
+import { MedicalCard } from '../../../../../app/models/hr/medical-card';
+import { EnsuranceInfo } from '../../../../../app/models/hr/ensurance-info';
+import { Employee } from '../../../../../app/models/hr/employee';
 
 export class EmployeeMainInfo {
     id: number;

@@ -1,32 +1,68 @@
 <button *ngIf="firingEnabled" (click)="onEmployeeFireRequested()">{{firingCaption}}</button>
+<button *ngIf="employmentEnabled" (click)="onEmployementRequested()">{{employmentCaption}}</button>
 <br>
-<div *ngIf="!firingMode">
-   <label for="positionSelect">Текущая должность:</label>
-   <app-position-selector [position]="position" [disabled]="!editMode"></app-position-selector>
-
-   <button *ngIf="editMode" (click)="onCreateNewPosition()">{{createNewCaption}}</button>
-   <app-position-creator *ngIf="showPositionCreator"
-                           (positionAdded)="onPositionAdded()"
-                           [horizontalLayout]="false"></app-position-creator>
-   <div>
-      <label for="employmentDate">Дата приема на работу:</label>
-      <input type="date" [(ngModel)]="employment.employmentDate" 
-                        [readonly]="!editMode" 
-                        id="employmentDate" 
-                        class="form-control form-control-sm">
+<div *ngIf="employmentMode">
+   <div class="container">
+      <div class="row">
+        <div class="col-3">
+            <label for="positionSelect">Текущая должность:</label>
+            <app-position-selector [position]="position" [disabled]="!editMode"></app-position-selector>
+         </div>
+         <div class="col-1" class="addPositionButtonClass">
+            <add-button  *ngIf="editMode" (click)="onCreateNewPosition()"
+                  titlePlaceholder="Добавить новую должность" data-toggle="modal" data-target="#addPositionModal"></add-button>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-3">
+               <label for="employmentDate">Дата приема на работу:</label>
+               <input type="date" [(ngModel)]="employment.employmentDate" 
+                                 [readonly]="!editMode" 
+                                 id="employmentDate" 
+                                 class="form-control form-control-sm">
+         </div>
+      </div>
    </div>
 </div>
 <div *ngIf="firingMode">
-   <label for="dismissalDate">Дата увольнения:</label>
-   <input type="date" [(ngModel)]="employment.dismissalDate"
-                      [readonly]="!editMode" 
-                      id="dismissalDate" 
-                      class="form-control form-control-sm">
- 
-   <label for="dismissReason">Причина увольнения:</label>
-   <textarea [(ngModel)]="employment.dismissReason" 
-                         [readonly]="reasonReadonly"
-                         id="dismissReason" 
-                         class="form-control form-control-sm"></textarea>
- 
+   <div class="container">
+      <div class="row">
+        <div class="col-3">
+            <label for="dismissalDate">Дата увольнения:</label>
+            <input type="date" [(ngModel)]="employment.dismissalDate"
+                              [readonly]="!editMode" 
+                              id="dismissalDate" 
+                              class="form-control form-control-sm">
+         
+            <label for="dismissReason">Причина увольнения:</label>
+            <textarea [(ngModel)]="employment.dismissReason" 
+                                 [readonly]="reasonReadonly"
+                                 id="dismissReason" 
+                                 class="form-control form-control-sm"></textarea>
+         </div>
+      </div>
+   </div>
  </div>
+
+
+ <!-- Modal -->
+ <div class="modal" id="addPositionModal" [style.display]="showModal ? 'block' : 'none'" role="dialog" data-backdrop="static">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+   <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalCenterTitle">Добавление позиции</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="hidePositionCreationModal()">
+         <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <div class="modal-body">
+         <app-position-creator [newPosition]="newPosition"
+                              [horizontalLayout]="false"></app-position-creator>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hidePositionCreationModal()">Отмена</button>
+         <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addClick()" [disabled]="!positionFilled">Добавить</button>
+      </div>
+   </div>
+   </div>
+</div>

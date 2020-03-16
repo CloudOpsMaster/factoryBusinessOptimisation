@@ -38,10 +38,10 @@ export class EmployeeValidationService {
 
    private validateEmployment(employee: EmployeeInfo): string {
       let response = '';
-      if (employee.position.title === '') {
+      if (employee.position.title === '' && !employee.employment.dismissalDate) {
          response = 'Работник должен занимать должность';
-      } else if (!employee.employment.employmentDate) {
-         response = 'Работник должден иметь дату приема на работу';
+      } else if (!employee.employment.employmentDate && !employee.employment.dismissalDate) {
+         response = 'Работник должден иметь дату приема на работу или увольнения';
       }
       return response;
    }
