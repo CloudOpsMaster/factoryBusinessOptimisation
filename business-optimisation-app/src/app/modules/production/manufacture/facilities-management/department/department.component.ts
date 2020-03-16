@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.scss']
 })
-export class DepartmentComponent implements OnInit {
+export class DepartmentComponent{
+  public canShowDepartmentForm: boolean = false;
 
   constructor() { }
-
-  ngOnInit() {
+  
+  public showDepartmentForm(): void {
+    this.canShowDepartmentForm = (!this.canShowDepartmentForm) ? true : false;
   }
-
 }

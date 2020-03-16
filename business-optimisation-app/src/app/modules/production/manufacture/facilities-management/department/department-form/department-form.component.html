@@ -1,0 +1,27 @@
+<div *ngIf="canShowDepartmentForm">
+    <form class="col-10 row" [formGroup]="departmentForm">
+        <div class="col-2">
+            <label l10nTranslate>nameOfDepartment</label>
+            <input type="text" class="form-control form-control-sm" formControlName="name" required>
+        </div>
+        <div class="col-2">
+            <label l10nTranslate>typeOfDepartment</label>
+            <select class="form-control form-control-sm" formControlName="type" required> 
+                <option *ngFor="let typeOfDepartment of typeOfDepartments | keyvalue" l10nTranslate>{{typeOfDepartment.key}}</option>
+            </select>
+        </div>
+        <div class="col-2">
+            <label l10nTranslate>description</label>
+            <textarea class="form-control form-control-sm" rows="2" formControlName="comment"></textarea>
+        </div>
+        <div class="col-2 m-t-md" *ngIf="!canShowDepartmentFormForChange">
+            <button class="mybtn save-btn" [disabled]="!departmentForm.valid" (click)="onSave()"></button>
+            <button class="mybtn delete-btn" (click)="onCancel()"></button>
+        </div>
+        <div class="col-2 m-t-md" *ngIf="canShowDepartmentFormForChange">
+            <button class="mybtn save-btn" [disabled]="!departmentForm.valid" (click)="onChange()"></button>
+            <button class="mybtn delete-btn" (click)="onCancel()"></button>
+            <button class="mybtn trash-can-btn" (click)="onDelete()"></button>
+        </div>
+    </form>
+</div>

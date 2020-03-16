@@ -17,13 +17,17 @@
             <input type="number" class="form-control form-control-sm" formControlName="floors" required>
         </div>
         <div class="col-2">
-            <label>Описание</label>
+            <label l10nTranslate>description</label>
             <textarea class="form-control form-control-sm" rows="2" formControlName="comment"></textarea>
-
         </div>
-        <div class="col-2 m-t-md">
+        <div class="col-2 m-t-md" *ngIf="!canShowLocationFormForChange">
             <button class="mybtn save-btn" [disabled]="!locationForm.valid" (click)="onSave()"></button>
             <button class="mybtn delete-btn" (click)="onCancel()"></button>
+        </div>
+        <div class="col-2 m-t-md" *ngIf="canShowLocationFormForChange">
+            <button class="mybtn save-btn" [disabled]="!locationForm.valid" (click)="onChange()"></button>
+            <button class="mybtn delete-btn" (click)="onCancel()"></button>
+            <button class="mybtn trash-can-btn" (click)="onDelete()"></button>
         </div>
     </form>
 </div>
