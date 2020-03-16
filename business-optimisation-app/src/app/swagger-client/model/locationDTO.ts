@@ -1,6 +1,6 @@
 /**
  * PMS
- * test rest api for pms
+ * REST API for PMS
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -9,14 +9,10 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Location } from './location';
+import { AddressDTO } from './addressDTO';
 
-export interface WorkPlace { 
+export interface LocationDTO { 
     id?: number;
-    location?: Location;
-    department?: string;
-    floor?: number;
-    room?: number;
-    place?: number;
+    address?: AddressDTO;
     comment?: string;
 }

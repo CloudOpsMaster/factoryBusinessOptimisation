@@ -1,6 +1,6 @@
 /**
  * PMS
- * test rest api for pms
+ * REST API for PMS
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -17,7 +17,11 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { WorkPlace } from '../model/workPlace';
+import { DepartmentDTO } from '../model/departmentDTO';
+import { LocationDTO } from '../model/locationDTO';
+import { TypeOfDepartmentDTO } from '../model/typeOfDepartmentDTO';
+import { WorkAreaDTO } from '../model/workAreaDTO';
+import { WorkPlaceDTO } from '../model/workPlaceDTO';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -56,14 +60,629 @@ export class FacilitiesManagementService {
 
 
     /**
+     * delete department by Id
+     * 
+     * @param departmentId Id of department that needs to be delete
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementDepartmentsDepartmentIdDelete(departmentId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public facilitiesManagementDepartmentsDepartmentIdDelete(departmentId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public facilitiesManagementDepartmentsDepartmentIdDelete(departmentId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public facilitiesManagementDepartmentsDepartmentIdDelete(departmentId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (departmentId === null || departmentId === undefined) {
+            throw new Error('Required parameter departmentId was null or undefined when calling facilitiesManagementDepartmentsDepartmentIdDelete.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('delete',`${this.basePath}/facilities-management/departments/${encodeURIComponent(String(departmentId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * return department by Id
+     * 
+     * @param departmentId Id of department that needs to be return
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementDepartmentsDepartmentIdGet(departmentId: number, observe?: 'body', reportProgress?: boolean): Observable<DepartmentDTO>;
+    public facilitiesManagementDepartmentsDepartmentIdGet(departmentId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<DepartmentDTO>>;
+    public facilitiesManagementDepartmentsDepartmentIdGet(departmentId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<DepartmentDTO>>;
+    public facilitiesManagementDepartmentsDepartmentIdGet(departmentId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (departmentId === null || departmentId === undefined) {
+            throw new Error('Required parameter departmentId was null or undefined when calling facilitiesManagementDepartmentsDepartmentIdGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<DepartmentDTO>('get',`${this.basePath}/facilities-management/departments/${encodeURIComponent(String(departmentId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * update department by Id
+     * 
+     * @param departmentId Id of department that needs to be update
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementDepartmentsDepartmentIdPut(departmentId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public facilitiesManagementDepartmentsDepartmentIdPut(departmentId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public facilitiesManagementDepartmentsDepartmentIdPut(departmentId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public facilitiesManagementDepartmentsDepartmentIdPut(departmentId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (departmentId === null || departmentId === undefined) {
+            throw new Error('Required parameter departmentId was null or undefined when calling facilitiesManagementDepartmentsDepartmentIdPut.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('put',`${this.basePath}/facilities-management/departments/${encodeURIComponent(String(departmentId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * returns array of department
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementDepartmentsGet(observe?: 'body', reportProgress?: boolean): Observable<Array<DepartmentDTO>>;
+    public facilitiesManagementDepartmentsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<DepartmentDTO>>>;
+    public facilitiesManagementDepartmentsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<DepartmentDTO>>>;
+    public facilitiesManagementDepartmentsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<DepartmentDTO>>('get',`${this.basePath}/facilities-management/departments`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * create a new department
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementDepartmentsPost(observe?: 'body', reportProgress?: boolean): Observable<DepartmentDTO>;
+    public facilitiesManagementDepartmentsPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<DepartmentDTO>>;
+    public facilitiesManagementDepartmentsPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<DepartmentDTO>>;
+    public facilitiesManagementDepartmentsPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<DepartmentDTO>('post',`${this.basePath}/facilities-management/departments`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * returns enum with type of department
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementGet(observe?: 'body', reportProgress?: boolean): Observable<Array<TypeOfDepartmentDTO>>;
+    public facilitiesManagementGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<TypeOfDepartmentDTO>>>;
+    public facilitiesManagementGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<TypeOfDepartmentDTO>>>;
+    public facilitiesManagementGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<TypeOfDepartmentDTO>>('get',`${this.basePath}/facilities-management`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * returns array of location
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementLocationsGet(observe?: 'body', reportProgress?: boolean): Observable<Array<LocationDTO>>;
+    public facilitiesManagementLocationsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<LocationDTO>>>;
+    public facilitiesManagementLocationsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<LocationDTO>>>;
+    public facilitiesManagementLocationsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<LocationDTO>>('get',`${this.basePath}/facilities-management/locations`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * delete location by Id
+     * 
+     * @param locationId Id of location that needs to be delete
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementLocationsLocationIdDelete(locationId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public facilitiesManagementLocationsLocationIdDelete(locationId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public facilitiesManagementLocationsLocationIdDelete(locationId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public facilitiesManagementLocationsLocationIdDelete(locationId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (locationId === null || locationId === undefined) {
+            throw new Error('Required parameter locationId was null or undefined when calling facilitiesManagementLocationsLocationIdDelete.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('delete',`${this.basePath}/facilities-management/locations/${encodeURIComponent(String(locationId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * return location by Id
+     * 
+     * @param locationId Id of location that needs to be return
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementLocationsLocationIdGet(locationId: number, observe?: 'body', reportProgress?: boolean): Observable<LocationDTO>;
+    public facilitiesManagementLocationsLocationIdGet(locationId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<LocationDTO>>;
+    public facilitiesManagementLocationsLocationIdGet(locationId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<LocationDTO>>;
+    public facilitiesManagementLocationsLocationIdGet(locationId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (locationId === null || locationId === undefined) {
+            throw new Error('Required parameter locationId was null or undefined when calling facilitiesManagementLocationsLocationIdGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<LocationDTO>('get',`${this.basePath}/facilities-management/locations/${encodeURIComponent(String(locationId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * update location by Id
+     * 
+     * @param locationId Id of location that needs to be update
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementLocationsLocationIdPut(locationId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public facilitiesManagementLocationsLocationIdPut(locationId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public facilitiesManagementLocationsLocationIdPut(locationId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public facilitiesManagementLocationsLocationIdPut(locationId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (locationId === null || locationId === undefined) {
+            throw new Error('Required parameter locationId was null or undefined when calling facilitiesManagementLocationsLocationIdPut.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('put',`${this.basePath}/facilities-management/locations/${encodeURIComponent(String(locationId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * create a new location
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementLocationsPost(observe?: 'body', reportProgress?: boolean): Observable<LocationDTO>;
+    public facilitiesManagementLocationsPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<LocationDTO>>;
+    public facilitiesManagementLocationsPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<LocationDTO>>;
+    public facilitiesManagementLocationsPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<LocationDTO>('post',`${this.basePath}/facilities-management/locations`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * returns array of workarea
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementWorkareasGet(observe?: 'body', reportProgress?: boolean): Observable<Array<WorkAreaDTO>>;
+    public facilitiesManagementWorkareasGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<WorkAreaDTO>>>;
+    public facilitiesManagementWorkareasGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<WorkAreaDTO>>>;
+    public facilitiesManagementWorkareasGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<WorkAreaDTO>>('get',`${this.basePath}/facilities-management/workareas`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * create a new workarea
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementWorkareasPost(observe?: 'body', reportProgress?: boolean): Observable<WorkAreaDTO>;
+    public facilitiesManagementWorkareasPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WorkAreaDTO>>;
+    public facilitiesManagementWorkareasPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WorkAreaDTO>>;
+    public facilitiesManagementWorkareasPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<WorkAreaDTO>('post',`${this.basePath}/facilities-management/workareas`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * delete workarea by Id
+     * 
+     * @param workareaId Id of workarea that needs to be delete
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementWorkareasWorkareaIdDelete(workareaId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public facilitiesManagementWorkareasWorkareaIdDelete(workareaId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public facilitiesManagementWorkareasWorkareaIdDelete(workareaId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public facilitiesManagementWorkareasWorkareaIdDelete(workareaId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (workareaId === null || workareaId === undefined) {
+            throw new Error('Required parameter workareaId was null or undefined when calling facilitiesManagementWorkareasWorkareaIdDelete.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('delete',`${this.basePath}/facilities-management/workareas/${encodeURIComponent(String(workareaId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * return workarea by Id
+     * 
+     * @param workareaId Id of workarea that needs to be return
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementWorkareasWorkareaIdGet(workareaId: number, observe?: 'body', reportProgress?: boolean): Observable<WorkAreaDTO>;
+    public facilitiesManagementWorkareasWorkareaIdGet(workareaId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WorkAreaDTO>>;
+    public facilitiesManagementWorkareasWorkareaIdGet(workareaId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WorkAreaDTO>>;
+    public facilitiesManagementWorkareasWorkareaIdGet(workareaId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (workareaId === null || workareaId === undefined) {
+            throw new Error('Required parameter workareaId was null or undefined when calling facilitiesManagementWorkareasWorkareaIdGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<WorkAreaDTO>('get',`${this.basePath}/facilities-management/workareas/${encodeURIComponent(String(workareaId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * update workarea by Id
+     * 
+     * @param workareaId Id of workarea that needs to be update
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public facilitiesManagementWorkareasWorkareaIdPut(workareaId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public facilitiesManagementWorkareasWorkareaIdPut(workareaId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public facilitiesManagementWorkareasWorkareaIdPut(workareaId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public facilitiesManagementWorkareasWorkareaIdPut(workareaId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (workareaId === null || workareaId === undefined) {
+            throw new Error('Required parameter workareaId was null or undefined when calling facilitiesManagementWorkareasWorkareaIdPut.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('put',`${this.basePath}/facilities-management/workareas/${encodeURIComponent(String(workareaId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * returns array of workplace
      * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public facilitiesManagementWorkplacesGet(observe?: 'body', reportProgress?: boolean): Observable<Array<WorkPlace>>;
-    public facilitiesManagementWorkplacesGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<WorkPlace>>>;
-    public facilitiesManagementWorkplacesGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<WorkPlace>>>;
+    public facilitiesManagementWorkplacesGet(observe?: 'body', reportProgress?: boolean): Observable<Array<WorkPlaceDTO>>;
+    public facilitiesManagementWorkplacesGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<WorkPlaceDTO>>>;
+    public facilitiesManagementWorkplacesGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<WorkPlaceDTO>>>;
     public facilitiesManagementWorkplacesGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -81,7 +700,7 @@ export class FacilitiesManagementService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<WorkPlace>>('get',`${this.basePath}/facilities-management/workplaces`,
+        return this.httpClient.request<Array<WorkPlaceDTO>>('get',`${this.basePath}/facilities-management/workplaces`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -97,9 +716,9 @@ export class FacilitiesManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public facilitiesManagementWorkplacesPost(observe?: 'body', reportProgress?: boolean): Observable<WorkPlace>;
-    public facilitiesManagementWorkplacesPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WorkPlace>>;
-    public facilitiesManagementWorkplacesPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WorkPlace>>;
+    public facilitiesManagementWorkplacesPost(observe?: 'body', reportProgress?: boolean): Observable<WorkPlaceDTO>;
+    public facilitiesManagementWorkplacesPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WorkPlaceDTO>>;
+    public facilitiesManagementWorkplacesPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WorkPlaceDTO>>;
     public facilitiesManagementWorkplacesPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -117,7 +736,7 @@ export class FacilitiesManagementService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<WorkPlace>('post',`${this.basePath}/facilities-management/workplaces`,
+        return this.httpClient.request<WorkPlaceDTO>('post',`${this.basePath}/facilities-management/workplaces`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -174,9 +793,9 @@ export class FacilitiesManagementService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public facilitiesManagementWorkplacesWorkplaceIdGet(workplaceId: number, observe?: 'body', reportProgress?: boolean): Observable<WorkPlace>;
-    public facilitiesManagementWorkplacesWorkplaceIdGet(workplaceId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WorkPlace>>;
-    public facilitiesManagementWorkplacesWorkplaceIdGet(workplaceId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WorkPlace>>;
+    public facilitiesManagementWorkplacesWorkplaceIdGet(workplaceId: number, observe?: 'body', reportProgress?: boolean): Observable<WorkPlaceDTO>;
+    public facilitiesManagementWorkplacesWorkplaceIdGet(workplaceId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WorkPlaceDTO>>;
+    public facilitiesManagementWorkplacesWorkplaceIdGet(workplaceId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WorkPlaceDTO>>;
     public facilitiesManagementWorkplacesWorkplaceIdGet(workplaceId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (workplaceId === null || workplaceId === undefined) {
@@ -198,7 +817,7 @@ export class FacilitiesManagementService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<WorkPlace>('get',`${this.basePath}/facilities-management/workplaces/${encodeURIComponent(String(workplaceId))}`,
+        return this.httpClient.request<WorkPlaceDTO>('get',`${this.basePath}/facilities-management/workplaces/${encodeURIComponent(String(workplaceId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

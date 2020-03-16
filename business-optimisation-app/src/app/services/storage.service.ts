@@ -5,10 +5,10 @@ export enum StorageKey {
   MaterialProviders = 'materialProviders',
   MaterialUnits = 'materialUnits',
   GettingTools = 'gettingTools',
-  Plots = 'plots',
-  LocationAddresses = 'LocationAddressesStorageKey',
-  WorkSiteForOffice = 'WorkSiteForOfficceStorageKey',
-  WorkSiteForGuild = 'WorkSiteForGuildStorageKey',
+  Locations = 'LocationsStorageKey',
+  Addresses = 'AddressesStorageKey',
+  Departments = 'DepartmentStorageKey',
+  FacilitiesManagementHistory = "FacilitiesManagementHistoryStorageKey",
   CheckList = 'checkList',
 
   EmployeesStorageKey = 'EmployeesStorageKey',
@@ -101,34 +101,7 @@ export class StorageService {
    * Deletes data asociated with given key
    * @param key storage key
    */
-  public deleteData(key: StorageKey) {
+  public deleteData(key: StorageKey): void {
     this.storage.removeItem(key);
   }
-
-  // getData(key: StorageKey): any[] {
-  //   const data = this.getStorage();
-  //   return data[key];
-  // }
-
-  // setData(key: StorageKey, dataToSave: any) {
-  //   const storage = this.getStorage();
-  //   const data = storage[key] || [];
-  //   data.push(dataToSave);
-  //   storage[key] = data;
-  //   this.saveStorage(storage);
-  // }
-
-  // deleteData(key: StorageKey) {
-  //   const storage = this.getStorage();
-  //   delete storage[key];
-  //   this.saveStorage(storage);
-  // }
-
-  // private getStorage(): { [key: string]: any } {
-  //   return JSON.parse(localStorage.getItem(this.storageKey)) || {};
-  // }
-
-  // private saveStorage(data): void {
-  //   localStorage.setItem(this.storageKey, JSON.stringify(data));
-  // }
 }

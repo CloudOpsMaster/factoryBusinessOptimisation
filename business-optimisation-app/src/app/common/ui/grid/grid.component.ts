@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GridColumn } from './model/grid-column';
-import { GridOptions } from './model/grid-options';
 import { GridService } from './service/grid.service';
 
 @Component({
@@ -15,8 +14,6 @@ export class GridComponent implements OnInit {
    @Input() dataSource: Array<any>;
    /** array of columns to display on grid */
    @Input() columns: Array<GridColumn>;
-   /** grid customization options options. Optional. */
-   @Input() options: GridOptions = new GridOptions();
    /** is grid locked or not (can accept click or not). Default value is false */
    @Input() locked = false;
    /** hide / show selection for currently selected row. Default value is false */
@@ -28,6 +25,7 @@ export class GridComponent implements OnInit {
    /** Event that fires on row selection changed. Uses selected object as argument */
    @Output() currentRowChanged = new EventEmitter<any>();
 
+   selectedRowClass = 'table-active';
 
    constructor(private gridService: GridService) { }
 
@@ -47,7 +45,7 @@ export class GridComponent implements OnInit {
       const isSelected = !this.hideSelection
          && this.focusEntityId === this.getFieldValue(data, this.tracktionField);
       if (isSelected) {
-         response = this.options.selectedRowClass;
+         response = this.selectedRowClass;
       }
       return response;
    }
@@ -57,7 +55,8 @@ export class GridComponent implements OnInit {
       let response = 'assets/image/icons/sort-undefined.png';
       if (direction === -1) {
          response = 'assets/image/icons/sort-down.png';
-      } else if (direction === 1) {
+      }
+      else if (direction === 1) {
          response = 'assets/image/icons/sort-up.png';
       }
       return response;
@@ -67,8 +66,11 @@ export class GridComponent implements OnInit {
       this.gridService.sortRecords(this.dataSource, column.field);
    }
 
+   filter(column: GridColumn): void {
+
+   }
+
    private getFieldValue(data: any, field: string): any {
       return this.gridService.getFieldValue(data, field);
    }
-
 }

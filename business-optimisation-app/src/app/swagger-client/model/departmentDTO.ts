@@ -1,6 +1,6 @@
 /**
  * PMS
- * test rest api for pms
+ * REST API for PMS
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -10,10 +10,8 @@
  * Do not edit the class manually.
  */
 
-export interface Address { 
+export interface DepartmentDTO { 
     id?: number;
-    city?: string;
-    street?: string;
-    buildingNumber?: number;
-    floors?: number;
+    name?: string;
+    type?: string;
 }

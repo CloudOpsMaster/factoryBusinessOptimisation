@@ -1,4 +1,4 @@
 export class Base {
     id: number;
-    comment: string;
+    comment?: string;
 }

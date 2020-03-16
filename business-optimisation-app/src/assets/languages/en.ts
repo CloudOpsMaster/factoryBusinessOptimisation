@@ -9,7 +9,8 @@ export const EN: any = {
     "countFloors": "Number of floors",
     //-----------------------------------------D-----------------------------------------
     "daysOff": "Days off",
-    "departments" : "Departments",
+    "description": "Description",
+    "departments": "Departments",
     //-----------------------------------------E-----------------------------------------
     "edit": "Edit",
     "employeeAccounting": "Employee accounting",
@@ -27,8 +28,11 @@ export const EN: any = {
     "manufacture": "Manufacture",
     "meters": "Meters",
     //-----------------------------------------N-----------------------------------------
+    "nameOfDepartment": "Name",
     //-----------------------------------------O-----------------------------------------
+    "Office": "Office",
     //-----------------------------------------P-----------------------------------------
+    "PointOfSale": "Point of sale",
     "personnelManagement": "Personnel Management",
     //-----------------------------------------Q-----------------------------------------
     //-----------------------------------------R-----------------------------------------
@@ -36,14 +40,17 @@ export const EN: any = {
     "serviceEquipment": "Service equipment",
     "staff": "Staff",
     "street": "Street",
+    "Sweatshop": "Sweatshop",
     //-----------------------------------------T-----------------------------------------
     "taskList": "Task list",
+    "typeOfDepartment": "Type",
     "technicalDepartment": "Technical department",
     //-----------------------------------------U-----------------------------------------
     //-----------------------------------------V-----------------------------------------
     "view": "View",
     //-----------------------------------------W-----------------------------------------
     "warehouse": "Warehouse",
+    "Warehouse": "Warehouse",
     "workArea": "Work area",
     "workPlace": "Work place",
     //-----------------------------------------X-----------------------------------------

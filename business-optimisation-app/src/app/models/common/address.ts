@@ -3,5 +3,5 @@ export class Address {
     city: string;
     street: string;
     buildingNumber: number;
-    floots: number;
+    floors: number;
 }

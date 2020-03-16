@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComboBoxComponent } from './ui/combo-box/combo-box.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SaveButtonComponent } from './ui/buttons/save-button/save-button.component';
 import { EditButtonComponent } from './ui/buttons/edit-button/edit-button.component';
@@ -15,12 +13,9 @@ import { DownloadDataComponent } from './ui/buttons/download-server-data/downloa
 import { ImageChooserComponent } from './ui/image-chooser/image-chooser.component';
 import { GridService } from './ui/grid/service/grid.service';
 
-
 @NgModule({
    imports: [
       CommonModule,
-      BrowserModule,
-      AppRoutingModule,
       FormsModule,
       ReactiveFormsModule
    ],

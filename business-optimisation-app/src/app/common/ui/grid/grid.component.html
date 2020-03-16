@@ -1,19 +1,20 @@
-<table [class]="options.tableClass">
-   <thead [class]="options.headerClass">
-      <tr>
-         <th *ngFor="let column of columns">
-            {{column.header}}
-         <!-- <button (click)="sortBy(column)">{{getSortCaptionFor(column)}}</button> -->
-         <input type="image" (click)="sortBy(column)" [src]="getSortCaptionFor(column)" />
-         </th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr *ngFor="let data of dataSource" (click)="onRowClick(data)"
-         [class]="getRowClassFor(data)">
-         <td *ngFor="let column of columns">
-            {{getFieldValue(data, column.field)}}
-         </td>
-      </tr>
-   </tbody>
+<table class="table table-bordered">
+    <thead class="bg-primary">
+        <tr>
+            <th *ngFor="let column of columns">
+                <label>{{column.header}}</label>
+                <input type="image" (click)="sortBy(column)" [src]="getSortCaptionFor(column)" />
+                <br>
+                <input type="text" class="form-control form-control-sm" id="column" (onkeyup)="filter(column)" />
+                <!-- <button (click)="sortBy(column)">{{getSortCaptionFor(column)}}</button> -->
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of dataSource" (click)="onRowClick(data)" [class]="getRowClassFor(data)">
+            <td *ngFor="let column of columns">
+                {{getFieldValue(data, column.field)}}
+            </td>
+        </tr>
+    </tbody>
 </table>

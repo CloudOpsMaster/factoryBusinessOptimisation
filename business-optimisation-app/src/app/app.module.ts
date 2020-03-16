@@ -19,7 +19,6 @@ import { MeteringComponent } from './modules/production/count-register/metering/
 import { InstrumentServiceFormComponent } from './modules/production/technical/instrument-services/instrument-service-form/instrument-service-form.component';
 import { InstrumentServiceTableComponent } from './modules/production/technical/instrument-services/instrument-service-table/instrument-service-table.component';
 // tslint:disable-next-line:max-line-length
-import { FacilitiesManagementModule } from './modules/production/manufacture/facilities-management/facilities-management.module';
 import { InstrumentServiceTableItemComponent } from './modules/production/technical/instrument-services/instrument-service-table/instrument-service-table-item/item.component';
 import { CheckListEditComponent } from './modules/production/check-list/check-list-edit/check-list-edit.component';
 import { CheckListViewComponent } from './modules/production/check-list/check-list-view/check-list-view.component';
@@ -56,8 +55,10 @@ import { InstrumentServiceTableHistoryComponent } from './modules/production/tec
     EmployeeModule,
     NgSelectModule,
     CommonAppModule,
-    FacilitiesManagementModule,
     LocalizationModule.forRoot(l10nConfig)
+  ],
+  exports: [
+    CommonAppModule
   ],
   providers: [
     {
