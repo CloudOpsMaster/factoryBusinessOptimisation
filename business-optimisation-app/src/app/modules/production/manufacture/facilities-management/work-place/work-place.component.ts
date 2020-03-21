@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './work-place.component.html',
   styleUrls: ['./work-place.component.scss']
 })
-export class WorkPlaceComponent implements OnInit {
+export class WorkPlaceComponent {
 
+  public canShowWorkPlaceForm: boolean = false;
+  
   constructor() { }
 
-  ngOnInit() {
+  public showWorkPlaceForm(): void {
+    this.canShowWorkPlaceForm = (!this.canShowWorkPlaceForm) ? true : false;
   }
-
 }

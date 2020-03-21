@@ -10,13 +10,13 @@
  * Do not edit the class manually.
  */
 import { LocationDTO } from './locationDTO';
+import { WorkAreaDTO } from './workAreaDTO';
 
 export interface WorkPlaceDTO { 
     id?: number;
+    name?: string;
+    workArea?: WorkAreaDTO;
     location?: LocationDTO;
-    department?: string;
     floor?: number;
-    room?: number;
-    place?: number;
     comment?: string;
 }

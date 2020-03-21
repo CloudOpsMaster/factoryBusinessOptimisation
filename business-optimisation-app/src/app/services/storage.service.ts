@@ -8,6 +8,8 @@ export enum StorageKey {
   Locations = 'LocationsStorageKey',
   Addresses = 'AddressesStorageKey',
   Departments = 'DepartmentStorageKey',
+  WorkAreas = 'WorkAreasStorageKey',
+  WorkPlaces = 'WorkPlacesStorageKey',
   FacilitiesManagementHistory = "FacilitiesManagementHistoryStorageKey",
   CheckList = 'checkList',
 

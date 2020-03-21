@@ -9,7 +9,8 @@ import { AddressDTO } from "swagger-client";
 
 export class AddressService {
     private addresses: Array<AddressDTO> = [];
-    private currentAddress: AddressDTO = null;
+    private addressDTO: AddressDTO = null;
+    private address: Address = null;
 
     constructor(private storageService: StorageService) {
         this.addresses = this.getAllAddresses();
@@ -24,14 +25,19 @@ export class AddressService {
     }
 
     public addAddress(address: Address): void {
-        this.currentAddress = address;
-        this.currentAddress.id = this.incrementIndex();
-        this.storageService.addData(StorageKey.Addresses, this.currentAddress);
-        this.addresses.push(this.currentAddress);
+        this.addressDTO = address;
+        this.address = address;
+        this.addressDTO.id = this.incrementIndex();
+        this.storageService.addData(StorageKey.Addresses, this.addressDTO);
+        this.addresses.push(this.addressDTO);
     }
 
-    public getCurrentAddress(): AddressDTO {
-        return this.currentAddress;
+    public getAddressDTO(): AddressDTO {
+        return this.addressDTO;
+    }
+
+    public getAddress(): Address {
+        return this.address;
     }
 
     private incrementIndex(): number {

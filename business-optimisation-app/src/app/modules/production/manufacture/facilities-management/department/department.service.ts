@@ -44,6 +44,10 @@ export class DepartmentService {
     return departments;
   }
 
+  public getDepartmentByName(name: string): Department {
+    return this.departments.find(d => d.name == name);
+  }
+
   private incrementIndex(): number {
     let index: number = 1;
     if (this.departmentsDTO.length > 0) {
@@ -65,8 +69,8 @@ export class DepartmentService {
     this.departmentsDTO.push(department);
     this.addNewDepartment.emit(<Department>department);
 
-    this.storageService.addData(StorageKey.Departments,department);
-    this.history.addPointInHistory('Department',department);
+    this.storageService.addData(StorageKey.Departments, department);
+    this.history.addPointInHistory('Department', department);
   }
 
   public remove(department: Department): void {
@@ -92,7 +96,7 @@ export class DepartmentService {
     this.saveArrayToLocalStorage();
     this.history.addPointInHistory('Department', changableDepartment, <DepartmentDTO>oldDepartment);
   }
-  
+
   public getDepartmentIdForChange(): number {
     return this.idForChange;
   }

@@ -1,0 +1,26 @@
+<div *ngIf="canShowWorkAreaForm">
+    <form class="col-10 row" [formGroup]="workAreaForm">
+        <div class="col-2">
+            <label l10nTranslate>name</label>
+            <input type="text" class="form-control form-control-sm" formControlName="name" required>
+        </div>
+        <div class="col-2">
+            <label l10nTranslate>type</label>
+            <input type="text" class="form-control form-control-sm" list="typeDepartment" formControlName="department" required>
+            <datalist id="typeDepartment">
+                <option *ngFor="let department of departments" >
+                    {{department.name}}
+                </option>
+            </datalist>
+        </div>
+        <div class="col-2 m-t-md" *ngIf="!canShowWorkAreaFormForChange">
+            <button class="mybtn save-btn" [disabled]="!workAreaForm.valid" (click)="onSave()"></button>
+            <button class="mybtn delete-btn" (click)="onCancel()"></button>
+        </div>
+        <div class="col-2 m-t-md" *ngIf="canShowWorkAreaFormForChange">
+            <button class="mybtn save-btn" [disabled]="!workAreaForm.valid" (click)="onChange()"></button>
+            <button class="mybtn delete-btn" (click)="onCancel()"></button>
+            <button class="mybtn trash-can-btn" (click)="onDelete()"></button>
+        </div>
+    </form>
+</div>

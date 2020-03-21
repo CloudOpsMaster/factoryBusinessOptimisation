@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-work-area',
   templateUrl: './work-area.component.html',
   styleUrls: ['./work-area.component.scss']
 })
-export class WorkAreaComponent implements OnInit {
+export class WorkAreaComponent {
+
+  public canShowWorkAreaForm: boolean = false;
 
   constructor() { }
 
-  ngOnInit() {
+  public showWorkAreaForm(): void {
+    this.canShowWorkAreaForm = (!this.canShowWorkAreaForm) ? true : false;
   }
-
 }

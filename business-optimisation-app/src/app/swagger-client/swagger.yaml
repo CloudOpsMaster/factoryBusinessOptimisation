@@ -409,17 +409,13 @@ definitions:
       id:
         type: integer
         format: int64
+      name:
+        type: string
+      work-area:
+        $ref: '#/definitions/WorkAreaDTO'
       location:
         $ref: '#/definitions/LocationDTO'
-      department:
-        type: string
       floor:
-        type: integer
-        format: int32
-      room:
-        type: integer
-        format: int32
-      place:
         type: integer
         format: int32
       comment:

@@ -23,7 +23,27 @@
                             <modelPackage>${default.package}.model</modelPackage>
                         </configuration>
                     </execution>
-                    <!-- <execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>3.0.18</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources-client-html</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/app/swagger-client/swagger.yaml</inputSpec>
+                            <language>html</language>
+                            <output>${project.basedir}/src/app/swagger-client/html</output>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- <execution>
                         <id>generate-sources-server</id>
                         <goals>
                             <goal>generate</goal>
@@ -37,8 +57,6 @@
                             <invokerPackage>${default.package}.handler</invokerPackage>
                         </configuration>
                     </execution> -->
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>

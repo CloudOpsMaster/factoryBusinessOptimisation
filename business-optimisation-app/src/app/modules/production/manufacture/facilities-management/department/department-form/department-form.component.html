@@ -1,11 +1,11 @@
 <div *ngIf="canShowDepartmentForm">
     <form class="col-10 row" [formGroup]="departmentForm">
         <div class="col-2">
-            <label l10nTranslate>nameOfDepartment</label>
+            <label l10nTranslate>name</label>
             <input type="text" class="form-control form-control-sm" formControlName="name" required>
         </div>
         <div class="col-2">
-            <label l10nTranslate>typeOfDepartment</label>
+            <label l10nTranslate>type</label>
             <select class="form-control form-control-sm" formControlName="type" required> 
                 <option *ngFor="let typeOfDepartment of typeOfDepartments | keyvalue" l10nTranslate>{{typeOfDepartment.key}}</option>
             </select>

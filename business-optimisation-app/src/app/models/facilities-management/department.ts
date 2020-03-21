@@ -5,5 +5,5 @@ export class Department implements Base {
     id: number;
     comment: string;
     name: string;
-    type: TypeOfDepartmnet;
+    type: string;
 }

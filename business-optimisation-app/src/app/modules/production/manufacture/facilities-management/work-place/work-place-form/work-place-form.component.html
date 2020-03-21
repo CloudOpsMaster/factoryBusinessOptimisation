@@ -1,0 +1,43 @@
+<div *ngIf="canShowWorkPlaceForm">
+    <form class="col-12 row" [formGroup]="workPlaceForm">
+        <div class="col-2">
+            <label l10nTranslate>workPlace</label>
+            <input type="text" class="form-control form-control-sm" formControlName="workPlace" required>
+        </div>
+        <div class="col-2">
+            <label l10nTranslate>workArea</label>
+            <select class="form-control form-control-sm" formControlName="workArea" required>
+                <option *ngFor="let workArea of workAreas" [ngValue]="workArea">
+                    {{workArea.name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-2">
+            <label l10nTranslate>address</label>
+            <select class="form-control form-control-sm" formControlName="location" (change)="getLocationFromSelect()" required>
+                <option *ngFor="let location of locations" [ngValue]="location">
+                    {{location.address.street +" "+ location.address.buildingNumber}}
+                </option>
+            </select>
+        </div>
+        <div class="col-2 ">
+            <label l10nTranslate>floor</label>
+            <select class="form-control form-control-sm" formControlName="floor" required>
+               <option *ngFor="let floor of countFloors ">{{floor}}</option>
+            </select>
+        </div>
+        <div class="col-2 ">
+            <label l10nTranslate>description</label>
+            <textarea class="form-control form-control-sm " rows="2" formControlName="comment"></textarea>
+        </div>
+        <div class="col-2 m-t-md " *ngIf="!canShowWorkPlaceFormForChange ">
+            <button class="mybtn save-btn " [disabled]="!workPlaceForm.valid " (click)="onSave() "></button>
+            <button class="mybtn delete-btn " (click)="onCancel() "></button>
+        </div>
+        <div class="col-2 m-t-md " *ngIf="canShowWorkPlaceFormForChange ">
+            <button class="mybtn save-btn " [disabled]="!workPlaceForm.valid " (click)="onChange() "></button>
+            <button class="mybtn delete-btn " (click)="onCancel() "></button>
+            <button class="mybtn trash-can-btn " (click)="onDelete() "></button>
+        </div>
+    </form>
+</div>

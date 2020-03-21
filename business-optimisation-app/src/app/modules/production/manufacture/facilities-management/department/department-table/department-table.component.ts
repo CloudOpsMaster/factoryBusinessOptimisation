@@ -23,14 +23,14 @@ export class DepartmentTableComponent implements OnInit {
   @Input() focusEntityId = 0;
 
   constructor(private departmnetServise: DepartmentService, public translation: TranslationService) {
-    this.initLocations();
+    this.initDepartments();
   }
 
   ngOnInit() {
     this.translation.translationChanged().subscribe(
       () => {
-        this.nameTranslate = this.translation.translate('nameOfDepartment');
-        this.typeTranslate = this.translation.translate('typeOfDepartment');
+        this.nameTranslate = this.translation.translate('name');
+        this.typeTranslate = this.translation.translate('type');
         this.commentTranslate = this.translation.translate('description');
       }
     );
@@ -46,7 +46,7 @@ export class DepartmentTableComponent implements OnInit {
     this.initGrid();
   }
 
-  private initLocations(): void {
+  private initDepartments(): void {
     this.departmnetServise.getAllDepartments().forEach((department: Department) => {
       this.departmnets.push(department);
     })

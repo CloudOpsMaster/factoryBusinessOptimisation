@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Location } from "../../../../../models/facilities-management/location";
 import { StorageService, StorageKey } from 'src/app/services/storage.service';
-import { LocationDTO } from 'swagger-client';
+import { LocationDTO, AddressDTO } from 'swagger-client';
 import { AddressService } from './addesss.service';
 import { HistoryService } from '../history.service';
 
@@ -12,7 +12,6 @@ import { HistoryService } from '../history.service';
 export class LocationService {
   private locationsDTO: Array<LocationDTO> = [];
   private locations: Array<Location> = [];
-  private currentLocation: LocationDTO = null;
   private idForChange: number = 0;
 
   public addNewLocation = new EventEmitter<Location>();
@@ -23,10 +22,6 @@ export class LocationService {
   constructor(private storageService: StorageService, private history: HistoryService, private addressService: AddressService) {
     this.locationsDTO = this.getAllLocationsDTO();
     this.locations = this.getAllLocations();
-  }
-
-  private getLocationId(id: number): number {
-    return this.locations.map(l => { return l.id; }).indexOf(id);
   }
 
   private getAllLocationsDTO(): Array<LocationDTO> {
@@ -43,6 +38,10 @@ export class LocationService {
       locations = this.storageService.getTypedArray(StorageKey.Locations);
     }
     return locations;
+  }
+
+  private getLocationId(id: number): number {
+    return this.locations.map(l => { return l.id; }).indexOf(id);
   }
 
   public setLocationById(id: number): void {
@@ -63,21 +62,36 @@ export class LocationService {
     return index;
   }
 
-  public add(newLocation: Location, oldLocation?: Location): void {
-    this.currentLocation = newLocation;
-    this.currentLocation.id = this.incrementIndex();
-    this.currentLocation.address = this.addressService.getCurrentAddress();
-
-    this.locations.push(<Location>this.currentLocation);
-    this.locationsDTO.push(this.currentLocation);
-
-    this.addNewLocation.emit(<Location>this.currentLocation);
-    this.storageService.addData(StorageKey.Locations, this.currentLocation);
-    this.history.addPointInHistory('Location', this.currentLocation, oldLocation);
+  private convertToLocationDTO(l: Location): LocationDTO {
+    const location = <LocationDTO>{
+      id: l.id,
+      comment: l.comment,
+      address: <AddressDTO>{
+        id: l.address.id,
+        city: l.address.city,
+        street: l.address.street,
+        buildingNumber: l.address.buildingNumber,
+        floors: l.address.floors
+      }
+    }
+    return location;
   }
 
-  public remove(location: Location): void {
-    const idForRemove = this.getLocationId(location.id);
+  public add(l: Location): void {
+    l.id = this.incrementIndex();
+    l.address = this.addressService.getAddress();
+    const location = this.convertToLocationDTO(l);
+    this.locations.push(l);
+    this.locationsDTO.push(location);
+
+    this.addNewLocation.emit(l);
+    this.storageService.addData(StorageKey.Locations, location);
+    this.history.addPointInHistory('Location', location);
+  }
+
+  public remove(l: Location): void {
+    const location = this.convertToLocationDTO(l);
+    const idForRemove = this.getLocationId(l.id);
 
     this.locations.splice(idForRemove, 1);
     this.locationsDTO.splice(idForRemove, 1);
@@ -87,18 +101,18 @@ export class LocationService {
     this.history.addPointInHistory('Location', location, location);
   }
 
-  public change(location: Location, oldLocation: Location): void {
-    const changableLocation: LocationDTO = location;
-    changableLocation.id = oldLocation.id;
-    changableLocation.address = this.addressService.getCurrentAddress();
+  public change(l: Location, oldL: Location): void {
+    l.id= oldL.id;
+    l.address = this.addressService.getAddress();
+    const location = this.convertToLocationDTO(l);
 
-    this.idForChange = this.getLocationId(oldLocation.id);
-    this.locations[this.idForChange] = <Location>changableLocation;
-    this.locationsDTO[this.idForChange] = changableLocation;
+    this.idForChange = this.getLocationId(oldL.id);
+    this.locations[this.idForChange] = l;
+    this.locationsDTO[this.idForChange] = location;
 
-    this.changeLocation.emit(<Location>changableLocation);
+    this.changeLocation.emit(l);
     this.saveArrayToLocalStorage();
-    this.history.addPointInHistory('Location', changableLocation, <LocationDTO>oldLocation);
+    this.history.addPointInHistory('Location', location, this.convertToLocationDTO(oldL));
   }
 
   private saveArrayToLocalStorage(): void {
