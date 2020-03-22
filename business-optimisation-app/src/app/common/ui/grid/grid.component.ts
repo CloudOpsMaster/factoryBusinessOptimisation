@@ -70,7 +70,7 @@ export class GridComponent implements OnInit {
 
    }
 
-   private getFieldValue(data: any, field: string): any {
+   getFieldValue(data: any, field: string): any {
       return this.gridService.getFieldValue(data, field);
    }
 }

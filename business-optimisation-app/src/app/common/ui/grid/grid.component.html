@@ -5,7 +5,7 @@
                 <label>{{column.header}}</label>
                 <input type="image" (click)="sortBy(column)" [src]="getSortCaptionFor(column)" />
                 <br>
-                <input type="text" class="form-control form-control-sm" id="column" (onkeyup)="filter(column)" />
+                <input type="text" class="form-control form-control-sm" [id]="column.header" (onkeyup)="filter(column)" />
                 <!-- <button (click)="sortBy(column)">{{getSortCaptionFor(column)}}</button> -->
             </th>
         </tr>
