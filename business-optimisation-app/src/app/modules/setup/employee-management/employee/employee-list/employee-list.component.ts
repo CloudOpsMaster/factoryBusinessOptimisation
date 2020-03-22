@@ -20,7 +20,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
    filteredEmployees: Array<EmployeeListPresentation>;
 
    columns = new Array<GridColumn>();
-   tracktionField = 'mainInfo.id';
+   tracktionField = 'id';
 
    private filter = new EmployeeFilter();
 
