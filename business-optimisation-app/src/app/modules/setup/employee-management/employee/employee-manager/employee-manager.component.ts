@@ -3,6 +3,7 @@ import { EmployeeService } from '../services/employee.service';
 import { Employee } from 'src/app/models/hr/employee';
 import { EmployeeViewMode } from '../employee-view-mode.enum';
 import { EmployeeInfo } from '../EmployeeInfo';
+import { TranslationService } from 'angular-l10n';
 
 @Component({
   selector: 'app-employee-manager',
@@ -36,10 +37,20 @@ export class EmployeeManagerComponent implements OnInit {
   viewMode = EmployeeViewMode.View;
   editingInProcess = false;
   hideSelection = false;
+  addTitle: string;
+  viewTitle: string;
+  editTitle: string;
+  deleteTitle: string;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService, private translation: TranslationService) { }
 
   ngOnInit() {
+    this.translation.translationChanged().subscribe(() => {
+      this.addTitle = this.translation.translate('add');
+      this.viewTitle = this.translation.translate('view');
+      this.editTitle = this.translation.translate('edit');
+      this.deleteTitle = this.translation.translate('delete');
+    });
     this.employees = this.employeeService.employees;
     this.setDefaultCurrentEmployeeId();
   }

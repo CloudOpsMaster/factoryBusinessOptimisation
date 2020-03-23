@@ -23,6 +23,8 @@ import { CommonAppModule } from '../../../common/common.module';
 import { PositionService } from '../employee-management/employee/positions-manager/services/position.service';
 import { PositionSelectorComponent } from '../employee-management/employee/positions-manager/position-selector/position-selector.component';
 import { EmploymentManagerComponent } from '../employee-management/employee/employee-editor/editors/employment-manager/employment-manager.component';
+import { LocalizationModule } from 'angular-l10n';
+import { l10nConfig } from 'src/app/localication';
 
 @NgModule({
   imports: [
@@ -31,7 +33,8 @@ import { EmploymentManagerComponent } from '../employee-management/employee/empl
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonAppModule
+    CommonAppModule,
+    LocalizationModule.forRoot(l10nConfig)
   ],
   declarations: [
     EmployeeManagerComponent,

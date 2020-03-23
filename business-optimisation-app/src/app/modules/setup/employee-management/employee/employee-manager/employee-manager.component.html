@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-12" *ngIf="isGridVisible">
       <div>
-         <span class="header">Список сотрудников</span>
+         <span class="header" l10nTranslate>employeeList</span>
          <add-button (click)="onAddClick($event)"
-                     titlePlaceholder="Добавить"
+                     [titlePlaceholder]="addTitle"
                      [disabled]="addDisabled"></add-button>
          <button (click)="onDetailsRequested()">{{"Детали"}}</button>
          <edit-button  (click)="onEditClick($event)"
-                     titlePlaceholder="Редактировать"
+                     [titlePlaceholder]="editTitle"
                      [showCancelBtn]="false"
                      [disabled]="editDisabled"></edit-button>
          <delete-button (click)="onDeleteClick($event)" 
-                     titlePlaceholder="Удалить"
+                     [titlePlaceholder]="deleteTitle"
                      [disabled]="deleteDisabled"></delete-button>
          
       </div>

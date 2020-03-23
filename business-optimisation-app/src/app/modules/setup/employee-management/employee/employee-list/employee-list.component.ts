@@ -4,6 +4,9 @@ import { EmployeeFilter } from './employee-filter/employee-filter';
 import { EmployeeFiltrator } from './employee-filter/employee-filtrator';
 import { GridColumn } from '../../../../../common/ui/grid/model/grid-column';
 import { EmployeeListPresentation } from './employee-list-presentation';
+import { TranslationService } from 'angular-l10n';
+
+
 
 @Component({
    selector: 'app-employee-list',
@@ -24,9 +27,23 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
    private filter = new EmployeeFilter();
 
-   constructor() { }
+   private personalNumberTitle: string;
+   private nameTitle: string;
+   private positionTitle: string;
+   private changedTitle: string;
+   private phoneTitle: string;
+
+
+   constructor(private translation: TranslationService) { }
 
    ngOnInit() {
+      this.translation.translationChanged().subscribe(() => {
+         this.personalNumberTitle = this.translation.translate('personalNumber');
+         this.nameTitle = this.translation.translate('namesurnameshort');
+         this.positionTitle = this.translation.translate('position');
+         this.changedTitle = this.translation.translate('changed');
+         this.phoneTitle = this.translation.translate('phone');
+      });
       this.prepareGridData();
       this.performFiltering();
       this.focusFirstItem();
@@ -89,11 +106,11 @@ export class EmployeeListComponent implements OnInit, OnChanges {
    }
 
    private prepareGridData() {
-      this.columns.push({ header: 'Таб.№', field: 'id' });
-      this.columns.push({ header: 'ФИО', field: 'name' });
-      this.columns.push({ header: 'Должность', field: 'positionName' });
-      this.columns.push({ header: 'Изменено', field: 'changeDate' });
-      this.columns.push({ header: 'Телефон', field: 'phone' });
+      this.columns.push({ header: this.personalNumberTitle, field: 'id' });
+      this.columns.push({ header: this.nameTitle, field: 'name' });
+      this.columns.push({ header: this.positionTitle, field: 'positionName' });
+      this.columns.push({ header: this.changedTitle, field: 'changeDate' });
+      this.columns.push({ header: this.phoneTitle, field: 'phone' });
    }
 
 }
