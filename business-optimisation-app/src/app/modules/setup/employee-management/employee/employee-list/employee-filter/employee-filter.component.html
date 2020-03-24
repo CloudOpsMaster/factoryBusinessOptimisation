@@ -1,34 +1,34 @@
-<button type="button" class="btn btn-sm" (click)="onFilterClick()">Фильтр</button>
+<button type="button" class="btn btn-sm" (click)="onFilterClick()" l10nTranslate>filter</button>
 <div *ngIf="visible">
   <div class="form-row">
     <div class="col">
-      <label for="firstName">Табельный №:</label>
+      <label for="firstName" l10nTranslate>personalNumberFull</label>
       <input type="text" [(ngModel)]="filter.id" id="firstName" class="form-control form-control-sm" [readonly]="locked">
     </div>
     <div class="col">
-      <label for="secondName">Фамилия:</label>
+      <label for="secondName" l10nTranslate>surname</label>
       <input type="text" [(ngModel)]="filter.secondName" id="secondName" class="form-control form-control-sm" [readonly]="locked">
     </div>
     <div class="col">
-      <label for="patronymic">Паспорт:</label>
+      <label for="patronymic" l10nTranslate>passport</label>
       <input type="text" [(ngModel)]="filter.passport" id="patronymic" class="form-control form-control-sm" [readonly]="locked">
     </div>
     <div class="col">
-      <label for="taxNumber">Налоговый №:</label>
+      <label for="taxNumber" l10nTranslate>taxNumber</label>
       <input type="text" [(ngModel)]="filter.taxNumber" id="taxNumber" class="form-control form-control-sm" [readonly]="locked">
     </div>
   </div>
   <br>
   <div class="form-row">
-      <label for="position">Должность:</label>
+      <label for="position" l10nTranslate>position</label>
       <app-position-selector [position]="filter.position" id="position" [disabled]="locked"></app-position-selector>
   </div>
   <div class="button-group pull-right">
     <filter-button (click)="onApplyClick()" 
-                  titlePlaceholder="Применить фильтр"
+                  [titlePlaceholder]="applyTitle"
                   [disabled]="locked"></filter-button>
     <edit-button  (click)="onResetClick()"
-                  titlePlaceholder="Сбросить фильтр"
+                  [titlePlaceholder]="resetTitle"
                   [disabled]="locked"
                   [showCancelBtn]="true"></edit-button>
   </div>

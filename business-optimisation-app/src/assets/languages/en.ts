@@ -4,12 +4,14 @@ export const EN: any = {
     "addresses": "Addresses",
     "areasOfOperation": "Areas of operation",
     "add":"Add",
+    "apply":"Apply",
     //-----------------------------------------B-----------------------------------------
     "buildingNumber": "Building number",
     //-----------------------------------------C-----------------------------------------
     "city": "City",
     "countFloors": "Number of floors",
     "changed": "Changed",
+    "cancel":"Cancel",
     //-----------------------------------------D-----------------------------------------
     "daysOff": "Days off",
     "description": "Description",
@@ -21,6 +23,7 @@ export const EN: any = {
     "employeeList": "Employee List",
     //-----------------------------------------F-----------------------------------------
     "floor": "Floor",
+    "filter":"Filter",
     //-----------------------------------------G-----------------------------------------
     "gettingTool": "Getting tool",
     //-----------------------------------------H-----------------------------------------
@@ -42,19 +45,24 @@ export const EN: any = {
     "PointOfSale": "Point of sale",
     "personnelManagement": "Personnel Management",
     "personalNumber" : "№",
+    "personalNumberFull" : "Personal №",
     "position":"Position",
     "phone":"Phone",
+    "passport":"Passport",
     //-----------------------------------------Q-----------------------------------------
     //-----------------------------------------R-----------------------------------------
+    "reset":"Reset",
     //-----------------------------------------S-----------------------------------------
     "serviceEquipment": "Service equipment",
     "staff": "Staff",
     "street": "Street",
     "Sweatshop": "Sweatshop",
+    "surname":"Surname",
     //-----------------------------------------T-----------------------------------------
     "taskList": "Task list",
     "type": "Type",
     "technicalDepartment": "Technical department",
+    "taxNumber": "Tax number",
     //-----------------------------------------U-----------------------------------------
     //-----------------------------------------V-----------------------------------------
     "view": "View",
