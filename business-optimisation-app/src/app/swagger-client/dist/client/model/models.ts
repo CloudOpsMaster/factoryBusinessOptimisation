@@ -1,6 +1,6 @@
 export * from './addressDTO';
 export * from './departmentDTO';
-export * from './facilitiesManagementHistoryDTO';
+export * from './facilitiesHistoryDTO';
 export * from './locationDTO';
 export * from './typeOfDepartmentDTO';
 export * from './workAreaDTO';

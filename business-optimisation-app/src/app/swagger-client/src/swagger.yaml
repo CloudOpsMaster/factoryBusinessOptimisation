@@ -1,0 +1,9 @@
+swagger: '2.0'
+info:
+  description: REST API for PMS
+  version: 1.0.0
+  title: PMS
+paths:
+  $ref: ./paths/facilities.yaml
+definitions:
+  $ref: ./definitions/facilities.yaml

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageService, StorageKey } from 'src/app/services/storage.service';
 import { Address } from 'src/app/models/common/address';
-import { AddressDTO } from "swagger-client";
+import { AddressDTO } from "swagger-client/client";
 
 @Injectable({
     providedIn: 'root'

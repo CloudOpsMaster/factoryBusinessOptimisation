@@ -8,7 +8,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "swagger-client": "mvn clean compile && npm link src/app/swagger-client"
+        "swagger-merger": "swagger-merger -i src/app/swagger-client/src/swagger.yaml -o src/app/swagger-client/dist/output.yaml",
+        "swagger-client": "npm run swagger-merger && mvn clean compile && npm link src/app/swagger-client/dist"
     },
     "private": true,
     "dependencies": {
@@ -26,6 +27,7 @@
         "jquery": "^3.4.1",
         "rxjs": "~6.4.0",
         "swagger-client": "^3.10.0",
+        "swagger-merger": "^1.4.3",
         "tslib": "^1.10.0",
         "zone.js": "~0.9.1"
     },

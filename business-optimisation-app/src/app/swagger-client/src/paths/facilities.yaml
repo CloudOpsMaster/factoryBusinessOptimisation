@@ -1,0 +1,326 @@
+/facilities:
+  get:
+    tags:
+      - facilities
+    summary: returns enum with type of department
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/TypeOfDepartmentDTO' 
+
+/facilities/workplaces:
+  get:
+    tags:
+      - facilities
+    summary: returns array of workplace
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/WorkPlaceDTO'
+
+/facilities/workplaces/form:          
+  post:
+    tags:
+      - facilities 
+    summary: create a new workplace
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          $ref: '#/definitions/WorkPlaceDTO'
+            
+            
+/facilities/workplaces/{Id}:
+  get:
+    tags:
+      - facilities
+    summary: return workplace by Id
+    parameters:
+      - name: Id
+        in: path
+        description: Id of workplace that needs to be return
+        required: true
+        type: integer
+        format: int64
+    responses:
+      '200':
+        description: successful operation
+        schema:
+          $ref: '#/definitions/WorkPlaceDTO'
+      '405':
+        description: invalid input
+          
+  put:
+    tags:
+      - facilities 
+    summary: update workplace by Id
+    parameters:
+      - name: Id
+        in: path
+        description: Id of workplace that needs to be update
+        required: true
+        type: integer
+        format: int64
+    responses:
+      '200':
+        description: successful operation
+      '405':
+        description: invalid input
+          
+  delete:
+    tags:
+      - facilities
+    summary: delete workplace by Id
+    parameters:
+      - name: Id
+        in: path
+        description: Id of workplace that needs to be delete
+        required: true
+        type: integer
+        format: int64
+    responses:
+      '200':
+        description: successful operation
+      '405':
+        description: invalid input
+          
+        
+/facilities/workareas:
+    get:
+      tags:
+        - facilities 
+      summary: returns array of workarea
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WorkAreaDTO'
+
+/facilities/workareas/form:          
+    post:
+      tags:
+        - facilities 
+      summary: create a new workarea
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/WorkAreaDTO'
+
+/facilities/workareas/{Id}:
+    get:
+      tags:
+        - facilities 
+      summary: return workarea by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of workarea that needs to be return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/WorkAreaDTO'
+        '405':
+          description: invalid input
+          
+    put:
+      tags:
+        - facilities 
+      summary: update workarea by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of workarea that needs to be update
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: invalid input
+          
+    delete:
+      tags:
+        - facilities 
+      summary: delete workarea by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of workarea that needs to be delete
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: invalid input  
+  
+/facilities/departments:
+    get:
+      tags:
+        - facilities  
+      summary: returns array of department
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DepartmentDTO'
+
+/facilities/departments/form:             
+    post:
+      tags:
+        - facilities 
+      summary: create a new department
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/DepartmentDTO'
+                    
+/facilities/departments/{Id}:
+    get:
+      tags:
+        - facilities 
+      summary: return department by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of department that needs to be return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/DepartmentDTO'
+        '405':
+          description: invalid input
+          
+    put:
+      tags:
+        - facilities
+      summary: update department by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of department that needs to be update
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: invalid input
+          
+    delete:
+      tags:
+        - facilities 
+      summary: delete department by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of department that needs to be delete
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: invalid input  
+          
+/facilities/locations:
+    get:
+      tags:
+        - facilities  
+      summary: returns array of location
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/LocationDTO'
+              
+/facilities/locations/form:            
+    post:
+      tags:
+        - facilities 
+      summary: create a new location
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/LocationDTO'       
+            
+/facilities/locations/{Id}:
+    get:
+      tags:
+        - facilities 
+      summary: return location by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of location that needs to be return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/LocationDTO'
+        '405':
+          description: invalid input
+          
+    put:
+      tags:
+        - facilities 
+      summary: update location by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of location that needs to be update
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: invalid input
+          
+    delete:
+      tags:
+        - facilities 
+      summary: delete location by Id
+      parameters:
+        - name: Id
+          in: path
+          description: Id of location that needs to be delete
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: invalid input   

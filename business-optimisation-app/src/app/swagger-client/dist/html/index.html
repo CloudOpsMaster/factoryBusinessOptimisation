@@ -193,76 +193,39 @@
 
   <h3>Table of Contents </h3>
   <div class="method-summary"></div>
-  <h4><a href="#FacilitiesManagement">FacilitiesManagement</a></h4>
+  <h4><a href="#Facilities">Facilities</a></h4>
   <ul>
-  <li><a href="#facilitiesManagementDepartmentsDepartmentIdDelete"><code><span class="http-method">delete</span> /facilities-management/departments/{departmentId}</code></a></li>
-  <li><a href="#facilitiesManagementDepartmentsDepartmentIdGet"><code><span class="http-method">get</span> /facilities-management/departments/{departmentId}</code></a></li>
-  <li><a href="#facilitiesManagementDepartmentsDepartmentIdPut"><code><span class="http-method">put</span> /facilities-management/departments/{departmentId}</code></a></li>
-  <li><a href="#facilitiesManagementDepartmentsGet"><code><span class="http-method">get</span> /facilities-management/departments</code></a></li>
-  <li><a href="#facilitiesManagementDepartmentsPost"><code><span class="http-method">post</span> /facilities-management/departments</code></a></li>
-  <li><a href="#facilitiesManagementGet"><code><span class="http-method">get</span> /facilities-management</code></a></li>
-  <li><a href="#facilitiesManagementLocationsGet"><code><span class="http-method">get</span> /facilities-management/locations</code></a></li>
-  <li><a href="#facilitiesManagementLocationsLocationIdDelete"><code><span class="http-method">delete</span> /facilities-management/locations/{locationId}</code></a></li>
-  <li><a href="#facilitiesManagementLocationsLocationIdGet"><code><span class="http-method">get</span> /facilities-management/locations/{locationId}</code></a></li>
-  <li><a href="#facilitiesManagementLocationsLocationIdPut"><code><span class="http-method">put</span> /facilities-management/locations/{locationId}</code></a></li>
-  <li><a href="#facilitiesManagementLocationsPost"><code><span class="http-method">post</span> /facilities-management/locations</code></a></li>
-  <li><a href="#facilitiesManagementWorkareasGet"><code><span class="http-method">get</span> /facilities-management/workareas</code></a></li>
-  <li><a href="#facilitiesManagementWorkareasPost"><code><span class="http-method">post</span> /facilities-management/workareas</code></a></li>
-  <li><a href="#facilitiesManagementWorkareasWorkareaIdDelete"><code><span class="http-method">delete</span> /facilities-management/workareas/{workareaId}</code></a></li>
-  <li><a href="#facilitiesManagementWorkareasWorkareaIdGet"><code><span class="http-method">get</span> /facilities-management/workareas/{workareaId}</code></a></li>
-  <li><a href="#facilitiesManagementWorkareasWorkareaIdPut"><code><span class="http-method">put</span> /facilities-management/workareas/{workareaId}</code></a></li>
-  <li><a href="#facilitiesManagementWorkplacesGet"><code><span class="http-method">get</span> /facilities-management/workplaces</code></a></li>
-  <li><a href="#facilitiesManagementWorkplacesPost"><code><span class="http-method">post</span> /facilities-management/workplaces</code></a></li>
-  <li><a href="#facilitiesManagementWorkplacesWorkplaceIdDelete"><code><span class="http-method">delete</span> /facilities-management/workplaces/{workplaceId}</code></a></li>
-  <li><a href="#facilitiesManagementWorkplacesWorkplaceIdGet"><code><span class="http-method">get</span> /facilities-management/workplaces/{workplaceId}</code></a></li>
-  <li><a href="#facilitiesManagementWorkplacesWorkplaceIdPut"><code><span class="http-method">put</span> /facilities-management/workplaces/{workplaceId}</code></a></li>
+  <li><a href="#facilitiesDepartmentsFormPost"><code><span class="http-method">post</span> /facilities/departments/form</code></a></li>
+  <li><a href="#facilitiesDepartmentsGet"><code><span class="http-method">get</span> /facilities/departments</code></a></li>
+  <li><a href="#facilitiesDepartmentsIdDelete"><code><span class="http-method">delete</span> /facilities/departments/{Id}</code></a></li>
+  <li><a href="#facilitiesDepartmentsIdGet"><code><span class="http-method">get</span> /facilities/departments/{Id}</code></a></li>
+  <li><a href="#facilitiesDepartmentsIdPut"><code><span class="http-method">put</span> /facilities/departments/{Id}</code></a></li>
+  <li><a href="#facilitiesGet"><code><span class="http-method">get</span> /facilities</code></a></li>
+  <li><a href="#facilitiesLocationsFormPost"><code><span class="http-method">post</span> /facilities/locations/form</code></a></li>
+  <li><a href="#facilitiesLocationsGet"><code><span class="http-method">get</span> /facilities/locations</code></a></li>
+  <li><a href="#facilitiesLocationsIdDelete"><code><span class="http-method">delete</span> /facilities/locations/{Id}</code></a></li>
+  <li><a href="#facilitiesLocationsIdGet"><code><span class="http-method">get</span> /facilities/locations/{Id}</code></a></li>
+  <li><a href="#facilitiesLocationsIdPut"><code><span class="http-method">put</span> /facilities/locations/{Id}</code></a></li>
+  <li><a href="#facilitiesWorkareasFormPost"><code><span class="http-method">post</span> /facilities/workareas/form</code></a></li>
+  <li><a href="#facilitiesWorkareasGet"><code><span class="http-method">get</span> /facilities/workareas</code></a></li>
+  <li><a href="#facilitiesWorkareasIdDelete"><code><span class="http-method">delete</span> /facilities/workareas/{Id}</code></a></li>
+  <li><a href="#facilitiesWorkareasIdGet"><code><span class="http-method">get</span> /facilities/workareas/{Id}</code></a></li>
+  <li><a href="#facilitiesWorkareasIdPut"><code><span class="http-method">put</span> /facilities/workareas/{Id}</code></a></li>
+  <li><a href="#facilitiesWorkplacesFormPost"><code><span class="http-method">post</span> /facilities/workplaces/form</code></a></li>
+  <li><a href="#facilitiesWorkplacesGet"><code><span class="http-method">get</span> /facilities/workplaces</code></a></li>
+  <li><a href="#facilitiesWorkplacesIdDelete"><code><span class="http-method">delete</span> /facilities/workplaces/{Id}</code></a></li>
+  <li><a href="#facilitiesWorkplacesIdGet"><code><span class="http-method">get</span> /facilities/workplaces/{Id}</code></a></li>
+  <li><a href="#facilitiesWorkplacesIdPut"><code><span class="http-method">put</span> /facilities/workplaces/{Id}</code></a></li>
   </ul>
 
-  <h1><a name="FacilitiesManagement">FacilitiesManagement</a></h1>
-  <div class="method"><a name="facilitiesManagementDepartmentsDepartmentIdDelete"></a>
+  <h1><a name="Facilities">Facilities</a></h1>
+  <div class="method"><a name="facilitiesDepartmentsFormPost"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /facilities-management/departments/{departmentId}</code></pre></div>
-    <div class="method-summary">delete department by Id (<span class="nickname">facilitiesManagementDepartmentsDepartmentIdDelete</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /facilities/departments/form</code></pre></div>
+    <div class="method-summary">create a new department (<span class="nickname">facilitiesDepartmentsFormPost</span>)</div>
     <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">departmentId (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of department that needs to be delete format: int64</div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    successful operation
-        <a href="#"></a>
-    <h4 class="field-label">405</h4>
-    invalid input
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="facilitiesManagementDepartmentsDepartmentIdGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management/departments/{departmentId}</code></pre></div>
-    <div class="method-summary">return department by Id (<span class="nickname">facilitiesManagementDepartmentsDepartmentIdGet</span>)</div>
-    <div class="method-notes"></div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">departmentId (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of department that needs to be return format: int64</div>    </div>  <!-- field-items -->
 
 
 
@@ -296,48 +259,13 @@
     <h4 class="field-label">200</h4>
     successful operation
         <a href="#DepartmentDTO">DepartmentDTO</a>
-    <h4 class="field-label">405</h4>
-    invalid input
-        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementDepartmentsDepartmentIdPut"></a>
+  <div class="method"><a name="facilitiesDepartmentsGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="put"><code class="huge"><span class="http-method">put</span> /facilities-management/departments/{departmentId}</code></pre></div>
-    <div class="method-summary">update department by Id (<span class="nickname">facilitiesManagementDepartmentsDepartmentIdPut</span>)</div>
-    <div class="method-notes"></div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">departmentId (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of department that needs to be update format: int64</div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    successful operation
-        <a href="#"></a>
-    <h4 class="field-label">405</h4>
-    invalid input
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="facilitiesManagementDepartmentsGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management/departments</code></pre></div>
-    <div class="method-summary">returns array of department (<span class="nickname">facilitiesManagementDepartmentsGet</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities/departments</code></pre></div>
+    <div class="method-summary">returns array of department (<span class="nickname">facilitiesDepartmentsGet</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -379,13 +307,50 @@
         
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementDepartmentsPost"></a>
+  <div class="method"><a name="facilitiesDepartmentsIdDelete"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /facilities-management/departments</code></pre></div>
-    <div class="method-summary">create a new department (<span class="nickname">facilitiesManagementDepartmentsPost</span>)</div>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /facilities/departments/{Id}</code></pre></div>
+    <div class="method-summary">delete department by Id (<span class="nickname">facilitiesDepartmentsIdDelete</span>)</div>
     <div class="method-notes"></div>
 
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">Id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of department that needs to be delete format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">405</h4>
+    invalid input
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="facilitiesDepartmentsIdGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities/departments/{Id}</code></pre></div>
+    <div class="method-summary">return department by Id (<span class="nickname">facilitiesDepartmentsIdGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">Id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of department that needs to be return format: int64</div>    </div>  <!-- field-items -->
 
 
 
@@ -419,13 +384,48 @@
     <h4 class="field-label">200</h4>
     successful operation
         <a href="#DepartmentDTO">DepartmentDTO</a>
+    <h4 class="field-label">405</h4>
+    invalid input
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementGet"></a>
+  <div class="method"><a name="facilitiesDepartmentsIdPut"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management</code></pre></div>
-    <div class="method-summary">returns enum with type of department (<span class="nickname">facilitiesManagementGet</span>)</div>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /facilities/departments/{Id}</code></pre></div>
+    <div class="method-summary">update department by Id (<span class="nickname">facilitiesDepartmentsIdPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">Id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of department that needs to be update format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">405</h4>
+    invalid input
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="facilitiesGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities</code></pre></div>
+    <div class="method-summary">returns enum with type of department (<span class="nickname">facilitiesGet</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -459,11 +459,59 @@
         
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementLocationsGet"></a>
+  <div class="method"><a name="facilitiesLocationsFormPost"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management/locations</code></pre></div>
-    <div class="method-summary">returns array of location (<span class="nickname">facilitiesManagementLocationsGet</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /facilities/locations/form</code></pre></div>
+    <div class="method-summary">create a new location (<span class="nickname">facilitiesLocationsFormPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#LocationDTO">LocationDTO</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "address" : {
+    "floors" : 7,
+    "city" : "city",
+    "street" : "street",
+    "buildingNumber" : 2,
+    "id" : 5
+  },
+  "comment" : "comment",
+  "id" : 5
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#LocationDTO">LocationDTO</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="facilitiesLocationsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities/locations</code></pre></div>
+    <div class="method-summary">returns array of location (<span class="nickname">facilitiesLocationsGet</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -517,16 +565,16 @@
         
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementLocationsLocationIdDelete"></a>
+  <div class="method"><a name="facilitiesLocationsIdDelete"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /facilities-management/locations/{locationId}</code></pre></div>
-    <div class="method-summary">delete location by Id (<span class="nickname">facilitiesManagementLocationsLocationIdDelete</span>)</div>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /facilities/locations/{Id}</code></pre></div>
+    <div class="method-summary">delete location by Id (<span class="nickname">facilitiesLocationsIdDelete</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">locationId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of location that needs to be delete format: int64</div>    </div>  <!-- field-items -->
 
@@ -549,16 +597,16 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementLocationsLocationIdGet"></a>
+  <div class="method"><a name="facilitiesLocationsIdGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management/locations/{locationId}</code></pre></div>
-    <div class="method-summary">return location by Id (<span class="nickname">facilitiesManagementLocationsLocationIdGet</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities/locations/{Id}</code></pre></div>
+    <div class="method-summary">return location by Id (<span class="nickname">facilitiesLocationsIdGet</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">locationId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of location that needs to be return format: int64</div>    </div>  <!-- field-items -->
 
@@ -605,16 +653,16 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementLocationsLocationIdPut"></a>
+  <div class="method"><a name="facilitiesLocationsIdPut"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="put"><code class="huge"><span class="http-method">put</span> /facilities-management/locations/{locationId}</code></pre></div>
-    <div class="method-summary">update location by Id (<span class="nickname">facilitiesManagementLocationsLocationIdPut</span>)</div>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /facilities/locations/{Id}</code></pre></div>
+    <div class="method-summary">update location by Id (<span class="nickname">facilitiesLocationsIdPut</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">locationId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of location that needs to be update format: int64</div>    </div>  <!-- field-items -->
 
@@ -637,11 +685,11 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementLocationsPost"></a>
+  <div class="method"><a name="facilitiesWorkareasFormPost"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /facilities-management/locations</code></pre></div>
-    <div class="method-summary">create a new location (<span class="nickname">facilitiesManagementLocationsPost</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /facilities/workareas/form</code></pre></div>
+    <div class="method-summary">create a new workarea (<span class="nickname">facilitiesWorkareasFormPost</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -652,7 +700,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#LocationDTO">LocationDTO</a>
+      <a href="#WorkAreaDTO">WorkAreaDTO</a>
       
     </div>
 
@@ -661,15 +709,13 @@
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "address" : {
-    "floors" : 7,
-    "city" : "city",
-    "street" : "street",
-    "buildingNumber" : 2,
-    "id" : 5
-  },
-  "comment" : "comment",
-  "id" : 5
+  "name" : "name",
+  "id" : 6,
+  "department" : {
+    "name" : "name",
+    "id" : 1,
+    "type" : "type"
+  }
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -682,14 +728,14 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     successful operation
-        <a href="#LocationDTO">LocationDTO</a>
+        <a href="#WorkAreaDTO">WorkAreaDTO</a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementWorkareasGet"></a>
+  <div class="method"><a name="facilitiesWorkareasGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management/workareas</code></pre></div>
-    <div class="method-summary">returns array of workarea (<span class="nickname">facilitiesManagementWorkareasGet</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities/workareas</code></pre></div>
+    <div class="method-summary">returns array of workarea (<span class="nickname">facilitiesWorkareasGet</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -739,62 +785,16 @@
         
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementWorkareasPost"></a>
+  <div class="method"><a name="facilitiesWorkareasIdDelete"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /facilities-management/workareas</code></pre></div>
-    <div class="method-summary">create a new workarea (<span class="nickname">facilitiesManagementWorkareasPost</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#WorkAreaDTO">WorkAreaDTO</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "name",
-  "id" : 6,
-  "department" : {
-    "name" : "name",
-    "id" : 1,
-    "type" : "type"
-  }
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>*/*</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    successful operation
-        <a href="#WorkAreaDTO">WorkAreaDTO</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="facilitiesManagementWorkareasWorkareaIdDelete"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /facilities-management/workareas/{workareaId}</code></pre></div>
-    <div class="method-summary">delete workarea by Id (<span class="nickname">facilitiesManagementWorkareasWorkareaIdDelete</span>)</div>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /facilities/workareas/{Id}</code></pre></div>
+    <div class="method-summary">delete workarea by Id (<span class="nickname">facilitiesWorkareasIdDelete</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">workareaId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of workarea that needs to be delete format: int64</div>    </div>  <!-- field-items -->
 
@@ -817,16 +817,16 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementWorkareasWorkareaIdGet"></a>
+  <div class="method"><a name="facilitiesWorkareasIdGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management/workareas/{workareaId}</code></pre></div>
-    <div class="method-summary">return workarea by Id (<span class="nickname">facilitiesManagementWorkareasWorkareaIdGet</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities/workareas/{Id}</code></pre></div>
+    <div class="method-summary">return workarea by Id (<span class="nickname">facilitiesWorkareasIdGet</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">workareaId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of workarea that needs to be return format: int64</div>    </div>  <!-- field-items -->
 
@@ -871,16 +871,16 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementWorkareasWorkareaIdPut"></a>
+  <div class="method"><a name="facilitiesWorkareasIdPut"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="put"><code class="huge"><span class="http-method">put</span> /facilities-management/workareas/{workareaId}</code></pre></div>
-    <div class="method-summary">update workarea by Id (<span class="nickname">facilitiesManagementWorkareasWorkareaIdPut</span>)</div>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /facilities/workareas/{Id}</code></pre></div>
+    <div class="method-summary">update workarea by Id (<span class="nickname">facilitiesWorkareasIdPut</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">workareaId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of workarea that needs to be update format: int64</div>    </div>  <!-- field-items -->
 
@@ -903,11 +903,74 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementWorkplacesGet"></a>
+  <div class="method"><a name="facilitiesWorkplacesFormPost"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management/workplaces</code></pre></div>
-    <div class="method-summary">returns array of workplace (<span class="nickname">facilitiesManagementWorkplacesGet</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /facilities/workplaces/form</code></pre></div>
+    <div class="method-summary">create a new workplace (<span class="nickname">facilitiesWorkplacesFormPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#WorkPlaceDTO">WorkPlaceDTO</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "location" : {
+    "address" : {
+      "floors" : 7,
+      "city" : "city",
+      "street" : "street",
+      "buildingNumber" : 2,
+      "id" : 5
+    },
+    "comment" : "comment",
+    "id" : 5
+  },
+  "comment" : "comment",
+  "id" : 0,
+  "floor" : 9,
+  "work-area" : {
+    "name" : "name",
+    "id" : 6,
+    "department" : {
+      "name" : "name",
+      "id" : 1,
+      "type" : "type"
+    }
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#WorkPlaceDTO">WorkPlaceDTO</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="facilitiesWorkplacesGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities/workplaces</code></pre></div>
+    <div class="method-summary">returns array of workplace (<span class="nickname">facilitiesWorkplacesGet</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -991,79 +1054,16 @@
         
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementWorkplacesPost"></a>
+  <div class="method"><a name="facilitiesWorkplacesIdDelete"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /facilities-management/workplaces</code></pre></div>
-    <div class="method-summary">create a new workplace (<span class="nickname">facilitiesManagementWorkplacesPost</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#WorkPlaceDTO">WorkPlaceDTO</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "name",
-  "location" : {
-    "address" : {
-      "floors" : 7,
-      "city" : "city",
-      "street" : "street",
-      "buildingNumber" : 2,
-      "id" : 5
-    },
-    "comment" : "comment",
-    "id" : 5
-  },
-  "comment" : "comment",
-  "id" : 0,
-  "floor" : 9,
-  "work-area" : {
-    "name" : "name",
-    "id" : 6,
-    "department" : {
-      "name" : "name",
-      "id" : 1,
-      "type" : "type"
-    }
-  }
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>*/*</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    successful operation
-        <a href="#WorkPlaceDTO">WorkPlaceDTO</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="facilitiesManagementWorkplacesWorkplaceIdDelete"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /facilities-management/workplaces/{workplaceId}</code></pre></div>
-    <div class="method-summary">delete workplace by Id (<span class="nickname">facilitiesManagementWorkplacesWorkplaceIdDelete</span>)</div>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /facilities/workplaces/{Id}</code></pre></div>
+    <div class="method-summary">delete workplace by Id (<span class="nickname">facilitiesWorkplacesIdDelete</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">workplaceId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of workplace that needs to be delete format: int64</div>    </div>  <!-- field-items -->
 
@@ -1086,16 +1086,16 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementWorkplacesWorkplaceIdGet"></a>
+  <div class="method"><a name="facilitiesWorkplacesIdGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities-management/workplaces/{workplaceId}</code></pre></div>
-    <div class="method-summary">return workplace by Id (<span class="nickname">facilitiesManagementWorkplacesWorkplaceIdGet</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /facilities/workplaces/{Id}</code></pre></div>
+    <div class="method-summary">return workplace by Id (<span class="nickname">facilitiesWorkplacesIdGet</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">workplaceId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of workplace that needs to be return format: int64</div>    </div>  <!-- field-items -->
 
@@ -1157,16 +1157,16 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="facilitiesManagementWorkplacesWorkplaceIdPut"></a>
+  <div class="method"><a name="facilitiesWorkplacesIdPut"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="put"><code class="huge"><span class="http-method">put</span> /facilities-management/workplaces/{workplaceId}</code></pre></div>
-    <div class="method-summary">update workplace by Id (<span class="nickname">facilitiesManagementWorkplacesWorkplaceIdPut</span>)</div>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /facilities/workplaces/{Id}</code></pre></div>
+    <div class="method-summary">update workplace by Id (<span class="nickname">facilitiesWorkplacesIdPut</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">workplaceId (required)</div>
+      <div class="param">Id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of workplace that needs to be update format: int64</div>    </div>  <!-- field-items -->
 
@@ -1197,7 +1197,7 @@
   <ol>
     <li><a href="#AddressDTO"><code>AddressDTO</code></a></li>
     <li><a href="#DepartmentDTO"><code>DepartmentDTO</code></a></li>
-    <li><a href="#FacilitiesManagementHistoryDTO"><code>FacilitiesManagementHistoryDTO</code></a></li>
+    <li><a href="#FacilitiesHistoryDTO"><code>FacilitiesHistoryDTO</code></a></li>
     <li><a href="#LocationDTO"><code>LocationDTO</code></a></li>
     <li><a href="#TypeOfDepartmentDTO"><code>TypeOfDepartmentDTO</code></a></li>
     <li><a href="#WorkAreaDTO"><code>WorkAreaDTO</code></a></li>
@@ -1225,7 +1225,7 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="FacilitiesManagementHistoryDTO"><code>FacilitiesManagementHistoryDTO</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="FacilitiesHistoryDTO"><code>FacilitiesHistoryDTO</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
       <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>

@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter, ɵConsole } from '@angular/core';
 import { WorkPlace } from 'src/app/models/facilities-management/work-place';
-import { WorkPlaceDTO, LocationDTO, WorkAreaDTO } from 'swagger-client';
+import { WorkPlaceDTO, LocationDTO, WorkAreaDTO } from 'swagger-client/client';
 import { StorageService, StorageKey } from 'src/app/services/storage.service';
 import { HistoryService } from '../history.service';
 import { WorkAreaService } from '../work-area/work-area.service';

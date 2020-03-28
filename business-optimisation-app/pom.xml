@@ -16,11 +16,13 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/app/swagger-client/swagger.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/app/swagger-client/dist/output.yaml</inputSpec>
                             <language>typescript-angular</language>
-                            <output>${project.basedir}/src/app/swagger-client</output>
+                            <output>${project.basedir}/src/app/swagger-client/dist/client</output>
+                            <fileNaming>kebab-case</fileNaming>
                             <apiPackage>${default.package}.api</apiPackage>
                             <modelPackage>${default.package}.model</modelPackage>
+                            
                         </configuration>
                     </execution>
                 </executions>
@@ -36,9 +38,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/app/swagger-client/swagger.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/app/swagger-client/dist/output.yaml</inputSpec>
                             <language>html</language>
-                            <output>${project.basedir}/src/app/swagger-client/html</output>
+                            <output>${project.basedir}/src/app/swagger-client/dist/html</output>
                         </configuration>
                     </execution>
                 </executions>

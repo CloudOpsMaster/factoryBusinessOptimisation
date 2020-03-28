@@ -37,8 +37,8 @@ const routes: Routes = [
     component: GettingToolsComponent
   },
   {
-    path: 'facilities-management',
-    loadChildren: () => import('./modules/production/manufacture/facilities-management/facilities-management.module').then(m => m.FacilitiesManagementModule)
+    path: 'facilities',
+    loadChildren: () => import('./modules/production/manufacture/facilities/facilities.module').then(m => m.FacilitiesModule)
   },
   {
     path: 'materials-dictionary',

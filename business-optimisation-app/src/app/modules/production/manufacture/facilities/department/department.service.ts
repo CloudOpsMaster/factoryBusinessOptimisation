@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { StorageService, StorageKey } from 'src/app/services/storage.service';
-import { TypeOfDepartmentDTO, DepartmentDTO } from 'swagger-client';
+import { TypeOfDepartmentDTO, DepartmentDTO } from 'swagger-client/client';
 import { Department } from 'src/app/models/facilities-management/department';
 import { HistoryService } from '../history.service';
 

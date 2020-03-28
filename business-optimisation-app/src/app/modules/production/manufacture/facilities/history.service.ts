@@ -1,15 +1,15 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { History } from 'src/app/models/common/history';
 import { StorageService, StorageKey } from 'src/app/services/storage.service';
-import { FacilitiesManagementHistoryDTO } from 'swagger-client';
+import { FacilitiesHistoryDTO } from 'swagger-client/client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoryService {
 
-  private pointsInHistory: Array<FacilitiesManagementHistoryDTO> = [];
-  private currentHistory: FacilitiesManagementHistoryDTO = null;
+  private pointsInHistory: Array<FacilitiesHistoryDTO> = [];
+  private currentHistory: FacilitiesHistoryDTO = null;
   public changeArrayofHistory = new EventEmitter<History>();
 
   constructor(private storageService: StorageService) {
@@ -24,8 +24,8 @@ export class HistoryService {
     return arrayOfHistory;
   }
 
-  private getAllHistoryDTO(): Array<FacilitiesManagementHistoryDTO> {
-    let arrayOfHistory: Array<FacilitiesManagementHistoryDTO> = [];
+  private getAllHistoryDTO(): Array<FacilitiesHistoryDTO> {
+    let arrayOfHistory: Array<FacilitiesHistoryDTO> = [];
     if (this.storageService.hasKey(StorageKey.FacilitiesManagementHistory)) {
       arrayOfHistory = this.storageService.getTypedArray(StorageKey.FacilitiesManagementHistory);
     }
@@ -33,7 +33,7 @@ export class HistoryService {
   }
 
   public addPointInHistory<T>(type: string, newInfo?: T, oldInfo?: T): void {
-    this.currentHistory = <FacilitiesManagementHistoryDTO>{
+    this.currentHistory = <FacilitiesHistoryDTO>{
       id: this.incrementIndex(),
       date: new Date(),
       type: type,

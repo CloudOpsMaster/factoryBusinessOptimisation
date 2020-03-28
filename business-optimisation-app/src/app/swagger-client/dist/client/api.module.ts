@@ -3,14 +3,14 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
-import { FacilitiesManagementService } from './api/facilitiesManagement.service';
+import { FacilitiesService } from './api/facilities.service';
 
 @NgModule({
   imports:      [],
   declarations: [],
   exports:      [],
   providers: [
-    FacilitiesManagementService ]
+    FacilitiesService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

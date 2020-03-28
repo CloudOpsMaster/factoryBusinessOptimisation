@@ -1,0 +1,87 @@
+AddressDTO:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    city:
+      type: string
+    street:
+      type: string
+    buildingNumber:
+      type: integer
+      format: int64
+    floors:
+      type: integer
+      format: int32
+DepartmentDTO:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    name:
+      type: string
+    type:
+      type: string
+FacilitiesHistoryDTO:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    type:
+      type: string
+    date:
+      type: string
+      format: date-time  
+    user:
+      type: object
+    newInfo:
+      type: object
+    oldInfo:
+      type: object
+LocationDTO:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    address:
+      $ref: '#/definitions/AddressDTO'
+    comment:
+      type: string
+TypeOfDepartmentDTO:
+    type: string
+    enum:
+      - Office
+      - Warehouse
+      - PointOfSale
+      - Sweatshop
+WorkAreaDTO:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    name:
+      type: string
+    department:
+      $ref: '#/definitions/DepartmentDTO'
+WorkPlaceDTO:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    name:
+      type: string
+    work-area:
+      $ref: '#/definitions/WorkAreaDTO'
+    location:
+      $ref: '#/definitions/LocationDTO'
+    floor:
+      type: integer
+      format: int32
+    comment:
+      type: string

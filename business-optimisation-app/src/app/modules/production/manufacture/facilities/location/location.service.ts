@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Location } from "../../../../../models/facilities-management/location";
 import { StorageService, StorageKey } from 'src/app/services/storage.service';
-import { LocationDTO, AddressDTO } from 'swagger-client';
+import { LocationDTO, AddressDTO } from 'swagger-client/client';
 import { AddressService } from './addesss.service';
 import { HistoryService } from '../history.service';
 

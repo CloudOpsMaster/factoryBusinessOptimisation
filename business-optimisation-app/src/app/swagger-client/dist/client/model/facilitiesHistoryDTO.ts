@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface FacilitiesManagementHistoryDTO { 
+export interface FacilitiesHistoryDTO { 
     id?: number;
     type?: string;
     date?: Date;
