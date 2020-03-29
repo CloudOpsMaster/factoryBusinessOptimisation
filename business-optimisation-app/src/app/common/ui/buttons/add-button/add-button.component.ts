@@ -6,8 +6,9 @@ import { AbstractButton } from '../abstract-button';
   selector: 'add-button',
   templateUrl: './add-button.component.html',
   styleUrls: [
-    './add-button.component.scss',
-    '../base-button.component.scss']
+    '../base-button.component.scss',
+    '../../style.scss'
+  ]
 })
 export class AddButtonComponent extends AbstractButton implements OnInit {
 

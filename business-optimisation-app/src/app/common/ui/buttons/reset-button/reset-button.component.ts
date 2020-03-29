@@ -6,8 +6,9 @@ import { AbstractButton } from '../abstract-button';
   selector: 'reset-button',
   templateUrl: './reset-button.component.html',
   styleUrls: [
-    './reset-button.component.scss',
-    '../base-button.component.scss']
+    '../base-button.component.scss',
+    '../../style.scss'
+  ]
 })
 export class ResetButtonComponent extends AbstractButton implements OnInit {
 

@@ -6,8 +6,8 @@ import { AbstractButton } from '../abstract-button';
   selector: 'delete-button',
   templateUrl: './delete-button.component.html',
   styleUrls: [
-    './delete-button.component.scss',
-    '../base-button.component.scss'
+    '../base-button.component.scss',
+    '../../style.scss'
   ]
 })
 export class DeleteButtonComponent extends AbstractButton implements OnInit {

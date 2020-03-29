@@ -1,4 +1,6 @@
-:active, :hover, :focus {
+:active,
+ :hover,
+ :focus {
     outline: none !important;
     outline-offset: none !important;
     box-shadow: none !important;
@@ -12,24 +14,4 @@
     padding: 0;
     display: inline-block;
     margin: 0 0 8px 8px;
-
-    svg {
-        width: 27px;
-        height: 27px;
-        vertical-align: middle;
-        fill: rgb(0, 0, 0);
-        transition: 200ms; 
-        opacity: 0.5;
-    }
-}
-
-.btn:active {
-    svg {
-        opacity: 0.2;
-        transform: scale(0.9);
-        -webkit-transform: scale(0.9);
-        -moz-transform: scale(0.9);
-        -ms-transform: scale(0.9);
-        -o-transform: scale(0.9);
-    }
 }

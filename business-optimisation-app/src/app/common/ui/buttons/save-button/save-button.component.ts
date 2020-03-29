@@ -6,8 +6,8 @@ import { AbstractButton } from '../abstract-button';
   selector: 'save-button',
   templateUrl: './save-button.component.html',
   styleUrls: [
-    './save-button.component.scss',
-    '../base-button.component.scss']
+    '../base-button.component.scss',
+    '../../style.scss']
 })
 export class SaveButtonComponent extends AbstractButton implements OnInit {
 

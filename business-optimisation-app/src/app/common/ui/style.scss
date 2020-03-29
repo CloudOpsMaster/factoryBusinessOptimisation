@@ -1,0 +1,189 @@
+:host.eventsDisabled {
+    pointer-events: none;
+}
+
+.btn {
+    &.add {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/add.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+    &.cancel {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/cancel.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+    &.delete {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/delete.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+    &.download {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/download.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+    &.edit {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/edit.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+    &.filter {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/search.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+    &.save {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/save.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+    &.reset {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/reset.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+    &.details {
+        height: 30px;
+        width: 30px;
+        background-size: contain;
+        background-image: url('./assets/details.png');
+        -webkit-filter: grayscale(99%);
+        filter: grayscale(99%);
+    }
+}
+
+.btn:hover {
+    &.add {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+    &.cancel {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+    &.delete {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+    &.download {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+    &.edit {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+    &.filter {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+    &.save {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+    &.reset {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+    &.details {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+}
+
+.img-white {
+    filter: brightness(0) invert(1);
+}
+
+.mytable {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+.mytable th,
+.mytable td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #eceeef;
+}
+
+.mytable thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #eceeef;
+}
+
+.mytable tbody+tbody {
+    border-top: 2px solid #eceeef;
+}
+
+.mytable .mytable {
+    background-color: #fff;
+}
+
+.mytable-bordered {
+    border: 1px solid #eceeef;
+}
+
+.mytable-bordered th,
+.mytable-bordered td {
+    border: 1px solid #eceeef;
+}
+
+.mytable-bordered thead th,
+.mytable-bordered thead td {
+    border-bottom-width: 2px;
+}
+
+.mytable-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.mytable-hover .table-active:hover>td,
+.mytable-hover .table-active:hover>th {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.mybg-primary {
+    background-color: rgba(58, 159, 247, 0.952) !important;
+}
+
+.mytable-active,
+.mytable-active>th,
+.mytable-active>td {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.mytable-hover .mytable-active:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.mytable-hover .mytable-active:hover>td,
+.mytable-hover .mytable-active:hover>th {
+    background-color: rgba(0, 0, 0, 0.075);
+}

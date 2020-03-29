@@ -6,7 +6,10 @@ import { GridService } from './service/grid.service';
    // tslint:disable-next-line:component-selector
    selector: 'grid',
    templateUrl: './grid.component.html',
-   styleUrls: ['./grid.component.css']
+   styleUrls: [
+      './grid.component.css',
+      '../style.scss'
+   ]
 })
 export class GridComponent implements OnInit {
 
@@ -25,7 +28,10 @@ export class GridComponent implements OnInit {
    /** Event that fires on row selection changed. Uses selected object as argument */
    @Output() currentRowChanged = new EventEmitter<any>();
 
-   selectedRowClass = 'table-active';
+   readonly selectedRowClass = 'mytable-active';
+   readonly sortUndefined = require('../assets/sort-undefined.png');
+   readonly sortDown = require('../assets/sort-down.png');
+   readonly sortUp = require('../assets/sort-up.png');
 
    constructor(private gridService: GridService) { }
 
@@ -52,12 +58,12 @@ export class GridComponent implements OnInit {
 
    getSortCaptionFor(column: GridColumn): string {
       const direction = this.gridService.getDirectionForField(column.field);
-      let response = 'assets/image/icons/sort-undefined.png';
+      let response = this.sortUndefined;
       if (direction === -1) {
-         response = 'assets/image/icons/sort-down.png';
+         response = this.sortDown;
       }
       else if (direction === 1) {
-         response = 'assets/image/icons/sort-up.png';
+         response = this.sortUp;
       }
       return response;
    }

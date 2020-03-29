@@ -12,6 +12,8 @@ import { GridComponent } from './ui/grid/grid.component';
 import { DownloadDataComponent } from './ui/buttons/download-server-data/download-data.component';
 import { ImageChooserComponent } from './ui/image-chooser/image-chooser.component';
 import { GridService } from './ui/grid/service/grid.service';
+import { CancelButtonComponent } from './ui/buttons/cancel-button/cancel-button.component';
+import { DetailsButtonComponent } from './ui/buttons/details-button/details-button.component';
 
 @NgModule({
    imports: [
@@ -29,7 +31,9 @@ import { GridService } from './ui/grid/service/grid.service';
       ResetButtonComponent,
       FilterButtonComponent,
       GridComponent,
-      ImageChooserComponent
+      ImageChooserComponent,
+      CancelButtonComponent,
+      DetailsButtonComponent
    ],
    providers: [
       GridService
@@ -44,7 +48,9 @@ import { GridService } from './ui/grid/service/grid.service';
       ResetButtonComponent,
       FilterButtonComponent,
       GridComponent,
-      ImageChooserComponent
+      ImageChooserComponent,
+      CancelButtonComponent,
+      DetailsButtonComponent
    ]
 })
 export class CommonAppModule { }

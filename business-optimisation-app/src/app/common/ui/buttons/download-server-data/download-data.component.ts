@@ -5,8 +5,8 @@ import { AbstractButton } from '../abstract-button';
   selector: 'download-data-button',
   templateUrl: './download-data.component.html',
   styleUrls: [
-    './download-data.component.scss',
-    '../base-button.component.scss'
+    '../base-button.component.scss',
+    '../../style.scss'
   ]
 })
 
