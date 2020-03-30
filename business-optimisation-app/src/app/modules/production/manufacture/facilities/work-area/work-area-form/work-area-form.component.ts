@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { WorkAreaService } from '../work-area.service';
 import { DepartmentService } from '../../department/department.service';
 import { Department } from 'src/app/models/facilities-management/department';
+import { TranslationService } from 'angular-l10n';
 
 @Component({
   selector: 'app-work-area-form',
@@ -16,12 +17,22 @@ export class WorkAreaFormComponent {
   public canShowWorkAreaFormForChange: boolean;
   public workAreaForm: FormGroup;
   public departments: Department[] = null;
+  public applyTranslate: string;
+  public cancelTranslate: string;
+  public deleteTranslate: string;
 
   @Input() canShowWorkAreaForm: boolean;
 
-  constructor(private workAreaService: WorkAreaService, private departmentService: DepartmentService) {
+  constructor(private workAreaService: WorkAreaService, private departmentService: DepartmentService, public translation: TranslationService) {
     this.departments = this.departmentService.getAllDepartments();
     this.createForm();
+    this.translation.translationChanged().subscribe(
+      () => {
+        this.applyTranslate = this.translation.translate('apply');
+        this.cancelTranslate = this.translation.translate('cancel');
+        this.deleteTranslate = this.translation.translate('delete');
+      }
+    );
     this.workAreaService.variableWorkArea.subscribe((workArea: WorkArea) => {
       if (workArea && workArea.id > -1) {
         this.canShowWorkAreaFormForChange = true;

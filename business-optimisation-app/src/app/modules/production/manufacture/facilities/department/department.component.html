@@ -1,3 +1,3 @@
-<button class="mybtn add-btn" (click)="showDepartmentForm()"></button>
+<add-button (click)="showDepartmentForm()" [titlePlaceholder]=addTranslate l10nTranslate></add-button>
 <app-department-form [canShowDepartmentForm]="canShowDepartmentForm"></app-department-form>
 <app-department-table></app-department-table>

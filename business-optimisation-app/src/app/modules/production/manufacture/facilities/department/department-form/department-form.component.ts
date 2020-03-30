@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DepartmentService } from '../department.service';
 import { Department } from 'src/app/models/facilities-management/department';
+import { TranslationService } from 'angular-l10n';
 
 @Component({
   selector: 'app-department-form',
@@ -10,15 +11,26 @@ import { Department } from 'src/app/models/facilities-management/department';
 })
 export class DepartmentFormComponent {
   private department: Department = null;
+  
   public typeOfDepartments;
   public canShowDepartmentFormForChange: boolean;
   public departmentForm: FormGroup;
+  public applyTranslate: string;
+  public cancelTranslate: string;
+  public deleteTranslate: string;
 
   @Input() canShowDepartmentForm: boolean;
 
-  constructor(private departmentService: DepartmentService) {
+  constructor(private departmentService: DepartmentService, public translation: TranslationService) {
     this.typeOfDepartments = departmentService.getTypeOfDepartments();
     this.createForm();
+    this.translation.translationChanged().subscribe(
+      () => {
+        this.applyTranslate = this.translation.translate('apply');
+        this.cancelTranslate = this.translation.translate('cancel');
+        this.deleteTranslate = this.translation.translate('delete');
+      }
+    );
     this.departmentService.variableDepartment.subscribe((department: Department) => {
       if (department && department.id > -1) {
         this.canShowDepartmentFormForChange = true;
@@ -59,7 +71,7 @@ export class DepartmentFormComponent {
     this.setViewForm();
   }
 
-  private setViewForm():void {
+  private setViewForm(): void {
     this.canShowDepartmentFormForChange = false;
     this.canShowDepartmentForm = false;
   }

@@ -1,9 +1,10 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Address } from 'src/app/models/common/address';
 import { Location } from "../../../../../../models/facilities-management/location";
 import { LocationService } from '../location.service';
 import { AddressService } from '../addesss.service';
+import { TranslationService } from 'angular-l10n';
 
 @Component({
   selector: 'app-location-form',
@@ -16,11 +17,21 @@ export class LocationFormComponent {
 
   public canShowLocationFormForChange: boolean;
   public locationForm: FormGroup;
+  public applyTranslate: string;
+  public cancelTranslate: string;
+  public deleteTranslate: string;
 
   @Input() canShowLocationForm: boolean;
 
-  constructor(private locationServise: LocationService, private addressService: AddressService) {
+  constructor(private locationServise: LocationService, private addressService: AddressService, public translation: TranslationService) {
     this.createForm();
+    this.translation.translationChanged().subscribe(
+      () => {
+        this.applyTranslate = this.translation.translate('apply');
+        this.cancelTranslate = this.translation.translate('cancel');
+        this.deleteTranslate = this.translation.translate('delete');
+      }
+    );
     this.locationServise.variableLocation.subscribe((location: Location) => {
       if (location && location.id > -1) {
         this.canShowLocationFormForChange = true;
@@ -73,7 +84,7 @@ export class LocationFormComponent {
     this.setViewForm();
   }
 
-  private setViewForm():void {
+  private setViewForm(): void {
     this.canShowLocationFormForChange = false;
     this.canShowLocationForm = false;
   }

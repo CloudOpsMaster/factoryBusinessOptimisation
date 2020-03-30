@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslationService } from 'angular-l10n';
 
 @Component({
   selector: 'app-work-area',
@@ -8,8 +9,15 @@ import { Component } from '@angular/core';
 export class WorkAreaComponent {
 
   public canShowWorkAreaForm: boolean = false;
+  public addTranslate: string;
 
-  constructor() { }
+  constructor(public translation: TranslationService) {
+    this.translation.translationChanged().subscribe(
+      () => {
+        this.addTranslate = this.translation.translate('add');
+      }
+    );
+  }
 
   public showWorkAreaForm(): void {
     this.canShowWorkAreaForm = (!this.canShowWorkAreaForm) ? true : false;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslationService } from 'angular-l10n';
 
 @Component({
   selector: 'app-work-place',
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class WorkPlaceComponent {
 
   public canShowWorkPlaceForm: boolean = false;
-  
-  constructor() { }
+  public addTranslate: string;
 
+  constructor(public translation: TranslationService) {
+    this.translation.translationChanged().subscribe(
+      () => {
+        this.addTranslate = this.translation.translate('add');
+      }
+    );
+  }
   public showWorkPlaceForm(): void {
     this.canShowWorkPlaceForm = (!this.canShowWorkPlaceForm) ? true : false;
   }

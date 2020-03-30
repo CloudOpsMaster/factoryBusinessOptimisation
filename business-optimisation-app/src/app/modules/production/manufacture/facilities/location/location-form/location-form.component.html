@@ -21,13 +21,13 @@
             <textarea class="form-control form-control-sm" rows="2" formControlName="comment"></textarea>
         </div>
         <div class="col-2 m-t-md" *ngIf="!canShowLocationFormForChange">
-            <button class="mybtn save-btn" [disabled]="!locationForm.valid" (click)="onSave()"></button>
-            <button class="mybtn delete-btn" (click)="onCancel()"></button>
+            <save-button [disabled]="!locationForm.valid" (click)="onSave()" [titlePlaceholder]=applyTranslate l10nTranslate></save-button>
+            <cancel-button (click)="onCancel()" [titlePlaceholder]=cancelTranslate l10nTranslate></cancel-button>
         </div>
         <div class="col-2 m-t-md" *ngIf="canShowLocationFormForChange">
-            <button class="mybtn save-btn" [disabled]="!locationForm.valid" (click)="onChange()"></button>
-            <button class="mybtn delete-btn" (click)="onCancel()"></button>
-            <button class="mybtn trash-can-btn" (click)="onDelete()"></button>
+            <save-button [disabled]="!locationForm.valid" (click)="onChange()" [titlePlaceholder]=applyTranslate l10nTranslate></save-button>
+            <cancel-button (click)="onCancel()" [titlePlaceholder]=cancelTranslate l10nTranslate></cancel-button>
+            <delete-button (click)="onDelete()" [titlePlaceholder]=deleteTranslate l10nTranslate></delete-button>
         </div>
     </form>
 </div>

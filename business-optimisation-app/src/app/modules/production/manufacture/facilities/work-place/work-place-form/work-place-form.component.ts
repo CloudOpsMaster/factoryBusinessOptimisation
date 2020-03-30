@@ -6,6 +6,7 @@ import { LocationService } from '../../location/location.service';
 import { Location } from 'src/app/models/facilities-management/location';
 import { WorkPlaceService } from '../work-place.service';
 import { WorkAreaService } from '../../work-area/work-area.service';
+import { TranslationService } from 'angular-l10n';
 
 @Component({
   selector: 'app-work-place-form',
@@ -20,13 +21,23 @@ export class WorkPlaceFormComponent {
   public workAreas: Array<WorkArea> = [];
   public locations: Array<Location> = [];
   public countFloors: Array<number> = null;
+  public applyTranslate: string;
+  public cancelTranslate: string;
+  public deleteTranslate: string;
 
   @Input() canShowWorkPlaceForm: boolean;
 
-  constructor(private workPlaceService: WorkPlaceService, private workAreaService: WorkAreaService, private locationService: LocationService) {
+  constructor(private workPlaceService: WorkPlaceService, private workAreaService: WorkAreaService, private locationService: LocationService, public translation: TranslationService) {
     this.workAreas = this.workAreaService.getAllWorkAreas();
     this.locations = this.locationService.getAllLocations();
     this.createForm();
+    this.translation.translationChanged().subscribe(
+      () => {
+        this.applyTranslate = this.translation.translate('apply');
+        this.cancelTranslate = this.translation.translate('cancel');
+        this.deleteTranslate = this.translation.translate('delete');
+      }
+    );
     this.workPlaceService.variableWorkPlace.subscribe((workPlace: WorkPlace) => {
       if (workPlace && workPlace.id > -1) {
         this.canShowWorkPlaceFormForChange = true;
