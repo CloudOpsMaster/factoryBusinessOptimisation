@@ -3,15 +3,15 @@ export const EN: any = {
     "address": "Address",
     "addresses": "Addresses",
     "areasOfOperation": "Areas of operation",
-    "add":"Add",
-    "apply":"Apply",
+    "add": "Add",
+    "apply": "Apply",
     //-----------------------------------------B-----------------------------------------
     "buildingNumber": "Building number",
     //-----------------------------------------C-----------------------------------------
     "city": "City",
     "countFloors": "Number of floors",
     "changed": "Changed",
-    "cancel":"Cancel",
+    "cancel": "Cancel",
     //-----------------------------------------D-----------------------------------------
     "daysOff": "Days off",
     "description": "Description",
@@ -21,9 +21,11 @@ export const EN: any = {
     "edit": "Edit",
     "employeeAccounting": "Employee accounting",
     "employeeList": "Employee List",
+    "english": "EN",
+
     //-----------------------------------------F-----------------------------------------
     "floor": "Floor",
-    "filter":"Filter",
+    "filter": "Filter",
     //-----------------------------------------G-----------------------------------------
     "gettingTool": "Getting tool",
     //-----------------------------------------H-----------------------------------------
@@ -32,32 +34,35 @@ export const EN: any = {
     //-----------------------------------------J-----------------------------------------
     //-----------------------------------------K-----------------------------------------
     //-----------------------------------------L-----------------------------------------
+    "language": "Language",
     "listOfMaterials": "List of materials",
     //-----------------------------------------M-----------------------------------------
     "manufacture": "Manufacture",
     "meters": "Meters",
     //-----------------------------------------N-----------------------------------------
     "name": "Name",
-    "namesurnameshort" : "Full name",
+    "namesurnameshort": "Full name",
     //-----------------------------------------O-----------------------------------------
     "Office": "Office",
     //-----------------------------------------P-----------------------------------------
     "PointOfSale": "Point of sale",
     "personnelManagement": "Personnel Management",
-    "personalNumber" : "№",
-    "personalNumberFull" : "Personal №",
-    "position":"Position",
-    "phone":"Phone",
-    "passport":"Passport",
+    "personalNumber": "№",
+    "personalNumberFull": "Personal №",
+    "position": "Position",
+    "phone": "Phone",
+    "passport": "Passport",
     //-----------------------------------------Q-----------------------------------------
     //-----------------------------------------R-----------------------------------------
-    "reset":"Reset",
+    "reset": "Reset",
+    "russian": "RU",
+
     //-----------------------------------------S-----------------------------------------
     "serviceEquipment": "Service equipment",
     "staff": "Staff",
     "street": "Street",
     "Sweatshop": "Sweatshop",
-    "surname":"Surname",
+    "surname": "Surname",
     //-----------------------------------------T-----------------------------------------
     "taskList": "Task list",
     "type": "Type",

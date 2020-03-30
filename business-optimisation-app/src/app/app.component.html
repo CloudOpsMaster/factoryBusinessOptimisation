@@ -40,6 +40,13 @@
                 <a routerLink="/check-list-view" routerLinkActive="active" class="nav-link" l10nTranslate>view</a>
             </div>
         </li>
+        <li class="nav nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" l10nTranslate>language</a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="nav-link" (click)="selectLocale('en', 'US')" l10nTranslate>english</a>
+                <a class="nav-link" (click)="selectLocale('ru', 'RU')" l10nTranslate>russian</a>
+            </div>
+        </li>
     </ul>
 </div>
 <div class="place">
