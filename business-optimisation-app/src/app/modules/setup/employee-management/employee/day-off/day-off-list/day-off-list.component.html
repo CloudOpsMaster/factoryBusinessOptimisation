@@ -13,33 +13,33 @@
         </tr>
     </thead>
 
+    <!-- (remove)="updateContacts()" -->
+    <tr class="dayOffForm" *ngFor="let dayOffForm of dayOffForms">
+        <td>
+            {{ dayOffForm.name }}
+        </td>
 
-        <tr class="dayOffForm" *ngFor="let dayOffForm of dayOffForms" (remove)="updateContacts()">
-            <td>
-                {{ dayOffForm.name }}
-            </td>
-            
-            <td>
-                {{ dayOffForm.surname }}
-            </td>
-            
-            <td>
-               
-            </td>
-        
-            <td>
-            </td>
-        
-            <td> 
-            </td>
+        <td>
+            {{ dayOffForm.surname }}
+        </td>
 
-            <td>
-                <button class="btn btn-warning">Редактрировать</button>
-            </td>
-            <td>
-                <button class="btn btn-danger" (click)="remove()">Удалить</button>
-            </td>
-        </tr>
+        <td>
+
+        </td>
+
+        <td>
+        </td>
+
+        <td>
+        </td>
+
+        <td>
+            <button class="btn btn-warning">Редактрировать</button>
+        </td>
+        <td>
+            <button class="btn btn-danger" (click)="remove()">Удалить</button>
+        </td>
+    </tr>
 
 
 </table>
