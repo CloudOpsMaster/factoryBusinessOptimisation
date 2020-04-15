@@ -1,0 +1,47 @@
+CREATE TABLE addresses (
+	Id SERIAL PRIMARY KEY,
+	City VARCHAR(50) NOT NULL,
+	Street VARCHAR(50) NOT NULL,
+	BuildingNumber INTEGER NOT NULL
+);
+
+CREATE TABLE locations (
+	Id SERIAL PRIMARY KEY,
+	Address INTEGER REFERENCES addresses(Id) NOT NULL,
+	Exist BOOLEAN NOT NULL
+);
+
+CREATE TABLE typesOfDepartments (
+	Id SERIAL PRIMARY KEY,
+	Name VARCHAR(50) NOT NULL
+);
+INSERT INTO typesOfDepartments(Name)
+VALUES
+('Manufactory'),
+('Office'),
+('Shop'),
+('Warehouse');
+
+CREATE TABLE departments (
+	Id SERIAL PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	Type INTEGER REFERENCES typesOfDepartments(Id) NOT NULL,
+	Exist BOOLEAN NOT NULL 
+);
+
+CREATE TABLE workAreas (
+	Id SERIAL PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	Department INTEGER REFERENCES departments(Id) NOT NULL,
+	Exist BOOLEAN NOT NULL 
+);
+
+CREATE TABLE workPlaces (
+	Id SERIAL PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	WorkArea INTEGER REFERENCES departments(Id) NOT NULL,
+	Location INTEGER REFERENCES locations(Id) NOT NULL,
+	Floor INTEGER NOT NULL,
+	Comment TEXT,
+	Exist BOOLEAN NOT NULL 
+);
